@@ -50,8 +50,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/fa/f3/f4b8c175ea9a1de650b0085858059050b7953a93d66c97ed89b93b232996/cryptography-39.0.2.tar.gz",
-                    "sha256": "bc5b871e977c8ee5a1bbc42fa8d19bcc08baf0c51cbf1586b0e87a2694dde42f",
+                    "url": "https://files.pythonhosted.org/packages/15/d9/c679e9eda76bfc0d60c9d7a4084ca52d0631d9f24ef04f818012f6d1282e/cryptography-40.0.1.tar.gz",
+                    "sha256": "2803f2f8b1e95f614419926c7e6f55d828afc614ca5ed61543877ae668cc3472",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "cryptography"
@@ -59,8 +59,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/26/a7/9da7d5b23fc98ab3d424ac2c65613d63c1f401efb84ad50f2fa27b2caab4/importlib_metadata-6.0.0-py3-none-any.whl",
-                    "sha256": "7efb448ec9a5e313a57655d35aa54cd3e01b7e1fbcf72dce1bf06119420f5bad",
+                    "url": "https://files.pythonhosted.org/packages/f8/7d/e3adad613703c86d62aa991b45d6f090cf59975078a8c8100b50a0c86948/importlib_metadata-6.1.0-py3-none-any.whl",
+                    "sha256": "ff80f3b5394912eb1b108fcfd444dc78b7f1f3e16b16188054bd01cb9cb86f09",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "importlib_metadata",
@@ -138,8 +138,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/fe/40/9afaeb8d3b453fb8596fcb6c7bc2b64e434868c91eda19955742778eff74/PyGObject-3.42.2.tar.gz",
-                    "sha256": "21524cef33100c8fd59dc135948b703d79d303e368ce71fa60521cc971cd8aa7",
+                    "url": "https://files.pythonhosted.org/packages/44/80/96d6317a15a13a4f80ffa61118dc144a70756135fbc6ace30f9b033f51f7/PyGObject-3.44.1.tar.gz",
+                    "sha256": "665fbe980c91e8b31ad78ed3f66879946948200864002d193f67eccc1d7d5d83",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "PyGObject"
