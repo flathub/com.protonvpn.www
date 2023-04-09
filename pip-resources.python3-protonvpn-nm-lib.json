@@ -59,8 +59,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/22/b7/c9ccfdce238ebccfa1291f852f96e148ded0bae1ca02aaa003c64893eda8/importlib_metadata-6.2.0-py3-none-any.whl",
-                    "sha256": "8388b74023a138c605fddd0d47cb81dd706232569f56c9aca7d9c7fdb54caeba",
+                    "url": "https://files.pythonhosted.org/packages/63/bb/1622fce2a3efb66ec1c223f7bdba6eec49a443d436da092668787d7f19b3/importlib_metadata-6.2.1-py3-none-any.whl",
+                    "sha256": "f65e478a7c2177bd19517a3a15dac094d253446d8690c5f3e71e735a04312374",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "importlib_metadata",
