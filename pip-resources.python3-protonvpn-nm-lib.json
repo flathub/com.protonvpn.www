@@ -50,8 +50,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/15/d9/c679e9eda76bfc0d60c9d7a4084ca52d0631d9f24ef04f818012f6d1282e/cryptography-40.0.1.tar.gz",
-                    "sha256": "2803f2f8b1e95f614419926c7e6f55d828afc614ca5ed61543877ae668cc3472",
+                    "url": "https://files.pythonhosted.org/packages/f7/80/04cc7637238b78f8e7354900817135c5a23cf66dfb3f3a216c6d630d6833/cryptography-40.0.2.tar.gz",
+                    "sha256": "c33c0d32b8594fa647d2e01dbccc303478e16fdd7cf98652d5b3ed11aa5e5c99",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "cryptography"
