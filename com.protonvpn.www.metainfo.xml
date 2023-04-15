@@ -7,6 +7,7 @@
     <developer_name>Proton AG</developer_name>
     <summary>High-speed Swiss VPN that safeguards your privacy.</summary>
     <description>
+        <p>Important: Install the software user-wide, not system-wide, to avoid connection problems. </p>
         <p>ProtonVPN is a secure and free VPN, now featuring better connection stability, faster
             speeds, and even more security features.</p>
         <p>ProtonVPN is the world's ONLY free VPN service that respects your privacy and is safe
