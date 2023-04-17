@@ -6,7 +6,7 @@ runtime-version: '44'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-command: protonvpn-cli
+command: protonvpn
 finish-args:
   - --device=dri
   - --share=ipc
