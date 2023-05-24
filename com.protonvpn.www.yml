@@ -80,8 +80,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/85/d2/949d324c348014f0fd2e8e6d8efd3c0adefdcecd28990d4144f2cfc8105e/typing_extensions-4.6.0-py3-none-any.whl
-        sha256: 6ad00b63f849b7dcc313b70b6b304ed67b2b2963b3098a33efe18056b1a9a223
+        url: https://files.pythonhosted.org/packages/82/ed/8ccf53a0ed10bf8fc8877b5833b40f5f99093cadfe6632b8892f74aead0f/typing_extensions-4.6.1-py3-none-any.whl
+        sha256: 6bac751f4789b135c43228e72de18637e9a6c29d12777023a703fd1a6858469f
         x-checker-data:
           name: typing_extensions
           packagetype: bdist_wheel
@@ -114,8 +114,8 @@ modules:
         --prefix=${FLATPAK_DEST} "typing_extensions" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/85/d2/949d324c348014f0fd2e8e6d8efd3c0adefdcecd28990d4144f2cfc8105e/typing_extensions-4.6.0-py3-none-any.whl
-        sha256: 6ad00b63f849b7dcc313b70b6b304ed67b2b2963b3098a33efe18056b1a9a223
+        url: https://files.pythonhosted.org/packages/82/ed/8ccf53a0ed10bf8fc8877b5833b40f5f99093cadfe6632b8892f74aead0f/typing_extensions-4.6.1-py3-none-any.whl
+        sha256: 6bac751f4789b135c43228e72de18637e9a6c29d12777023a703fd1a6858469f
         x-checker-data:
           type: pypi
           name: typing_extensions
