@@ -371,8 +371,6 @@ modules:
 
       - name: python3-cryptography
         buildsystem: simple
-        only-arches:
-          - aarch64
         build-commands:
           - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
             --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
@@ -380,32 +378,30 @@ modules:
           - type: file
             url: https://files.pythonhosted.org/packages/ff/87/cffd495cc78503fb49aa3e19babc126b610174d08aa32c0d1d75c6499afc/cryptography-40.0.2-cp36-abi3-manylinux_2_28_aarch64.whl
             sha256: a04386fb7bc85fab9cd51b6308633a3c271e3d0d3eae917eebab2fac6219b6d2
+            only-arches:
+              - aarch64
             x-checker-data:
               type: json
               url: https://pypi.org/pypi/cryptography/json
               version-query: .info.version
-              url-query: .releases | .[$version][] | select(.filename=="cryptography-"
-                + $version + "-cp36-abi3-manylinux_2_28_aarch64.whl") | .url
+              url-query:
+                .releases | .[$version][] | select(.filename=="cryptography-"
+                + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
               name: cryptography
               packagetype: bdist_wheel
 
-      - name: python3-cryptography
-        buildsystem: simple
-        only-arches:
-          - x86_64
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
-        sources:
           - type: file
             url: https://files.pythonhosted.org/packages/8e/34/f54dbfc6d12fa34a50f03bf01319d585e7e9bddd68ad28299b4998e3098b/cryptography-40.0.2-cp36-abi3-manylinux_2_28_x86_64.whl
             sha256: adc0d980fd2760c9e5de537c28935cc32b9353baaf28e0814df417619c6c8c3b
+            only-arches:
+              - x86_64
             x-checker-data:
               type: json
               url: https://pypi.org/pypi/cryptography/json
               version-query: .info.version
-              url-query: .releases | .[$version][] | select(.filename=="cryptography-"
-                + $version + "-cp36-abi3-manylinux_2_28_x86_64.whl") | .url
+              url-query:
+                .releases | .[$version][] | select(.filename=="cryptography-"
+                + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
               name: cryptography
               packagetype: bdist_wheel
 
