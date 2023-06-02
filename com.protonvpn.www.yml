@@ -80,8 +80,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/38/60/300ad6f93adca578bf05d5f6cd1d854b7d140bebe2f9829561aa9977d9f3/typing_extensions-4.6.2-py3-none-any.whl
-        sha256: 3a8b36f13dd5fdc5d1b16fe317f5668545de77fa0b8e02006381fd49d731ab98
+        url: https://files.pythonhosted.org/packages/5f/86/d9b1518d8e75b346a33eb59fa31bdbbee11459a7e2cc5be502fa779e96c5/typing_extensions-4.6.3-py3-none-any.whl
+        sha256: 88a4153d8505aabbb4e13aacb7c486c2b4a33ca3b3f807914a9b4c844c471c26
         x-checker-data:
           name: typing_extensions
           packagetype: bdist_wheel
@@ -114,8 +114,8 @@ modules:
         --prefix=${FLATPAK_DEST} "typing_extensions" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/38/60/300ad6f93adca578bf05d5f6cd1d854b7d140bebe2f9829561aa9977d9f3/typing_extensions-4.6.2-py3-none-any.whl
-        sha256: 3a8b36f13dd5fdc5d1b16fe317f5668545de77fa0b8e02006381fd49d731ab98
+        url: https://files.pythonhosted.org/packages/5f/86/d9b1518d8e75b346a33eb59fa31bdbbee11459a7e2cc5be502fa779e96c5/typing_extensions-4.6.3-py3-none-any.whl
+        sha256: 88a4153d8505aabbb4e13aacb7c486c2b4a33ca3b3f807914a9b4c844c471c26
         x-checker-data:
           type: pypi
           name: typing_extensions
@@ -376,31 +376,29 @@ modules:
             --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/ff/87/cffd495cc78503fb49aa3e19babc126b610174d08aa32c0d1d75c6499afc/cryptography-40.0.2-cp36-abi3-manylinux_2_28_aarch64.whl
-            sha256: a04386fb7bc85fab9cd51b6308633a3c271e3d0d3eae917eebab2fac6219b6d2
+            url: https://files.pythonhosted.org/packages/b7/88/3e6c5eda9ab474fa9b0cf84e6119385aaefbe5c9700a5eacd6e0a9f415bb/cryptography-41.0.1-cp37-abi3-manylinux_2_28_aarch64.whl
+            sha256: d198820aba55660b4d74f7b5fd1f17db3aa5eb3e6893b0a41b75e84e4f9e0e4b
             only-arches:
               - aarch64
             x-checker-data:
               type: json
               url: https://pypi.org/pypi/cryptography/json
               version-query: .info.version
-              url-query:
-                .releases | .[$version][] | select(.filename=="cryptography-"
+              url-query: .releases | .[$version][] | select(.filename=="cryptography-"
                 + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
               name: cryptography
               packagetype: bdist_wheel
 
           - type: file
-            url: https://files.pythonhosted.org/packages/8e/34/f54dbfc6d12fa34a50f03bf01319d585e7e9bddd68ad28299b4998e3098b/cryptography-40.0.2-cp36-abi3-manylinux_2_28_x86_64.whl
-            sha256: adc0d980fd2760c9e5de537c28935cc32b9353baaf28e0814df417619c6c8c3b
+            url: https://files.pythonhosted.org/packages/49/35/80c346e1a9509210defa857a05e9b7931093719aab25665d4d54f9b3ba83/cryptography-41.0.1-cp37-abi3-manylinux_2_28_x86_64.whl
+            sha256: 948224d76c4b6457349d47c0c98657557f429b4e93057cf5a2f71d603e2fc3a3
             only-arches:
               - x86_64
             x-checker-data:
               type: json
               url: https://pypi.org/pypi/cryptography/json
               version-query: .info.version
-              url-query:
-                .releases | .[$version][] | select(.filename=="cryptography-"
+              url-query: .releases | .[$version][] | select(.filename=="cryptography-"
                 + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
               name: cryptography
               packagetype: bdist_wheel
