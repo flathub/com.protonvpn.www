@@ -101,8 +101,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/f7/80/04cc7637238b78f8e7354900817135c5a23cf66dfb3f3a216c6d630d6833/cryptography-40.0.2.tar.gz",
-                    "sha256": "c33c0d32b8594fa647d2e01dbccc303478e16fdd7cf98652d5b3ed11aa5e5c99",
+                    "url": "https://files.pythonhosted.org/packages/19/8c/47f061de65d1571210dc46436c14a0a4c260fd0f3eaf61ce9b9d445ce12f/cryptography-41.0.1.tar.gz",
+                    "sha256": "d34579085401d3f49762d2f7d6634d6b6c2ae1242202e860f4d26b046e3a1006",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "cryptography"
@@ -110,8 +110,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/b7/6d/d7377332703ffd8821878794aca4fb54637da654bf3e467ffb32109c2147/pyOpenSSL-23.1.1-py3-none-any.whl",
-                    "sha256": "9e0c526404a210df9d2b18cd33364beadb0dc858a739b885677bc65e105d4a4c",
+                    "url": "https://files.pythonhosted.org/packages/f0/e2/f8b4f1c67933a4907e52228241f4bd52169f3196b70af04403b29c63238a/pyOpenSSL-23.2.0-py3-none-any.whl",
+                    "sha256": "24f0dc5227396b3e831f4c7f602b950a5e9833d292c8e4a2e06b709292806ae2",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "pyOpenSSL",
