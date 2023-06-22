@@ -89,8 +89,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/94/43/00b79520fab4518ab0e6433fd3cca6e45b25d55619e62e8194ceef074dac/keyring-24.0.0-py3-none-any.whl",
-                    "sha256": "770f609eed2a16c65a6349f3ba1545d00c73f9fed4254c13766c674fe6d0d22b",
+                    "url": "https://files.pythonhosted.org/packages/78/49/20449ff4bc556d6bfb1ad9335c3e5727a0c5ad853b7f9fbb453013f41c11/keyring-24.0.1-py3-none-any.whl",
+                    "sha256": "b3eaa3874e2cffeba2d73e3f275c83827156d0616a2160a610a60d63922ad24b",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "keyring",
