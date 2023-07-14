@@ -119,8 +119,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/a1/3b/385e3b43200af0b9a13d03c234efbd9d40c6d73ab63fde1c097a2daacdea/zipp-3.16.1-py3-none-any.whl",
-                    "sha256": "0b37c326d826d5ca35f2b9685cd750292740774ef16190008b00a0227c256fe0",
+                    "url": "https://files.pythonhosted.org/packages/8c/08/d3006317aefe25ea79d3b76c9650afabaf6d63d1c8443b236e7405447503/zipp-3.16.2-py3-none-any.whl",
+                    "sha256": "679e51dd4403591b2d6838a48de3d283f3d188412a9782faadf845f298736ba0",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "zipp",
