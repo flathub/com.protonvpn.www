@@ -99,8 +99,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/85/01/e2678ee4e0d7eed4fd6be9e5b043fff9d22d245d06c8c91def8ced664189/more_itertools-9.1.0-py3-none-any.whl",
-                    "sha256": "d2bc7f02446e86a68911e58ded76d6561eea00cddfb2a91e7019bbb586c799f3",
+                    "url": "https://files.pythonhosted.org/packages/51/6e/7c6688d94e350c006f89f84e1c6af37a857f5d302bc7a3ddf917a4470948/more_itertools-10.0.0-py3-none-any.whl",
+                    "sha256": "928d514ffd22b5b0a8fce326d57f423a55d2ff783b093bab217eda71e732330f",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "more_itertools",
