@@ -73,8 +73,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/83/e8/44c05b10888c907e8e327f17f257655a25a3ebe44772b77ef87b5fb336c2/python_gnupg-0.5.0-py2.py3-none-any.whl",
-                    "sha256": "345723a03e67b82aba0ea8ae2328b2e4a3906fbe2c18c4082285c3b01068f270",
+                    "url": "https://files.pythonhosted.org/packages/22/ad/12d8df0a1b465593e736fa14a5d8144381bc64b222e6cd59bb13c6af95b4/python_gnupg-0.5.1-py2.py3-none-any.whl",
+                    "sha256": "bf9b2d9032ef38139b7d64184176cd0b293eaeae6e4f93f50e304c7051174482",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "python_gnupg",

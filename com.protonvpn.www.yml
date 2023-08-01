@@ -73,8 +73,8 @@ modules:
         --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/a4/24/6ae4c9c45cf99d96b06b5d99e25526c060303171fb0aea9da2bfd7dbde93/pyparsing-3.1.0-py3-none-any.whl
-        sha256: d554a96d1a7d3ddaf7183104485bc19fd80543ad6ac5bdb6426719d766fb06c1
+        url: https://files.pythonhosted.org/packages/39/92/8486ede85fcc088f1b3dba4ce92dd29d126fd96b0008ea213167940a2475/pyparsing-3.1.1-py3-none-any.whl
+        sha256: 32c7c0b711493c72ff18a981d24f28aaf9c1fb7ed5e9667c9e84e3db623bdbfb
         x-checker-data:
           name: pyparsing
           packagetype: bdist_wheel
@@ -216,8 +216,8 @@ modules:
             https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz
         type: archive
         url: >-
-          https://gitlab.freedesktop.org/polkit/polkit/-/archive/122/polkit-122.tar.gz
-        sha256: 0d69656d60800835c3d7d1f0a8362b32e1ae3ace2875a35bb624296fc52d5dc4
+          https://gitlab.freedesktop.org/polkit/polkit/-/archive/123/polkit-123.tar.gz
+        sha256: b69278f6ea0eac406350c45f5720e2fe5e4beaf9f53c16d9902e025965418864
 
   # https://github.com/flathub/org.gnome.NetworkDisplays/blob/5a3369d04e32ccd092e42463de5171f473a8601d/org.gnome.NetworkDisplays.json#LL177C11-L230C11
   - name: NetworkManager
@@ -425,11 +425,26 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
       - pip-resources.python3-protonvpn-nm-lib.json
+      - name: iproute2
+        buildsystem: autotools
+        make-install-args:
+          - PREFIX=${FLATPAK_DEST}
+          - SBINDIR=${FLATPAK_DEST}/bin
+          - CONFDIR=${FLATPAK_DEST}/etc/iproute2
+        sources:
+          - type: archive
+            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.4.0.tar.xz
+            sha256: 4c51b8decbc7e4da159ffb066f590cfb93dbf9af7ff86b1647ce42b7c179a272
+            x-checker-data:
+              project-id: 1392
+              stable-only: true
+              type: anitya
+              url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
     sources:
       - type: git
         url: https://github.com/ProtonVPN/protonvpn-nm-lib
-        commit: cad0f6700696486fda18ded09abf9e7d7fd212d1
-        tag: 3.14.0
+        commit: d05dae38403ddcb906b04eed171daedd16dbca18
+        tag: 3.16.0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ProtonVPN/protonvpn-nm-lib/releases/latest
