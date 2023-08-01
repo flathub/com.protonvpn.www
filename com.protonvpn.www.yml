@@ -425,6 +425,21 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
       - pip-resources.python3-protonvpn-nm-lib.json
+      - name: iproute2
+        buildsystem: autotools
+        make-install-args:
+          - PREFIX=${FLATPAK_DEST}
+          - SBINDIR=${FLATPAK_DEST}/bin
+          - CONFDIR=${FLATPAK_DEST}/etc/iproute2
+        sources:
+          - type: archive
+            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.4.0.tar.xz
+            sha256: 5a353b029575bd6084b098a1ae8c1ff0de47ad1ba71b25914379d8552eea0f23
+            x-checker-data:
+              project-id: 1392
+              stable-only: true
+              type: anitya
+              url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
     sources:
       - type: git
         url: https://github.com/ProtonVPN/protonvpn-nm-lib
