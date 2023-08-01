@@ -434,7 +434,7 @@ modules:
         sources:
           - type: archive
             url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.4.0.tar.xz
-            sha256: 5a353b029575bd6084b098a1ae8c1ff0de47ad1ba71b25914379d8552eea0f23
+            sha256: 4c51b8decbc7e4da159ffb066f590cfb93dbf9af7ff86b1647ce42b7c179a272
             x-checker-data:
               project-id: 1392
               stable-only: true
