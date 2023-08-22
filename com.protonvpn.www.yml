@@ -403,6 +403,22 @@ modules:
               name: cryptography
               packagetype: bdist_wheel
 
+      # Required by https://github.com/ProtonMail/proton-python-client/blob/fb64dee036c4beb57eb92c598337ac95cd6972e6/proton/api.py#L499-L500
+      # Generated with flatpak-pip-generator --runtime=org.gnome.Sdk//44 --checker-data dnspython --yaml
+      - name: python3-dnspython
+        buildsystem: simple
+        build-commands:
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "dnspython" --no-build-isolation
+        sources:
+          - type: file
+            url: https://files.pythonhosted.org/packages/f6/b4/0a9bee52c50f226a3cbfb54263d02bb421c7f2adc136520729c2c689c1e5/dnspython-2.4.2-py3-none-any.whl
+            sha256: 57c6fbaaeaaf39c891292012060beb141791735dbb4004798328fc2c467402d8
+            x-checker-data:
+              name: dnspython
+              packagetype: bdist_wheel
+              type: pypi
+
       # flatpak-pip-generator --requirements-file requirements.proton-python-client.txt --output pip-resources.proton-python-client --runtime org.gnome.Sdk//43 --checker-data
       # bcrypt and cryptography are stripped since we have installed it
       - pip-resources.proton-python-client.json
