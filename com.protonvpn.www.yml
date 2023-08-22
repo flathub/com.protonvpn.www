@@ -61,8 +61,8 @@ modules:
         --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/20/e8/e0a80cc355bc207fb1760160344e978f39d683c35e1230f71b8916bf3a50/poetry_core-1.6.1.tar.gz
-        sha256: 0f9b0de39665f36d6594657e7d57b6f463cc10f30c28e6d1c3b9ff54c26c9ac3
+        url: https://files.pythonhosted.org/packages/cb/1c/af7f886e723b2dfbaea9b8a739153f227b386dd856cf956f9fd0ed0a502b/poetry_core-1.7.0.tar.gz
+        sha256: 8f679b83bd9c820082637beca1204124d5d2a786e4818da47ec8acefd0353b74
         x-checker-data:
           type: pypi
           name: poetry-core
@@ -133,8 +133,8 @@ modules:
           type: pypi
           name: semantic_version
       - type: file
-        url: https://files.pythonhosted.org/packages/0e/c9/6f9de9f7a8404416d5d22484ccdeb138f469cc1e11bbd62a2bd26d5c1385/setuptools-rust-1.6.0.tar.gz
-        sha256: c86e734deac330597998bfbc08da45187e6b27837e23bd91eadb320732392262
+        url: https://files.pythonhosted.org/packages/90/f1/70b31cacce03bf21fa645d359d6303fb5590c1a02c41c7e2df1c480826b4/setuptools-rust-1.7.0.tar.gz
+        sha256: c7100999948235a38ae7e555fe199aa66c253dc384b125f5d85473bf81eae3a3
         x-checker-data:
           type: pypi
           name: setuptools-rust
@@ -376,8 +376,8 @@ modules:
             --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/d5/58/eb08fe49356a31c1627ee0a305e76b9328d02031172bd8624642834e0011/cryptography-41.0.2-cp37-abi3-manylinux_2_28_aarch64.whl
-            sha256: 84609ade00a6ec59a89729e87a503c6e36af98ddcd566d5f3be52e29ba993182
+            url: https://files.pythonhosted.org/packages/7d/43/587996ab411ca9cc7b75927856783f1791390d57ab7dc5f2c24df61e3f9a/cryptography-41.0.3-cp37-abi3-manylinux_2_28_aarch64.whl
+            sha256: 3fb248989b6363906827284cd20cca63bb1a757e0a2864d4c1682a985e3dca47
             only-arches:
               - aarch64
             x-checker-data:
@@ -390,8 +390,8 @@ modules:
               packagetype: bdist_wheel
 
           - type: file
-            url: https://files.pythonhosted.org/packages/1a/c7/b8193a0859fed883738ae99d33fe90edf05c7e3d0fdb1726f8f53d85859e/cryptography-41.0.2-cp37-abi3-manylinux_2_28_x86_64.whl
-            sha256: 49c3222bb8f8e800aead2e376cbef687bc9e3cb9b58b29a261210456a7783d83
+            url: https://files.pythonhosted.org/packages/46/74/f9eba8c947f57991b5dd5e45797fdc68cc70e444c32e6b952b512d42aba5/cryptography-41.0.3-cp37-abi3-manylinux_2_28_x86_64.whl
+            sha256: 42cb413e01a5d36da9929baa9d70ca90d90b969269e5a12d39c1e0d475010116
             only-arches:
               - x86_64
             x-checker-data:
@@ -402,6 +402,22 @@ modules:
                 + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
               name: cryptography
               packagetype: bdist_wheel
+
+      # Required by https://github.com/ProtonMail/proton-python-client/blob/fb64dee036c4beb57eb92c598337ac95cd6972e6/proton/api.py#L499-L500
+      # Generated with flatpak-pip-generator --runtime=org.gnome.Sdk//44 --checker-data dnspython --yaml
+      - name: python3-dnspython
+        buildsystem: simple
+        build-commands:
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "dnspython" --no-build-isolation
+        sources:
+          - type: file
+            url: https://files.pythonhosted.org/packages/f6/b4/0a9bee52c50f226a3cbfb54263d02bb421c7f2adc136520729c2c689c1e5/dnspython-2.4.2-py3-none-any.whl
+            sha256: 57c6fbaaeaaf39c891292012060beb141791735dbb4004798328fc2c467402d8
+            x-checker-data:
+              name: dnspython
+              packagetype: bdist_wheel
+              type: pypi
 
       # flatpak-pip-generator --requirements-file requirements.proton-python-client.txt --output pip-resources.proton-python-client --runtime org.gnome.Sdk//43 --checker-data
       # bcrypt and cryptography are stripped since we have installed it
