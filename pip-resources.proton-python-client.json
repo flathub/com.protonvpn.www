@@ -22,8 +22,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/2a/53/cf0a48de1bdcf6ff6e1c9a023f5f523dfe303e4024f216feac64b6eb7f67/charset-normalizer-3.2.0.tar.gz",
-                    "sha256": "3bb3d25a8e6c0aedd251753a79ae98a093c7e7b471faa3aa9a93a81431987ace",
+                    "url": "https://files.pythonhosted.org/packages/6d/b3/aa417b4e3ace24067f243e45cceaffc12dba6b8bd50c229b43b3b163768b/charset-normalizer-3.3.1.tar.gz",
+                    "sha256": "d9137a876020661972ca6eec0766d81aef8a5627df628b664b234b73396e727e",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "charset-normalizer"
@@ -51,8 +51,8 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/c5/05/c214b32d21c0b465506f95c4f28ccbcba15022e000b043b72b3df7728471/urllib3-1.26.16-py2.py3-none-any.whl",
-                    "sha256": "8d36afa7616d8ab714608411b4a3b13e58f463aee519024578e062e141dce20f",
+                    "url": "https://files.pythonhosted.org/packages/b0/53/aa91e163dcfd1e5b82d8a890ecf13314e3e149c05270cc644581f77f17fd/urllib3-1.26.18-py2.py3-none-any.whl",
+                    "sha256": "34b97092d7e0a3a8cf7cd10e386f401b3737364026c45e622aa02903dffe0f07",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "urllib3",
