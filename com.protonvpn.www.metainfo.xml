@@ -80,7 +80,7 @@
         </screenshot>
     </screenshots>
     <url type="homepage">https://protonvpn.com/</url>
-    <url type="contact">support@protonvpn.zendesk.com</url>
+    <url type="contact">https://protonvpn.com/support-form</url>
     <url type="help">https://protonvpn.com/support/linux-vpn-setup/</url>
     <url type="vcs-browser">https://github.com/ProtonVPN/proton-vpn-gtk-app</url>
 
