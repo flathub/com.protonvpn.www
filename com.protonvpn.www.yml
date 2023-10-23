@@ -164,15 +164,26 @@ modules:
       # The Cargo sources should be updated whenever bcrypt is updated.
       - bcrypt-cargo-sources.json
 
-  - name: python3-dbus-python
-    build-options:
-      env:
-        PYTHON_VERSION: '3'
-        PYTHONPATH: /app/lib/python3.11/site-packages
+  # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L772-L786
+  - name: python-dbus
+    buildsystem: simple
+    build-commands:
+      # Setting `PYTHONPATH` and using the deprecated `./setup.py install`
+      # in the following line are workarounds to force usage of the newer
+      # meson version installed above
+      #
+      # The next FreeDesktop SDK update should make this (and installing
+      # our own version of meson) unnecessary.
+      - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install
+        --prefix="${FLATPAK_DEST}" --root=/
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/source/d/dbus-python/dbus-python-1.3.2.tar.gz
+        url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
         sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
+        x-checker-data:
+          type: anitya
+          project-id: 402
+          url-template: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
 
   - name: libndp
     buildsystem: autotools
@@ -287,8 +298,8 @@ modules:
       - -Dgtk_doc=false
       - -Dintrospection=false
       - -Dvapi=false
-    # cleanup:
-    #   - '*'
+    cleanup:
+      - '*'
     sources:
       - type: archive
         url: https://gitlab.gnome.org/GNOME/libnma/-/archive/1.10.6/libnma-1.10.6.tar.gz
@@ -408,7 +419,7 @@ modules:
     build-commands:
       - python3 setup.py build -j${FLATPAK_BUILDER_N_JOBS} -DARCHIVE_DOWNLOAD_DIR="${FLATPAK_BUILDER_BUILDDIR}"
       - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
-    # # cleanup: ['*']
+    cleanup: ['*']
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/00/99/5beedbf09e3ec6b617606df42d04c4251959caddbd98397cce21da4c52d1/ninja-1.10.2.3.tar.gz
@@ -422,7 +433,7 @@ modules:
         build-commands:
           - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
             .
-        # # cleanup: ['*']
+        cleanup: ['*']
         sources:
           - type: archive
             url: https://files.pythonhosted.org/packages/9e/e2/2e440c30e93fc5b505ee56169a4396b05e797a1daadb721aba429adbfd51/scikit-build-0.15.0.tar.gz
@@ -433,7 +444,7 @@ modules:
             build-commands:
               - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
                 .
-            # # cleanup: ['*']
+            cleanup: ['*']
             sources:
               - type: archive
                 url: https://files.pythonhosted.org/packages/d0/43/f038b5009f93bcd77b1b8da9e6d424b739ab17aec9726f3a99eba23d53ca/setuptools_scm-7.0.5.tar.gz
@@ -444,7 +455,7 @@ modules:
                 build-commands:
                   - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
                     .
-                # # cleanup: ['*']
+                cleanup: ['*']
                 sources:
                   - type: archive
                     url: https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz
@@ -454,7 +465,7 @@ modules:
                     buildsystem: simple
                     build-commands:
                       - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
-                    # cleanup: ['*']
+                    cleanup: ['*']
                     sources:
                       - type: archive
                         url: https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz
@@ -463,7 +474,7 @@ modules:
                 buildsystem: simple
                 build-commands:
                   - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
-                # cleanup: ['*']
+                cleanup: ['*']
                 sources:
                   - type: archive
                     url: https://files.pythonhosted.org/packages/9e/1d/d128169ff58c501059330f1ad96ed62b79114a2eb30b8238af63a2e27f70/typing_extensions-4.3.0.tar.gz
@@ -472,7 +483,7 @@ modules:
                 buildsystem: simple
                 build-commands:
                   - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
-                # cleanup: ['*']
+                cleanup: ['*']
                 sources:
                   - type: archive
                     url: https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
@@ -491,7 +502,7 @@ modules:
     build-commands:
       - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" --ignore-installed
         .
-    # cleanup: ['*']
+    cleanup: ['*']
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/a7/f0/565f731cd138a516c2dba8439e47c5622493c82f41c4845d287617ef6ec9/meson-0.63.2.tar.gz
@@ -649,36 +660,17 @@ modules:
       - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'protonvpn-app
         %u' ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
 
-      - install -Dm644 logo.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - install -Dm644 rpmbuild/SOURCES/proton-vpn-logo.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.proton-vpn-gtk-app
       # https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/9bb65236353d646b07ead7b417d3828b12b55b7c/setup.py#L12-L19
       - pip-resources.proton-vpn-gtk-app.yaml
 
-      # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L772-L786
-      - name: python-dbus
-        buildsystem: simple
-        build-commands:
-          # Setting `PYTHONPATH` and using the deprecated `./setup.py install`
-          # in the following line are workarounds to force usage of the newer
-          # meson version installed above
-          #
-          # The next FreeDesktop SDK update should make this (and installing
-          # our own version of meson) unnecessary.
-          - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install
-            --prefix="${FLATPAK_DEST}" --root=/
-        sources:
-          - type: archive
-            url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
-            sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
-
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
         commit: 9bb65236353d646b07ead7b417d3828b12b55b7c
 
-      - type: file
-        path: logo.svg
       - type: file
         path: com.protonvpn.www.metainfo.xml
