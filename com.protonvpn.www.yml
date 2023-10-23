@@ -370,15 +370,14 @@ modules:
     # cleanup:
     #   - '*'
     sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libnma.git
-        tag: 1.10.6
-        commit: 3e324b69d0d74c8693fb58b9ee66efe0bad6cb34
+      - type: archive
+        url: https://gitlab.gnome.org/GNOME/libnma/-/archive/1.10.6/libnma-1.10.6.tar.gz
+        sha256: c88fd3408c4ff166b06179b5ce5186e08a57b64eb8c9b22e055ca0dbc5e8002b
         x-checker-data:
           type: anitya
           project-id: 230112
           stable-only: true
-          tag-template: $version
+          url-template: https://gitlab.gnome.org/GNOME/libnma/-/archive/$version/libnma-$version.tar.gz
 
   - name: NetworkManager-openvpn
     buildsystem: autotools
