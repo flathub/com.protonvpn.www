@@ -1,0 +1,115 @@
+
+app-id: com.protonvpn.test
+runtime: org.gnome.Platform
+runtime-version: '43'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: protonvpn-cli
+finish-args:
+  - --device=dri
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  # To store credentials
+  - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.gtk.vfs.*
+  - --filesystem=xdg-run/gvfsd
+  # To check the Network Manager status on the host system
+  - --system-talk-name=org.freedesktop.NetworkManager
+  # The downloaded OpenVPN profile hardcodes the certificate path
+  - --filesystem=~/.cert/nm-openvpn:create
+  - --talk-name=org.freedesktop.systemd1
+
+modules:
+  - shared-modules/libsecret/libsecret.json
+  - shared-modules/intltool/intltool-0.51.json
+
+  - name: libndp
+    buildsystem: autotools
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /share/man
+    sources:
+      - type: archive
+        url: https://github.com/jpirko/libndp/archive/v1.8.tar.gz
+        sha256: c3ea76e253def89869651686a827da75b56896fe94fabd87d8c14b1d4588fd05
+        x-checker-data:
+          type: anitya
+          project-id: 14944
+          stable-only: true
+          url-template: https://github.com/jpirko/libndp/archive/v$version.tar.gz
+
+  # https://github.com/flathub/com.anydesk.Anydesk/blob/f06549a3749ecbcc99cbbfd7753bfa884746b404/com.anydesk.Anydesk.json#L84-L115
+  - name: polkit
+    buildsystem: meson
+    config-opts:
+      - '-Dlibs-only=true'
+      - '-Dman=false'
+      - '-Dintrospection=false'
+      - '-Dexamples=false'
+      - '-Dgtk_doc=false'
+      - '-Dauthfw=shadow'
+    cleanup:
+      - /bin/*
+      - /etc/pam.d
+      - /etc/dbus-1
+      - /share/dbus-1/system-services/*
+      - /share/polkit-1
+      - /share/polkit-1/actions/*
+      - /lib/polkit-1
+    sources:
+      - x-checker-data:
+          type: anitya
+          project-id: 3682
+          url-template: >-
+            https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz
+        type: archive
+        url: >-
+          https://gitlab.freedesktop.org/polkit/polkit/-/archive/122/polkit-122.tar.gz
+        sha256: 0d69656d60800835c3d7d1f0a8362b32e1ae3ace2875a35bb624296fc52d5dc4
+
+  # https://github.com/flathub/org.gnome.NetworkDisplays/blob/5a3369d04e32ccd092e42463de5171f473a8601d/org.gnome.NetworkDisplays.json#LL177C11-L230C11
+  - name: NetworkManager
+    buildsystem: meson
+    build-options:
+      cflags: -ltinfo
+      cxxflags: -ltinfo
+    config-opts:
+      - -Dsystemdsystemunitdir=no
+      - -Ddbus_conf_dir=/app/etc/dbus-1/system.d
+      - -Diptables=/usr/bin/true
+      - -Ddnsmasq=/usr/bin/true
+      - -Dsession_tracking=no
+      - -Dselinux=false
+      - -Dsystemd_journal=false
+      - -Dlibaudit=no
+      - -Dwext=true
+      - -Dwifi=true
+      - -Dppp=false
+      - -Dmodem_manager=false
+      - -Dovs=false
+      - -Dnmcli=true
+      - -Dnmtui=false
+      # We need introspection
+      - -Dintrospection=true
+      - -Dvapi=true
+      - -Ddocs=false
+      - -Dtests=no
+      - -Dfirewalld_zone=true
+      - -Dlibpsl=true
+      - -Dqt=false
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git
+        # Breaking change for 1.42.x: `dns` will be replaced by `dns-data`, which is incompatible with older NetworkManager on host system
+        tag: 1.40.16
+        # commit: a17d50be63958da590a46ba84032265d78636106
+        x-checker-data:
+          type: anitya
+          project-id: 21197
+          stable-only: true
+          tag-template: $version

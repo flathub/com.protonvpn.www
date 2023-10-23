@@ -2,11 +2,11 @@
 
 id: com.protonvpn.www
 runtime: org.gnome.Platform
-runtime-version: '44'
+runtime-version: '45'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-command: protonvpn
+command: protonvpn-app
 finish-args:
   - --device=dri
   - --share=ipc
@@ -23,6 +23,8 @@ finish-args:
   - --filesystem=~/.cert/nm-openvpn:create
   # For DBus daemon reconnector
   - --system-talk-name=org.freedesktop.login1
+  # New dbus session name
+  - --own-name=proton.vpn.app.gtk
 
 modules:
   - shared-modules/libsecret/libsecret.json
@@ -159,18 +161,15 @@ modules:
       # The Cargo sources should be updated whenever bcrypt is updated.
       - bcrypt-cargo-sources.json
 
-  - name: dbus-python
-    buildsystem: autotools
-    cleanup:
-      - /include
+  - name: python3-dbus-python
+    build-options:
+      env:
+        PYTHON_VERSION: '3'
+        PYTHONPATH: /app/lib/python3.11/site-packages
     sources:
       - type: archive
-        url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
+        url: https://files.pythonhosted.org/packages/source/d/dbus-python/dbus-python-1.3.2.tar.gz
         sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
-        x-checker-data:
-          type: anitya
-          project-id: 402
-          url-template: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
 
   - name: libndp
     buildsystem: autotools
@@ -285,8 +284,8 @@ modules:
       - -Dgtk_doc=false
       - -Dintrospection=false
       - -Dvapi=false
-    cleanup:
-      - '*'
+    # cleanup:
+    #   - '*'
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libnma.git
@@ -311,261 +310,377 @@ modules:
           stable-only: true
           tag-template: $version
 
-  - name: proton-python-client
+  ######### Cryptography #########
+
+  # https://github.com/flathub/org.gajim.Gajim/blob/cb9cb26dd58acea79c50b316fb66a171b54c18e1/org.gajim.Gajim.yaml#LL66-L131C81
+  - name: python3-pycparser
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "pycparser" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/py2.py3/p/pycparser/pycparser-2.21-py2.py3-none-any.whl
+        sha256: 8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9
+
+  - name: python3-cffi
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # https://github.com/flathub/org.gajim.Gajim/blob/cb9cb26dd58acea79c50b316fb66a171b54c18e1/org.gajim.Gajim.yaml#LL66-L131C81
-      - name: python3-pycparser
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "pycparser" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/py2.py3/p/pycparser/pycparser-2.21-py2.py3-none-any.whl
-            sha256: 8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/source/c/cffi/cffi-1.15.1.tar.gz
+        sha256: d400bfb9a37b1351253cb402671cea7e89bdecc294e8016a707f6d1d8ac934f9
+    x-checker-data:
+      type: pypi
+      name: cffi
 
-      - name: python3-cffi
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "." --no-build-isolation
-        sources:
-          - type: archive
-            url: https://files.pythonhosted.org/packages/source/c/cffi/cffi-1.15.1.tar.gz
-            sha256: d400bfb9a37b1351253cb402671cea7e89bdecc294e8016a707f6d1d8ac934f9
-        x-checker-data:
-          type: pypi
-          name: cffi
+  - name: python3-asn1crypto
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "asn1crypto" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/py2.py3/a/asn1crypto/asn1crypto-1.5.1-py2.py3-none-any.whl
+        sha256: db4e40728b728508912cbb3d44f19ce188f218e9eba635821bb4b68564f8fd67
+    x-checker-data:
+      type: pypi
+      name: asn1crypto
+      packagetype: bdist_wheel
 
-      - name: python3-asn1crypto
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "asn1crypto" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/py2.py3/a/asn1crypto/asn1crypto-1.5.1-py2.py3-none-any.whl
-            sha256: db4e40728b728508912cbb3d44f19ce188f218e9eba635821bb4b68564f8fd67
+  - name: python3-idna
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/py3/i/idna/idna-3.4-py3-none-any.whl
+        sha256: 90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2
+    x-checker-data:
+      type: pypi
+      name: idna
+      packagetype: bdist_wheel
+
+  - name: python3-cryptography
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/7d/43/587996ab411ca9cc7b75927856783f1791390d57ab7dc5f2c24df61e3f9a/cryptography-41.0.3-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 3fb248989b6363906827284cd20cca63bb1a757e0a2864d4c1682a985e3dca47
+        only-arches:
+          - aarch64
         x-checker-data:
-          type: pypi
-          name: asn1crypto
+          type: json
+          url: https://pypi.org/pypi/cryptography/json
+          version-query: .info.version
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
+            + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
+          name: cryptography
           packagetype: bdist_wheel
 
-      - name: python3-idna
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/py3/i/idna/idna-3.4-py3-none-any.whl
-            sha256: 90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2
+      - type: file
+        url: https://files.pythonhosted.org/packages/46/74/f9eba8c947f57991b5dd5e45797fdc68cc70e444c32e6b952b512d42aba5/cryptography-41.0.3-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 42cb413e01a5d36da9929baa9d70ca90d90b969269e5a12d39c1e0d475010116
+        only-arches:
+          - x86_64
         x-checker-data:
-          type: pypi
-          name: idna
+          type: json
+          url: https://pypi.org/pypi/cryptography/json
+          version-query: .info.version
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
+            + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
+          name: cryptography
           packagetype: bdist_wheel
 
-      - name: python3-cryptography
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/a2/d0/b8cf2c1367f850011d4618348760b23bb1268efba9e6ca03c063803e8763/cryptography-41.0.4-cp37-abi3-manylinux_2_28_aarch64.whl
-            sha256: 23a25c09dfd0d9f28da2352503b23e086f8e78096b9fd585d1d14eca01613e13
-            only-arches:
-              - aarch64
-            x-checker-data:
-              type: json
-              url: https://pypi.org/pypi/cryptography/json
-              version-query: .info.version
-              url-query: .releases | .[$version][] | select(.filename=="cryptography-"
-                + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
-              name: cryptography
-              packagetype: bdist_wheel
-
-          - type: file
-            url: https://files.pythonhosted.org/packages/eb/4b/f86cc66c632cf0948ca1712aadd255f624deef1cd371ea3bfd30851e188d/cryptography-41.0.4-cp37-abi3-manylinux_2_28_x86_64.whl
-            sha256: 2ed09183922d66c4ec5fdaa59b4d14e105c084dd0febd27452de8f6f74704143
-            only-arches:
-              - x86_64
-            x-checker-data:
-              type: json
-              url: https://pypi.org/pypi/cryptography/json
-              version-query: .info.version
-              url-query: .releases | .[$version][] | select(.filename=="cryptography-"
-                + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
-              name: cryptography
-              packagetype: bdist_wheel
-
-      # Required by https://github.com/ProtonMail/proton-python-client/blob/fb64dee036c4beb57eb92c598337ac95cd6972e6/proton/api.py#L499-L500
-      # Generated with flatpak-pip-generator --runtime=org.gnome.Sdk//44 --checker-data dnspython --yaml
-      - name: python3-dnspython
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "dnspython" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/f6/b4/0a9bee52c50f226a3cbfb54263d02bb421c7f2adc136520729c2c689c1e5/dnspython-2.4.2-py3-none-any.whl
-            sha256: 57c6fbaaeaaf39c891292012060beb141791735dbb4004798328fc2c467402d8
-            x-checker-data:
-              name: dnspython
-              packagetype: bdist_wheel
-              type: pypi
-
-      # flatpak-pip-generator --requirements-file requirements.proton-python-client.txt --output pip-resources.proton-python-client --runtime org.gnome.Sdk//43 --checker-data
-      # bcrypt and cryptography are stripped since we have installed it
-      - pip-resources.proton-python-client.json
+  # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L647C1-L740C81
+  - name: python-ninja # needed by dbus-python
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py build -j${FLATPAK_BUILDER_N_JOBS} -DARCHIVE_DOWNLOAD_DIR="${FLATPAK_BUILDER_BUILDDIR}"
+      - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+    # # cleanup: ['*']
     sources:
-      - type: git
-        url: https://github.com/ProtonMail/proton-python-client
-        commit: 547abc8fc9a58f2d1076e9a559e12ede0d50f47e
-        tag: 0.7.1
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/ProtonMail/proton-python-client/releases/latest
-          tag-query: .tag_name
-          version-query: .tag_name
-          timestamp-query: .published_at
+      - type: archive
+        url: https://files.pythonhosted.org/packages/00/99/5beedbf09e3ec6b617606df42d04c4251959caddbd98397cce21da4c52d1/ninja-1.10.2.3.tar.gz
+        sha256: e1b86ad50d4e681a7dbdff05fc23bb52cb773edb90bc428efba33fa027738408
+      - type: file
+        url: https://github.com/Kitware/ninja/archive/v1.10.2.g51db2.kitware.jobserver-1.tar.gz
+        sha256: 549c31ee596566b952c600e23eb9b8d39a4112cd5fdeb2e5a83370669176da40
+    modules:
+      - name: python-skbuild
+        buildsystem: simple
+        build-commands:
+          - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+            .
+        # # cleanup: ['*']
+        sources:
+          - type: archive
+            url: https://files.pythonhosted.org/packages/9e/e2/2e440c30e93fc5b505ee56169a4396b05e797a1daadb721aba429adbfd51/scikit-build-0.15.0.tar.gz
+            sha256: e723cd0f3489a042370b9ea988bbb9cfd7725e8b25b20ca1c7981821fcf65fb9
+        modules:
+          - name: python-setuptools-scm
+            buildsystem: simple
+            build-commands:
+              - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+                .
+            # # cleanup: ['*']
+            sources:
+              - type: archive
+                url: https://files.pythonhosted.org/packages/d0/43/f038b5009f93bcd77b1b8da9e6d424b739ab17aec9726f3a99eba23d53ca/setuptools_scm-7.0.5.tar.gz
+                sha256: 031e13af771d6f892b941adb6ea04545bbf91ebc5ce68c78aaf3fff6e1fb4844
+            modules:
+              - name: python-packaging
+                buildsystem: simple
+                build-commands:
+                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+                    .
+                # # cleanup: ['*']
+                sources:
+                  - type: archive
+                    url: https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz
+                    sha256: dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb
+                modules:
+                  - name: python-pyparsing
+                    buildsystem: simple
+                    build-commands:
+                      - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+                    # cleanup: ['*']
+                    sources:
+                      - type: archive
+                        url: https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz
+                        sha256: 2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb
+              - name: python-typing-extensions
+                buildsystem: simple
+                build-commands:
+                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+                # cleanup: ['*']
+                sources:
+                  - type: archive
+                    url: https://files.pythonhosted.org/packages/9e/1d/d128169ff58c501059330f1ad96ed62b79114a2eb30b8238af63a2e27f70/typing_extensions-4.3.0.tar.gz
+                    sha256: e6d2677a32f47fc7eb2795db1dd15c1f34eff616bcaf2cfb5e997f854fa1c4a6
+              - name: python-tomli
+                buildsystem: simple
+                build-commands:
+                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+                # cleanup: ['*']
+                sources:
+                  - type: archive
+                    url: https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
+                    sha256: de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
+          - name: python-distro # also needed by Lutris, do not add a cleanup property here!
+            buildsystem: simple
+            build-commands:
+              - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+            sources:
+              - type: archive
+                url: https://files.pythonhosted.org/packages/b5/7e/ddfbd640ac9a82e60718558a3de7d5988a7d4648385cf00318f60a8b073a/distro-1.7.0.tar.gz
+                sha256: 151aeccf60c216402932b52e40ee477a939f8d58898927378a02abbe852c1c39
 
-  - name: python3-protonvpn-nm-lib
+  - name: python-meson # needed by dbus-python, the meson version shipped by the SDK is too old (0.59<0.60)
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" --ignore-installed
+        .
+    # cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/a7/f0/565f731cd138a516c2dba8439e47c5622493c82f41c4845d287617ef6ec9/meson-0.63.2.tar.gz
+        sha256: 16222f17ef76be0542c91c07994f9676ae879f46fc21c0c786a21ef2cb518bbf
+
+  ######### Proton Services #########
+
+  - name: python-proton-core
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      - pip-resources.python3-protonvpn-nm-lib.json
-      - name: iproute2
-        buildsystem: autotools
-        make-install-args:
-          - PREFIX=${FLATPAK_DEST}
-          - SBINDIR=${FLATPAK_DEST}/bin
-          - CONFDIR=${FLATPAK_DEST}/etc/iproute2
-        sources:
-          - type: archive
-            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.5.0.tar.xz
-            sha256: a70179085fa1b96d3c33b040c809b75e2b57563adc505a4ad05e2609df373463
-            x-checker-data:
-              project-id: 1392
-              stable-only: true
-              type: anitya
-              url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "requests" "bcrypt" "python-gnupg" "pyopenssl" "aiohttp" -o pip-resources.python-proton-core
+      # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
+      - pip-resources.python-proton-core.yaml
+
     sources:
       - type: git
-        url: https://github.com/ProtonVPN/protonvpn-nm-lib
-        commit: d05dae38403ddcb906b04eed171daedd16dbca18
-        tag: 3.16.0
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/ProtonVPN/protonvpn-nm-lib/releases/latest
-          tag-query: .tag_name
-          version-query: .tag_name
-          timestamp-query: .published_at
-      # https://github.com/ProtonVPN/protonvpn-nm-lib/pull/22
-      - type: patch
-        path: patches/protonvpn-nm-lib/fix-version-comparison.patch
-      # https://github.com/ProtonVPN/protonvpn-nm-lib/pull/21
-      - type: patch
-        path: patches/protonvpn-nm-lib/make-subprocess-wrapper-flatpak-aware.patch
-      # Disable dbus_reconnect.py since there's no good way to implement systemd service. See also https://github.com/flatpak/flatpak/issues/2787.
-      # This has no negtive effect on the functionalities except autostart.
-      - type: patch
-        path: patches/protonvpn-nm-lib/disable-dbus-reconnect.patch
+        url: https://github.com/ProtonVPN/python-proton-core
+        commit: 8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b
 
-  - name: protonvpn-cli
+  - name: python-proton-keyring-linux
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # Generated with flatpak-pip-generator --yaml --checker-data pythondialog --output pip-resources.protonvpn-cli --runtime org.gnome.Sdk//43
-      - name: python3-pythondialog
-        buildsystem: simple
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "pythondialog" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/69/f0/b3c431610753aa5687384e67cb92fbc2d531eb86f1ce32a8cb9735f9b0b7/pythondialog-3.5.3-py3-none-any.whl
-            sha256: b9ac084a1ba5db75242ef623ea6a770f0e74aa634869151be15a2d1c50daaab2
-            x-checker-data:
-              name: pythondialog
-              packagetype: bdist_wheel
-              type: pypi
-
-      - name: dialog
-        buildsystem: autotools
-        config-opts:
-          - --enable-nls
-          - --with-libtool
-          - --with-ncursesw
-        cleanup:
-          - /share/man
-          - /include
-        sources:
-          - type: archive
-            url: https://invisible-island.net/archives/dialog/dialog-1.3-20230209.tgz
-            sha256: 0c26282305264be2217f335f3798f48b1dce3cf12c5a076bf231cadf77a6d6a8
-            x-checker-data:
-              type: anitya
-              project-id: 431
-              stable-only: true
-              url-template: https://invisible-island.net/archives/dialog/dialog-$version.tgz
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "keyring" -o pip-resources.python-proton-keyring-linux
+      # https://github.com/ProtonVPN/python-proton-keyring-linux/blob/5ff3c7f9a1a162836649502dd23c2fbe1f487d73/setup.py#L12C39-L12C46
+      - pip-resources.python-proton-keyring-linux.yaml
 
     sources:
       - type: git
-        url: https://github.com/ProtonVPN/linux-cli
-        commit: 680fe8b9715529a28bdb1478c85929b99a7e00ef
-        tag: 3.13.0
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/ProtonVPN/linux-cli/releases/latest
-          tag-query: .tag_name
-          version-query: .tag_name
-          timestamp-query: .published_at
+        url: https://github.com/ProtonVPN/python-proton-keyring-linux
+        commit: 5ff3c7f9a1a162836649502dd23c2fbe1f487d73
 
-  - name: protonvpn-gui
+  - name: python-proton-keyring-linux-secretservice
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
+        commit: 973d2646ec4d04bc270df53058df892950244e70
+
+  - name: python-proton-vpn-logger
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-logger
+        commit: 0acbc1ab41a65cbc9ceb340e3db011e6f89eb65a
+
+  - name: python-proton-vpn-killswitch
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch
+        commit: 6e84588ea6ae0946141d4b44b2cf5df8465d5eba
+
+  - name: python-proton-vpn-killswitch-network-manager
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-killswitch-network-manager
+      # https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
+      - pip-resources.python-proton-vpn-killswitch-network-manager.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
+        commit: 39d4398f169539e335c1f661e0dfc5551df0e6af
+
+  - name: python-proton-vpn-connection
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "jinja2" -o pip-resources.python-proton-vpn-connection
+      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
+      - pip-resources.python-proton-vpn-connection.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-connection
+        commit: 747ccacb5350ad59f2a09953b8d20c5c161aab54
+
+  - name: python-proton-vpn-network-manager
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-network-manager
+      # https://github.com/ProtonVPN/python-proton-vpn-network-manager/blob/6ffd04fa0ae88a89d2b733443317066ef23b3ccd/setup.py#L14C63-L14C85
+      - pip-resources.python-proton-vpn-network-manager.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
+        commit: 6ffd04fa0ae88a89d2b733443317066ef23b3ccd
+
+  - name: python-proton-vpn-network-manager-openvpn
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
+        commit: b79f6732646378ef1b92696de3665ff9560286d3
+
+  - name: python-proton-vpn-session
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "PyNaCl" -o pip-resources.python-proton-vpn-session
+      # https://github.com/ProtonVPN/python-proton-vpn-session/blob/142d4670be044c03ce69e8a7eb97b797e425c2c6/setup.py#L12C76-L12C82
+      - pip-resources.python-proton-vpn-session.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-session
+        commit: 142d4670be044c03ce69e8a7eb97b797e425c2c6
+
+  - name: python-proton-vpn-api-core
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "distro" -o pip-resources.python-proton-vpn-api-core
+      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/9c03fc30d3ff08559cab3644eadde027b029375d/setup.py#L12-L15
+      - pip-resources.python-proton-vpn-api-core.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-api-core
+        commit: 9c03fc30d3ff08559cab3644eadde027b029375d
+
+  - name: proton-vpn-gtk-app
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
 
-      - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'protonvpn
-        %u' protonvpn.desktop
-      - install -Dm644 protonvpn.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 rpmbuild/SOURCES/protonvpn-app.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+      - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'protonvpn-app
+        %u' ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+
       - install -Dm644 logo.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
-      - name: python3-psutil
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" "packaging" "dbus-python" -o pip-resources.proton-vpn-gtk-app
+      # https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/9bb65236353d646b07ead7b417d3828b12b55b7c/setup.py#L12-L19
+      - pip-resources.proton-vpn-gtk-app.yaml
+
+      # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L772-L786
+      - name: python-dbus
         buildsystem: simple
         build-commands:
-          - pip3 install --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST}
-            psutil
+          # Setting `PYTHONPATH` and using the deprecated `./setup.py install`
+          # in the following line are workarounds to force usage of the newer
+          # meson version installed above
+          #
+          # The next FreeDesktop SDK update should make this (and installing
+          # our own version of meson) unnecessary.
+          - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install
+            --prefix="${FLATPAK_DEST}" --root=/
         sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/c6/c1/beed5e4eaa1345901b595048fab1c85aee647ea0fc02d9e8bf9aceb81078/psutil-5.6.2.tar.gz
-            sha256: 828e1c3ca6756c54ac00f1427fdac8b12e21b8a068c3bb9b631a1734cada25ed
+          - type: archive
+            url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
+            sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
+
     sources:
       - type: git
-        url: https://github.com/ProtonVPN/linux-app
-        tag: 1.12.0
-        commit: 776b1545a7acced44334f89a19e6f8acfc50c6d3
+        url: https://github.com/ProtonVPN/proton-vpn-gtk-app
+        commit: 9bb65236353d646b07ead7b417d3828b12b55b7c
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ProtonVPN/linux-app/releases/latest
           tag-query: .tag_name
           version-query: .tag_name
           timestamp-query: .published_at
-
-      # https://github.com/ProtonVPN/linux-app/pull/100
-      - type: patch
-        path: patches/protonvpn-gui/webkit-version.patch
 
       - type: file
         path: logo.svg
