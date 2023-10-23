@@ -164,27 +164,6 @@ modules:
       # The Cargo sources should be updated whenever bcrypt is updated.
       - bcrypt-cargo-sources.json
 
-  # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L772-L786
-  - name: python-dbus
-    buildsystem: simple
-    build-commands:
-      # Setting `PYTHONPATH` and using the deprecated `./setup.py install`
-      # in the following line are workarounds to force usage of the newer
-      # meson version installed above
-      #
-      # The next FreeDesktop SDK update should make this (and installing
-      # our own version of meson) unnecessary.
-      - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install
-        --prefix="${FLATPAK_DEST}" --root=/
-    sources:
-      - type: archive
-        url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
-        sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
-        x-checker-data:
-          type: anitya
-          project-id: 402
-          url-template: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
-
   - name: libndp
     buildsystem: autotools
     cleanup:
@@ -508,6 +487,27 @@ modules:
         url: https://files.pythonhosted.org/packages/a7/f0/565f731cd138a516c2dba8439e47c5622493c82f41c4845d287617ef6ec9/meson-0.63.2.tar.gz
         sha256: 16222f17ef76be0542c91c07994f9676ae879f46fc21c0c786a21ef2cb518bbf
 
+  # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L772-L786
+  - name: python-dbus
+    buildsystem: simple
+    build-commands:
+      # Setting `PYTHONPATH` and using the deprecated `./setup.py install`
+      # in the following line are workarounds to force usage of the newer
+      # meson version installed above
+      #
+      # The next FreeDesktop SDK update should make this (and installing
+      # our own version of meson) unnecessary.
+      - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install
+        --prefix="${FLATPAK_DEST}" --root=/
+    sources:
+      - type: archive
+        url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
+        sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
+        x-checker-data:
+          type: anitya
+          project-id: 402
+          url-template: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
+
   ######### Proton Services #########
 
   - name: python-proton-core
@@ -579,6 +579,21 @@ modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-killswitch-network-manager
       # https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
       - pip-resources.python-proton-vpn-killswitch-network-manager.yaml
+      - name: iproute2
+        buildsystem: autotools
+        make-install-args:
+          - PREFIX=${FLATPAK_DEST}
+          - SBINDIR=${FLATPAK_DEST}/bin
+          - CONFDIR=${FLATPAK_DEST}/etc/iproute2
+        sources:
+          - type: archive
+            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.5.0.tar.xz
+            sha256: a70179085fa1b96d3c33b040c809b75e2b57563adc505a4ad05e2609df373463
+            x-checker-data:
+              project-id: 1392
+              stable-only: true
+              type: anitya
+              url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
