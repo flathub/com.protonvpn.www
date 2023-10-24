@@ -5,7 +5,7 @@
     <project_license>GPL-3.0</project_license>
     <name>Proton VPN</name>
     <developer_name>Proton AG</developer_name>
-    <summary>High-speed Swiss VPN that safeguards your privacy</summary>
+    <summary>Trusted and easy-to-use VPN app for Linux</summary>
     <description>
         <p>NOTE: This release is not verified by, affiliated with, or supported by Proton AG.</p>
         <p>Proton VPN is the world's only free VPN app that is safe to use and respects your
@@ -47,25 +47,21 @@
             <li>Tor over VPN provides automatic integration with the Tor anonymity network</li>
             <li>Split tunneling support allows you to select which apps go through the VPN tunnel</li>
         </ul>
-        <p>Why choose Proton VPN?</p>
+        <p>Why use Proton VPN?</p>
         <ul>
-            <li>No personal data required to sign up</li>
-            <li>Easy-to-use VPN app for Android</li>
-            <li>Highest strength encryption for your connection makes it better than an internet
-                proxy</li>
-            <li>One click “Quick Connect” to secure your internet connection, especially on public
-                Wifi hotspots</li>
-            <li>Unique VPN Accelerator technology increases your VPN speed by up to 400% for a
-                faster internet connection</li>
-            <li>Proton VPN's Secure Core architecture allows our secure VPN service to defend
-                against network-based attacks</li>
-            <li>We only use VPN protocols that are proven to be secure: OpenVPN, IKEv2, and
-                WireGuard</li>
-            <li>Independently audited by third-party security experts and we publish all results on
-                our website</li>
-            <li>Trusted open-source code that can be reviewed for security by anyone</li>
-            <li>Data protection using AES-256 and 4096 RSA encryption</li>
-            <li>Multi-platform support across Android, Linux, Windows, macOS, iOS and more</li>
+            <li>No-logs VPN: We do not keep any logs that can identify what you do online</li>
+            <li>DNS and IPv6 leak protection: Our Linux app will never accidentally expose your real
+                IP address</li>
+            <li>Easy-to-use interface: The new Proton VPN Linux app has an intuitive graphical user
+                interface that lets you quickly activate features and connect to servers</li>
+            <li>P2P support: Share and download files using BitTorrent and other P2P protocols</li>
+            <li>VPN Accelerator: Free and available to everyone who uses Proton VPN, our unique VPN
+                Accelerator technology can improve speeds by over 400%</li>
+            <li>Strong encryption: Our Linux app uses the OpenVPN protocol at its strongest
+                encryption settings</li>
+            <li>Based in Switzerland: Switzerland has some of the world's strongest data privacy
+                laws</li>
+            <li>Secure streaming: Unblock popular streaming services and watch your favorite shows</li>
         </ul>
         <p>Join the privacy revolution</p>
         <p>Your support is important as it allows us to continue our mission to bring online freedom
