@@ -539,7 +539,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
-        branch: master
+        branch: unstable
         commit: 5ff3c7f9a1a162836649502dd23c2fbe1f487d73
 
   - name: python-proton-keyring-linux-secretservice
