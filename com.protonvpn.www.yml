@@ -523,6 +523,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
+        branch: master
         commit: 8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b
 
   - name: python-proton-keyring-linux
@@ -538,6 +539,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
+        branch: unstable
         commit: 5ff3c7f9a1a162836649502dd23c2fbe1f487d73
 
   - name: python-proton-keyring-linux-secretservice
@@ -548,6 +550,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
+        branch: master
         commit: 973d2646ec4d04bc270df53058df892950244e70
 
   - name: python-proton-vpn-logger
@@ -558,6 +561,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-logger
+        branch: master
         commit: 0acbc1ab41a65cbc9ceb340e3db011e6f89eb65a
 
   - name: python-proton-vpn-killswitch
@@ -568,6 +572,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch
+        branch: master
         commit: 6e84588ea6ae0946141d4b44b2cf5df8465d5eba
 
   - name: python-proton-vpn-killswitch-network-manager
@@ -597,6 +602,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
+        branch: master
         commit: 39d4398f169539e335c1f661e0dfc5551df0e6af
 
   - name: python-proton-vpn-connection
@@ -611,6 +617,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-connection
+        branch: master
         commit: 747ccacb5350ad59f2a09953b8d20c5c161aab54
 
   - name: python-proton-vpn-network-manager
@@ -625,6 +632,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
+        branch: master
         commit: 6ffd04fa0ae88a89d2b733443317066ef23b3ccd
 
   - name: python-proton-vpn-network-manager-openvpn
@@ -635,6 +643,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
+        branch: master
         commit: b79f6732646378ef1b92696de3665ff9560286d3
 
   - name: python-proton-vpn-session
@@ -649,6 +658,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-session
+        branch: master
         commit: 142d4670be044c03ce69e8a7eb97b797e425c2c6
 
   - name: python-proton-vpn-api-core
@@ -663,6 +673,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
+        branch: master
         commit: 9c03fc30d3ff08559cab3644eadde027b029375d
 
   - name: proton-vpn-gtk-app
@@ -685,6 +696,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
+        branch: master
         commit: 9bb65236353d646b07ead7b417d3828b12b55b7c
 
       - type: file
