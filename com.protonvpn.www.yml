@@ -371,8 +371,7 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -386,8 +385,7 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -395,8 +393,7 @@ modules:
   - name: python-packaging
     buildsystem: simple
     build-commands:
-      - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
-        .
+      - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz
@@ -405,7 +402,8 @@ modules:
       - name: python-pyparsing
         buildsystem: simple
         build-commands:
-          - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+          - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+            .
         cleanup: ['*']
         sources:
           - type: archive
@@ -452,7 +450,8 @@ modules:
               - name: python-typing-extensions
                 buildsystem: simple
                 build-commands:
-                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+                    .
                 cleanup: ['*']
                 sources:
                   - type: archive
@@ -461,7 +460,8 @@ modules:
               - name: python-tomli
                 buildsystem: simple
                 build-commands:
-                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+                  - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+                    .
                 cleanup: ['*']
                 sources:
                   - type: archive
@@ -470,7 +470,8 @@ modules:
           - name: python-distro # also needed by Lutris, do not add a cleanup property here!
             buildsystem: simple
             build-commands:
-              - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
+              - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
+                .
             sources:
               - type: archive
                 url: https://files.pythonhosted.org/packages/b5/7e/ddfbd640ac9a82e60718558a3de7d5988a7d4648385cf00318f60a8b073a/distro-1.7.0.tar.gz
@@ -497,8 +498,8 @@ modules:
       #
       # The next FreeDesktop SDK update should make this (and installing
       # our own version of meson) unnecessary.
-      - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install
-        --prefix="${FLATPAK_DEST}" --root=/
+      - PYTHONPATH=/app/lib/python3.11/site-packages python3 ./setup.py install --prefix="${FLATPAK_DEST}"
+        --root=/
     sources:
       - type: archive
         url: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
@@ -524,7 +525,7 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
         branch: master
-        commit: 8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b
+        commit: 18a0255613198ce2fdb77f0c86a6b17a50896b55
 
   - name: python-proton-keyring-linux
     buildsystem: simple
