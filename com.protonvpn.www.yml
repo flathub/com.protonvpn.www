@@ -698,7 +698,7 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
         branch: master
-        commit: 9bb65236353d646b07ead7b417d3828b12b55b7c
+        commit: 713324e9e4ee9f030c8115072cae379eb3340c42
 
       - type: file
         path: com.protonvpn.www.metainfo.xml
