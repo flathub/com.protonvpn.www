@@ -660,7 +660,7 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-session
         branch: master
-        commit: 142d4670be044c03ce69e8a7eb97b797e425c2c6
+        commit: 419b25bd1823f78d1219dc4cc441eeaf37646068
 
   - name: python-proton-vpn-api-core
     buildsystem: simple
