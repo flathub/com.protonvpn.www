@@ -88,8 +88,8 @@ modules:
           name: cryptography
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/f0/e2/f8b4f1c67933a4907e52228241f4bd52169f3196b70af04403b29c63238a/pyOpenSSL-23.2.0-py3-none-any.whl
-        sha256: 24f0dc5227396b3e831f4c7f602b950a5e9833d292c8e4a2e06b709292806ae2
+        url: https://files.pythonhosted.org/packages/db/de/007b832ad7a95e6a73745609bbe123c407aa2c46bb0b8f765c8718294e7f/pyOpenSSL-23.3.0-py3-none-any.whl
+        sha256: 6756834481d9ed5470f4a9393455154bc92fe7a64b7bc6ee2c804e78c52099b2
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
