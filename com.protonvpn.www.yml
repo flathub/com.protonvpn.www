@@ -688,6 +688,13 @@ modules:
         %u' ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
 
       - install -Dm644 rpmbuild/SOURCES/proton-vpn-logo.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      # Export icons that can be used in the status bar: https://github.com/flathub/com.protonvpn.www/issues/100
+      # Icons to be exported must have names following the pattern: ${FLATPAK_ID}.icon_name.svg
+      - |
+        for icon in maintenance-icon proton-vpn-sign state-connected state-disconnected state-error
+        do
+            install -Dm644 proton/vpn/app/gtk/assets/icons/${icon}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg
+        done
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.proton-vpn-gtk-app
@@ -699,6 +706,9 @@ modules:
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
         branch: master
         commit: 713324e9e4ee9f030c8115072cae379eb3340c42
+
+      - type: patch
+        path: patches/proton-vpn-gtk-app/fix-tray-icons.patch
 
       - type: file
         path: com.protonvpn.www.metainfo.xml
