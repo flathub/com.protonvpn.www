@@ -66,8 +66,8 @@ modules:
         --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/cb/1c/af7f886e723b2dfbaea9b8a739153f227b386dd856cf956f9fd0ed0a502b/poetry_core-1.7.0.tar.gz
-        sha256: 8f679b83bd9c820082637beca1204124d5d2a786e4818da47ec8acefd0353b74
+        url: https://files.pythonhosted.org/packages/36/66/6af2891495d12020419c8447d0b29c1e96f3be16631faaed6bda5b886d5d/poetry_core-1.8.1.tar.gz
+        sha256: 67a76c671da2a70e55047cddda83566035b701f7e463b32a2abfeac6e2a16376
         x-checker-data:
           type: pypi
           name: poetry-core
@@ -525,7 +525,7 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
         branch: master
-        commit: 18a0255613198ce2fdb77f0c86a6b17a50896b55
+        commit: 5e795e04094dff67c03c56f2f3de03ff43514cc4
 
   - name: python-proton-keyring-linux
     buildsystem: simple
