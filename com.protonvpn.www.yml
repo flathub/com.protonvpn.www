@@ -527,7 +527,7 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
         tag: 0.1.15
-        commit: 18a0255613198ce2fdb77f0c86a6b17a50896b55
+        commit: 5e795e04094dff67c03c56f2f3de03ff43514cc4
         x-checker-data:
           type: anitya
           project-id: 369954
