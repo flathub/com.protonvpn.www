@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 requests bcrypt python-gnupg pyopenssl aiohttp pyxdg -o pip-resources.python-proton-core
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 requests python-gnupg pyopenssl aiohttp pyxdg -o pip-resources.python-proton-core
 build-commands: []
 buildsystem: simple
 modules:
@@ -43,18 +43,6 @@ modules:
         x-checker-data:
           name: urllib3
           packagetype: bdist_wheel
-          type: pypi
-  - name: python3-bcrypt
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "bcrypt" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/8c/ae/3af7d006aacf513975fd1948a6b4d6f8b4a307f8a244e1a3d3774b297aad/bcrypt-4.0.1.tar.gz
-        sha256: 27d375903ac8261cfe4047f6709d16f7d18d39b1ec92aaf72af989552a650ebd
-        x-checker-data:
-          name: bcrypt
           type: pypi
   - name: python3-python-gnupg
     buildsystem: simple

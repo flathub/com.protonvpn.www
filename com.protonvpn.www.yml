@@ -33,6 +33,33 @@ modules:
   - shared-modules/intltool/intltool-0.51.json
   - shared-modules/libappindicator/libappindicator-gtk3-introspection-12.10.json
 
+  - name: python3-packaging
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "packaging" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/ec/1a/610693ac4ee14fcdf2d9bf3c493370e4f2ef7ae2e19217d7a237ff42367d/packaging-23.2-py3-none-any.whl
+        sha256: 8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7
+        x-checker-data:
+          name: packaging
+          packagetype: bdist_wheel
+          type: pypi
+    modules:
+      - name: python3-toml
+        buildsystem: simple
+        build-commands:
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "toml" --no-build-isolation
+        sources:
+          - type: file
+            url: https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz
+            sha256: b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
+            x-checker-data:
+              type: pypi
+              name: toml
+
   # The bcrypt Python library is handled specially since it has Rust code and dependencies.
   # The cryptography Python library is handled specially since it has Rust code and dependencies.
   - name: python3-bcrypt
@@ -49,19 +76,7 @@ modules:
     modules:
       # Python dependencies required to build things
       # https://github.com/flathub/org.thonny.Thonny/blob/2f10b0123b1df4111c4c4fb3277fdebab56c7e73/org.thonny.Thonny.yaml#L75-L234
-      - name: python3-toml
-        buildsystem: simple
-        cleanup: ['*']
-        build-commands:
-          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-            --prefix=${FLATPAK_DEST} "toml" --no-build-isolation
-        sources:
-          - type: file
-            url: https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz
-            sha256: b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
-            x-checker-data:
-              type: pypi
-              name: toml
+
       - name: python3-flit_core
         buildsystem: simple
         cleanup: ['*']
@@ -114,13 +129,6 @@ modules:
             sha256: 939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc
             x-checker-data:
               name: tomli
-              packagetype: bdist_wheel
-              type: pypi
-          - type: file
-            url: https://files.pythonhosted.org/packages/ec/1a/610693ac4ee14fcdf2d9bf3c493370e4f2ef7ae2e19217d7a237ff42367d/packaging-23.2-py3-none-any.whl
-            sha256: 8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7
-            x-checker-data:
-              name: packaging
               packagetype: bdist_wheel
               type: pypi
           - type: file
@@ -377,7 +385,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -391,7 +400,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -523,7 +533,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "requests" "bcrypt" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
       # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
       - pip-resources.python-proton-core.yaml
 
