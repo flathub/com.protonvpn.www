@@ -738,7 +738,7 @@ modules:
       - |
         for icon in maintenance-icon proton-vpn-sign state-connected state-disconnected state-error
         do
-            install -Dm644 proton/vpn/app/gtk/assets/icons/${icon}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg
+            ln -s ${FLATPAK_DEST}/lib/python*.*/site-packages/proton/vpn/app/gtk/assets/icons/${icon}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg
         done
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
