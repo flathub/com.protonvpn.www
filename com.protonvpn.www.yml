@@ -736,9 +736,12 @@ modules:
       # Export icons that can be used in the status bar: https://github.com/flathub/com.protonvpn.www/issues/100
       # Icons to be exported must have names following the pattern: ${FLATPAK_ID}.icon_name.svg
       - |
+        PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))')
+        PYTHONPATH=${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages
         for icon in maintenance-icon proton-vpn-sign state-connected state-disconnected state-error
         do
-            ln -s ${FLATPAK_DEST}/lib/python*.*/site-packages/proton/vpn/app/gtk/assets/icons/${icon}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg
+          mv ${PYTHONPATH}/proton/vpn/app/gtk/assets/icons/${icon}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg
+          ln -s ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg ${PYTHONPATH}/proton/vpn/app/gtk/assets/icons/${icon}.svg
         done
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
