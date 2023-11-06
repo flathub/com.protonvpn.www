@@ -715,7 +715,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: 0.20.1
+        # tag: 0.20.1
         commit: 9c03fc30d3ff08559cab3644eadde027b029375d
         x-checker-data:
           type: anitya
