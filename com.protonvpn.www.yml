@@ -694,12 +694,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-session
-        tag: 0.6.2
+        # tag: 0.6.2
         commit: 419b25bd1823f78d1219dc4cc441eeaf37646068
-        x-checker-data:
-          type: anitya
-          project-id: 369945
-          tag-template: $version
+        # x-checker-data:
+        #   type: anitya
+        #   project-id: 369945
+        #   tag-template: $version
 
   - name: python-proton-vpn-api-core
     buildsystem: simple
@@ -750,13 +750,13 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: 4.1.0
+        # tag: 4.1.0
         commit: 713324e9e4ee9f030c8115072cae379eb3340c42
-        x-checker-data:
-          type: anitya
-          project-id: 369943
-          tag-template: $version
-          is-main-source: true
+        # x-checker-data:
+        #   type: anitya
+        #   project-id: 369943
+        #   tag-template: $version
+        #   is-main-source: true
 
       - type: patch
         path: patches/proton-vpn-gtk-app/fix-tray-icons.patch
