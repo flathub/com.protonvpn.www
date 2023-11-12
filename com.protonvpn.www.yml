@@ -18,7 +18,7 @@ finish-args:
   # To check the Network Manager status on the host system
   - --system-talk-name=org.freedesktop.NetworkManager
   # The downloaded OpenVPN profile hardcodes the certificate path
-  - --filesystem=~/.cert/nm-openvpn:create
+  - --filesystem=~/.cert/nm-openvpn/ProtonVPN-*.pem
   # For DBus daemon reconnector
   - --system-talk-name=org.freedesktop.login1
   # New dbus session name
