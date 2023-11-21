@@ -531,8 +531,9 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" "expandvars" -o pip-resources.python-proton-core
       # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
+      # `expandvars` is required by `yarl`
       - pip-resources.python-proton-core.yaml
 
     sources:
