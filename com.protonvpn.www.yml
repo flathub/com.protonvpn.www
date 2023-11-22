@@ -539,7 +539,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
         # tag: 0.1.15
-        branch: master
         commit: 9c03fc30d3ff08559cab3644eadde027b029375d
         # x-checker-data:
         #   type: anitya
@@ -560,7 +559,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
         # tag: 0.0.1
-        branch: unstable
         commit: 5ff3c7f9a1a162836649502dd23c2fbe1f487d73
         # x-checker-data:
         #   type: anitya
@@ -576,7 +574,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
         # tag: 0.0.1
-        branch: master
         commit: 973d2646ec4d04bc270df53058df892950244e70
         # x-checker-data:
         #   type: anitya
@@ -592,7 +589,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-logger
         # tag: 0.2.1
-        branch: master
         commit: 0acbc1ab41a65cbc9ceb340e3db011e6f89eb65a
         # x-checker-data:
         #   type: anitya
@@ -608,7 +604,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch
         # tag: 0.2.0
-        branch: master
         commit: 6e84588ea6ae0946141d4b44b2cf5df8465d5eba
         # x-checker-data:
         #   type: anitya
@@ -628,7 +623,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
         # tag: 0.2.0
-        branch: master
         commit: 39d4398f169539e335c1f661e0dfc5551df0e6af
         # x-checker-data:
         #   type: anitya
@@ -648,7 +642,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-connection
         # tag: 0.11.0
-        branch: master
         commit: 747ccacb5350ad59f2a09953b8d20c5c161aab54
         # x-checker-data:
         #   type: anitya
@@ -668,7 +661,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
         # tag: 0.3.0
-        branch: master
         commit: 6ffd04fa0ae88a89d2b733443317066ef23b3ccd
         # x-checker-data:
         #   type: anitya
@@ -684,7 +676,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
         # tag: 0.0.4
-        branch: master
         commit: b79f6732646378ef1b92696de3665ff9560286d3
         # x-checker-data:
         #   type: anitya
@@ -704,7 +695,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-session
         # tag: 0.6.2
-        branch: master
         commit: 419b25bd1823f78d1219dc4cc441eeaf37646068
         # x-checker-data:
         #   type: anitya
@@ -724,7 +714,6 @@ modules:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
         # tag: 0.20.1
-        branch: master
         commit: 59a1cf008333ae357ada2fc7128694c2288b88da
         # x-checker-data:
         #   type: anitya
@@ -763,7 +752,6 @@ modules:
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
         # tag: 4.1.0
         commit: 713324e9e4ee9f030c8115072cae379eb3340c42
-        branch: master
         # x-checker-data:
         #   type: anitya
         #   project-id: 369943
