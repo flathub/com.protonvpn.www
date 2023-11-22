@@ -540,7 +540,7 @@ modules:
         url: https://github.com/ProtonVPN/python-proton-core
         # tag: 0.1.15
         branch: master
-        commit: 5e795e04094dff67c03c56f2f3de03ff43514cc4
+        commit: 9c03fc30d3ff08559cab3644eadde027b029375d
         # x-checker-data:
         #   type: anitya
         #   project-id: 369954
@@ -705,7 +705,7 @@ modules:
         url: https://github.com/ProtonVPN/python-proton-vpn-session
         # tag: 0.6.2
         branch: master
-        commit: 91b50eabc5e9a8aaf1f2784b849bac875c6c0415
+        commit: 419b25bd1823f78d1219dc4cc441eeaf37646068
         # x-checker-data:
         #   type: anitya
         #   project-id: 369945
