@@ -375,31 +375,29 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/e3/21/958e33e2c149461e0a93ca358b794771d55f781ca808efcadb86a4c08e49/cryptography-41.0.5-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: ec3b055ff8f1dce8e6ef28f626e0972981475173d7973d63f271b29c8a2897da
+        url: https://files.pythonhosted.org/packages/0e/dd/6043bf697d30dc4277cc1608af1145d6076fdd0f00283626bf916d7cde8f/cryptography-41.0.6-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: ff369dd19e8fe0528b02e8df9f2aeb2479f89b1270d90f96a63500afe9af5cae
         only-arches:
           - aarch64
         x-checker-data:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/85/62/48bcebd955945d8da3fe9b84a679dbf4bf179e1ac36e583b7eaa47506758/cryptography-41.0.5-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 7d208c21e47940369accfc9e85f0de7693d9a5d843c2509b3846b2db170dfd20
+        url: https://files.pythonhosted.org/packages/1e/7a/22192740f36448bb763846da291c13fa66dae92917b5a1cd032ea5dfe2d1/cryptography-41.0.6-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: b648fe2a45e426aaee684ddca2632f62ec4613ef362f4d681a9a6283d10e079d
         only-arches:
           - x86_64
         x-checker-data:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
