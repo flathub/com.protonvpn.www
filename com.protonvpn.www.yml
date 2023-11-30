@@ -742,6 +742,12 @@ modules:
           mv ${PYTHONPATH}/proton/vpn/app/gtk/assets/icons/${icon}.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg
           ln -s ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.${icon}.svg ${PYTHONPATH}/proton/vpn/app/gtk/assets/icons/${icon}.svg
         done
+
+      # Put the version & translation config to the metadata
+      - |
+        export VERSION=$(grep -oP '(?<=%define version ).*$' rpmbuild/SPECS/package.spec) 
+        appstream-util modify com.protonvpn.www.metainfo.xml releases "<release
+        version=\"${VERSION}\" date=\"`date --iso-8601`\"/>"
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.proton-vpn-gtk-app
