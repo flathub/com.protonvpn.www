@@ -1,7 +1,20 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 requests python-gnupg pyopenssl aiohttp pyxdg -o pip-resources.python-proton-core
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 expandvars requests python-gnupg pyopenssl aiohttp pyxdg -o pip-resources.python-proton-core
 build-commands: []
 buildsystem: simple
 modules:
+  - name: python3-expandvars
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "expandvars" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/df/b3/072c28eace372ba7630ea187b7efd7f09cc8bcebf847a96b5e03e9cc0828/expandvars-0.12.0-py3-none-any.whl
+        sha256: 7432c1c2ae50c671a8146583177d60020dd210ada7d940e52af91f1f84f753b2
+        x-checker-data:
+          name: expandvars
+          packagetype: bdist_wheel
+          type: pypi
   - name: python3-requests
     buildsystem: simple
     build-commands:
@@ -15,14 +28,13 @@ modules:
           name: certifi
           packagetype: bdist_wheel
           type: pypi
-      - &id001
-        type: file
+      - type: file
         url: https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz
         sha256: f30c3cb33b24454a82faecaf01b19c18562b1e89558fb6c56de4d9118a032fd5
         x-checker-data:
           name: charset-normalizer
           type: pypi
-      - &id002
+      - &id001
         type: file
         url: https://files.pythonhosted.org/packages/c2/e7/a82b05cf63a603df6e68d59ae6a68bf5064484a0718ea5033660af4b54a9/idna-3.6-py3-none-any.whl
         sha256: c05567e9c24a6b9faaa835c4821bad0590fbb9d5779e7caa6e1cc4978e7eb24f
@@ -109,27 +121,19 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/a7/fa/e01228c2938de91d47b307831c62ab9e4001e747789d0b05baf779a6488c/async_timeout-4.0.3-py3-none-any.whl
-        sha256: 7405140ff1230c310e51dc27b3145b9092d659ce68ff733fb0cefe3ee42be028
-        x-checker-data:
-          name: async_timeout
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
         url: https://files.pythonhosted.org/packages/f0/eb/fcb708c7bf5056045e9e98f62b93bd7467eb718b0202e7698eb11d66416c/attrs-23.1.0-py3-none-any.whl
         sha256: 1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
         x-checker-data:
           name: attrs
           packagetype: bdist_wheel
           type: pypi
-      - *id001
       - type: file
         url: https://files.pythonhosted.org/packages/8c/1f/49c96ccc87127682ba900b092863ef7c20302a2144b3185412a08480ca22/frozenlist-1.4.0.tar.gz
         sha256: 09163bdf0b2907454042edb19f887c6d33806adc71fbd54afc14908bfdc22251
         x-checker-data:
           name: frozenlist
           type: pypi
-      - *id002
+      - *id001
       - type: file
         url: https://files.pythonhosted.org/packages/4a/15/bd620f7a6eb9aa5112c4ef93e7031bcd071e0611763d8e17706ef8ba65e0/multidict-6.0.4.tar.gz
         sha256: 3666906492efb76453c0e7b97f2cf459b0682e7402c0489a95484965dbc1da49

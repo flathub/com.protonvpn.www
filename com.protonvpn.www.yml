@@ -383,7 +383,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -397,7 +398,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -529,7 +531,8 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "expandvars" "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
+      # `expandvars` is required by `yarl`
       # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
       - pip-resources.python-proton-core.yaml
 
