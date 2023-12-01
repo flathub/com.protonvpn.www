@@ -25,8 +25,8 @@ sources:
       name: cryptography
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/cc/37/db7ba97e676af155f5fcb1a35466f446eadc9104e25b83366e8088c9c926/importlib_metadata-6.8.0-py3-none-any.whl
-    sha256: 3ebb78df84a805d7698245025b975d9d67053cd94c79245ba4b3eb694abe68bb
+    url: https://files.pythonhosted.org/packages/fa/86/c232691b27dd721d810243c9bfd97abc81bc5a0c5370e07002511fce87c1/importlib_metadata-6.9.0-py3-none-any.whl
+    sha256: 1c8dc6839ddc9771412596926f24cb5a553bbd40624ee2c7e55e531542bed3b8
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
