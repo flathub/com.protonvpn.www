@@ -750,6 +750,22 @@ modules:
       # https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/9bb65236353d646b07ead7b417d3828b12b55b7c/setup.py#L12-L19
       - pip-resources.proton-vpn-gtk-app.yaml
 
+      # For network status detection: https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/a6a3ea0b2a0c17ebbba4eb9f80c8b164092050b9/proton/vpn/app/gtk/services/reconnector/network_monitor.py#L41
+      - name: iproute2
+        buildsystem: autotools
+        make-install-args:
+          - PREFIX=${FLATPAK_DEST}
+          - SBINDIR=${FLATPAK_DEST}/bin
+          - CONFDIR=${FLATPAK_DEST}/etc/iproute2
+        sources:
+          - type: archive
+            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.6.0.tar.xz
+            sha256: 8738c804afd09f0bf756937f0c3de23117832a98d8cbbf50386cf5005cd613ce
+            x-checker-data:
+              project-id: 1392
+              stable-only: true
+              type: anitya
+              url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
