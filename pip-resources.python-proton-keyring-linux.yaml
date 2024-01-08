@@ -25,8 +25,8 @@ sources:
       name: cryptography
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/73/26/9777cfe0cdc8181a32eaf542f4a2a435e5aba5dd38f41cfc0a532dc51027/importlib_metadata-7.0.0-py3-none-any.whl
-    sha256: d97503976bb81f40a193d41ee6570868479c69d5068651eb039c40d850c59d67
+    url: https://files.pythonhosted.org/packages/c0/8b/d8427f023c081a8303e6ac7209c16e6878f2765d5b59667f3903fbcfd365/importlib_metadata-7.0.1-py3-none-any.whl
+    sha256: 4805911c3a4ec7c3966410053e9ec6a1fecd629117df5adee56dfc9432a1081e
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
@@ -53,8 +53,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/5a/cb/6dce742ea14e47d6f565589e859ad225f2a5de576d7696e0623b784e226b/more_itertools-10.1.0-py3-none-any.whl
-    sha256: 64e0735fcfdc6f3464ea133afe8ea4483b1c5fe3a3d69852e6503b43a0b222e6
+    url: https://files.pythonhosted.org/packages/50/e2/8e10e465ee3987bb7c9ab69efb91d867d93959095f4807db102d07995d94/more_itertools-10.2.0-py3-none-any.whl
+    sha256: 686b06abe565edfab151cb8fd385a05651e1fdf8f0a14191e4439283421f8684
     x-checker-data:
       name: more_itertools
       packagetype: bdist_wheel
