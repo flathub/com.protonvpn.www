@@ -757,8 +757,8 @@ modules:
           - CONFDIR=${FLATPAK_DEST}/etc/iproute2
         sources:
           - type: archive
-            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.6.0.tar.xz
-            sha256: 8738c804afd09f0bf756937f0c3de23117832a98d8cbbf50386cf5005cd613ce
+            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.7.0.tar.xz
+            sha256: ff942dd9828d7d1f867f61fe72ce433078c31e5d8e4a78e20f02cb5892e8841d
             x-checker-data:
               project-id: 1392
               stable-only: true

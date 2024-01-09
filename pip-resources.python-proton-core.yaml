@@ -63,8 +63,8 @@ modules:
         --prefix=${FLATPAK_DEST} "python-gnupg" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/22/ad/12d8df0a1b465593e736fa14a5d8144381bc64b222e6cd59bb13c6af95b4/python_gnupg-0.5.1-py2.py3-none-any.whl
-        sha256: bf9b2d9032ef38139b7d64184176cd0b293eaeae6e4f93f50e304c7051174482
+        url: https://files.pythonhosted.org/packages/5f/86/18938c2378a8c8284910308b93e2bc521a965ced4ca028947e1ffa6e98dc/python_gnupg-0.5.2-py2.py3-none-any.whl
+        sha256: 72ce142af6da7f07e433fef148b445fb3e07854acd2f88739008838745c0e9f5
         x-checker-data:
           name: python_gnupg
           packagetype: bdist_wheel
@@ -121,15 +121,15 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/f0/eb/fcb708c7bf5056045e9e98f62b93bd7467eb718b0202e7698eb11d66416c/attrs-23.1.0-py3-none-any.whl
-        sha256: 1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04
+        url: https://files.pythonhosted.org/packages/e0/44/827b2a91a5816512fcaf3cc4ebc465ccd5d598c45cefa6703fcf4a79018f/attrs-23.2.0-py3-none-any.whl
+        sha256: 99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
         x-checker-data:
           name: attrs
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/8c/1f/49c96ccc87127682ba900b092863ef7c20302a2144b3185412a08480ca22/frozenlist-1.4.0.tar.gz
-        sha256: 09163bdf0b2907454042edb19f887c6d33806adc71fbd54afc14908bfdc22251
+        url: https://files.pythonhosted.org/packages/cf/3d/2102257e7acad73efc4a0c306ad3953f68c504c16982bbdfee3ad75d8085/frozenlist-1.4.1.tar.gz
+        sha256: c037a86e8513059a2613aaba4d817bb90b9d9b6b69aace3ce9c877e8c8ed402b
         x-checker-data:
           name: frozenlist
           type: pypi
