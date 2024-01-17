@@ -222,8 +222,8 @@ modules:
             https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz
         type: archive
         url: >-
-          https://gitlab.freedesktop.org/polkit/polkit/-/archive/123/polkit-123.tar.gz
-        sha256: b69278f6ea0eac406350c45f5720e2fe5e4beaf9f53c16d9902e025965418864
+          https://gitlab.freedesktop.org/polkit/polkit/-/archive/124/polkit-124.tar.gz
+        sha256: 72457d96a0538fd03a3ca96a6bf9b7faf82184d4d67c793eb759168e4fd49e20
 
   # https://github.com/flathub/org.gnome.NetworkDisplays/blob/5a3369d04e32ccd092e42463de5171f473a8601d/org.gnome.NetworkDisplays.json#LL177C11-L230C11
   - name: NetworkManager
