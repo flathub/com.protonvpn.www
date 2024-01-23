@@ -222,8 +222,8 @@ modules:
             https://gitlab.freedesktop.org/polkit/polkit/-/archive/$version/polkit-$version.tar.gz
         type: archive
         url: >-
-          https://gitlab.freedesktop.org/polkit/polkit/-/archive/123/polkit-123.tar.gz
-        sha256: b69278f6ea0eac406350c45f5720e2fe5e4beaf9f53c16d9902e025965418864
+          https://gitlab.freedesktop.org/polkit/polkit/-/archive/124/polkit-124.tar.gz
+        sha256: 72457d96a0538fd03a3ca96a6bf9b7faf82184d4d67c793eb759168e4fd49e20
 
   # https://github.com/flathub/org.gnome.NetworkDisplays/blob/5a3369d04e32ccd092e42463de5171f473a8601d/org.gnome.NetworkDisplays.json#LL177C11-L230C11
   - name: NetworkManager
@@ -377,8 +377,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/3e/81/ae2c51ea2b80d57d5756a12df67816230124faea0a762a7a6304fe3c819c/cryptography-41.0.7-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: 5429ec739a29df2e29e15d082f1d9ad683701f0ec7709ca479b3ff2708dae65a
+        url: https://files.pythonhosted.org/packages/b8/01/d98f0563c34b50d65ba3ee732f4b80d4242a61d8f445184e4088ba26ebe5/cryptography-42.0.0-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 0a68bfcf57a6887818307600c3c0ebc3f62fbb6ccad2240aa21887cda1f8df1b
         only-arches:
           - aarch64
         x-checker-data:
@@ -391,8 +391,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/62/bd/69628ab50368b1beb900eb1de5c46f8137169b75b2458affe95f2f470501/cryptography-41.0.7-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 43f2552a2378b44869fe8827aa19e69512e3245a219104438692385b0ee119d1
+        url: https://files.pythonhosted.org/packages/3e/70/622ddb0c709ce19a3e0d19966d8cf6f2c3a5783274008d848cb26b1a18d7/cryptography-42.0.0-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 5a217bca51f3b91971400890905a9323ad805838ca3fa1e202a01844f485ee87
         only-arches:
           - x86_64
         x-checker-data:
