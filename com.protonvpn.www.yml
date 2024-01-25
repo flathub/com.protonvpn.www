@@ -391,8 +391,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/3e/70/622ddb0c709ce19a3e0d19966d8cf6f2c3a5783274008d848cb26b1a18d7/cryptography-42.0.0-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 5a217bca51f3b91971400890905a9323ad805838ca3fa1e202a01844f485ee87
+        url: https://files.pythonhosted.org/packages/f6/79/227c6f7e98657cf9387d5797d56e983165f294ed838679b2b8ca12118e18/cryptography-42.0.1-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: d50718dd574a49d3ef3f7ef7ece66ef281b527951eb2267ce570425459f6a404
         only-arches:
           - x86_64
         x-checker-data:
