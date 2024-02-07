@@ -82,12 +82,6 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/3f/ed/a233522ab5201b988a482cbb19ae3b63bef8ad2ad3e11fc5216b7053b2e4/cryptography-42.0.1.tar.gz
-        sha256: fd33f53809bb363cf126bebe7a99d97735988d9b0131a2be59fbf83e1259a5b7
-        x-checker-data:
-          name: cryptography
-          type: pypi
-      - type: file
         url: https://files.pythonhosted.org/packages/3f/0e/c6656e62d9424d9c9f14b27be27220602f4af1e64b77f2c86340b671d439/pyOpenSSL-24.0.0-py3-none-any.whl
         sha256: ba07553fb6fd6a7a2259adb9b84e12302a9a8a75c44046e8bb5d3e5ee887e3c3
         x-checker-data:
