@@ -98,8 +98,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/36/66/6af2891495d12020419c8447d0b29c1e96f3be16631faaed6bda5b886d5d/poetry_core-1.8.1.tar.gz
-            sha256: 67a76c671da2a70e55047cddda83566035b701f7e463b32a2abfeac6e2a16376
+            url: https://files.pythonhosted.org/packages/f2/db/20a9f9cae3f3c213a8c406deb4395698459fd96962cea8f2ccb230b1943c/poetry_core-1.9.0.tar.gz
+            sha256: fa7a4001eae8aa572ee84f35feb510b321bd652e5cf9293249d62853e1f935a2
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -377,8 +377,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/7c/e5/26a7bb4b3c599c3803cadb871e420d0bd013dd7c0c66fae02fd4441bdced/cryptography-42.0.1-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: e6edc3a568667daf7d349d7e820783426ee4f1c0feab86c29bd1d6fe2755e009
+        url: https://files.pythonhosted.org/packages/0c/a8/b89bbf4eba7fedba5ed0963a9ad27c3b106622bb70f7c2bfae921cad6573/cryptography-42.0.2-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 8e88bb9eafbf6a4014d55fb222e7360eef53e613215085e65a13290577394529
         only-arches:
           - aarch64
         x-checker-data:
@@ -391,8 +391,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/f6/79/227c6f7e98657cf9387d5797d56e983165f294ed838679b2b8ca12118e18/cryptography-42.0.1-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: d50718dd574a49d3ef3f7ef7ece66ef281b527951eb2267ce570425459f6a404
+        url: https://files.pythonhosted.org/packages/02/87/555b8e1b44386da3eacf5cf5a67c75e46224ca4c6213e4af152ac5941963/cryptography-42.0.2-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: a047682d324ba56e61b7ea7c7299d51e61fd3bca7dad2ccc39b72bd0118d60a1
         only-arches:
           - x86_64
         x-checker-data:
