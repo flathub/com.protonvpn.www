@@ -6,6 +6,7 @@
     <name>Proton VPN</name>
     <developer_name>Proton AG</developer_name>
     <summary>Trusted and easy-to-use VPN app for Linux</summary>
+    <launchable type="desktop-id">com.protonvpn.www.desktop</launchable>
     <description>
         <p>
             NOTE: This wrapper is not verified by, affiliated with, or supported by Proton
