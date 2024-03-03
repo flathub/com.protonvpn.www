@@ -5,6 +5,9 @@
     <project_license>GPL-3.0</project_license>
     <name>Proton VPN</name>
     <developer_name>Proton AG</developer_name>
+    <developer id="ch.protonmail">
+        <name>Proton AG</name>
+    </developer>
     <summary>Trusted and easy-to-use VPN app for Linux</summary>
     <launchable type="desktop-id">com.protonvpn.www.desktop</launchable>
     <description>
