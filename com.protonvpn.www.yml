@@ -644,8 +644,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-connection
-        tag: v0.11.3
-        commit: 6c6b13cd641c9c890f88690853cf52b6db918723
+        tag: v0.14.2
+        commit: 6a365aeaf3e8f02df00aed1bd04a59512c2da174
         x-checker-data:
           type: anitya
           project-id: 369948
@@ -663,8 +663,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.3.3
-        commit: 0bf750e84a01ecab1844ac1400420e522ff2d839
+        tag: v0.4.0
+        commit: 357b68a904e51dc1f4565b9a5e519445baa71a35
         x-checker-data:
           type: anitya
           project-id: 369947
