@@ -385,7 +385,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -399,7 +400,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -539,12 +541,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        # tag: 0.1.15
-        commit: 5e795e04094dff67c03c56f2f3de03ff43514cc4
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369954
-        #   tag-template: $version
+        tag: v0.1.16
+        commit: f5038d94dc0d8f8ea7a8075bcdc092e27862624b
+        x-checker-data:
+          type: anitya
+          project-id: 369954
+          tag-template: v$version
 
   - name: python-proton-keyring-linux
     buildsystem: simple
@@ -559,12 +561,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
-        # tag: 0.0.1
+        tag: v0.0.1
         commit: 5ff3c7f9a1a162836649502dd23c2fbe1f487d73
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369953
-        #   tag-template: $version
+        x-checker-data:
+          type: anitya
+          project-id: 369953
+          tag-template: v$version
 
   - name: python-proton-keyring-linux-secretservice
     buildsystem: simple
@@ -574,12 +576,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
-        # tag: 0.0.1
+        tag: 0.0.1
         commit: 973d2646ec4d04bc270df53058df892950244e70
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369952
-        #   tag-template: $version
+        x-checker-data:
+          type: anitya
+          project-id: 369952
+          tag-template: $version
 
   - name: python-proton-vpn-logger
     buildsystem: simple
@@ -589,12 +591,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-logger
-        # tag: 0.2.1
+        tag: v0.2.1
         commit: 0acbc1ab41a65cbc9ceb340e3db011e6f89eb65a
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369951
-        #   tag-template: $version
+        x-checker-data:
+          type: anitya
+          project-id: 369951
+          tag-template: v$version
 
   - name: python-proton-vpn-killswitch
     buildsystem: simple
@@ -604,12 +606,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch
-        # tag: 0.2.0
-        commit: 6e84588ea6ae0946141d4b44b2cf5df8465d5eba
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369950
-        #   tag-template: $version
+        tag: v0.4.0
+        commit: 3e59f286fa429c1dd9afcca1f4a6ae89d16c1e4e
+        x-checker-data:
+          type: anitya
+          project-id: 369950
+          tag-template: v$version
 
   - name: python-proton-vpn-killswitch-network-manager
     buildsystem: simple
@@ -623,12 +625,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
-        # tag: 0.2.0
-        commit: 39d4398f169539e335c1f661e0dfc5551df0e6af
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369949
-        #   tag-template: $version
+        tag: v0.4.2
+        commit: 08b428e574db83fae0ce25a0e11bc291aaa1c783
+        x-checker-data:
+          type: anitya
+          project-id: 369949
+          tag-template: v$version
 
   - name: python-proton-vpn-connection
     buildsystem: simple
@@ -642,8 +644,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-connection
-        tag: v0.11.3
-        commit: 6c6b13cd641c9c890f88690853cf52b6db918723
+        tag: v0.14.2
+        commit: 6a365aeaf3e8f02df00aed1bd04a59512c2da174
         x-checker-data:
           type: anitya
           project-id: 369948
@@ -661,8 +663,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.3.3
-        commit: 0bf750e84a01ecab1844ac1400420e522ff2d839
+        tag: v0.4.0
+        commit: 357b68a904e51dc1f4565b9a5e519445baa71a35
         x-checker-data:
           type: anitya
           project-id: 369947
@@ -676,12 +678,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
-        # tag: 0.0.4
+        tag: v0.0.4
         commit: b79f6732646378ef1b92696de3665ff9560286d3
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369946
-        #   tag-template: $version
+        x-checker-data:
+          type: anitya
+          project-id: 369946
+          tag-template: v$version
 
   - name: python-proton-vpn-session
     buildsystem: simple
@@ -714,12 +716,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        # tag: 0.20.1
-        commit: 876958ef47592e0ca8a1232a9925a4b60dfaafce
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 369944
-        #   tag-template: $version
+        tag: v0.21.0
+        commit: 88594aeb13cce274a146e807a88ad38ac6e78b2c
+        x-checker-data:
+          type: anitya
+          project-id: 369944
+          tag-template: v$version
 
   - name: proton-vpn-gtk-app
     buildsystem: simple
@@ -767,8 +769,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.1.10
-        commit: b2a9d4c3bba513078a0ddc9223e32fd3d44c2da4
+        tag: v4.2.0
+        commit: 2323032283015494dddf8b8dd6d0372ee1f05698
         x-checker-data:
           type: anitya
           project-id: 369943
