@@ -9,8 +9,8 @@ modules:
         --prefix=${FLATPAK_DEST} "pygobject" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/f6/a7/d1e77cdb9f1397c0962cb46d35c7c36145c22031b34b4135ade8fb7431d7/pygobject-3.48.0.tar.gz
-        sha256: 6f0ff4c29a82d4779ff59bec81fe7250f07dc717684626854fc25f6b6de05e36
+        url: https://files.pythonhosted.org/packages/a9/73/ff037ab99c40522ed53c759baa0e3969d03933d3650f02e50ee0cb639666/pygobject-3.48.1.tar.gz
+        sha256: 2c4cd7c805ee9e727904172423a7519338017fd7e122b62218ac211627436875
         x-checker-data:
           name: PyGObject
           type: pypi
