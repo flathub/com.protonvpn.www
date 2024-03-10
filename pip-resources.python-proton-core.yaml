@@ -82,8 +82,8 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/3f/0e/c6656e62d9424d9c9f14b27be27220602f4af1e64b77f2c86340b671d439/pyOpenSSL-24.0.0-py3-none-any.whl
-        sha256: ba07553fb6fd6a7a2259adb9b84e12302a9a8a75c44046e8bb5d3e5ee887e3c3
+        url: https://files.pythonhosted.org/packages/54/a7/2104f674a5a6845b04c8ff01659becc6b8978ca410b82b94287e0b1e018b/pyOpenSSL-24.1.0-py3-none-any.whl
+        sha256: 17ed5be5936449c5418d1cd269a1a9e9081bc54c17aed272b45856a3d3dc86ad
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
