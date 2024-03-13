@@ -61,8 +61,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/d9/66/48866fc6b158c81cc2bfecc04c480f105c6040e8b077bc54c634b4a67926/zipp-3.17.0-py3-none-any.whl
-    sha256: 0e923e726174922dce09c53c59ad483ff7bbb8e572e00c7f7c46b88556409f31
+    url: https://files.pythonhosted.org/packages/39/ab/b6f4d44df331bf15f1bdae6a839563eeaad6c006a6c4e289acdd7db1ebe3/zipp-3.18.0-py3-none-any.whl
+    sha256: c1bb803ed69d2cce2373152797064f7e79bc43f0a3748eb494096a867e0ebf79
     x-checker-data:
       name: zipp
       packagetype: bdist_wheel
