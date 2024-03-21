@@ -574,12 +574,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
-        tag: 0.0.1
+        tag: v0.0.1
         commit: 973d2646ec4d04bc270df53058df892950244e70
         x-checker-data:
           type: anitya
           project-id: 369952
-          tag-template: $version
+          tag-template: v$version
 
   - name: python-proton-vpn-logger
     buildsystem: simple
