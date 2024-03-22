@@ -19,8 +19,8 @@ sources:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/db/62/6879ab53ad4997b627fc67241a41eabf7163299c59580c6ca4aa5ae6b677/importlib_metadata-7.0.2-py3-none-any.whl
-    sha256: f4bc4c0c070c490abf4ce96d715f68e95923320370efb66143df00199bb6c100
+    url: https://files.pythonhosted.org/packages/2d/0a/679461c511447ffaf176567d5c496d1de27cbe34a87df6677d7171b2fbd4/importlib_metadata-7.1.0-py3-none-any.whl
+    sha256: 30962b96c0c223483ed6cc7280e7f0199feb01a0e40cfae4d4450fc6fab1f570
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
