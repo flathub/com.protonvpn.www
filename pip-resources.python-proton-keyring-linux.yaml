@@ -33,6 +33,20 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
+    url: https://files.pythonhosted.org/packages/0a/de/3f889cd55e69f0a91b396f6799ca31ea0d6869cde338e7c79335699090cb/jaraco.context-4.3.0-py3-none-any.whl
+    sha256: 5d9e95ca0faa78943ed66f6bc658dd637430f16125d86988e77844c741ff2f11
+    x-checker-data:
+      name: jaraco.context
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/4c/57/726a9c80c1b36f98b497debd72f4c81ae444d55abf9647367e5d53e1cc93/jaraco.functools-4.0.0-py3-none-any.whl
+    sha256: daf276ddf234bea897ef14f43c4e1bf9eefeac7b7a82a4dd69228ac20acff68d
+    x-checker-data:
+      name: jaraco.functools
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
     url: https://files.pythonhosted.org/packages/ae/72/2a1e2290f1ab1e06f71f3d0f1646c9e4634e70e1d37491535e19266e8dc9/jeepney-0.8.0-py3-none-any.whl
     sha256: c0a454ad016ca575060802ee4d590dd912e35c122fa04e70306de3d076cce755
     x-checker-data:

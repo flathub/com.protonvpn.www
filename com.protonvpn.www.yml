@@ -554,6 +554,7 @@ modules:
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "keyring" -o pip-resources.python-proton-keyring-linux
       # https://github.com/ProtonVPN/python-proton-keyring-linux/blob/5ff3c7f9a1a162836649502dd23c2fbe1f487d73/setup.py#L12C39-L12C46
+      # Remove the cryptography module as it has been included above
       - pip-resources.python-proton-keyring-linux.yaml
 
     sources:
