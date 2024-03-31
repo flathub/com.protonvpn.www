@@ -26,8 +26,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/eb/57/d3590a153d7c1970f466f69fa2570e1a93a34d8f88f23c11411df73729bf/jaraco.classes-3.3.1-py3-none-any.whl
-    sha256: 86b534de565381f6b3c1c830d13f931d7be1a75f0081c57dff615578676e2206
+    url: https://files.pythonhosted.org/packages/7f/66/b15ce62552d84bbfcec9a4873ab79d993a1dd4edb922cbfccae192bd5b5f/jaraco.classes-3.4.0-py3-none-any.whl
+    sha256: f662826b6bed8cace05e7ff873ce0f9283b5c924470fe664fff1c2f00f581790
     x-checker-data:
       name: jaraco.classes
       packagetype: bdist_wheel
@@ -40,8 +40,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/7c/23/d557507915181687e4a613e1c8a01583fd6d7cb7590e1f039e357fe3b304/keyring-24.3.1-py3-none-any.whl
-    sha256: df38a4d7419a6a60fea5cef1e45a948a3e8430dd12ad88b0f423c5c143906218
+    url: https://files.pythonhosted.org/packages/97/d2/6b63129abee0b6f61c9216dfe918eccc5067fcf67a68e3418ff0935f416a/keyring-25.0.0-py3-none-any.whl
+    sha256: 9a15cd280338920388e8c1787cb8792b9755dabb3e7c61af5ac1f8cd437cefde
     x-checker-data:
       name: keyring
       packagetype: bdist_wheel
@@ -54,8 +54,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/62/d5/5f610ebe421e85889f2e55e33b7f9a6795bd982198517d912eb1c76e1a53/pycparser-2.21-py2.py3-none-any.whl
-    sha256: 8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9
+    url: https://files.pythonhosted.org/packages/13/a3/a812df4e2dd5696d1f351d58b8fe16a405b234ad2886a0dab9183fb78109/pycparser-2.22-py3-none-any.whl
+    sha256: c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
     x-checker-data:
       name: pycparser
       packagetype: bdist_wheel
