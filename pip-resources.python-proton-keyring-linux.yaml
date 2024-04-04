@@ -33,8 +33,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/0a/de/3f889cd55e69f0a91b396f6799ca31ea0d6869cde338e7c79335699090cb/jaraco.context-4.3.0-py3-none-any.whl
-    sha256: 5d9e95ca0faa78943ed66f6bc658dd637430f16125d86988e77844c741ff2f11
+    url: https://files.pythonhosted.org/packages/dd/23/55337a73e47c856082b1404a00ea23403b4e1389406469faa920eeb4c7f4/jaraco.context-5.0.0-py3-none-any.whl
+    sha256: 2d5320a7e41cc334d43dda5f11ff3faae88d001fc07a558658b837b94d7a0f2e
     x-checker-data:
       name: jaraco.context
       packagetype: bdist_wheel
