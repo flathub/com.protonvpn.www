@@ -709,8 +709,8 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "distro" -o pip-resources.python-proton-vpn-api-core
-      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/9c03fc30d3ff08559cab3644eadde027b029375d/setup.py#L12-L15
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "distro" "sentry-sdk" -o pip-resources.python-proton-vpn-api-core
+      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/1a9a5a0938cc1ab6c04f12ac76a669a63bb69237/setup.py#L12-L15
       - pip-resources.python-proton-vpn-api-core.yaml
     sources:
       - type: git
