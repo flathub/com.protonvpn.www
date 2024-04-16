@@ -1,14 +1,45 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 distro -o pip-resources.python-proton-vpn-api-core
-name: python3-distro
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 distro sentry-sdk -o pip-resources.python-proton-vpn-api-core
+build-commands: []
 buildsystem: simple
-build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-    --prefix=${FLATPAK_DEST} "distro" --no-build-isolation
-sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
-    sha256: 7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
-    x-checker-data:
-      name: distro
-      packagetype: bdist_wheel
-      type: pypi
+modules:
+  - name: python3-distro
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "distro" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
+        sha256: 7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
+        x-checker-data:
+          name: distro
+          packagetype: bdist_wheel
+          type: pypi
+  - name: python3-sentry-sdk
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "sentry-sdk" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/ba/06/a07f096c664aeb9f01624f858c3add0a4e913d6c96257acb4fce61e7de14/certifi-2024.2.2-py3-none-any.whl
+        sha256: dc383c07b76109f368f6106eee2b593b04a011ea4d55f652c6ca24a754d1cdd1
+        x-checker-data:
+          name: certifi
+          packagetype: bdist_wheel
+          type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/b7/26/cf87e98fb7fa5781c40474970a76d40b04289b949c0a327b719336aa5bca/sentry_sdk-1.45.0-py2.py3-none-any.whl
+        sha256: 1ce29e30240cc289a027011103a8c83885b15ef2f316a60bcc7c5300afa144f1
+        x-checker-data:
+          name: sentry_sdk
+          packagetype: bdist_wheel
+          type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/a2/73/a68704750a7679d0b6d3ad7aa8d4da8e14e151ae82e6fee774e6e0d05ec8/urllib3-2.2.1-py3-none-any.whl
+        sha256: 450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
+        x-checker-data:
+          name: urllib3
+          packagetype: bdist_wheel
+          type: pypi
+name: pip-resources.python-proton-vpn-api-core
