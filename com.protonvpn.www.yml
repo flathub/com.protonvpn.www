@@ -560,8 +560,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
-        tag: v0.0.1
-        commit: 5ff3c7f9a1a162836649502dd23c2fbe1f487d73
+        tag: v0.0.2
+        commit: 0cc286cb36c97c2b19e1a09ef9ad46ca29fab991
         x-checker-data:
           type: anitya
           project-id: 369953
@@ -575,8 +575,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
-        tag: v0.0.1
-        commit: 973d2646ec4d04bc270df53058df892950244e70
+        tag: v0.0.2
+        commit: 915228cfec3301dc408c4f2c4410443412958e24
         x-checker-data:
           type: anitya
           project-id: 369952
@@ -643,8 +643,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-connection
-        tag: v0.14.2
-        commit: 6a365aeaf3e8f02df00aed1bd04a59512c2da174
+        tag: v0.14.4
+        commit: 32ebf99ae897a9e61fd137826d2bfa53ca8c5a09
         x-checker-data:
           type: anitya
           project-id: 369948
@@ -662,8 +662,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.4.0
-        commit: 357b68a904e51dc1f4565b9a5e519445baa71a35
+        tag: v0.4.2
+        commit: dd9a7953cbe882ab63f90a4025e4ebef181c151e
         x-checker-data:
           type: anitya
           project-id: 369947
@@ -677,8 +677,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
-        tag: v0.0.4
-        commit: b79f6732646378ef1b92696de3665ff9560286d3
+        tag: v0.0.7
+        commit: fb61359790d016c192f05e1c9e779a02c4cf5e1a
         x-checker-data:
           type: anitya
           project-id: 369946
@@ -696,8 +696,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-session
-        tag: v0.6.5
-        commit: 5864beddfc638d802d388dfefafb414afbdedd61
+        tag: v0.6.7
+        commit: a4d20010c02e9fdae1126aebba5f953d1605ce30
         x-checker-data:
           type: anitya
           project-id: 369945
@@ -715,8 +715,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.21.0
-        commit: 88594aeb13cce274a146e807a88ad38ac6e78b2c
+        tag: v0.22.3
+        commit: 1a9a5a0938cc1ab6c04f12ac76a669a63bb69237
         x-checker-data:
           type: anitya
           project-id: 369944
@@ -768,8 +768,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.2.0
-        commit: 2323032283015494dddf8b8dd6d0372ee1f05698
+        tag: v4.3.0
+        commit: e99abba594f2f2b9e3d14a633b4910924d407532
         x-checker-data:
           type: anitya
           project-id: 369943
