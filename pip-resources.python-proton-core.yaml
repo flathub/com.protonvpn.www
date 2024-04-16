@@ -102,8 +102,8 @@ modules:
         --prefix=${FLATPAK_DEST} "aiohttp" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/7e/0b/4235b25496c741f4c9f75a94951fbc15c48537349a03448687fb226256ef/aiohttp-3.9.4.tar.gz
-        sha256: 6ff71ede6d9a5a58cfb7b6fffc83ab5d4a63138276c771ac91ceaaddf5459644
+        url: https://files.pythonhosted.org/packages/04/a4/e3679773ea7eb5b37a2c998e25b017cc5349edf6ba2739d1f32855cfb11b/aiohttp-3.9.5.tar.gz
+        sha256: edea7d15772ceeb29db4aff55e482d4bcfb6ae160ce144f2682de02f6d693551
         x-checker-data:
           name: aiohttp
           type: pypi
