@@ -13,8 +13,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/63/a7/422e4453f82a72667403ed73ae828e67c4239da760acda9d7024c08a0019/backports.tarfile-1.1.0-py3-none-any.whl
-    sha256: b2f4df351db942d094db94588bbf2c6938697a5f190f44c934acc697da56008b
+    url: https://files.pythonhosted.org/packages/75/ac/019f3130d55e4a9b014a3fc935316ff719b41b6461192c413bc12e11347a/backports.tarfile-1.1.1-py3-none-any.whl
+    sha256: 73e0179647803d3726d82e76089d01d8549ceca9bace469953fcb4d97cf2d417
     x-checker-data:
       name: backports.tarfile
       packagetype: bdist_wheel
