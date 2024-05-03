@@ -67,8 +67,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/51/8b/0728346fb9d69c2be2c67a315fc1a53c1a58959fcbdbebdb852d01b156a9/keyring-25.1.0-py3-none-any.whl
-    sha256: 26fc12e6a329d61d24aa47b22a7c5c3f35753df7d8f2860973cf94f4e1fb3427
+    url: https://files.pythonhosted.org/packages/3d/38/0a674d3b515693948e9b61c766d25e78e6466800e478a352f9e42415fdbe/keyring-25.2.0-py3-none-any.whl
+    sha256: 19f17d40335444aab84b19a0d16a77ec0758a9c384e3446ae2ed8bd6d53b67a5
     x-checker-data:
       name: keyring
       packagetype: bdist_wheel
