@@ -308,8 +308,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/NetworkManager/NetworkManager-openvpn.git
-        tag: 1.10.2
-        commit: ae9575dd07cc2d2d51ec8d0297823e07017cb6e6
+        tag: 1.10.4
+        commit: 660624655ae6bed5a13ebc55b3380cc0806db906
         x-checker-data:
           type: anitya
           project-id: 69977
@@ -377,8 +377,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/8c/50/9185cca136596448d9cc595ae22a9bd4412ad35d812550c37c1390d54673/cryptography-42.0.5-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: b03c2ae5d2f0fc05f9a2c0c997e1bc18c8229f392234e8a0194f202169ccd278
+        url: https://files.pythonhosted.org/packages/95/3a/a2fd6fd55efbdc98083c83393a6dbc126edaec55c49a21ee92d937e907ae/cryptography-42.0.6-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 97eeacae9aa526ddafe68b9202a535f581e21d78f16688a84c8dcc063618e121
         only-arches:
           - aarch64
         x-checker-data:
@@ -391,8 +391,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/64/f7/d3c83c79947cc6807e6acd3b2d9a1cbd312042777bc7eec50c869913df79/cryptography-42.0.5-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: f8837fe1d6ac4a8052a9a8ddab256bc006242696f03368a4009be7ee3075cdb7
+        url: https://files.pythonhosted.org/packages/77/43/cdc133241cd99c2c270716fede70516a0cf499970942e37e8981f3cade58/cryptography-42.0.6-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: f4cece02478d73dacd52be57a521d168af64ae03d2a567c0c4eb6f189c3b9d79
         only-arches:
           - x86_64
         x-checker-data:
