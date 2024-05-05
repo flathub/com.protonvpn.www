@@ -315,6 +315,9 @@ modules:
           project-id: 69977
           stable-only: true
           tag-template: $version
+          versions:
+            # 1.10.4 causes connection failure
+            <: 1.10.4
 
   ######### Cryptography #########
 
