@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 distro sentry-sdk -o pip-resources.python-proton-vpn-api-core
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 distro sentry-sdk -o pip-resources.python-proton-vpn-api-core
 build-commands: []
 buildsystem: simple
 modules:
@@ -29,8 +29,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/b7/26/cf87e98fb7fa5781c40474970a76d40b04289b949c0a327b719336aa5bca/sentry_sdk-1.45.0-py2.py3-none-any.whl
-        sha256: 1ce29e30240cc289a027011103a8c83885b15ef2f316a60bcc7c5300afa144f1
+        url: https://files.pythonhosted.org/packages/e3/6a/3c828b86776e0d6dd3bc2b70d5f3bd8a358ed1b6831782ccc74d581de08e/sentry_sdk-2.0.1-py2.py3-none-any.whl
+        sha256: b54c54a2160f509cf2757260d0cf3885b608c6192c2555a3857e3a4d0f84bdb3
         x-checker-data:
           name: sentry_sdk
           packagetype: bdist_wheel
