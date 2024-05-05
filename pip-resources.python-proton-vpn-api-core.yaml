@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 distro sentry-sdk -o pip-resources.python-proton-vpn-api-core
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 distro sentry-sdk -o pip-resources.python-proton-vpn-api-core
 build-commands: []
 buildsystem: simple
 modules:

@@ -2,7 +2,7 @@
 
 id: com.protonvpn.www
 runtime: org.gnome.Platform
-runtime-version: '45'
+runtime-version: '46'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
@@ -401,26 +401,6 @@ modules:
           name: cryptography
           packagetype: bdist_wheel
 
-  - name: python-packaging
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/df/9e/d1a7217f69310c1db8fdf8ab396229f55a699ce34a203691794c5d1cad0c/packaging-21.3.tar.gz
-        sha256: dd47c42927d89ab911e606518907cc2d3a1f38bbd026385970643f9c5b8ecfeb
-    modules:
-      - name: python-pyparsing
-        buildsystem: simple
-        build-commands:
-          - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
-            .
-        cleanup: ['*']
-        sources:
-          - type: archive
-            url: https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz
-            sha256: 2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb
-
   # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L647C1-L740C81
   - name: python-ninja # needed by dbus-python
     buildsystem: simple
@@ -528,7 +508,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "expandvars" "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "expandvars" "requests" "python-gnupg" "pyopenssl" "aiohttp" "pyxdg" -o pip-resources.python-proton-core
       # `expandvars` is required by `yarl`
       # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
       - pip-resources.python-proton-core.yaml
@@ -549,7 +529,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "keyring" -o pip-resources.python-proton-keyring-linux
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "keyring" -o pip-resources.python-proton-keyring-linux
       # https://github.com/ProtonVPN/python-proton-keyring-linux/blob/5ff3c7f9a1a162836649502dd23c2fbe1f487d73/setup.py#L12C39-L12C46
       # Remove the cryptography module as it has been included above
       - pip-resources.python-proton-keyring-linux.yaml
@@ -615,7 +595,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-killswitch-network-manager
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-killswitch-network-manager
       # https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
       - pip-resources.python-proton-vpn-killswitch-network-manager.yaml
     sources:
@@ -634,7 +614,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "jinja2" -o pip-resources.python-proton-vpn-connection
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "jinja2" -o pip-resources.python-proton-vpn-connection
       # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
       - pip-resources.python-proton-vpn-connection.yaml
     sources:
@@ -653,7 +633,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-network-manager
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-network-manager
       # https://github.com/ProtonVPN/python-proton-vpn-network-manager/blob/6ffd04fa0ae88a89d2b733443317066ef23b3ccd/setup.py#L14C63-L14C85
       - pip-resources.python-proton-vpn-network-manager.yaml
     sources:
@@ -687,7 +667,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "PyNaCl" -o pip-resources.python-proton-vpn-session
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "PyNaCl" -o pip-resources.python-proton-vpn-session
       # https://github.com/ProtonVPN/python-proton-vpn-session/blob/142d4670be044c03ce69e8a7eb97b797e425c2c6/setup.py#L12C76-L12C82
       - pip-resources.python-proton-vpn-session.yaml
     sources:
@@ -706,7 +686,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "distro" "sentry-sdk" -o pip-resources.python-proton-vpn-api-core
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" -o pip-resources.python-proton-vpn-api-core
       # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/1a9a5a0938cc1ab6c04f12ac76a669a63bb69237/setup.py#L12-L15
       - pip-resources.python-proton-vpn-api-core.yaml
     sources:
@@ -742,7 +722,7 @@ modules:
         done
       - install -Dm644 com.protonvpn.www.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//45' "pygobject" "pycairo" -o pip-resources.proton-vpn-gtk-app
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "pygobject" "pycairo" -o pip-resources.proton-vpn-gtk-app
       # https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/9bb65236353d646b07ead7b417d3828b12b55b7c/setup.py#L12-L19
       - pip-resources.proton-vpn-gtk-app.yaml
 

@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 keyring -o pip-resources.python-proton-keyring-linux
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 keyring -o pip-resources.python-proton-keyring-linux
 name: python3-keyring
 buildsystem: simple
 build-commands:
