@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 jinja2 -o pip-resources.python-proton-vpn-connection
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 jinja2 -o pip-resources.python-proton-vpn-connection
 name: python3-jinja2
 buildsystem: simple
 build-commands:

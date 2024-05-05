@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//45 PyNaCl -o pip-resources.python-proton-vpn-session
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 PyNaCl -o pip-resources.python-proton-vpn-session
 name: python3-PyNaCl
 buildsystem: simple
 build-commands:
