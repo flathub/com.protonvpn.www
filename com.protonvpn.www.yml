@@ -132,8 +132,8 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/0e/a3/b9a8b0adfe672bf0df5901707aa929d30a97ee390ba651910186776746d2/setuptools_scm-8.0.4-py3-none-any.whl
-            sha256: b47844cd2a84b83b3187a5782c71128c28b4c94cad8bfb871da2784a5cb54c4f
+            url: https://files.pythonhosted.org/packages/a0/b9/1906bfeb30f2fc13bb39bf7ddb8749784c05faadbd18a21cf141ba37bff2/setuptools_scm-8.1.0-py3-none-any.whl
+            sha256: 897a3226a6fd4a6eb2f068745e49733261a21f70b1bb28fce0339feb978d9af3
             x-checker-data:
               name: setuptools_scm
               packagetype: bdist_wheel
@@ -380,8 +380,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/95/3a/a2fd6fd55efbdc98083c83393a6dbc126edaec55c49a21ee92d937e907ae/cryptography-42.0.6-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: 97eeacae9aa526ddafe68b9202a535f581e21d78f16688a84c8dcc063618e121
+        url: https://files.pythonhosted.org/packages/64/0c/36f71286fef9987f0e850f9b9a78a41784fe7f66c3b7611530b6bb0ecec4/cryptography-42.0.7-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 02c0eee2d7133bdbbc5e24441258d5d2244beb31da5ed19fbb80315f4bbbff55
         only-arches:
           - aarch64
         x-checker-data:
@@ -394,8 +394,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/77/43/cdc133241cd99c2c270716fede70516a0cf499970942e37e8981f3cade58/cryptography-42.0.6-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: f4cece02478d73dacd52be57a521d168af64ae03d2a567c0c4eb6f189c3b9d79
+        url: https://files.pythonhosted.org/packages/81/17/0294e576979d7f388855bf64b3cc6d9fc08168cdf6833ff0df3ad0ee6580/cryptography-42.0.7-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 5e44507bf8d14b36b8389b226665d597bc0f18ea035d75b4e53c7b1ea84583cc
         only-arches:
           - x86_64
         x-checker-data:
@@ -698,8 +698,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.22.3
-        commit: 1a9a5a0938cc1ab6c04f12ac76a669a63bb69237
+        tag: v0.23.1
+        commit: 8a4563f8ad3e6bf30225531e47a59d3fecbb3abc
         x-checker-data:
           type: anitya
           project-id: 369944
