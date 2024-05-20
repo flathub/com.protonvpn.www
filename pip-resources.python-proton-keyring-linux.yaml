@@ -67,8 +67,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/3d/38/0a674d3b515693948e9b61c766d25e78e6466800e478a352f9e42415fdbe/keyring-25.2.0-py3-none-any.whl
-    sha256: 19f17d40335444aab84b19a0d16a77ec0758a9c384e3446ae2ed8bd6d53b67a5
+    url: https://files.pythonhosted.org/packages/92/91/901f5cfeaaea04cf15f5ddf41ee053a5c9e389166477a3427fcfd055e1d9/keyring-25.2.1-py3-none-any.whl
+    sha256: 2458681cdefc0dbc0b7eb6cf75d0b98e59f9ad9b2d4edd319d18f68bdca95e50
     x-checker-data:
       name: keyring
       packagetype: bdist_wheel
@@ -88,8 +88,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/c2/0a/ba9d0ee9536d3ef73a3448e931776e658b36f128d344e175bc32b092a8bf/zipp-3.18.1-py3-none-any.whl
-    sha256: 206f5a15f2af3dbaee80769fb7dc6f249695e940acca08dfb2a4769fe61e538b
+    url: https://files.pythonhosted.org/packages/da/55/a03fd7240714916507e1fcf7ae355bd9d9ed2e6db492595f1a67f61681be/zipp-3.18.2-py3-none-any.whl
+    sha256: dce197b859eb796242b0622af1b8beb0a722d52aa2f57133ead08edd5bf5374e
     x-checker-data:
       name: zipp
       packagetype: bdist_wheel
