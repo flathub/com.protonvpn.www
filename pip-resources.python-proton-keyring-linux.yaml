@@ -13,8 +13,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/75/ac/019f3130d55e4a9b014a3fc935316ff719b41b6461192c413bc12e11347a/backports.tarfile-1.1.1-py3-none-any.whl
-    sha256: 73e0179647803d3726d82e76089d01d8549ceca9bace469953fcb4d97cf2d417
+    url: https://files.pythonhosted.org/packages/b9/fa/123043af240e49752f1c4bd24da5053b6bd00cad78c2be53c0d1e8b975bc/backports.tarfile-1.2.0-py3-none-any.whl
+    sha256: 77e284d754527b01fb1e6fa8a1afe577858ebe4e9dad8919e34c862cb399bc34
     x-checker-data:
       name: backports.tarfile
       packagetype: bdist_wheel
@@ -88,8 +88,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/da/55/a03fd7240714916507e1fcf7ae355bd9d9ed2e6db492595f1a67f61681be/zipp-3.18.2-py3-none-any.whl
-    sha256: dce197b859eb796242b0622af1b8beb0a722d52aa2f57133ead08edd5bf5374e
+    url: https://files.pythonhosted.org/packages/7f/2d/670176f39d6613af2908b5bc31c9974588208de1fcc4117dfae08623d188/zipp-3.19.0-py3-none-any.whl
+    sha256: 96dc6ad62f1441bcaccef23b274ec471518daf4fbbc580341204936a5a3dddec
     x-checker-data:
       name: zipp
       packagetype: bdist_wheel
