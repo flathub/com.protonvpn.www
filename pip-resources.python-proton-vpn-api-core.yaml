@@ -29,8 +29,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/25/18/9783ccc5faddc0edef492046a00164e3c2e698ef5302c85d805aa644e017/sentry_sdk-2.3.1-py2.py3-none-any.whl
-        sha256: c5aeb095ba226391d337dd42a6f9470d86c9fc236ecc71cfc7cd1942b45010c6
+        url: https://files.pythonhosted.org/packages/b8/49/9dcb0c75dbfc0495735108abb11e3d0e18a7caaa89b7f8ce2afe2e782514/sentry_sdk-2.4.0-py2.py3-none-any.whl
+        sha256: a42b70981cd4ed7da3c85d0360502d2ac932a15a4a420b360e1ebded2fc19a92
         x-checker-data:
           name: sentry_sdk
           packagetype: bdist_wheel
