@@ -118,8 +118,8 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/b6/53/84a859aaddfe7378a6e5820e864a2d75763e82b6fcbda1a00e92ec620bb7/typing_extensions-4.12.1-py3-none-any.whl
-            sha256: 6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a
+            url: https://files.pythonhosted.org/packages/26/9f/ad63fc0248c5379346306f8668cda6e2e2e9c95e01216d2b8ffd9ff037d0/typing_extensions-4.12.2-py3-none-any.whl
+            sha256: 04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d
             x-checker-data:
               name: typing_extensions
               packagetype: bdist_wheel
@@ -146,8 +146,8 @@ modules:
             --prefix=${FLATPAK_DEST} "typing_extensions" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/b6/53/84a859aaddfe7378a6e5820e864a2d75763e82b6fcbda1a00e92ec620bb7/typing_extensions-4.12.1-py3-none-any.whl
-            sha256: 6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a
+            url: https://files.pythonhosted.org/packages/26/9f/ad63fc0248c5379346306f8668cda6e2e2e9c95e01216d2b8ffd9ff037d0/typing_extensions-4.12.2-py3-none-any.whl
+            sha256: 04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d
             x-checker-data:
               type: pypi
               name: typing_extensions
@@ -380,8 +380,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/64/0c/36f71286fef9987f0e850f9b9a78a41784fe7f66c3b7611530b6bb0ecec4/cryptography-42.0.7-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: 02c0eee2d7133bdbbc5e24441258d5d2244beb31da5ed19fbb80315f4bbbff55
+        url: https://files.pythonhosted.org/packages/c2/de/8083fa2e68d403553a01a9323f4f8b9d7ffed09928ba25635c29fb28c1e7/cryptography-42.0.8-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 5226d5d21ab681f432a9c1cf8b658c0cb02533eece706b155e5fbd8a0cdd3949
         only-arches:
           - aarch64
         x-checker-data:
@@ -394,8 +394,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/81/17/0294e576979d7f388855bf64b3cc6d9fc08168cdf6833ff0df3ad0ee6580/cryptography-42.0.7-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 5e44507bf8d14b36b8389b226665d597bc0f18ea035d75b4e53c7b1ea84583cc
+        url: https://files.pythonhosted.org/packages/07/40/d6f6819c62e808ea74639c3c640f7edd636b86cce62cb14943996a15df92/cryptography-42.0.8-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 6b7c4f03ce01afd3b76cf69a5455caa9cfa3de8c8f493e0d3ab7d20611c8dae9
         only-arches:
           - x86_64
         x-checker-data:
