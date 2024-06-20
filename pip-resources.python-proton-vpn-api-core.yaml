@@ -29,15 +29,15 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/19/8b/50703b5f83b008ba070eb8291b0e9877ac4b6ca878cfe70c5ed5c1c782ee/sentry_sdk-2.5.1-py2.py3-none-any.whl
-        sha256: 1f87acdce4a43a523ae5aa21a3fc37522d73ebd9ec04b1dbf01aa3d173852def
+        url: https://files.pythonhosted.org/packages/c2/ab/522cf99db4905094a6e0ae6e2661a2a9e4890a1d3991b5bf45e206637721/sentry_sdk-2.6.0-py2.py3-none-any.whl
+        sha256: 422b91cb49378b97e7e8d0e8d5a1069df23689d45262b86f54988a7db264e874
         x-checker-data:
           name: sentry_sdk
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/a2/73/a68704750a7679d0b6d3ad7aa8d4da8e14e151ae82e6fee774e6e0d05ec8/urllib3-2.2.1-py3-none-any.whl
-        sha256: 450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d
+        url: https://files.pythonhosted.org/packages/ca/1c/89ffc63a9605b583d5df2be791a27bc1a42b7c32bab68d3c8f2f73a98cd4/urllib3-2.2.2-py3-none-any.whl
+        sha256: a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
         x-checker-data:
           name: urllib3
           packagetype: bdist_wheel
