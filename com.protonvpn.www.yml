@@ -31,7 +31,21 @@ finish-args:
 modules:
   - shared-modules/libsecret/libsecret.json
   - shared-modules/intltool/intltool-0.51.json
-  - shared-modules/libappindicator/libappindicator-gtk3-introspection-12.10.json
+  - name: libayatana-appindicator
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DENABLE_BINDINGS_MONO=NO
+      - -DENABLE_BINDINGS_VALA=NO
+      - -DENABLE_GTKDOC=NO
+    sources:
+      - type: git
+        url: https://github.com/AyatanaIndicators/libayatana-appindicator.git
+        tag: 0.5.93
+        commit: 238c8b02718fa5b4af95ede72beeed762094f4cc
+        x-checker-data:
+          type: anitya
+          project-id: 18446
+          tag-template: $version
 
   - name: python3-packaging
     buildsystem: simple
