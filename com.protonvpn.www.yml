@@ -8,7 +8,6 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
 command: protonvpn-app
 finish-args:
-  - --device=dri
   - --share=ipc
   - --share=network
   - --socket=wayland
