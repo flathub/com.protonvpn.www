@@ -32,8 +32,8 @@ sources:
       name: cryptography
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/a8/c4/b5f03ec36e2d8ad067bbc36697bc78f8c25564f3481ade2d8c8f0a140854/importlib_metadata-7.2.0-py3-none-any.whl
-    sha256: 04e4aad329b8b948a5711d394fa8759cb80f009225441b4f2a02bd4d8e5f426c
+    url: https://files.pythonhosted.org/packages/9e/28/7daa5f782f5e2cbbec00556bf23ca106023470ebab3ae1040ee778269af1/importlib_metadata-7.2.1-py3-none-any.whl
+    sha256: ffef94b0b66046dd8ea2d619b701fe978d9264d38f3998bc4c27ec3b146a87c8
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
