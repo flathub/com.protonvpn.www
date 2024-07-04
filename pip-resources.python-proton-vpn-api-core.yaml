@@ -22,8 +22,8 @@ modules:
         --prefix=${FLATPAK_DEST} "sentry-sdk" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/5b/11/1e78951465b4a225519b8c3ad29769c49e0d8d157a070f681d5b6d64737f/certifi-2024.6.2-py3-none-any.whl
-        sha256: ddc6c8ce995e6987e7faf5e3f1b02b302836a0e5d98ece18392cb1a36c72ad56
+        url: https://files.pythonhosted.org/packages/1c/d5/c84e1a17bf61d4df64ca866a1c9a913874b4e9bdc131ec689a0ad013fb36/certifi-2024.7.4-py3-none-any.whl
+        sha256: c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90
         x-checker-data:
           name: certifi
           packagetype: bdist_wheel
