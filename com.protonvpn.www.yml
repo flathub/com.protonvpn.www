@@ -51,8 +51,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/AyatanaIndicators/ayatana-ido.git
-            tag: 0.10.2
-            commit: 2bb2f321c64b903b6e4b5c581d79602632c851c5
+            tag: 0.10.3
+            commit: 9906cc1d22f17c3629d32521473b172ae594ddcf
             x-checker-data:
               type: anitya
               project-id: 18445
@@ -755,8 +755,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.24.4
-        commit: 5472654e8b7fecf11e21c3363e6ea9749b7acd32
+        tag: v0.27.2
+        commit: 8f46ce8a15feff1f340651ef208d85114dd57005
         x-checker-data:
           type: anitya
           project-id: 369944
@@ -808,8 +808,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.3.2
-        commit: 6606f42285bffb0f8f267d1ef4fe8c7233e5bf99
+        tag: v4.3.3
+        commit: b40a8d51519afa91d0df139ece8256e47b31b2e0
         x-checker-data:
           type: anitya
           project-id: 369943
