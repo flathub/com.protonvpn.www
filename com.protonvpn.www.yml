@@ -790,8 +790,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.3.3
-        commit: b40a8d51519afa91d0df139ece8256e47b31b2e0
+        tag: v4.4.2
+        commit: 6f4f0e2fd0d55b13bfb80428f8b2184de8e9a92b
         x-checker-data:
           type: anitya
           project-id: 369943
