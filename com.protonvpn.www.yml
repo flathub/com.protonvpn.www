@@ -678,7 +678,7 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "jinja2" -o pip-resources.python-proton-vpn-connection
-      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
+      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/32ebf99ae897a9e61fd137826d2bfa53ca8c5a09/setup.py#L13
       - pip-resources.python-proton-vpn-connection.yaml
     sources:
       - type: git
