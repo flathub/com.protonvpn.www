@@ -757,6 +757,7 @@ modules:
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
         tag: v0.27.2
         commit: 8f46ce8a15feff1f340651ef208d85114dd57005
+        disable-submodules: true
         x-checker-data:
           type: anitya
           project-id: 369944
