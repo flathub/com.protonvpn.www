@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 distro sentry-sdk -o pip-resources.python-proton-vpn-api-core
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 distro sentry-sdk PyNaCl -o pip-resources.python-proton-vpn-api-core
 build-commands: []
 buildsystem: simple
 modules:
@@ -22,15 +22,15 @@ modules:
         --prefix=${FLATPAK_DEST} "sentry-sdk" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/5b/11/1e78951465b4a225519b8c3ad29769c49e0d8d157a070f681d5b6d64737f/certifi-2024.6.2-py3-none-any.whl
-        sha256: ddc6c8ce995e6987e7faf5e3f1b02b302836a0e5d98ece18392cb1a36c72ad56
+        url: https://files.pythonhosted.org/packages/1c/d5/c84e1a17bf61d4df64ca866a1c9a913874b4e9bdc131ec689a0ad013fb36/certifi-2024.7.4-py3-none-any.whl
+        sha256: c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90
         x-checker-data:
           name: certifi
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/90/6a/a7d19d776ba9899c97acb223ceba4080ef9f5de9d7599203ae64b56ed597/sentry_sdk-2.7.1-py2.py3-none-any.whl
-        sha256: ef1b3d54eb715825657cd4bb3cb42bb4dc85087bac14c56b0fd8c21abd968c9a
+        url: https://files.pythonhosted.org/packages/71/29/744921222eb1bfef7a7e16e71fc122f518b315fc57624828b90028dfa02e/sentry_sdk-2.12.0-py2.py3-none-any.whl
+        sha256: 7a8d5163d2ba5c5f4464628c6b68f85e86972f7c636acc78aed45c61b98b7a5e
         x-checker-data:
           name: sentry_sdk
           packagetype: bdist_wheel
@@ -40,6 +40,31 @@ modules:
         sha256: a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
         x-checker-data:
           name: urllib3
+          packagetype: bdist_wheel
+          type: pypi
+  - name: python3-PyNaCl
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "PyNaCl" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/a7/22/27582568be639dfe22ddb3902225f91f2f17ceff88ce80e4db396c8986da/PyNaCl-1.5.0.tar.gz
+        sha256: 8ac7448f09ab85811607bdd21ec2464495ac8b7c66d146bf545b0f08fb9220ba
+        x-checker-data:
+          name: PyNaCl
+          type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/68/ce/95b0bae7968c65473e1298efb042e10cafc7bafc14d9e4f154008241c91d/cffi-1.16.0.tar.gz
+        sha256: bcb3ef43e58665bbda2fb198698fcae6776483e0c4a631aa5647806c25e02cc0
+        x-checker-data:
+          name: cffi
+          type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/13/a3/a812df4e2dd5696d1f351d58b8fe16a405b234ad2886a0dab9183fb78109/pycparser-2.22-py3-none-any.whl
+        sha256: c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
+        x-checker-data:
+          name: pycparser
           packagetype: bdist_wheel
           type: pypi
 name: pip-resources.python-proton-vpn-api-core

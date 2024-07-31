@@ -51,8 +51,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/AyatanaIndicators/ayatana-ido.git
-            tag: 0.10.2
-            commit: 2bb2f321c64b903b6e4b5c581d79602632c851c5
+            tag: 0.10.3
+            commit: 9906cc1d22f17c3629d32521473b172ae594ddcf
             x-checker-data:
               type: anitya
               project-id: 18445
@@ -437,8 +437,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/c2/de/8083fa2e68d403553a01a9323f4f8b9d7ffed09928ba25635c29fb28c1e7/cryptography-42.0.8-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: 5226d5d21ab681f432a9c1cf8b658c0cb02533eece706b155e5fbd8a0cdd3949
+        url: https://files.pythonhosted.org/packages/ae/71/e073795d0d1624847f323481f7d84855f699172a632aa37646464b0e1712/cryptography-43.0.0-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: ea9e57f8ea880eeea38ab5abf9fbe39f923544d7884228ec67d666abd60f5a47
         only-arches:
           - aarch64
         x-checker-data:
@@ -451,8 +451,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/07/40/d6f6819c62e808ea74639c3c640f7edd636b86cce62cb14943996a15df92/cryptography-42.0.8-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 6b7c4f03ce01afd3b76cf69a5455caa9cfa3de8c8f493e0d3ab7d20611c8dae9
+        url: https://files.pythonhosted.org/packages/83/25/439a8ddd8058e7f898b7d27c36f94b66c8c8a2d60e1855d725845f4be0bc/cryptography-43.0.0-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 9a8d6802e0825767476f62aafed40532bd435e8a5f7d23bd8b4f5fd04cc80ecf
         only-arches:
           - x86_64
         x-checker-data:
@@ -678,7 +678,7 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "jinja2" -o pip-resources.python-proton-vpn-connection
-      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
+      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/32ebf99ae897a9e61fd137826d2bfa53ca8c5a09/setup.py#L13
       - pip-resources.python-proton-vpn-connection.yaml
     sources:
       - type: git
@@ -724,39 +724,21 @@ modules:
           project-id: 369946
           tag-template: v$version
 
-  - name: python-proton-vpn-session
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "PyNaCl" -o pip-resources.python-proton-vpn-session
-      # https://github.com/ProtonVPN/python-proton-vpn-session/blob/142d4670be044c03ce69e8a7eb97b797e425c2c6/setup.py#L12C76-L12C82
-      - pip-resources.python-proton-vpn-session.yaml
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-session
-        tag: v0.6.7
-        commit: a4d20010c02e9fdae1126aebba5f953d1605ce30
-        x-checker-data:
-          type: anitya
-          project-id: 369945
-          tag-template: v$version
-
   - name: python-proton-vpn-api-core
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" -o pip-resources.python-proton-vpn-api-core
-      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/1a9a5a0938cc1ab6c04f12ac76a669a63bb69237/setup.py#L12-L15
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" "PyNaCl" -o pip-resources.python-proton-vpn-api-core
+      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/e26e3fa70077d24a53465c87ebdd6026e3c7c080/setup.py#L17-L18C46
       - pip-resources.python-proton-vpn-api-core.yaml
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.24.4
-        commit: 5472654e8b7fecf11e21c3363e6ea9749b7acd32
+        tag: v0.27.2
+        commit: 8f46ce8a15feff1f340651ef208d85114dd57005
+        disable-submodules: true
         x-checker-data:
           type: anitya
           project-id: 369944
@@ -798,8 +780,8 @@ modules:
           - CONFDIR=${FLATPAK_DEST}/etc/iproute2
         sources:
           - type: archive
-            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.9.0.tar.xz
-            sha256: 2f643d09ea11a4a2a043c92e2b469b5f73228cbf241ae806760296ed0ec413d0
+            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.10.0.tar.xz
+            sha256: 91a62f82737b44905a00fa803369c447d549e914e9a2a4018fdd75b1d54e8dce
             x-checker-data:
               project-id: 1392
               stable-only: true
@@ -808,8 +790,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.3.2
-        commit: 6606f42285bffb0f8f267d1ef4fe8c7233e5bf99
+        tag: v4.3.3
+        commit: b40a8d51519afa91d0df139ece8256e47b31b2e0
         x-checker-data:
           type: anitya
           project-id: 369943
