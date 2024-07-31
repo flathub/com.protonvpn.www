@@ -8,7 +8,7 @@
     <developer id="ch.protonmail">
         <name>Proton AG</name>
     </developer>
-    <summary>Trusted and easy-to-use VPN app for Linux</summary>
+    <summary>Secures your internet and protects your online privacy</summary>
     <launchable type="desktop-id">com.protonvpn.www.desktop</launchable>
     <description>
         <p>
