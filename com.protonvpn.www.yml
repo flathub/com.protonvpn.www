@@ -445,7 +445,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -459,7 +460,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -563,6 +565,23 @@ modules:
           project-id: 402
           url-template: https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
 
+  # For network status detection: https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/a6a3ea0b2a0c17ebbba4eb9f80c8b164092050b9/proton/vpn/app/gtk/services/reconnector/network_monitor.py#L41
+  - name: iproute2
+    buildsystem: autotools
+    make-install-args:
+      - PREFIX=${FLATPAK_DEST}
+      - SBINDIR=${FLATPAK_DEST}/bin
+      - CONFDIR=${FLATPAK_DEST}/etc/iproute2
+    sources:
+      - type: archive
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.10.0.tar.xz
+        sha256: 91a62f82737b44905a00fa803369c447d549e914e9a2a4018fdd75b1d54e8dce
+        x-checker-data:
+          project-id: 1392
+          stable-only: true
+          type: anitya
+          url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
+
   ######### Proton Services #########
 
   - name: python-proton-core
@@ -575,12 +594,11 @@ modules:
       # `expandvars` is required by `yarl`
       # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
       - pip-resources.python-proton-core.yaml
-
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.1.16
-        commit: f5038d94dc0d8f8ea7a8075bcdc092e27862624b
+        tag: v0.2.0
+        commit: 53202abdc1a64587884110192e02c31c2c8de04e
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -596,7 +614,6 @@ modules:
       # https://github.com/ProtonVPN/python-proton-keyring-linux/blob/5ff3c7f9a1a162836649502dd23c2fbe1f487d73/setup.py#L12C39-L12C46
       # Remove the cryptography module as it has been included above
       - pip-resources.python-proton-keyring-linux.yaml
-
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
@@ -637,19 +654,24 @@ modules:
           project-id: 369951
           tag-template: v$version
 
-  - name: python-proton-vpn-killswitch
+  - name: python-proton-vpn-api-core
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" "PyNaCl" -o pip-resources.python-proton-vpn-api-core
+      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/e26e3fa70077d24a53465c87ebdd6026e3c7c080/setup.py#L17-L18C46
+      - pip-resources.python-proton-vpn-api-core.yaml
     sources:
       - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch
-        tag: v0.4.0
-        commit: 3e59f286fa429c1dd9afcca1f4a6ae89d16c1e4e
+        url: https://github.com/ProtonVPN/python-proton-vpn-api-core
+        tag: v0.29.4
+        commit: e26e3fa70077d24a53465c87ebdd6026e3c7c080
+        disable-submodules: true
         x-checker-data:
           type: anitya
-          project-id: 369950
+          project-id: 369944
           tag-template: v$version
 
   - name: python-proton-vpn-killswitch-network-manager
@@ -664,30 +686,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
-        tag: v0.4.5
-        commit: b03e4ed45d4fe178cdf6b28091738e88492f8bad
+        tag: v0.5.0
+        commit: f3ba740a2e429455b5efe90d2921775ffdcd331b
         x-checker-data:
           type: anitya
           project-id: 369949
-          tag-template: v$version
-
-  - name: python-proton-vpn-connection
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "jinja2" -o pip-resources.python-proton-vpn-connection
-      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/32ebf99ae897a9e61fd137826d2bfa53ca8c5a09/setup.py#L13
-      - pip-resources.python-proton-vpn-connection.yaml
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-connection
-        tag: v0.14.4
-        commit: 32ebf99ae897a9e61fd137826d2bfa53ca8c5a09
-        x-checker-data:
-          type: anitya
-          project-id: 369948
           tag-template: v$version
 
   - name: python-proton-vpn-network-manager
@@ -702,8 +705,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.4.2
-        commit: dd9a7953cbe882ab63f90a4025e4ebef181c151e
+        tag: v0.5.0
+        commit: 98ba9eaca913bc354200d755353448471ca44aef
         x-checker-data:
           type: anitya
           project-id: 369947
@@ -724,24 +727,36 @@ modules:
           project-id: 369946
           tag-template: v$version
 
-  - name: python-proton-vpn-api-core
+  - name: python-proton-vpn-killswitch-network-manager-wireguard
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" "PyNaCl" -o pip-resources.python-proton-vpn-api-core
-      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/e26e3fa70077d24a53465c87ebdd6026e3c7c080/setup.py#L17-L18C46
-      - pip-resources.python-proton-vpn-api-core.yaml
     sources:
       - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.27.2
-        commit: 8f46ce8a15feff1f340651ef208d85114dd57005
-        disable-submodules: true
+        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager-wireguard
+        tag: v0.1.0
+        commit: a2f40f531f1620cef05efdf977da669d6fdc9baa
         x-checker-data:
           type: anitya
-          project-id: 369944
+          project-id: 373699
+          tag-template: v$version
+      - type: patch
+        path: patches/python-proton-vpn-killswitch-network-manager-wireguard/avoid-hard-coding-ip-path.patch
+
+  - name: python-proton-vpn-network-manager-wireguard
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard
+        tag: v0.0.12
+        commit: 0dcee097cb766ea49f55cd699798bab0bbf69c35
+        x-checker-data:
+          type: anitya
+          project-id: 373697
           tag-template: v$version
 
   - name: proton-vpn-gtk-app
@@ -770,28 +785,12 @@ modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "pygobject" "pycairo" -o pip-resources.proton-vpn-gtk-app
       # https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/9bb65236353d646b07ead7b417d3828b12b55b7c/setup.py#L12-L19
       - pip-resources.proton-vpn-gtk-app.yaml
-
-      # For network status detection: https://github.com/ProtonVPN/proton-vpn-gtk-app/blob/a6a3ea0b2a0c17ebbba4eb9f80c8b164092050b9/proton/vpn/app/gtk/services/reconnector/network_monitor.py#L41
-      - name: iproute2
-        buildsystem: autotools
-        make-install-args:
-          - PREFIX=${FLATPAK_DEST}
-          - SBINDIR=${FLATPAK_DEST}/bin
-          - CONFDIR=${FLATPAK_DEST}/etc/iproute2
-        sources:
-          - type: archive
-            url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.10.0.tar.xz
-            sha256: 91a62f82737b44905a00fa803369c447d549e914e9a2a4018fdd75b1d54e8dce
-            x-checker-data:
-              project-id: 1392
-              stable-only: true
-              type: anitya
-              url-template: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.3.3
-        commit: b40a8d51519afa91d0df139ece8256e47b31b2e0
+        tag: v4.4.2
+        commit: 6f4f0e2fd0d55b13bfb80428f8b2184de8e9a92b
+        disable-submodules: true
         x-checker-data:
           type: anitya
           project-id: 369943
