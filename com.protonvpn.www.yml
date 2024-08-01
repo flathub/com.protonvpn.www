@@ -579,8 +579,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.1.16
-        commit: f5038d94dc0d8f8ea7a8075bcdc092e27862624b
+        tag: v0.2.0
+        commit: 53202abdc1a64587884110192e02c31c2c8de04e
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -664,8 +664,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
-        tag: v0.4.5
-        commit: b03e4ed45d4fe178cdf6b28091738e88492f8bad
+        tag: v0.5.0
+        commit: f3ba740a2e429455b5efe90d2921775ffdcd331b
         x-checker-data:
           type: anitya
           project-id: 369949
@@ -702,8 +702,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.4.2
-        commit: dd9a7953cbe882ab63f90a4025e4ebef181c151e
+        tag: v0.5.0
+        commit: 98ba9eaca913bc354200d755353448471ca44aef
         x-checker-data:
           type: anitya
           project-id: 369947
@@ -736,8 +736,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.27.2
-        commit: 8f46ce8a15feff1f340651ef208d85114dd57005
+        tag: v0.29.4
+        commit: e26e3fa70077d24a53465c87ebdd6026e3c7c080
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -790,8 +790,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.3.3
-        commit: b40a8d51519afa91d0df139ece8256e47b31b2e0
+        tag: v4.4.2
+        commit: 6f4f0e2fd0d55b13bfb80428f8b2184de8e9a92b
         x-checker-data:
           type: anitya
           project-id: 369943
