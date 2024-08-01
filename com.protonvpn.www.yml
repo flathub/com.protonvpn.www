@@ -657,21 +657,6 @@ modules:
           project-id: 369944
           tag-template: v$version
 
-  - name: python-proton-vpn-killswitch
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch
-        tag: v0.4.0
-        commit: 3e59f286fa429c1dd9afcca1f4a6ae89d16c1e4e
-        x-checker-data:
-          type: anitya
-          project-id: 369950
-          tag-template: v$version
-
   - name: python-proton-vpn-killswitch-network-manager
     buildsystem: simple
     build-commands:
@@ -689,25 +674,6 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 369949
-          tag-template: v$version
-
-  - name: python-proton-vpn-connection
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "jinja2" -o pip-resources.python-proton-vpn-connection
-      # https://github.com/ProtonVPN/python-proton-vpn-connection/blob/32ebf99ae897a9e61fd137826d2bfa53ca8c5a09/setup.py#L13
-      - pip-resources.python-proton-vpn-connection.yaml
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-connection
-        tag: v0.14.4
-        commit: 32ebf99ae897a9e61fd137826d2bfa53ca8c5a09
-        x-checker-data:
-          type: anitya
-          project-id: 369948
           tag-template: v$version
 
   - name: python-proton-vpn-network-manager
@@ -742,6 +708,36 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 369946
+          tag-template: v$version
+
+  - name: python-proton-vpn-killswitch-network-manager-wireguard
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager-wireguard
+        tag: v0.1.0
+        commit: a2f40f531f1620cef05efdf977da669d6fdc9baa
+        x-checker-data:
+          type: anitya
+          project-id: 373699
+          tag-template: v$version
+
+  - name: python-proton-vpn-network-manager-wireguard
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard
+        tag: v0.0.12
+        commit: 0dcee097cb766ea49f55cd699798bab0bbf69c35
+        x-checker-data:
+          type: anitya
+          project-id: 373697
           tag-template: v$version
 
   - name: proton-vpn-gtk-app
