@@ -445,7 +445,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -459,7 +460,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -575,7 +577,6 @@ modules:
       # `expandvars` is required by `yarl`
       # https://github.com/ProtonVPN/python-proton-core/blob/8ab41013fcedd8fe16dffe0992f60cbdbd01fe0b/setup.py#L12C23-L12C129
       - pip-resources.python-proton-core.yaml
-
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
@@ -596,7 +597,6 @@ modules:
       # https://github.com/ProtonVPN/python-proton-keyring-linux/blob/5ff3c7f9a1a162836649502dd23c2fbe1f487d73/setup.py#L12C39-L12C46
       # Remove the cryptography module as it has been included above
       - pip-resources.python-proton-keyring-linux.yaml
-
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
@@ -635,6 +635,26 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 369951
+          tag-template: v$version
+
+  - name: python-proton-vpn-api-core
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" "PyNaCl" -o pip-resources.python-proton-vpn-api-core
+      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/e26e3fa70077d24a53465c87ebdd6026e3c7c080/setup.py#L17-L18C46
+      - pip-resources.python-proton-vpn-api-core.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-vpn-api-core
+        tag: v0.29.4
+        commit: e26e3fa70077d24a53465c87ebdd6026e3c7c080
+        disable-submodules: true
+        x-checker-data:
+          type: anitya
+          project-id: 369944
           tag-template: v$version
 
   - name: python-proton-vpn-killswitch
@@ -722,26 +742,6 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 369946
-          tag-template: v$version
-
-  - name: python-proton-vpn-api-core
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "distro" "sentry-sdk" "PyNaCl" -o pip-resources.python-proton-vpn-api-core
-      # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/e26e3fa70077d24a53465c87ebdd6026e3c7c080/setup.py#L17-L18C46
-      - pip-resources.python-proton-vpn-api-core.yaml
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.29.4
-        commit: e26e3fa70077d24a53465c87ebdd6026e3c7c080
-        disable-submodules: true
-        x-checker-data:
-          type: anitya
-          project-id: 369944
           tag-template: v$version
 
   - name: proton-vpn-gtk-app
