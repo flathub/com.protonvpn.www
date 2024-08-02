@@ -230,8 +230,11 @@ modules:
               name: setuptools-rust
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/8c/ae/3af7d006aacf513975fd1948a6b4d6f8b4a307f8a244e1a3d3774b297aad/bcrypt-4.0.1.tar.gz
-        sha256: 27d375903ac8261cfe4047f6709d16f7d18d39b1ec92aaf72af989552a650ebd
+        url: https://files.pythonhosted.org/packages/e4/7e/d95e7d96d4828e965891af92e43b52a4cd3395dc1c1ef4ee62748d0471d0/bcrypt-4.2.0.tar.gz
+        sha256: cf69eaf5185fd58f268f805b505ce31f9b9fc2d64b376642164e9244540c1221
+        x-checker-data:
+          type: pypi
+          name: bcrypt
       # The Cargo sources should be updated whenever bcrypt is updated.
       - bcrypt-cargo-sources.json
 
@@ -386,8 +389,12 @@ modules:
         --prefix=${FLATPAK_DEST} "pycparser" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/py2.py3/p/pycparser/pycparser-2.21-py2.py3-none-any.whl
-        sha256: 8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9
+        url: https://files.pythonhosted.org/packages/13/a3/a812df4e2dd5696d1f351d58b8fe16a405b234ad2886a0dab9183fb78109/pycparser-2.22-py3-none-any.whl
+        sha256: c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
+        x-checker-data:
+          type: pypi
+          name: pycparser
+          packagetype: bdist_wheel
 
   - name: python3-cffi
     buildsystem: simple
@@ -396,11 +403,11 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/source/c/cffi/cffi-1.15.1.tar.gz
-        sha256: d400bfb9a37b1351253cb402671cea7e89bdecc294e8016a707f6d1d8ac934f9
-    x-checker-data:
-      type: pypi
-      name: cffi
+        url: https://files.pythonhosted.org/packages/68/ce/95b0bae7968c65473e1298efb042e10cafc7bafc14d9e4f154008241c91d/cffi-1.16.0.tar.gz
+        sha256: bcb3ef43e58665bbda2fb198698fcae6776483e0c4a631aa5647806c25e02cc0
+        x-checker-data:
+          type: pypi
+          name: cffi
 
   - name: python3-asn1crypto
     buildsystem: simple
@@ -409,12 +416,12 @@ modules:
         --prefix=${FLATPAK_DEST} "asn1crypto" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/py2.py3/a/asn1crypto/asn1crypto-1.5.1-py2.py3-none-any.whl
+        url: https://files.pythonhosted.org/packages/c9/7f/09065fd9e27da0eda08b4d6897f1c13535066174cc023af248fc2a8d5e5a/asn1crypto-1.5.1-py2.py3-none-any.whl
         sha256: db4e40728b728508912cbb3d44f19ce188f218e9eba635821bb4b68564f8fd67
-    x-checker-data:
-      type: pypi
-      name: asn1crypto
-      packagetype: bdist_wheel
+        x-checker-data:
+          type: pypi
+          name: asn1crypto
+          packagetype: bdist_wheel
 
   - name: python3-idna
     buildsystem: simple
@@ -423,12 +430,12 @@ modules:
         --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/py3/i/idna/idna-3.4-py3-none-any.whl
-        sha256: 90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2
-    x-checker-data:
-      type: pypi
-      name: idna
-      packagetype: bdist_wheel
+        url: https://files.pythonhosted.org/packages/e5/3e/741d8c82801c347547f8a2a06aa57dbb1992be9e948df2ea0eda2c8b79e8/idna-3.7-py3-none-any.whl
+        sha256: 82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
+        x-checker-data:
+          type: pypi
+          name: idna
+          packagetype: bdist_wheel
 
   - name: python3-cryptography
     buildsystem: simple
@@ -445,8 +452,7 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -460,8 +466,7 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp37-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -475,12 +480,16 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/00/99/5beedbf09e3ec6b617606df42d04c4251959caddbd98397cce21da4c52d1/ninja-1.10.2.3.tar.gz
-        sha256: e1b86ad50d4e681a7dbdff05fc23bb52cb773edb90bc428efba33fa027738408
+        url: https://files.pythonhosted.org/packages/37/2c/d717d13a413d6f7579cdaa1e28e6e2c98de95461549b08d311c8a5bf4c51/ninja-1.11.1.1.tar.gz
+        sha256: 9d793b08dd857e38d0b6ffe9e6b7145d7c485a42dcfea04905ca0cdb6017cc3c
+        x-checker-data:
+          type: pypi
+          name: ninja
       - type: file
-        url: https://github.com/Kitware/ninja/archive/v1.10.2.g51db2.kitware.jobserver-1.tar.gz
-        sha256: 549c31ee596566b952c600e23eb9b8d39a4112cd5fdeb2e5a83370669176da40
+        url: https://github.com/Kitware/ninja/archive/refs/tags/v1.11.1.g95dee.kitware.jobserver-1.tar.gz
+        sha256: 7ba84551f5b315b4270dc7c51adef5dff83a2154a3665a6c9744245c122dd0db
     modules:
+      - pip-resources.python-skbuild.yaml
       - name: python-skbuild
         buildsystem: simple
         build-commands:
@@ -489,8 +498,11 @@ modules:
         cleanup: ['*']
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/9e/e2/2e440c30e93fc5b505ee56169a4396b05e797a1daadb721aba429adbfd51/scikit-build-0.15.0.tar.gz
-            sha256: e723cd0f3489a042370b9ea988bbb9cfd7725e8b25b20ca1c7981821fcf65fb9
+            url: https://files.pythonhosted.org/packages/14/60/3ee697797d2d28c7457c315948b22c39ce5611e6d4b26043e4e31b9fb712/scikit_build-0.18.0.tar.gz
+            sha256: 71a13af467d1a38510c3494786e2edb73ead53ea922bde6e519dc5372aa65096
+            x-checker-data:
+              type: pypi
+              name: scikit-build
         modules:
           - name: python-setuptools-scm
             buildsystem: simple
@@ -500,8 +512,11 @@ modules:
             cleanup: ['*']
             sources:
               - type: archive
-                url: https://files.pythonhosted.org/packages/d0/43/f038b5009f93bcd77b1b8da9e6d424b739ab17aec9726f3a99eba23d53ca/setuptools_scm-7.0.5.tar.gz
-                sha256: 031e13af771d6f892b941adb6ea04545bbf91ebc5ce68c78aaf3fff6e1fb4844
+                url: https://files.pythonhosted.org/packages/4f/a4/00a9ac1b555294710d4a68d2ce8dfdf39d72aa4d769a7395d05218d88a42/setuptools_scm-8.1.0.tar.gz
+                sha256: 42dea1b65771cba93b7a515d65a65d8246e560768a66b9106a592c8e7f26c8a7
+                x-checker-data:
+                  type: pypi
+                  name: setuptools_scm
             modules:
               - name: python-typing-extensions
                 buildsystem: simple
@@ -511,8 +526,11 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/9e/1d/d128169ff58c501059330f1ad96ed62b79114a2eb30b8238af63a2e27f70/typing_extensions-4.3.0.tar.gz
-                    sha256: e6d2677a32f47fc7eb2795db1dd15c1f34eff616bcaf2cfb5e997f854fa1c4a6
+                    url: https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz
+                    sha256: 1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8
+                    x-checker-data:
+                      type: pypi
+                      name: typing_extensions
               - name: python-tomli
                 buildsystem: simple
                 build-commands:
@@ -523,6 +541,9 @@ modules:
                   - type: archive
                     url: https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
                     sha256: de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
+                    x-checker-data:
+                      type: pypi
+                      name: tomli
           - name: python-distro # also needed by Lutris, do not add a cleanup property here!
             buildsystem: simple
             build-commands:
@@ -530,8 +551,11 @@ modules:
                 .
             sources:
               - type: archive
-                url: https://files.pythonhosted.org/packages/b5/7e/ddfbd640ac9a82e60718558a3de7d5988a7d4648385cf00318f60a8b073a/distro-1.7.0.tar.gz
-                sha256: 151aeccf60c216402932b52e40ee477a939f8d58898927378a02abbe852c1c39
+                url: https://files.pythonhosted.org/packages/fc/f8/98eea607f65de6527f8a2e8885fc8015d3e6f5775df186e443e0964a11c3/distro-1.9.0.tar.gz
+                sha256: 2fa77c6fd8940f116ee1d6b94a2f90b13b5ea8d019b98bc8bafdcabcdd9bdbed
+                x-checker-data:
+                  type: pypi
+                  name: distro
 
   - name: python-meson # needed by dbus-python, the meson version shipped by the SDK is too old (0.59<0.60)
     buildsystem: simple
@@ -541,8 +565,11 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/a7/f0/565f731cd138a516c2dba8439e47c5622493c82f41c4845d287617ef6ec9/meson-0.63.2.tar.gz
-        sha256: 16222f17ef76be0542c91c07994f9676ae879f46fc21c0c786a21ef2cb518bbf
+        url: https://files.pythonhosted.org/packages/08/2f/e07063eb2937e730d38424a0126f9afed1e9ad9ff00d384c4fa8cd5a2ef7/meson-1.5.1.tar.gz
+        sha256: 567e533adf255de73a2de35049b99923caf872a455af9ce03e01077e0d384bed
+        x-checker-data:
+          type: pypi
+          name: meson
 
   # https://github.com/flathub/net.lutris.Lutris/blob/7bd51222b8076abd8fcbfe9cb0e4d6e70bafca24/net.lutris.Lutris.yml#L772-L786
   - name: python-dbus
