@@ -128,8 +128,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/e0/44/827b2a91a5816512fcaf3cc4ebc465ccd5d598c45cefa6703fcf4a79018f/attrs-23.2.0-py3-none-any.whl
-        sha256: 99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1
+        url: https://files.pythonhosted.org/packages/9b/2b/913eda7a67f7bea7496c1a8e1666f48aa9f15520da79368e4ec1109e2690/attrs-24.1.0-py3-none-any.whl
+        sha256: 377b47448cb61fea38533f671fba0d0f8a96fd58facd4dc518e3dac9dbea0905
         x-checker-data:
           name: attrs
           packagetype: bdist_wheel
