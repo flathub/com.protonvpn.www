@@ -115,8 +115,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/bc/97/328a9e18e2bc229e5bf1391c9d5f6712104b2b5759c56f51fe03a1b702f1/aiohttp-3.10.0.tar.gz
-        sha256: e8dd7da2609303e3574c95b0ec9f1fd49647ef29b94701a2862cceae76382e1d
+        url: https://files.pythonhosted.org/packages/f7/e1/bfcafd54dee859b2e6e690c5f8a8a30343d590a8822bb0669afba4c2c9e6/aiohttp-3.10.1.tar.gz
+        sha256: 8b0d058e4e425d3b45e8ec70d49b402f4d6b21041e674798b1f91ba027c73f28
         x-checker-data:
           name: aiohttp
           type: pypi
@@ -128,8 +128,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/9b/2b/913eda7a67f7bea7496c1a8e1666f48aa9f15520da79368e4ec1109e2690/attrs-24.1.0-py3-none-any.whl
-        sha256: 377b47448cb61fea38533f671fba0d0f8a96fd58facd4dc518e3dac9dbea0905
+        url: https://files.pythonhosted.org/packages/6a/21/5b6702a7f963e95456c0de2d495f67bf5fd62840ac655dc451586d23d39a/attrs-24.2.0-py3-none-any.whl
+        sha256: 81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
         x-checker-data:
           name: attrs
           packagetype: bdist_wheel
