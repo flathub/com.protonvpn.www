@@ -403,8 +403,8 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/68/ce/95b0bae7968c65473e1298efb042e10cafc7bafc14d9e4f154008241c91d/cffi-1.16.0.tar.gz
-        sha256: bcb3ef43e58665bbda2fb198698fcae6776483e0c4a631aa5647806c25e02cc0
+        url: https://files.pythonhosted.org/packages/1e/bf/82c351342972702867359cfeba5693927efe0a8dd568165490144f554b18/cffi-1.17.0.tar.gz
+        sha256: f3157624b7558b914cb039fd1af735e5e8049a87c817cc215109ad1c8779df76
         x-checker-data:
           type: pypi
           name: cffi
@@ -779,8 +779,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard
-        tag: v0.0.12
-        commit: 0dcee097cb766ea49f55cd699798bab0bbf69c35
+        tag: v0.1.0
+        commit: 80a3eb3b673a2b04ba0585604bb18c1778ceafe7
         x-checker-data:
           type: anitya
           project-id: 373697
@@ -815,8 +815,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.4.2
-        commit: 6f4f0e2fd0d55b13bfb80428f8b2184de8e9a92b
+        tag: v4.4.3
+        commit: 5c8c84e0191b7cc7f419d0475d84b1ac7ae0cf1f
         disable-submodules: true
         x-checker-data:
           type: anitya
