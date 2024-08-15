@@ -12,8 +12,8 @@
     <launchable type="desktop-id">com.protonvpn.www.desktop</launchable>
     <description>
         <p>
-            NOTE: This wrapper is not verified by, affiliated with, or supported by Proton
-            AG.
+            NOTE: This wrapper is built from the official source code, but it is not verified,
+            affiliated with, or supported by Proton AG.
         </p>
         <p>
             Proton VPN is the world's only free VPN app that is safe to use and respects
