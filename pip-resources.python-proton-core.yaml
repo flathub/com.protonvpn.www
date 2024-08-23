@@ -108,15 +108,15 @@ modules:
         --prefix=${FLATPAK_DEST} "aiohttp" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/8b/b4/0983e94060405eb51f23be493e3f5c28003f7ebc5efcd0803c1cb23ea407/aiohappyeyeballs-2.3.5-py3-none-any.whl
-        sha256: 4d6dea59215537dbc746e93e779caea8178c866856a721c9c660d7a5a7b8be03
+        url: https://files.pythonhosted.org/packages/18/b6/58ea188899950d759a837f9a58b2aee1d1a380ea4d6211ce9b1823748851/aiohappyeyeballs-2.4.0-py3-none-any.whl
+        sha256: 7ce92076e249169a13c2f49320d1967425eaf1f407522d707d59cac7628d62bd
         x-checker-data:
           name: aiohappyeyeballs
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/15/9c/ed427fcc46423c965a8e33673d7111b6e3b3aa7d61ca52163a720ff200cb/aiohttp-3.10.3.tar.gz
-        sha256: 21650e7032cc2d31fc23d353d7123e771354f2a3d5b05a5647fc30fea214e696
+        url: https://files.pythonhosted.org/packages/ca/28/ca549838018140b92a19001a8628578b0f2a3b38c16826212cc6f706e6d4/aiohttp-3.10.5.tar.gz
+        sha256: f071854b47d39591ce9a17981c46790acb30518e2f83dfca8db2dfa091178691
         x-checker-data:
           name: aiohttp
           type: pypi
