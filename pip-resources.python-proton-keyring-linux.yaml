@@ -32,8 +32,8 @@ sources:
       name: cryptography
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/82/47/bb25ec04985d0693da478797c3d8c1092b140f3a53ccb984fbbd38affa5b/importlib_metadata-8.2.0-py3-none-any.whl
-    sha256: 11901fa0c2f97919b288679932bb64febaeacf289d18ac84dd68cb2e74213369
+    url: https://files.pythonhosted.org/packages/c0/14/362d31bf1076b21e1bcdcb0dc61944822ff263937b804a79231df2774d28/importlib_metadata-8.4.0-py3-none-any.whl
+    sha256: 66f342cc6ac9818fc6ff340576acd24d65ba0b3efabb2b4ac08b598965a4a2f1
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
@@ -46,8 +46,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/d2/40/11b7bc1898cf1dcb87ccbe09b39f5088634ac78bb25f3383ff541c2b40aa/jaraco.context-5.3.0-py3-none-any.whl
-    sha256: 3e16388f7da43d384a1a7cd3452e72e14732ac9fe459678773a3608a812bf266
+    url: https://files.pythonhosted.org/packages/ff/db/0c52c4cf5e4bd9f5d7135ec7669a3a767af21b3a308e1ed3674881e52b62/jaraco.context-6.0.1-py3-none-any.whl
+    sha256: f797fc481b490edb305122c9181830a3a5b76d84ef6d1aef2fb9b47ab956f9e4
     x-checker-data:
       name: jaraco.context
       packagetype: bdist_wheel
