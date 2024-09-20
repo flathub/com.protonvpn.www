@@ -168,8 +168,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/9d/ea/6d76df31432a0e6fdf81681a895f009a4bb47b3c39036db3e1b528191d52/pyparsing-3.1.2-py3-none-any.whl
-            sha256: f9db75911801ed778fe61bb643079ff86601aca99fcae6345aa67292038fb742
+            url: https://files.pythonhosted.org/packages/e5/0c/0e3c05b1c87bb6a1c76d281b0f35e78d2d80ac91b5f8f524cebf77f51049/pyparsing-3.1.4-py3-none-any.whl
+            sha256: a6a7ee4235a3f944aa1fa2249307708f893fe5717dc603503c6c7969c070fb7c
             x-checker-data:
               name: pyparsing
               packagetype: bdist_wheel
@@ -403,8 +403,8 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/1e/bf/82c351342972702867359cfeba5693927efe0a8dd568165490144f554b18/cffi-1.17.0.tar.gz
-        sha256: f3157624b7558b914cb039fd1af735e5e8049a87c817cc215109ad1c8779df76
+        url: https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz
+        sha256: 1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824
         x-checker-data:
           type: pypi
           name: cffi
@@ -430,8 +430,8 @@ modules:
         --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/e5/3e/741d8c82801c347547f8a2a06aa57dbb1992be9e948df2ea0eda2c8b79e8/idna-3.7-py3-none-any.whl
-        sha256: 82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
+        url: https://files.pythonhosted.org/packages/76/c6/c88e154df9c4e1a2a66ccf0005a88dfb2650c1dffb6f5ce603dfbd452ce3/idna-3.10-py3-none-any.whl
+        sha256: 946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
         x-checker-data:
           type: pypi
           name: idna
@@ -444,8 +444,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/ae/71/e073795d0d1624847f323481f7d84855f699172a632aa37646464b0e1712/cryptography-43.0.0-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: ea9e57f8ea880eeea38ab5abf9fbe39f923544d7884228ec67d666abd60f5a47
+        url: https://files.pythonhosted.org/packages/ce/dc/1471d4d56608e1013237af334b8a4c35d53895694fbb73882d1c4fd3f55e/cryptography-43.0.1-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: de41fd81a41e53267cb020bb3a7212861da53a7d39f863585d13ea11049cf277
         only-arches:
           - aarch64
         x-checker-data:
@@ -458,8 +458,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/83/25/439a8ddd8058e7f898b7d27c36f94b66c8c8a2d60e1855d725845f4be0bc/cryptography-43.0.0-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 9a8d6802e0825767476f62aafed40532bd435e8a5f7d23bd8b4f5fd04cc80ecf
+        url: https://files.pythonhosted.org/packages/ad/43/7a9920135b0d5437cc2f8f529fa757431eb6a7736ddfadfdee1cc5890800/cryptography-43.0.1-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: f98bf604c82c416bc829e490c700ca1553eafdf2912a91e23a79d97d9801372a
         only-arches:
           - x86_64
         x-checker-data:
@@ -498,8 +498,8 @@ modules:
         cleanup: ['*']
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/14/60/3ee697797d2d28c7457c315948b22c39ce5611e6d4b26043e4e31b9fb712/scikit_build-0.18.0.tar.gz
-            sha256: 71a13af467d1a38510c3494786e2edb73ead53ea922bde6e519dc5372aa65096
+            url: https://files.pythonhosted.org/packages/56/54/2beb41f3fcddb4ea238634c6c23fe93115090d8799a45f626a83e6934c16/scikit_build-0.18.1.tar.gz
+            sha256: a4152ac5a084d499c28a7797be0628d8366c336e2fb0e1a063eb32e55efcb8e7
             x-checker-data:
               type: pypi
               name: scikit-build
@@ -601,8 +601,8 @@ modules:
       - CONFDIR=${FLATPAK_DEST}/etc/iproute2
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.10.0.tar.xz
-        sha256: 91a62f82737b44905a00fa803369c447d549e914e9a2a4018fdd75b1d54e8dce
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.11.0.tar.xz
+        sha256: 1f795398a04aeaacd06a8f6ace2cfd913c33fa5953ca99daae83bb5c534611c3
         x-checker-data:
           project-id: 1392
           stable-only: true
@@ -624,8 +624,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.2.0
-        commit: 53202abdc1a64587884110192e02c31c2c8de04e
+        tag: v0.3.3
+        commit: d8b919e33770f772a863354ff4606770418a067a
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -693,8 +693,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.32.2
-        commit: ca39bb05b1ff2923acb24d8d04834a0518b895cc
+        tag: v0.33.11
+        commit: fc6f41909d354f820dfc8006eb17cc3faf0d232b
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -732,8 +732,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.5.2
-        commit: 6c39fd81b4860b3e0cc8cdc35c6980ae12e9c5fb
+        tag: v0.6.3
+        commit: cddd6ca2b47376f28c1d48dabe0c1f087055a859
         x-checker-data:
           type: anitya
           project-id: 369947
@@ -747,8 +747,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
-        tag: v0.1.0
-        commit: 128b0246b86b4d12f4fdf864d789facd71f2ac02
+        tag: v0.1.1
+        commit: ca24d47bfea1d88ed632c4e036b9699ab5e5d752
         x-checker-data:
           type: anitya
           project-id: 369946
@@ -779,8 +779,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard
-        tag: v0.4.1
-        commit: 061f0de5f7571a1e9f41aa6a758f0e2ebeef7ea3
+        tag: v0.4.7
+        commit: 51b89b2ca3360f7bd7f9b1145572ad8578529867
         x-checker-data:
           type: anitya
           project-id: 373697
@@ -815,8 +815,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.4.4
-        commit: 4abd37f4da72928a7f212294af1eaea5e7e50828
+        tag: v4.4.5
+        commit: 0d3a375d49058fc224a54c8beb8239e684b22f41
         disable-submodules: true
         x-checker-data:
           type: anitya
