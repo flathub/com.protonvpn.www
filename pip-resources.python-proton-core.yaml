@@ -22,8 +22,8 @@ modules:
         --prefix=${FLATPAK_DEST} "requests" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/1c/d5/c84e1a17bf61d4df64ca866a1c9a913874b4e9bdc131ec689a0ad013fb36/certifi-2024.7.4-py3-none-any.whl
-        sha256: c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90
+        url: https://files.pythonhosted.org/packages/12/90/3c9ff0512038035f59d279fddeb79f5f1eccd8859f06d6163c58798b9487/certifi-2024.8.30-py3-none-any.whl
+        sha256: 922820b53db7a7257ffbda3f597266d435245903d80737e34f8a45ff3e3230d8
         x-checker-data:
           name: certifi
           packagetype: bdist_wheel
@@ -36,8 +36,8 @@ modules:
           type: pypi
       - &id001
         type: file
-        url: https://files.pythonhosted.org/packages/e5/3e/741d8c82801c347547f8a2a06aa57dbb1992be9e948df2ea0eda2c8b79e8/idna-3.7-py3-none-any.whl
-        sha256: 82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
+        url: https://files.pythonhosted.org/packages/76/c6/c88e154df9c4e1a2a66ccf0005a88dfb2650c1dffb6f5ce603dfbd452ce3/idna-3.10-py3-none-any.whl
+        sha256: 946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
         x-checker-data:
           name: idna
           packagetype: bdist_wheel
@@ -50,8 +50,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/ca/1c/89ffc63a9605b583d5df2be791a27bc1a42b7c32bab68d3c8f2f73a98cd4/urllib3-2.2.2-py3-none-any.whl
-        sha256: a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472
+        url: https://files.pythonhosted.org/packages/ce/d9/5f4c13cecde62396b0d3fe530a50ccea91e7dfc1ccf0e09c228841bb5ba8/urllib3-2.2.3-py3-none-any.whl
+        sha256: ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac
         x-checker-data:
           name: urllib3
           packagetype: bdist_wheel
@@ -63,8 +63,8 @@ modules:
         --prefix=${FLATPAK_DEST} "python-gnupg" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/5f/86/18938c2378a8c8284910308b93e2bc521a965ced4ca028947e1ffa6e98dc/python_gnupg-0.5.2-py2.py3-none-any.whl
-        sha256: 72ce142af6da7f07e433fef148b445fb3e07854acd2f88739008838745c0e9f5
+        url: https://files.pythonhosted.org/packages/38/67/ea9e551fcc684fe5119e5355920c69ac9332afdd1691a472a38528dd9a3c/python_gnupg-0.5.3-py2.py3-none-any.whl
+        sha256: 2f8a4c6f63766feca6cc1416408f8b84e1b914fe7b54514e570fc5cbe92e9248
         x-checker-data:
           name: python_gnupg
           packagetype: bdist_wheel
@@ -76,14 +76,14 @@ modules:
         --prefix=${FLATPAK_DEST} "pyopenssl" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/1e/bf/82c351342972702867359cfeba5693927efe0a8dd568165490144f554b18/cffi-1.17.0.tar.gz
-        sha256: f3157624b7558b914cb039fd1af735e5e8049a87c817cc215109ad1c8779df76
+        url: https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz
+        sha256: 1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824
         x-checker-data:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/69/ec/9fb9dcf4f91f0e5e76de597256c43eedefd8423aa59be95c70c4c3db426a/cryptography-43.0.0.tar.gz
-        sha256: b88075ada2d51aa9f18283532c9f60e72170041bba88d7f37e49cbb10275299e
+        url: https://files.pythonhosted.org/packages/de/ba/0664727028b37e249e73879348cc46d45c5c1a2a2e81e8166462953c5755/cryptography-43.0.1.tar.gz
+        sha256: 203e92a75716d8cfb491dc47c79e17d0d9207ccffcbcb35f598fbe463ae3444d
         x-checker-data:
           name: cryptography
           type: pypi
@@ -142,14 +142,14 @@ modules:
           type: pypi
       - *id001
       - type: file
-        url: https://files.pythonhosted.org/packages/f9/79/722ca999a3a09a63b35aac12ec27dfa8e5bb3a38b0f857f7a1a209a88836/multidict-6.0.5.tar.gz
-        sha256: f7e301075edaf50500f0b341543c41194d8df3ae5caf4702f2095f3ca73dd8da
+        url: https://files.pythonhosted.org/packages/d6/be/504b89a5e9ca731cd47487e91c469064f8ae5af93b7259758dcfc2b9c848/multidict-6.1.0.tar.gz
+        sha256: 22ae2ebf9b0c69d206c003e2f6a914ea33f0a932d4aa16f236afc049d9958f4a
         x-checker-data:
           name: multidict
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/e0/ad/bedcdccbcbf91363fd425a948994f3340924145c2bc8ccb296f4a1e52c28/yarl-1.9.4.tar.gz
-        sha256: 566db86717cf8080b99b58b083b773a908ae40f06681e87e589a976faf8246bf
+        url: https://files.pythonhosted.org/packages/e4/3d/4924f9ed49698bac5f112bc9b40aa007bbdcd702462c1df3d2e1383fb158/yarl-1.11.1.tar.gz
+        sha256: 1bb2d9e212fb7449b8fb73bc461b51eaa17cc8430b4a87d87be7b25052d92f53
         x-checker-data:
           name: yarl
           type: pypi
