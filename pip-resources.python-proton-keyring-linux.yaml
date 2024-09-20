@@ -20,20 +20,20 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/1e/bf/82c351342972702867359cfeba5693927efe0a8dd568165490144f554b18/cffi-1.17.0.tar.gz
-    sha256: f3157624b7558b914cb039fd1af735e5e8049a87c817cc215109ad1c8779df76
+    url: https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz
+    sha256: 1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824
     x-checker-data:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/69/ec/9fb9dcf4f91f0e5e76de597256c43eedefd8423aa59be95c70c4c3db426a/cryptography-43.0.0.tar.gz
-    sha256: b88075ada2d51aa9f18283532c9f60e72170041bba88d7f37e49cbb10275299e
+    url: https://files.pythonhosted.org/packages/de/ba/0664727028b37e249e73879348cc46d45c5c1a2a2e81e8166462953c5755/cryptography-43.0.1.tar.gz
+    sha256: 203e92a75716d8cfb491dc47c79e17d0d9207ccffcbcb35f598fbe463ae3444d
     x-checker-data:
       name: cryptography
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/c0/14/362d31bf1076b21e1bcdcb0dc61944822ff263937b804a79231df2774d28/importlib_metadata-8.4.0-py3-none-any.whl
-    sha256: 66f342cc6ac9818fc6ff340576acd24d65ba0b3efabb2b4ac08b598965a4a2f1
+    url: https://files.pythonhosted.org/packages/a0/d9/a1e041c5e7caa9a05c925f4bdbdfb7f006d1f74996af53467bc394c97be7/importlib_metadata-8.5.0-py3-none-any.whl
+    sha256: 45e54197d28b7a7f1559e60b95e7c567032b602131fbd588f1497f47880aa68b
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
@@ -67,15 +67,15 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/63/42/ea8c9726e5ee5ff0731978aaf7cd5fa16674cf549c46279b279d7167c2b4/keyring-25.3.0-py3-none-any.whl
-    sha256: 8d963da00ccdf06e356acd9bf3b743208878751032d8599c6cc89eb51310ffae
+    url: https://files.pythonhosted.org/packages/e0/6c/e652926d91b8a782b732c440f0c5c78bfd3ac3aef08242b77909e1a0544d/keyring-25.4.0-py3-none-any.whl
+    sha256: a2a630d5c9bef5d3f0968d15ef4e42b894a83e17494edcb67b154c36491c9920
     x-checker-data:
       name: keyring
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/d8/0b/6a51175e1395774449fca317fb8861379b7a2d59be411b8cce3d19d6ce78/more_itertools-10.4.0-py3-none-any.whl
-    sha256: 0f7d9f83a0a8dcfa8a2694a770590d98a67ea943e3d9f5298309a484758c4e27
+    url: https://files.pythonhosted.org/packages/48/7e/3a64597054a70f7c86eb0a7d4fc315b8c1ab932f64883a297bdffeb5f967/more_itertools-10.5.0-py3-none-any.whl
+    sha256: 037b0d3203ce90cca8ab1defbbdac29d5f993fc20131f3664dc8d6acfa872aef
     x-checker-data:
       name: more_itertools
       packagetype: bdist_wheel
@@ -88,8 +88,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/da/cc/b9958af9f9c86b51f846d8487440af495ecf19b16e426fce1ed0b0796175/zipp-3.20.0-py3-none-any.whl
-    sha256: 58da6168be89f0be59beb194da1250516fdaa062ccebd30127ac65d30045e10d
+    url: https://files.pythonhosted.org/packages/62/8b/5ba542fa83c90e09eac972fc9baca7a88e7e7ca4b221a89251954019308b/zipp-3.20.2-py3-none-any.whl
+    sha256: a817ac80d6cf4b23bf7f2828b7cabf326f15a001bea8b1f9b49631780ba28350
     x-checker-data:
       name: zipp
       packagetype: bdist_wheel
