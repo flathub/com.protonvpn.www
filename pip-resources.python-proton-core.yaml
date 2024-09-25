@@ -115,8 +115,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/ca/28/ca549838018140b92a19001a8628578b0f2a3b38c16826212cc6f706e6d4/aiohttp-3.10.5.tar.gz
-        sha256: f071854b47d39591ce9a17981c46790acb30518e2f83dfca8db2dfa091178691
+        url: https://files.pythonhosted.org/packages/2b/97/15c51bbfcc184bcb4d473b7b02e7b54b6978e0083556a9cd491875cf11f7/aiohttp-3.10.6.tar.gz
+        sha256: d2578ef941be0c2ba58f6f421a703527d08427237ed45ecb091fed6f83305336
         x-checker-data:
           name: aiohttp
           type: pypi
@@ -148,8 +148,8 @@ modules:
           name: multidict
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/e4/3d/4924f9ed49698bac5f112bc9b40aa007bbdcd702462c1df3d2e1383fb158/yarl-1.11.1.tar.gz
-        sha256: 1bb2d9e212fb7449b8fb73bc461b51eaa17cc8430b4a87d87be7b25052d92f53
+        url: https://files.pythonhosted.org/packages/7f/47/ab72cdc3e44a759c76596ae034e0c60f2c2b16fa220895dc4cb1c8a6c162/yarl-1.12.1.tar.gz
+        sha256: 5b860055199aec8d6fe4dcee3c5196ce506ca198a50aab0059ffd26e8e815828
         x-checker-data:
           name: yarl
           type: pypi
