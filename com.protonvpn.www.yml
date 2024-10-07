@@ -379,6 +379,81 @@ modules:
             # 1.10.4 causes connection failure
             <: 1.10.4
 
+  # Logs submission when reporting a bug requires journalctl
+  # https://github.com/flathub/org.gnome.Logs/blob/master/org.gnome.Logs.json#L69C9-L146C11
+  - name: systemd
+    buildsystem: meson
+    config-opts:
+    - --libdir=lib
+    - -Drootprefix=/app
+    - -Drootlibdir=/app/lib
+    - -Dsysconfdir=/app/etc
+    - -Ddocdir=/app/share/doc
+    - -Dsysvinit-path=/app/etc/init.d
+    - -Dfdisk=false
+    - -Ddbus=false
+    - -Dutmp=false
+    - -Dhibernate=false
+    - -Dldconfig=false
+    - -Dresolve=false
+    - -Defi=false
+    - -Dtpm=false
+    - -Denvironment-d=false
+    - -Dbinfmt=false
+    - -Dcoredump=false
+    - -Dlogind=false
+    - -Dhostnamed=false
+    - -Dlocaled=false
+    - -Dmachined=false
+    - -Dportabled=false
+    - -Dnetworkd=false
+    - -Dtimedated=false
+    - -Dtimesyncd=false
+    - -Dremote=false
+    - -Dnss-myhostname=false
+    - -Dnss-mymachines=false
+    - -Dnss-resolve=false
+    - -Dnss-systemd=false
+    - -Dfirstboot=false
+    - -Drandomseed=false
+    - -Dbacklight=false
+    - -Dvconsole=false
+    - -Dquotacheck=false
+    - -Dsysusers=false
+    - -Dtmpfiles=false
+    - -Dimportd=false
+    - -Dhwdb=false
+    - -Drfkill=false
+    - -Dman=false
+    - -Dhtml=false
+    - -Dbashcompletiondir=no
+    - -Dzshcompletiondir=no
+    cleanup:
+    - /bin
+    - /etc
+    - /lib/libudev*
+    - /lib/kernel
+    - /lib/modprobe.d
+    - /lib/rpm
+    - /lib/sysctl.d
+    - /lib/systemd
+    - /lib/udev
+    - /app/share/doc
+    - /share/dbus-1
+    - /share/doc
+    - /share/factory
+    - /share/glib-2.0
+    - /share/icons
+    - /share/man
+    - /share/pkgconfig
+    - /share/polkit-1
+    - /share/runtime
+    sources:
+    - type: git
+      url: https://github.com/systemd/systemd.git
+      tag: v255
+
+
   ######### Cryptography #########
 
   # https://github.com/flathub/org.gajim.Gajim/blob/cb9cb26dd58acea79c50b316fb66a171b54c18e1/org.gajim.Gajim.yaml#LL66-L131C81
