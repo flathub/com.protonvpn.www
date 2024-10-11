@@ -20,6 +20,8 @@ finish-args:
   - --filesystem=~/.cert/nm-openvpn/
   # In case ~/.cert is not created
   - --filesystem=~/.cert:create
+  # For bug report
+  - --filesystem=/var/log/journal:ro
   # For DBus daemon reconnector
   - --system-talk-name=org.freedesktop.login1
   # New dbus session name
@@ -429,14 +431,14 @@ modules:
     - -Dbashcompletiondir=no
     - -Dzshcompletiondir=no
     cleanup:
-    - /bin
+    # - /bin
     - /etc
     - /lib/libudev*
     - /lib/kernel
     - /lib/modprobe.d
     - /lib/rpm
     - /lib/sysctl.d
-    - /lib/systemd
+    # - /lib/systemd
     - /lib/udev
     - /app/share/doc
     - /share/dbus-1
