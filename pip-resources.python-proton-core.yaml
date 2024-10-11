@@ -32,7 +32,7 @@ modules:
         url: https://files.pythonhosted.org/packages/f2/4f/e1808dc01273379acc506d18f1504eb2d299bd4131743b9fc54d7be4df1e/charset_normalizer-3.4.0.tar.gz
         sha256: 223217c3d4f82c3ac5e29032b3f1c2eb0fb591b72161f86d93f5719079dae93e
         x-checker-data:
-          name: charset-normalizer
+          name: charset_normalizer
           type: pypi
       - &id001
         type: file
@@ -146,6 +146,12 @@ modules:
         sha256: 22ae2ebf9b0c69d206c003e2f6a914ea33f0a932d4aa16f236afc049d9958f4a
         x-checker-data:
           name: multidict
+          type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/a9/4d/5e5a60b78dbc1d464f8a7bbaeb30957257afdc8512cbb9dfd5659304f5cd/propcache-0.2.0.tar.gz
+        sha256: df81779732feb9d01e5d513fad0122efb3d53bbc75f61b2a4f29a020bc985e70
+        x-checker-data:
+          name: propcache
           type: pypi
       - type: file
         url: https://files.pythonhosted.org/packages/46/fe/2ca2e5ef45952f3e8adb95659821a4e9169d8bbafab97eb662602ee12834/yarl-1.14.0.tar.gz
