@@ -184,8 +184,8 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl
-            sha256: 939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc
+            url: https://files.pythonhosted.org/packages/cf/db/ce8eda256fa131af12e0a76d481711abe4681b6923c27efb9a255c9e4594/tomli-2.0.2-py3-none-any.whl
+            sha256: 2ebe24485c53d303f690b0ec092806a085f07af5a5aa1464f3931eec36caaa38
             x-checker-data:
               name: tomli
               packagetype: bdist_wheel
@@ -225,8 +225,8 @@ modules:
               type: pypi
               name: semantic_version
           - type: file
-            url: https://files.pythonhosted.org/packages/b8/86/4f34594f21f529623b8650fe729548e3a2ad6c9ad81583391f03f74dd11a/setuptools_rust-1.10.1.tar.gz
-            sha256: d79035fc54cdf9342e9edf4b009491ecab06c3a652b37c3c137c7ba85547d3e6
+            url: https://files.pythonhosted.org/packages/d3/6b/99a1588d826ceb108694ba00f78bc6afda10ed5d72d550ae8f256af1f7b4/setuptools_rust-1.10.2.tar.gz
+            sha256: 5d73e7eee5f87a6417285b617c97088a7c20d1a70fcea60e3bdc94ff567c29dc
             x-checker-data:
               type: pypi
               name: setuptools-rust
@@ -616,8 +616,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
-                    sha256: de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
+                    url: https://files.pythonhosted.org/packages/35/b9/de2a5c0144d7d75a57ff355c0c24054f965b2dc3036456ae03a51ea6264b/tomli-2.0.2.tar.gz
+                    sha256: d46d457a85337051c36524bc5349dd91b1877838e2979ac5ced3e710ed8a60ed
                     x-checker-data:
                       type: pypi
                       name: tomli
@@ -721,41 +721,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
-        tag: v0.0.2
-        commit: 0cc286cb36c97c2b19e1a09ef9ad46ca29fab991
+        tag: v0.1.0
+        commit: f17038fc9636796c02f71e8395fbd19417f6db0b
         x-checker-data:
           type: anitya
           project-id: 369953
-          tag-template: v$version
-
-  - name: python-proton-keyring-linux-secretservice
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-keyring-linux-secretservice
-        tag: v0.0.2
-        commit: 915228cfec3301dc408c4f2c4410443412958e24
-        x-checker-data:
-          type: anitya
-          project-id: 369952
-          tag-template: v$version
-
-  - name: python-proton-vpn-logger
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-logger
-        tag: v0.2.1
-        commit: 0acbc1ab41a65cbc9ceb340e3db011e6f89eb65a
-        x-checker-data:
-          type: anitya
-          project-id: 369951
           tag-template: v$version
 
   - name: python-proton-vpn-api-core
@@ -770,31 +740,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.33.12
-        commit: 433b1eb6a5f6a467f436bbc2d7c696856a60d9aa
+        tag: v0.35.5
+        commit: 58a90f43517e7d84289e2aa925146ca26cd06d19
         disable-submodules: true
         x-checker-data:
           type: anitya
           project-id: 369944
-          tag-template: v$version
-
-  - name: python-proton-vpn-killswitch-network-manager
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-killswitch-network-manager
-      # https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager/blob/39d4398f169539e335c1f661e0dfc5551df0e6af/setup.py#L15
-      - pip-resources.python-proton-vpn-killswitch-network-manager.yaml
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager
-        tag: v0.5.4
-        commit: 3fa2f0b3fc3a070b69b4f58a657f32aa484e30dc
-        x-checker-data:
-          type: anitya
-          project-id: 369949
           tag-template: v$version
 
   - name: python-proton-vpn-network-manager
@@ -809,59 +760,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.7.0
-        commit: 420a2b177935e26bf0b5f88231a130d5f68e8b82
+        tag: v0.9.1
+        commit: dc974f1ef4ba97d792780a0c390b8da0bbbe110f
         x-checker-data:
           type: anitya
           project-id: 369947
           tag-template: v$version
-
-  - name: python-proton-vpn-network-manager-openvpn
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
-        tag: v0.1.1
-        commit: ca24d47bfea1d88ed632c4e036b9699ab5e5d752
-        x-checker-data:
-          type: anitya
-          project-id: 369946
-          tag-template: v$version
-
-  - name: python-proton-vpn-killswitch-network-manager-wireguard
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager-wireguard
-        tag: v0.1.4
-        commit: 4ef921a8877d9da3c0cfef66d519ce1dfda0b0dd
-        x-checker-data:
-          type: anitya
-          project-id: 373699
-          tag-template: v$version
       - type: patch
-        path: patches/python-proton-vpn-killswitch-network-manager-wireguard/avoid-hard-coding-ip-path.patch
-
-  - name: python-proton-vpn-network-manager-wireguard
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard
-        tag: v0.4.7
-        commit: 51b89b2ca3360f7bd7f9b1145572ad8578529867
-        x-checker-data:
-          type: anitya
-          project-id: 373697
-          tag-template: v$version
+        path: patches/python-proton-vpn-network-manager/fix-ip-path.patch
 
   - name: proton-vpn-gtk-app
     buildsystem: simple
@@ -892,8 +798,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.5.0
-        commit: 60e82cb246f6edb2cfe3579ddf3724b9c7524330
+        tag: v4.6.0
+        commit: 9d77c58322fdae2a1ef925b200c524afbec39d1a
         disable-submodules: true
         x-checker-data:
           type: anitya
