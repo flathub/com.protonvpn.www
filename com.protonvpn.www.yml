@@ -144,8 +144,8 @@ modules:
             --prefix=${FLATPAK_DEST} "flit_core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/c4/e6/c1ac50fe3eebb38a155155711e6e864e254ce4b6e17fe2429b4c4d5b9e80/flit_core-3.9.0.tar.gz
-            sha256: 72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba
+            url: https://files.pythonhosted.org/packages/d5/ae/09427bea9227a33ec834ed5461432752fd5d02b14f93dd68406c91684622/flit_core-3.10.1.tar.gz
+            sha256: 66e5b87874a0d6e39691f0e22f09306736b633548670ad3c09ec9db03c5662f7
             x-checker-data:
               type: pypi
               name: flit_core
@@ -157,8 +157,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/f2/db/20a9f9cae3f3c213a8c406deb4395698459fd96962cea8f2ccb230b1943c/poetry_core-1.9.0.tar.gz
-            sha256: fa7a4001eae8aa572ee84f35feb510b321bd652e5cf9293249d62853e1f935a2
+            url: https://files.pythonhosted.org/packages/c7/5c/3609519b7d890ced542fe327ea26a7c8ea55ef298c323c46cca2a011c1cb/poetry_core-1.9.1.tar.gz
+            sha256: 7a2d49214bf58b4f17f99d6891d947a9836c9899a67a5069f52d7b67217f61b8
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -170,8 +170,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/e5/0c/0e3c05b1c87bb6a1c76d281b0f35e78d2d80ac91b5f8f524cebf77f51049/pyparsing-3.1.4-py3-none-any.whl
-            sha256: a6a7ee4235a3f944aa1fa2249307708f893fe5717dc603503c6c7969c070fb7c
+            url: https://files.pythonhosted.org/packages/be/ec/2eb3cd785efd67806c46c13a17339708ddc346cbb684eade7a6e6f79536a/pyparsing-3.2.0-py3-none-any.whl
+            sha256: 93d9577b88da0bbea8cc8334ee8b918ed014968fd2ec383e868fb8afb1ccef84
             x-checker-data:
               name: pyparsing
               packagetype: bdist_wheel
@@ -386,74 +386,74 @@ modules:
   - name: systemd
     buildsystem: meson
     config-opts:
-    - --libdir=lib
-    - -Drootprefix=/app
-    - -Drootlibdir=/app/lib
-    - -Dsysconfdir=/app/etc
-    - -Ddocdir=/app/share/doc
-    - -Dsysvinit-path=/app/etc/init.d
-    - -Dfdisk=false
-    - -Ddbus=false
-    - -Dutmp=false
-    - -Dhibernate=false
-    - -Dldconfig=false
-    - -Dresolve=false
-    - -Defi=false
-    - -Dtpm=false
-    - -Denvironment-d=false
-    - -Dbinfmt=false
-    - -Dcoredump=false
-    - -Dlogind=false
-    - -Dhostnamed=false
-    - -Dlocaled=false
-    - -Dmachined=false
-    - -Dportabled=false
-    - -Dnetworkd=false
-    - -Dtimedated=false
-    - -Dtimesyncd=false
-    - -Dremote=false
-    - -Dnss-myhostname=false
-    - -Dnss-mymachines=false
-    - -Dnss-resolve=false
-    - -Dnss-systemd=false
-    - -Dfirstboot=false
-    - -Drandomseed=false
-    - -Dbacklight=false
-    - -Dvconsole=false
-    - -Dquotacheck=false
-    - -Dsysusers=false
-    - -Dtmpfiles=false
-    - -Dimportd=false
-    - -Dhwdb=false
-    - -Drfkill=false
-    - -Dman=false
-    - -Dhtml=false
-    - -Dbashcompletiondir=no
-    - -Dzshcompletiondir=no
+      - --libdir=lib
+      - -Drootprefix=/app
+      - -Drootlibdir=/app/lib
+      - -Dsysconfdir=/app/etc
+      - -Ddocdir=/app/share/doc
+      - -Dsysvinit-path=/app/etc/init.d
+      - -Dfdisk=false
+      - -Ddbus=false
+      - -Dutmp=false
+      - -Dhibernate=false
+      - -Dldconfig=false
+      - -Dresolve=false
+      - -Defi=false
+      - -Dtpm=false
+      - -Denvironment-d=false
+      - -Dbinfmt=false
+      - -Dcoredump=false
+      - -Dlogind=false
+      - -Dhostnamed=false
+      - -Dlocaled=false
+      - -Dmachined=false
+      - -Dportabled=false
+      - -Dnetworkd=false
+      - -Dtimedated=false
+      - -Dtimesyncd=false
+      - -Dremote=false
+      - -Dnss-myhostname=false
+      - -Dnss-mymachines=false
+      - -Dnss-resolve=false
+      - -Dnss-systemd=false
+      - -Dfirstboot=false
+      - -Drandomseed=false
+      - -Dbacklight=false
+      - -Dvconsole=false
+      - -Dquotacheck=false
+      - -Dsysusers=false
+      - -Dtmpfiles=false
+      - -Dimportd=false
+      - -Dhwdb=false
+      - -Drfkill=false
+      - -Dman=false
+      - -Dhtml=false
+      - -Dbashcompletiondir=no
+      - -Dzshcompletiondir=no
     cleanup:
     # - /bin
-    - /etc
-    - /lib/libudev*
-    - /lib/kernel
-    - /lib/modprobe.d
-    - /lib/rpm
-    - /lib/sysctl.d
+      - /etc
+      - /lib/libudev*
+      - /lib/kernel
+      - /lib/modprobe.d
+      - /lib/rpm
+      - /lib/sysctl.d
     # - /lib/systemd
-    - /lib/udev
-    - /app/share/doc
-    - /share/dbus-1
-    - /share/doc
-    - /share/factory
-    - /share/glib-2.0
-    - /share/icons
-    - /share/man
-    - /share/pkgconfig
-    - /share/polkit-1
-    - /share/runtime
+      - /lib/udev
+      - /app/share/doc
+      - /share/dbus-1
+      - /share/doc
+      - /share/factory
+      - /share/glib-2.0
+      - /share/icons
+      - /share/man
+      - /share/pkgconfig
+      - /share/polkit-1
+      - /share/runtime
     sources:
-    - type: git
-      url: https://github.com/systemd/systemd.git
-      tag: v255
+      - type: git
+        url: https://github.com/systemd/systemd.git
+        tag: v255
 
 
   ######### Cryptography #########
@@ -521,8 +521,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/ce/dc/1471d4d56608e1013237af334b8a4c35d53895694fbb73882d1c4fd3f55e/cryptography-43.0.1-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: de41fd81a41e53267cb020bb3a7212861da53a7d39f863585d13ea11049cf277
+        url: https://files.pythonhosted.org/packages/4e/49/80c3a7b5514d1b416d7350830e8c422a4d667b6d9b16a9392ebfd4a5388a/cryptography-43.0.3-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 443c4a81bb10daed9a8f334365fe52542771f25aedaf889fd323a853ce7377d6
         only-arches:
           - aarch64
         x-checker-data:
@@ -535,8 +535,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/ad/43/7a9920135b0d5437cc2f8f529fa757431eb6a7736ddfadfdee1cc5890800/cryptography-43.0.1-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: f98bf604c82c416bc829e490c700ca1553eafdf2912a91e23a79d97d9801372a
+        url: https://files.pythonhosted.org/packages/0e/16/a28ddf78ac6e7e3f25ebcef69ab15c2c6be5ff9743dd0709a69a4f968472/cryptography-43.0.3-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 74f57f24754fe349223792466a709f8e0c093205ff0dca557af51072ff47ab18
         only-arches:
           - x86_64
         x-checker-data:
@@ -642,8 +642,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/34/e8/bb0e264882a42f5d5acae869d5980f298ff9c298d844e18fd1ac009ce7e9/meson-1.5.2.tar.gz
-        sha256: f955e09ab0d71ef180ae85df65991d58ed8430323de7d77a37e11c9ea630910b
+        url: https://files.pythonhosted.org/packages/77/fc/2674a4c82b7b7b13e98a9f8debb5b4b616f1a91155d30d9efa7d864009cf/meson-1.6.0.tar.gz
+        sha256: 999b65f21c03541cf11365489c1fad22e2418bb0c3d50ca61139f2eec09d5496
         x-checker-data:
           type: pypi
           name: meson
@@ -798,8 +798,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.6.0
-        commit: 9d77c58322fdae2a1ef925b200c524afbec39d1a
+        tag: v4.7.1
+        commit: 1154e200eedc069f20960c70f4bb2333730d870c
         disable-submodules: true
         x-checker-data:
           type: anitya
