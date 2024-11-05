@@ -26,8 +26,8 @@ sources:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/de/ba/0664727028b37e249e73879348cc46d45c5c1a2a2e81e8166462953c5755/cryptography-43.0.1.tar.gz
-    sha256: 203e92a75716d8cfb491dc47c79e17d0d9207ccffcbcb35f598fbe463ae3444d
+    url: https://files.pythonhosted.org/packages/0d/05/07b55d1fa21ac18c3a8c79f764e2514e6f6a9698f1be44994f5adf0d29db/cryptography-43.0.3.tar.gz
+    sha256: 315b9001266a492a6ff443b61238f956b214dbec9910a081ba5b6646a055a805
     x-checker-data:
       name: cryptography
       type: pypi
@@ -67,8 +67,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/83/25/e6d59e5f0a0508d0dca8bb98c7f7fd3772fc943ac3f53d5ab18a218d32c0/keyring-25.4.1-py3-none-any.whl
-    sha256: 5426f817cf7f6f007ba5ec722b1bcad95a75b27d780343772ad76b17cb47b0bf
+    url: https://files.pythonhosted.org/packages/32/c9/353c156fa2f057e669106e5d6bcdecf85ef8d3536ce68ca96f18dc7b6d6f/keyring-25.5.0-py3-none-any.whl
+    sha256: e67f8ac32b04be4714b42fe84ce7dad9c40985b9ca827c592cc303e7c26d9741
     x-checker-data:
       name: keyring
       packagetype: bdist_wheel
