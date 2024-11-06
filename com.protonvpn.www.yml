@@ -762,6 +762,7 @@ modules:
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
         tag: v0.9.4
         commit: cc4c3dcaacd30a200594e2b46c001b164ff98491
+        disable-submodules: true
         x-checker-data:
           type: anitya
           project-id: 369947
