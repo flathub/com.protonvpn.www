@@ -770,6 +770,37 @@ modules:
       - type: patch
         path: patches/python-proton-vpn-network-manager/fix-ip-path.patch
 
+  - name: python-proton-vpn-local-agent
+    buildsystem: simple
+    build-commands:
+      - bsdtar -Oxf python-proton-vpn-local-agent.deb data.tar.xz | bsdtar -xf -
+      - |
+        PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))');
+        install -m755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/local_agent.abi3.so"
+    sources:
+      - type: file
+        only-arches: [x86_64]
+        dest-filename: python-proton-vpn-local-agent.deb
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.1.4_amd64.deb
+        sha256: ae43ef3251aeac35f495325a93dffef88ea34c743a5db4894b1e8bbd86fdffe0
+        x-checker-data:
+          type: debian-repo
+          package-name: python3-proton-vpn-local-agent
+          root: https://repo.protonvpn.com/debian
+          dist: stable
+          component: main
+      - type: file
+        only-arches: [aarch64]
+        dest-filename: python-proton-vpn-local-agent.deb
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.1.4_arm64.deb
+        sha256: 23641305c77a752964c3824cc0174fff249bdcf63ca1213b4325fb9482218273
+        x-checker-data:
+          type: debian-repo
+          package-name: python3-proton-vpn-local-agent
+          root: https://repo.protonvpn.com/debian
+          dist: stable
+          component: main
+
   - name: proton-vpn-gtk-app
     buildsystem: simple
     build-commands:
