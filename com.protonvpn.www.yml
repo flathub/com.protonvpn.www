@@ -774,7 +774,9 @@ modules:
     buildsystem: simple
     build-commands:
       - bsdtar -Oxf python-proton-vpn-local-agent.deb data.tar.xz | bsdtar -xf -
-      - install -m755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python3.*/site-packages/proton/vpn/local_agent.abi3.so"
+      - |
+        PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))');
+        install -m755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/local_agent.abi3.so"
     sources:
       - type: file
         only-arches: [x86_64]
