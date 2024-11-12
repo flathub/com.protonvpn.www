@@ -184,8 +184,8 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/cf/db/ce8eda256fa131af12e0a76d481711abe4681b6923c27efb9a255c9e4594/tomli-2.0.2-py3-none-any.whl
-            sha256: 2ebe24485c53d303f690b0ec092806a085f07af5a5aa1464f3931eec36caaa38
+            url: https://files.pythonhosted.org/packages/de/f7/4da0ffe1892122c9ea096c57f64c2753ae5dd3ce85488802d11b0992cc6d/tomli-2.1.0-py3-none-any.whl
+            sha256: a5c57c3d1c56f5ccdf89f6523458f60ef716e210fc47c4cfb188c5ba473e0391
             x-checker-data:
               name: tomli
               packagetype: bdist_wheel
@@ -616,8 +616,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/35/b9/de2a5c0144d7d75a57ff355c0c24054f965b2dc3036456ae03a51ea6264b/tomli-2.0.2.tar.gz
-                    sha256: d46d457a85337051c36524bc5349dd91b1877838e2979ac5ced3e710ed8a60ed
+                    url: https://files.pythonhosted.org/packages/1e/e4/1b6cbcc82d8832dd0ce34767d5c560df8a3547ad8cbc427f34601415930a/tomli-2.1.0.tar.gz
+                    sha256: 3f646cae2aec94e17d04973e4249548320197cfabdf130015d023de4b74d8ab8
                     x-checker-data:
                       type: pypi
                       name: tomli
@@ -740,8 +740,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.36.4
-        commit: 456dcc512b2cb5f20c1f409a109679b39ae0d97e
+        tag: v0.36.6
+        commit: 0932031562a6b7defd5c2234b257f600b89aaa52
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -760,8 +760,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.9.4
-        commit: cc4c3dcaacd30a200594e2b46c001b164ff98491
+        tag: v0.9.7
+        commit: 3f5c929d2d9052b1f26f3583f79a7b7e0525935c
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -830,8 +830,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.7.3
-        commit: 1c4ff9ad37ed9cf688319919425353badd6eef18
+        tag: v4.7.4
+        commit: 01676a4da1fcaf18b03a8b22c8590de3d3fbe58f
         disable-submodules: true
         x-checker-data:
           type: anitya
