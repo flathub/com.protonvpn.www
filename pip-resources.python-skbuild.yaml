@@ -10,8 +10,8 @@ modules:
     sources:
       - &id001
         type: file
-        url: https://files.pythonhosted.org/packages/0c/8b/90e80904fdc24ce33f6fc6f35ebd2232fe731a8528a22008458cf197bc4d/hatchling-1.25.0-py3-none-any.whl
-        sha256: b47948e45d4d973034584dd4cb39c14b6a70227cf287ab7ec0ad7983408a882c
+        url: https://files.pythonhosted.org/packages/7f/36/bd5a834bfcbded7de667609792df6018840fd2193cc686962a6e9dc332f7/hatchling-1.26.2-py3-none-any.whl
+        sha256: bf994eabc0d0c0f8baf2d3ef55102445eb2f68ed3f408063bd3810314541eeb2
         x-checker-data:
           name: hatchling
           packagetype: bdist_wheel
