@@ -12,114 +12,83 @@
     <launchable type="desktop-id">com.protonvpn.www.desktop</launchable>
     <description>
         <p>
-            NOTE: This wrapper is built from the official source code, but it is not verified,
-            affiliated with, or supported by Proton AG.
+            <em>
+                NOTE: This app is built from Proton VPN's official open-source code,
+                but it is not an official Proton app.
+                It is not affiliated with or supported by Proton AG.
+            </em>
         </p>
         <p>
-            Proton VPN is the world's only free VPN app that is safe to use and respects
-            your privacy. Proton VPN is created by the CERN scientists behind Proton Mail
-            - the world's largest encrypted email service. Our fast VPN offers secure,
-            private and encrypted internet access with advanced security features. Proton
-            VPN also unblocks access to popular websites and streaming platforms.
+            Browse privately and take back control of your personal information with Proton VPN.
+            Connect to one of our high-speed servers to hide your IP address,
+            bypass digital borders, and stream from popular websites and platforms.
         </p>
         <p>
-            Used by millions worldwide, Proton’s secure no-logs VPN offers 24/7 safe and
-            private internet access, and does not record your browsing history, display
-            ads, sell your data to third parties, or limit downloads.
+            Used by millions worldwide, our secure no-logs VPN does not record your browsing history,
+            display ads, sell your data to third parties, or limit downloads.
         </p>
-        <p>Free VPN features available to all users</p>
+        <p>
+            Proton VPN is brought to you by the
+            CERN scientists behind Proton Mail — the world's largest encrypted email service. 
+        </p>
+        <p>Free VPN features</p>
         <ul>
-            <li>Unlimited data with no bandwidth or speed restrictions</li>
-            <li>Strict no logs policy</li>
-            <li>
-                Bypass geo restrictions: smart protocol selection automatically overcomes
-                VPN bans and unblocks censored sites and content
-            </li>
-            <li>Full disk encrypted servers protect your data</li>
-            <li>
-                Perfect forward secrecy: encrypted traffic cannot be captured and decrypted
-                later
-            </li>
-            <li>
-                DNS leak protection: we encrypt DNS queries to ensure that your browsing
-                activity cannot be exposed through DNS leaks
-            </li>
-            <li>
-                Always-on VPN/ kill switch offers protection against leaks caused by
-                accidental disconnections
-            </li>
+            <li>Strict no-logs policy</li>
+            <li>Zero-access, end-to-end encryption</li>
+            <li>Full-disk encrypted servers</li>
+            <li>No bandwidth restrictions</li>
+            <li>Strong, secure protocols: WireGuard and OpenVPN</li>
+            <li>IPv6 support</li>
+            <li>Perfect forward secrecy: Encrypted traffic cannot be captured and decrypted later</li>
+            <li>DNS leak protection: Ensures DNS queries are never accidentally sent to third-party resolvers</li>
+            <li>Kill switch: Protects you against IP leaks caused by accidental disconnections</li>
         </ul>
         <p>Premium VPN features</p>
         <ul>
-            <li>Access 2900+ high speed servers across 65+ countries worldwide</li>
-            <li>Fast VPN: high speed servers with connections up to 10 Gbps</li>
+            <li>Connect to 8500+ high speed servers across 110+ countries</li>
+            <li>Lightning-fast VPN speeds (up to 10 Gbps)</li>
+            <li>Connect up to 10 devices at the same time</li>
             <li>
-                VPN Accelerator: unique technology increases Proton VPN's speeds by up to
-                400% to give a faster browsing experience
+                Stream films, sports events, and videos on any streaming service
+                (Netflix, Hulu, Amazon Prime Video, Disney+, BBC iplayer, and more)
             </li>
-            <li>Unblock access to blocked or censored content</li>
-            <li>Connect up to 10 devices to the VPN at the same time</li>
+            <li>P2P (peer-to-peer) servers: Fast torrenting, gaming, and file sharing</li>
+            <li>Secure Core servers: Enhance your protection with double hop VPN</li>
+            <li>Tor servers: Connect to onion sites with your regular browser</li>
             <li>
-                Ad blocker (NetShield): a DNS filtering feature that protects you from
-                malware, blocks ads, and prevents website trackers from following you across
-                the web
+                NetShield Ad-blocker: Protect yourself from ads, trackers,
+                and malware on websites and apps
             </li>
-            <li>
-                Stream films, sports events, and videos on any streaming service (Netflix,
-                Hulu, Amazon Prime Video, Disney+, BBC iplayer etc)
-            </li>
-            <li>File-sharing and P2P support</li>
-            <li>
-                Secure Core servers protect against network-based attacks with multi-hop VPN
-            </li>
-            <li>
-                Tor over VPN provides automatic integration with the Tor anonymity network
-            </li>
-            <li>
-                Split tunneling support allows you to select which apps go through the VPN
-                tunnel
-            </li>
+            <li>VPN Accelerator: Unique technology increases VPN speeds by up to 400%</li>
         </ul>
-        <p>Why choose Proton VPN?</p>
+        <p>Why Proton VPN?</p>
         <ul>
-            <li>
-                No-logs VPN: We do not keep any logs that can identify what you do online
-            </li>
-            <li>
-                DNS and IPv6 leak protection: Our Linux app will never accidentally expose
-                your real IP address
-            </li>
-            <li>
-                Easy-to-use interface: The new Proton VPN Linux app has an intuitive
-                graphical user interface that lets you quickly activate features and connect
-                to servers
-            </li>
-            <li>
-                P2P support: Share and download files using BitTorrent and other P2P
-                protocols
-            </li>
-            <li>
-                VPN Accelerator: Free and available to everyone who uses Proton VPN, our
-                unique VPN Accelerator technology can improve speeds by over 400%
-            </li>
-            <li>
-                Strong encryption: Our Linux app uses the OpenVPN protocol at its strongest
-                encryption settings
-            </li>
-            <li>
-                Based in Switzerland: Switzerland has some of the world's strongest data
-                privacy laws
-            </li>
-            <li>
-                Secure streaming: Unblock popular streaming services and watch your favorite
-                shows
-            </li>
+            <li>No personal data required to sign up</li>
+            <li>Easy-to-use VPN apps for iOS, Android, MacOS, Windows, iPad, Linux, Apple TV, and Android TV</li>
+            <li>Our high-strength encryption provides a more secure connection than an internet proxy</li>
+            <li>Independently audited by third-party security experts</li>
+            <li>Trusted open-source code that anyone can review</li>
+            <li>Data protection using AES-256 and 4096 RSA encryption</li>
         </ul>
         <p>Join the privacy revolution</p>
         <p>
-            Your support is important as it allows us to continue our mission to bring
-            online freedom to people around the globe. Get our private VPN free today and
-            enjoy fast VPN connections and a secure internet, from anywhere.
+            Your support helps us bring online freedom to people around the globe.
+            Join Proton today to protect yourself online and help create a secure,
+            private, and free internet for everyone.
+        </p>
+        <p>Experts' opinion</p>
+        <p>
+            PCMag: “[Proton VPN's] is a slick VPN with an excellent collection of advanced features,
+            and it has the best free subscription plan we've seen.
+            Few competitors can match its mix of affordability, features, and design.
+            For all that, it gets a rare five-star rating and earns our Editors' Choice award”
+        </p>
+        <p>
+            Mozilla: “There are many VPN vendors out there, but not all of them are created equal.
+            Proton VPN offers a secure, reliable, and easy-to-use VPN service and is operated by the makers of ProtonMail,
+            a respected, privacy-oriented email service...
+            As a company they have a track record of fighting for online privacy and they share our dedication
+            to internet safety and security.”
         </p>
         <p>Required dependencies</p>
         <ul>
