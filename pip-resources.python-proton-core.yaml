@@ -82,14 +82,14 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/0d/05/07b55d1fa21ac18c3a8c79f764e2514e6f6a9698f1be44994f5adf0d29db/cryptography-43.0.3.tar.gz
-        sha256: 315b9001266a492a6ff443b61238f956b214dbec9910a081ba5b6646a055a805
+        url: https://files.pythonhosted.org/packages/91/4c/45dfa6829acffa344e3967d6006ee4ae8be57af746ae2eba1c431949b32c/cryptography-44.0.0.tar.gz
+        sha256: cd4e834f340b4293430701e772ec543b0fbe6c2dea510a5286fe0acabe153a02
         x-checker-data:
           name: cryptography
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/d9/dd/e0aa7ebef5168c75b772eda64978c597a9129b46be17779054652a7999e4/pyOpenSSL-24.2.1-py3-none-any.whl
-        sha256: 967d5719b12b243588573f39b0c677637145c7a1ffedcd495a487e58177fbb8d
+        url: https://files.pythonhosted.org/packages/42/22/40f9162e943f86f0fc927ebc648078be87def360d9d8db346619fb97df2b/pyOpenSSL-24.3.0-py3-none-any.whl
+        sha256: e474f5a473cd7f92221cc04976e48f4d11502804657a08a989fb3be5514c904a
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
@@ -108,15 +108,15 @@ modules:
         --prefix=${FLATPAK_DEST} "aiohttp" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/f7/d8/120cd0fe3e8530df0539e71ba9683eade12cae103dd7543e50d15f737917/aiohappyeyeballs-2.4.3-py3-none-any.whl
-        sha256: 8a7a83727b2756f394ab2895ea0765a0a8c475e3c71e98d43d76f22b4b435572
+        url: https://files.pythonhosted.org/packages/b9/74/fbb6559de3607b3300b9be3cc64e97548d55678e44623db17820dbd20002/aiohappyeyeballs-2.4.4-py3-none-any.whl
+        sha256: a980909d50efcd44795c4afeca523296716d50cd756ddca6af8c65b996e27de8
         x-checker-data:
           name: aiohappyeyeballs
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/17/7e/16e57e6cf20eb62481a2f9ce8674328407187950ccc602ad07c685279141/aiohttp-3.10.10.tar.gz
-        sha256: 0631dd7c9f0822cc61c88586ca76d5b5ada26538097d0f1df510b082bad3411a
+        url: https://files.pythonhosted.org/packages/2c/e5/c7ad0689e8ab74c3ec9bf20e0f667e1278b3738ae19ae3fed21e6a0543ca/aiohttp-3.11.8.tar.gz
+        sha256: 7bc9d64a2350cbb29a9732334e1a0743cbb6844de1731cbdf5949b235653f3fd
         x-checker-data:
           name: aiohttp
           type: pypi
@@ -148,14 +148,14 @@ modules:
           name: multidict
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/a9/4d/5e5a60b78dbc1d464f8a7bbaeb30957257afdc8512cbb9dfd5659304f5cd/propcache-0.2.0.tar.gz
-        sha256: df81779732feb9d01e5d513fad0122efb3d53bbc75f61b2a4f29a020bc985e70
+        url: https://files.pythonhosted.org/packages/20/c8/2a13f78d82211490855b2fb303b6721348d0787fdd9a12ac46d99d3acde1/propcache-0.2.1.tar.gz
+        sha256: 3f77ce728b19cb537714499928fe800c3dda29e8d9428778fc7c186da4c09a64
         x-checker-data:
           name: propcache
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/54/9c/9c0a9bfa683fc1be7fdcd9687635151544d992cccd48892dc5e0a5885a29/yarl-1.17.1.tar.gz
-        sha256: 067a63fcfda82da6b198fa73079b1ca40b7c9b7994995b6ee38acda728b64d47
+        url: https://files.pythonhosted.org/packages/5e/4b/53db4ecad4d54535aff3dfda1f00d6363d79455f62b11b8ca97b82746bd2/yarl-1.18.0.tar.gz
+        sha256: 20d95535e7d833889982bfe7cc321b7f63bf8879788fee982c76ae2b24cfb715
         x-checker-data:
           name: yarl
           type: pypi
