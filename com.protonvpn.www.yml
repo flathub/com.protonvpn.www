@@ -184,8 +184,8 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/de/f7/4da0ffe1892122c9ea096c57f64c2753ae5dd3ce85488802d11b0992cc6d/tomli-2.1.0-py3-none-any.whl
-            sha256: a5c57c3d1c56f5ccdf89f6523458f60ef716e210fc47c4cfb188c5ba473e0391
+            url: https://files.pythonhosted.org/packages/6e/c2/61d3e0f47e2b74ef40a68b9e6ad5984f6241a942f7cd3bbfbdbd03861ea9/tomli-2.2.1-py3-none-any.whl
+            sha256: cb55c73c5f4408779d0cf3eef9f762b9c9f147a77de7b258bef0a5628adc85cc
             x-checker-data:
               name: tomli
               packagetype: bdist_wheel
@@ -232,8 +232,8 @@ modules:
               name: setuptools-rust
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/e4/7e/d95e7d96d4828e965891af92e43b52a4cd3395dc1c1ef4ee62748d0471d0/bcrypt-4.2.0.tar.gz
-        sha256: cf69eaf5185fd58f268f805b505ce31f9b9fc2d64b376642164e9244540c1221
+        url: https://files.pythonhosted.org/packages/56/8c/dd696962612e4cd83c40a9e6b3db77bfe65a830f4b9af44098708584686c/bcrypt-4.2.1.tar.gz
+        sha256: 6765386e3ab87f569b276988742039baab087b2cdb01e809d74e74503c2faafe
         x-checker-data:
           type: pypi
           name: bcrypt
@@ -521,8 +521,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/4e/49/80c3a7b5514d1b416d7350830e8c422a4d667b6d9b16a9392ebfd4a5388a/cryptography-43.0.3-cp37-abi3-manylinux_2_28_aarch64.whl
-        sha256: 443c4a81bb10daed9a8f334365fe52542771f25aedaf889fd323a853ce7377d6
+        url: https://files.pythonhosted.org/packages/98/65/13d9e76ca19b0ba5603d71ac8424b5694415b348e719db277b5edc985ff5/cryptography-44.0.0-cp37-abi3-manylinux_2_28_aarch64.whl
+        sha256: 761817a3377ef15ac23cd7834715081791d4ec77f9297ee694ca1ee9c2c7e5eb
         only-arches:
           - aarch64
         x-checker-data:
@@ -535,8 +535,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/0e/16/a28ddf78ac6e7e3f25ebcef69ab15c2c6be5ff9743dd0709a69a4f968472/cryptography-43.0.3-cp37-abi3-manylinux_2_28_x86_64.whl
-        sha256: 74f57f24754fe349223792466a709f8e0c093205ff0dca557af51072ff47ab18
+        url: https://files.pythonhosted.org/packages/b1/07/40fe09ce96b91fc9276a9ad272832ead0fddedcba87f1190372af8e3039c/cryptography-44.0.0-cp37-abi3-manylinux_2_28_x86_64.whl
+        sha256: 3c672a53c0fb4725a29c303be906d3c1fa99c32f58abe008a82705f9ee96f40b
         only-arches:
           - x86_64
         x-checker-data:
@@ -557,8 +557,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/37/2c/d717d13a413d6f7579cdaa1e28e6e2c98de95461549b08d311c8a5bf4c51/ninja-1.11.1.1.tar.gz
-        sha256: 9d793b08dd857e38d0b6ffe9e6b7145d7c485a42dcfea04905ca0cdb6017cc3c
+        url: https://files.pythonhosted.org/packages/b4/49/4f1a79f99f4c3eb5d22f943bba14832923bb44423254d5089d38a9f6da63/ninja-1.11.1.2.tar.gz
+        sha256: 4fbd07b2b4232543726abafdd350453a2fabef4527664ca0e491c578aee5f857
         x-checker-data:
           type: pypi
           name: ninja
@@ -616,8 +616,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/1e/e4/1b6cbcc82d8832dd0ce34767d5c560df8a3547ad8cbc427f34601415930a/tomli-2.1.0.tar.gz
-                    sha256: 3f646cae2aec94e17d04973e4249548320197cfabdf130015d023de4b74d8ab8
+                    url: https://files.pythonhosted.org/packages/18/87/302344fed471e44a87289cf4967697d07e532f2421fdaf868a303cbae4ff/tomli-2.2.1.tar.gz
+                    sha256: cd45e1dc79c835ce60f7404ec8119f2eb06d38b1deba146f07ced3bbc44505ff
                     x-checker-data:
                       type: pypi
                       name: tomli
@@ -678,8 +678,8 @@ modules:
       - CONFDIR=${FLATPAK_DEST}/etc/iproute2
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.11.0.tar.xz
-        sha256: 1f795398a04aeaacd06a8f6ace2cfd913c33fa5953ca99daae83bb5c534611c3
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.12.0.tar.xz
+        sha256: bbd141ef7b5d0127cc2152843ba61f274dc32814fa3e0f13e7d07a080bef53d9
         x-checker-data:
           project-id: 1392
           stable-only: true
@@ -701,8 +701,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.3.3
-        commit: d8b919e33770f772a863354ff4606770418a067a
+        tag: v0.4.0
+        commit: e87d1e3b5fc70883adc02ef2e2d9b0eb360b83ba
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -721,8 +721,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-keyring-linux
-        tag: v0.1.0
-        commit: f17038fc9636796c02f71e8395fbd19417f6db0b
+        tag: v0.2.0
+        commit: 5ebabcc758b4b6179c85f55f32f3651fdb1c9249
         x-checker-data:
           type: anitya
           project-id: 369953
@@ -740,8 +740,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.36.4
-        commit: 456dcc512b2cb5f20c1f409a109679b39ae0d97e
+        tag: v0.38.2
+        commit: 4a0078c2a6ac6272dffa6f15911b77658792574f
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -760,8 +760,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.9.4
-        commit: cc4c3dcaacd30a200594e2b46c001b164ff98491
+        tag: v0.10.1
+        commit: c4a8f809f1ebbf07a5109b3c554b1cd9465835e5
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -781,8 +781,8 @@ modules:
       - type: file
         only-arches: [x86_64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.1.4_amd64.deb
-        sha256: ae43ef3251aeac35f495325a93dffef88ea34c743a5db4894b1e8bbd86fdffe0
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.2.0_amd64.deb
+        sha256: 8ab54809637389639009b701b31d19c3fef411855657a7c85472ce0a642092f5
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -792,8 +792,8 @@ modules:
       - type: file
         only-arches: [aarch64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.1.4_arm64.deb
-        sha256: 23641305c77a752964c3824cc0174fff249bdcf63ca1213b4325fb9482218273
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.2.0_arm64.deb
+        sha256: 96b74e7ecfd4f3fb72b5cd51205250c84a9f1ac29591861b21b64ca9c15a23fb
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -830,8 +830,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.7.4
-        commit: 01676a4da1fcaf18b03a8b22c8590de3d3fbe58f
+        tag: v4.8.0
+        commit: ce552ec3a089106545cd71c54520632a9ab7311e
         disable-submodules: true
         x-checker-data:
           type: anitya
