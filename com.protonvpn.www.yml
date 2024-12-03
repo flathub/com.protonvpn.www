@@ -559,11 +559,9 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/b4/49/4f1a79f99f4c3eb5d22f943bba14832923bb44423254d5089d38a9f6da63/ninja-1.11.1.2.tar.gz
-        sha256: 4fbd07b2b4232543726abafdd350453a2fabef4527664ca0e491c578aee5f857
-        x-checker-data:
-          type: pypi
-          name: ninja
+        url: https://files.pythonhosted.org/packages/b4/49/4f1a79f99f4c3eb5d22f943bba14832923bb44423254d5089d38a9f6da63/ninja-1.11.1.1.tar.gz
+        sha256: 9d793b08dd857e38d0b6ffe9e6b7145d7c485a42dcfea04905ca0cdb6017cc3c
+
       - type: file
         url: https://github.com/Kitware/ninja/archive/refs/tags/v1.11.1.g95dee.kitware.jobserver-1.tar.gz
         sha256: 7ba84551f5b315b4270dc7c51adef5dff83a2154a3665a6c9744245c122dd0db
@@ -574,14 +572,11 @@ modules:
         build-commands:
           - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}"
             .
-        cleanup: ['*']
+        cleanup: ["*"]
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/56/54/2beb41f3fcddb4ea238634c6c23fe93115090d8799a45f626a83e6934c16/scikit_build-0.18.1.tar.gz
-            sha256: a4152ac5a084d499c28a7797be0628d8366c336e2fb0e1a063eb32e55efcb8e7
-            x-checker-data:
-              type: pypi
-              name: scikit-build
+            url: https://files.pythonhosted.org/packages/9e/e2/2e440c30e93fc5b505ee56169a4396b05e797a1daadb721aba429adbfd51/scikit-build-0.15.0.tar.gz
+            sha256: e723cd0f3489a042370b9ea988bbb9cfd7725e8b25b20ca1c7981821fcf65fb9
         modules:
           - name: python-setuptools-scm
             buildsystem: simple
