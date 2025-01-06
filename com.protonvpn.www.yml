@@ -157,8 +157,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/c7/5c/3609519b7d890ced542fe327ea26a7c8ea55ef298c323c46cca2a011c1cb/poetry_core-1.9.1.tar.gz
-            sha256: 7a2d49214bf58b4f17f99d6891d947a9836c9899a67a5069f52d7b67217f61b8
+            url: https://files.pythonhosted.org/packages/db/ec/dbd9cedc8b68309f1f4c0160355890b4f65f51901b31b1831dbf8c93d6c0/poetry_core-2.0.0.tar.gz
+            sha256: 3317a3cc3932011a61114236b2d49883f4fb1403d2f5e97771ac0d077cfa396f
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -170,8 +170,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/be/ec/2eb3cd785efd67806c46c13a17339708ddc346cbb684eade7a6e6f79536a/pyparsing-3.2.0-py3-none-any.whl
-            sha256: 93d9577b88da0bbea8cc8334ee8b918ed014968fd2ec383e868fb8afb1ccef84
+            url: https://files.pythonhosted.org/packages/1c/a7/c8a2d361bf89c0d9577c934ebb7421b25dc84bf3a8e3ac0a40aed9acc547/pyparsing-3.2.1-py3-none-any.whl
+            sha256: 506ff4f4386c4cec0590ec19e6302d3aedb992fdc02c761e90416f158dacf8e1
             x-checker-data:
               name: pyparsing
               packagetype: bdist_wheel
@@ -639,8 +639,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/77/fc/2674a4c82b7b7b13e98a9f8debb5b4b616f1a91155d30d9efa7d864009cf/meson-1.6.0.tar.gz
-        sha256: 999b65f21c03541cf11365489c1fad22e2418bb0c3d50ca61139f2eec09d5496
+        url: https://files.pythonhosted.org/packages/ef/0d/962a44cd22db0503cec62a169ec93c4ae646899e97b918113add2022cf11/meson-1.6.1.tar.gz
+        sha256: 1eca49eb6c26d58bbee67fd3337d8ef557c0804e30a6d16bfdf269db997464de
         x-checker-data:
           type: pypi
           name: meson
@@ -737,8 +737,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.38.2
-        commit: 4a0078c2a6ac6272dffa6f15911b77658792574f
+        tag: v0.39.0
+        commit: 9da74c9d8a7f370052ecc1ec32eea6ae305d510a
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -757,8 +757,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.10.1
-        commit: c4a8f809f1ebbf07a5109b3c554b1cd9465835e5
+        tag: v0.10.2
+        commit: 4cdbf1d8d676a8a7d58d7964d3744a56c8481fa0
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -827,8 +827,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.8.1
-        commit: 757819a7626e8d88f783accebbd0273ee7ca359a
+        tag: v4.8.2
+        commit: a5980fad0fc42cfbcc25073a87b53217314ff9e7
         disable-submodules: true
         x-checker-data:
           type: anitya
