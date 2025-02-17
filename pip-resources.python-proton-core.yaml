@@ -22,8 +22,8 @@ modules:
         --prefix=${FLATPAK_DEST} "requests" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/a5/32/8f6669fc4798494966bf446c8c4a162e0b5d893dff088afddf76414f70e1/certifi-2024.12.14-py3-none-any.whl
-        sha256: 1275f7a45be9464efc1173084eaa30f866fe2e47d389406136d332ed4967ec56
+        url: https://files.pythonhosted.org/packages/38/fc/bce832fd4fd99766c04d1ee0eead6b0ec6486fb100ae5e74c1d91292b982/certifi-2025.1.31-py3-none-any.whl
+        sha256: ca78db4565a652026a4db2bcdf68f2fb589ea80d0be70e03929ed730746b84fe
         x-checker-data:
           name: certifi
           packagetype: bdist_wheel
@@ -63,8 +63,8 @@ modules:
         --prefix=${FLATPAK_DEST} "python-gnupg" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/38/67/ea9e551fcc684fe5119e5355920c69ac9332afdd1691a472a38528dd9a3c/python_gnupg-0.5.3-py2.py3-none-any.whl
-        sha256: 2f8a4c6f63766feca6cc1416408f8b84e1b914fe7b54514e570fc5cbe92e9248
+        url: https://files.pythonhosted.org/packages/7b/5b/6666ed5a0d3ce4d5444af62e373d5ba8ab253a03487c86f2f9f1078e7c31/python_gnupg-0.5.4-py2.py3-none-any.whl
+        sha256: 40ce25cde9df29af91fe931ce9df3ce544e14a37f62b13ca878c897217b2de6c
         x-checker-data:
           name: python_gnupg
           packagetype: bdist_wheel
@@ -82,14 +82,14 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/91/4c/45dfa6829acffa344e3967d6006ee4ae8be57af746ae2eba1c431949b32c/cryptography-44.0.0.tar.gz
-        sha256: cd4e834f340b4293430701e772ec543b0fbe6c2dea510a5286fe0acabe153a02
+        url: https://files.pythonhosted.org/packages/c7/67/545c79fe50f7af51dbad56d16b23fe33f63ee6a5d956b3cb68ea110cbe64/cryptography-44.0.1.tar.gz
+        sha256: f51f5705ab27898afda1aaa430f34ad90dc117421057782022edf0600bec5f14
         x-checker-data:
           name: cryptography
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/42/22/40f9162e943f86f0fc927ebc648078be87def360d9d8db346619fb97df2b/pyOpenSSL-24.3.0-py3-none-any.whl
-        sha256: e474f5a473cd7f92221cc04976e48f4d11502804657a08a989fb3be5514c904a
+        url: https://files.pythonhosted.org/packages/ca/d7/eb76863d2060dcbe7c7e6cccfd95ac02ea0b9acc37745a0d99ff6457aefb/pyOpenSSL-25.0.0-py3-none-any.whl
+        sha256: 424c247065e46e76a37411b9ab1782541c23bb658bf003772c3405fbaa128e90
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
@@ -108,15 +108,15 @@ modules:
         --prefix=${FLATPAK_DEST} "aiohttp" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/b9/74/fbb6559de3607b3300b9be3cc64e97548d55678e44623db17820dbd20002/aiohappyeyeballs-2.4.4-py3-none-any.whl
-        sha256: a980909d50efcd44795c4afeca523296716d50cd756ddca6af8c65b996e27de8
+        url: https://files.pythonhosted.org/packages/44/4c/03fb05f56551828ec67ceb3665e5dc51638042d204983a03b0a1541475b6/aiohappyeyeballs-2.4.6-py3-none-any.whl
+        sha256: 147ec992cf873d74f5062644332c539fcd42956dc69453fe5204195e560517e1
         x-checker-data:
           name: aiohappyeyeballs
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/fe/ed/f26db39d29cd3cb2f5a3374304c713fe5ab5a0e4c8ee25a0c45cc6adf844/aiohttp-3.11.11.tar.gz
-        sha256: bb49c7f1e6ebf3821a42d81d494f538107610c3a705987f53068546b0e90303e
+        url: https://files.pythonhosted.org/packages/37/4b/952d49c73084fb790cb5c6ead50848c8e96b4980ad806cf4d2ad341eaa03/aiohttp-3.11.12.tar.gz
+        sha256: 7603ca26d75b1b86160ce1bbe2787a0b706e592af5b2504e12caa88a217767b0
         x-checker-data:
           name: aiohttp
           type: pypi
@@ -128,8 +128,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/89/aa/ab0f7891a01eeb2d2e338ae8fecbe57fcebea1a24dbb64d45801bfab481d/attrs-24.3.0-py3-none-any.whl
-        sha256: ac96cd038792094f438ad1f6ff80837353805ac950cd2aa0e0625ef19850c308
+        url: https://files.pythonhosted.org/packages/fc/30/d4986a882011f9df997a55e6becd864812ccfcd821d64aac8570ee39f719/attrs-25.1.0-py3-none-any.whl
+        sha256: c75a69e28a550a7e93789579c22aa26b0f5b83b75dc4e08fe092980051e1090a
         x-checker-data:
           name: attrs
           packagetype: bdist_wheel
