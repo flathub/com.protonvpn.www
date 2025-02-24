@@ -148,8 +148,8 @@ modules:
           name: multidict
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/20/c8/2a13f78d82211490855b2fb303b6721348d0787fdd9a12ac46d99d3acde1/propcache-0.2.1.tar.gz
-        sha256: 3f77ce728b19cb537714499928fe800c3dda29e8d9428778fc7c186da4c09a64
+        url: https://files.pythonhosted.org/packages/92/76/f941e63d55c0293ff7829dd21e7cf1147e90a526756869a9070f287a68c9/propcache-0.3.0.tar.gz
+        sha256: a8fd93de4e1d278046345f49e2238cdb298589325849b2645d4a94c53faeffc5
         x-checker-data:
           name: propcache
           type: pypi
