@@ -82,8 +82,8 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/c7/67/545c79fe50f7af51dbad56d16b23fe33f63ee6a5d956b3cb68ea110cbe64/cryptography-44.0.1.tar.gz
-        sha256: f51f5705ab27898afda1aaa430f34ad90dc117421057782022edf0600bec5f14
+        url: https://files.pythonhosted.org/packages/cd/25/4ce80c78963834b8a9fd1cc1266be5ed8d1840785c0f2e1b73b8d128d505/cryptography-44.0.2.tar.gz
+        sha256: c63454aa261a0cf0c5b4718349629793e9e634993538db841165b3df74f37ec0
         x-checker-data:
           name: cryptography
           type: pypi
@@ -108,15 +108,15 @@ modules:
         --prefix=${FLATPAK_DEST} "aiohttp" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/44/4c/03fb05f56551828ec67ceb3665e5dc51638042d204983a03b0a1541475b6/aiohappyeyeballs-2.4.6-py3-none-any.whl
-        sha256: 147ec992cf873d74f5062644332c539fcd42956dc69453fe5204195e560517e1
+        url: https://files.pythonhosted.org/packages/1b/9a/e4886864ce06e1579bd428208127fbdc0d62049c751e4e9e3b509c0059dc/aiohappyeyeballs-2.5.0-py3-none-any.whl
+        sha256: 0850b580748c7071db98bffff6d4c94028d0d3035acc20fd721a0ce7e8cac35d
         x-checker-data:
           name: aiohappyeyeballs
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/37/4b/952d49c73084fb790cb5c6ead50848c8e96b4980ad806cf4d2ad341eaa03/aiohttp-3.11.12.tar.gz
-        sha256: 7603ca26d75b1b86160ce1bbe2787a0b706e592af5b2504e12caa88a217767b0
+        url: https://files.pythonhosted.org/packages/b3/3f/c4a667d184c69667b8f16e0704127efc5f1e60577df429382b4d95fd381e/aiohttp-3.11.13.tar.gz
+        sha256: 8ce789231404ca8fff7f693cdce398abf6d90fd5dae2b1847477196c243b1fbb
         x-checker-data:
           name: aiohttp
           type: pypi
