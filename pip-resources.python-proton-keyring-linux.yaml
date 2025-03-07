@@ -26,8 +26,8 @@ sources:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/c7/67/545c79fe50f7af51dbad56d16b23fe33f63ee6a5d956b3cb68ea110cbe64/cryptography-44.0.1.tar.gz
-    sha256: f51f5705ab27898afda1aaa430f34ad90dc117421057782022edf0600bec5f14
+    url: https://files.pythonhosted.org/packages/cd/25/4ce80c78963834b8a9fd1cc1266be5ed8d1840785c0f2e1b73b8d128d505/cryptography-44.0.2.tar.gz
+    sha256: c63454aa261a0cf0c5b4718349629793e9e634993538db841165b3df74f37ec0
     x-checker-data:
       name: cryptography
       type: pypi
@@ -60,8 +60,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/ae/72/2a1e2290f1ab1e06f71f3d0f1646c9e4634e70e1d37491535e19266e8dc9/jeepney-0.8.0-py3-none-any.whl
-    sha256: c0a454ad016ca575060802ee4d590dd912e35c122fa04e70306de3d076cce755
+    url: https://files.pythonhosted.org/packages/b2/a3/e137168c9c44d18eff0376253da9f1e9234d0239e0ee230d2fee6cea8e55/jeepney-0.9.0-py3-none-any.whl
+    sha256: 97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683
     x-checker-data:
       name: jeepney
       packagetype: bdist_wheel
