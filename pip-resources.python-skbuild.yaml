@@ -42,8 +42,8 @@ modules:
           type: pypi
       - &id005
         type: file
-        url: https://files.pythonhosted.org/packages/e1/67/038a8c7f60ffd6037374649826dbaa221e4b17755016b71a581162a15ce1/trove_classifiers-2025.2.18.16-py3-none-any.whl
-        sha256: 7f6dfae899f23f04b73bc09e0754d9219a6fc4d6cca6acd62f1850a87ea92262
+        url: https://files.pythonhosted.org/packages/ef/bf/44195f3d9c3c4fe4cccf1c261c80d50781b9e8a0a6febf084c09c66740ff/trove_classifiers-2025.3.3.18-py3-none-any.whl
+        sha256: 215630da61cf8757c373f81b602fc1283ec5a691cf12c5f9f96f11d6ad5fc7f2
         x-checker-data:
           name: trove_classifiers
           packagetype: bdist_wheel
