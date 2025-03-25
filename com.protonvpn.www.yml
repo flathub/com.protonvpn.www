@@ -41,8 +41,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/AyatanaIndicators/libayatana-appindicator.git
-        tag: 0.5.93
-        commit: 238c8b02718fa5b4af95ede72beeed762094f4cc
+        tag: 0.5.94
+        commit: 31e8bb083b307e1cc96af4874a94707727bd1e79
         x-checker-data:
           type: anitya
           project-id: 18446
@@ -140,8 +140,8 @@ modules:
             --prefix=${FLATPAK_DEST} "flit_core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/bc/18/b9b81cab2b8f63e6e7f72e1ba2766a0454fcd563e7a77b8299cb917ba805/flit_core-3.11.0.tar.gz
-            sha256: 6ceeee3219e9d2ea282041f3e027c441597b450b33007cb81168e887b6113a8f
+            url: https://files.pythonhosted.org/packages/69/59/b6fc2188dfc7ea4f936cd12b49d707f66a1cb7a1d2c16172963534db741b/flit_core-3.12.0.tar.gz
+            sha256: 18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2
             x-checker-data:
               type: pypi
               name: flit_core
@@ -171,8 +171,8 @@ modules:
             --prefix=${FLATPAK_DEST} "flit_core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/bc/18/b9b81cab2b8f63e6e7f72e1ba2766a0454fcd563e7a77b8299cb917ba805/flit_core-3.11.0.tar.gz
-            sha256: 6ceeee3219e9d2ea282041f3e027c441597b450b33007cb81168e887b6113a8f
+            url: https://files.pythonhosted.org/packages/69/59/b6fc2188dfc7ea4f936cd12b49d707f66a1cb7a1d2c16172963534db741b/flit_core-3.12.0.tar.gz
+            sha256: 18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2
             x-checker-data:
               type: pypi
               name: flit_core
@@ -197,8 +197,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/1c/a7/c8a2d361bf89c0d9577c934ebb7421b25dc84bf3a8e3ac0a40aed9acc547/pyparsing-3.2.1-py3-none-any.whl
-            sha256: 506ff4f4386c4cec0590ec19e6302d3aedb992fdc02c761e90416f158dacf8e1
+            url: https://files.pythonhosted.org/packages/05/e7/df2285f3d08fee213f2d041540fa4fc9ca6c2d44cf36d3a035bf2a8d2bcc/pyparsing-3.2.3-py3-none-any.whl
+            sha256: a749938e02d6fd0b59b356ca504a24982314bb090c383e3cf201c95ef7e2bfcf
             x-checker-data:
               name: pyparsing
               packagetype: bdist_wheel
@@ -231,8 +231,8 @@ modules:
               type: pypi
               name: semantic_version
           - type: file
-            url: https://files.pythonhosted.org/packages/d3/6b/99a1588d826ceb108694ba00f78bc6afda10ed5d72d550ae8f256af1f7b4/setuptools_rust-1.10.2.tar.gz
-            sha256: 5d73e7eee5f87a6417285b617c97088a7c20d1a70fcea60e3bdc94ff567c29dc
+            url: https://files.pythonhosted.org/packages/e0/0c/db5a68b4e95229db38a1793d58561870bd68b92b95fed183c6cd48910c9f/setuptools_rust-1.11.0.tar.gz
+            sha256: f765d66f3def6fdc85e1e6d889c6a812aea1430c8dadcf1c7b6779b45f874fb2
             x-checker-data:
               type: pypi
               name: setuptools-rust
@@ -667,8 +667,8 @@ modules:
       - CONFDIR=${FLATPAK_DEST}/etc/iproute2
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.13.0.tar.xz
-        sha256: a43aa43338d882b44d01e549f3f105a92ae9feea32a82fae45a88e7a49302819
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.14.0.tar.xz
+        sha256: a6d23588150096591c3d00fc27a324a82ee71d7a1a9eea78df5df17ad9b8461f
         x-checker-data:
           project-id: 1392
           stable-only: true
@@ -749,8 +749,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.12.12
-        commit: 0fe86618c35f28e285b1a4281837cc68e2fc6d5f
+        tag: v0.12.13
+        commit: c975dfb9d69194c7b94782bdc2ba5e6fe41ba2be
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -770,8 +770,8 @@ modules:
       - type: file
         only-arches: [x86_64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.4.3_amd64.deb
-        sha256: d2eb222b8f3bdb0ff000e3a759f6cbfa48551921b570985af4ef1c204e06b441
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.4.4_amd64.deb
+        sha256: cbaaa2f4f0effac76e65bb6009d1db84f30c20e8f138f3aa92f014af6223bbe9
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -781,8 +781,8 @@ modules:
       - type: file
         only-arches: [aarch64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.4.3_arm64.deb
-        sha256: 49bd6a660cb043fbfad23f79dd749b93963d0e62c44dcf2404fce055d4475a0f
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.4.4_arm64.deb
+        sha256: 4e36c47df5fa5466eee28a9d31ca310205cd1cb4248273e77eab44d73cc76987
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -819,8 +819,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.9.4
-        commit: efbbf6cd1ef0ee99783217b36c1aaf6c78b8b7df
+        tag: v4.9.5
+        commit: 1d44f9aa7e4239685c1759bf9c106b3a14708e76
         disable-submodules: true
         x-checker-data:
           type: anitya
