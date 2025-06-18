@@ -18,8 +18,8 @@ modules:
           type: pypi
       - &id002
         type: file
-        url: https://files.pythonhosted.org/packages/88/ef/eb23f262cca3c0c4eb7ab1933c3b1f03d021f2c48f54763065b6f0e321be/packaging-24.2-py3-none-any.whl
-        sha256: 09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759
+        url: https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl
+        sha256: 29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484
         x-checker-data:
           name: packaging
           packagetype: bdist_wheel
@@ -34,16 +34,16 @@ modules:
           type: pypi
       - &id004
         type: file
-        url: https://files.pythonhosted.org/packages/88/5f/e351af9a41f866ac3f1fac4ca0613908d9a41741cfcf2228f4ad853b697d/pluggy-1.5.0-py3-none-any.whl
-        sha256: 44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669
+        url: https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl
+        sha256: e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
         x-checker-data:
           name: pluggy
           packagetype: bdist_wheel
           type: pypi
       - &id005
         type: file
-        url: https://files.pythonhosted.org/packages/40/f8/9c6d334002e7b4ff34a875d2f6fe76c6c1544bd7fde3e39cb7cd2593488f/trove_classifiers-2025.3.19.19-py3-none-any.whl
-        sha256: 5fc02770ecd81588a605ac98b9d85d50a5a3f9daa30af2a6b1361a1999d75d07
+        url: https://files.pythonhosted.org/packages/92/ef/c6deb083748be3bcad6f471b6ae983950c161890bf5ae1b2af80cc56c530/trove_classifiers-2025.5.9.12-py3-none-any.whl
+        sha256: e381c05537adac78881c8fa345fd0e9970159f4e4a04fcc42cfd3129cca640ce
         x-checker-data:
           name: trove_classifiers
           packagetype: bdist_wheel
@@ -55,8 +55,8 @@ modules:
         --prefix=${FLATPAK_DEST} "hatch-fancy-pypi-readme" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/5e/a0/9a7ec6559225e96aa2efb5ab7ef4bf17c42940122a21828c3dce5f62b595/hatch_fancy_pypi_readme-24.1.0-py3-none-any.whl
-        sha256: 26ec5c7cfd9f604eff0ae6c927d7b197b220706dca203f0aad1928abc81f3a46
+        url: https://files.pythonhosted.org/packages/58/b4/ad71e051b34f1935783de37beffee16e343ff2514b204dc515f9e939d4af/hatch_fancy_pypi_readme-25.1.0-py3-none-any.whl
+        sha256: ce0134c40d63d874ac48f48ccc678b8f3b62b8e50e9318520d2bffc752eedaf3
         x-checker-data:
           name: hatch_fancy_pypi_readme
           packagetype: bdist_wheel
@@ -73,8 +73,8 @@ modules:
         --prefix=${FLATPAK_DEST} "hatch-vcs" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/82/0f/6cbd9976160bc334add63bc2e7a58b1433a31b34b7cda6c5de6dd983d9a7/hatch_vcs-0.4.0-py3-none-any.whl
-        sha256: b8a2b6bee54cf6f9fc93762db73890017ae59c9081d1038a41f16235ceaf8b2c
+        url: https://files.pythonhosted.org/packages/5f/48/1f85cee4b7b4f40b9b814b1febbc661bda6ced9649e410a0b74f6e415dd0/hatch_vcs-0.5.0-py3-none-any.whl
+        sha256: b49677dbdc597460cc22d01b27ab3696f5e16a21ecf2700fb01bc28e1f2a04a7
         x-checker-data:
           name: hatch_vcs
           packagetype: bdist_wheel
@@ -84,8 +84,8 @@ modules:
       - *id003
       - *id004
       - type: file
-        url: https://files.pythonhosted.org/packages/10/7c/5a9799042320242c383c4485a2771a37d49e8ce2312ca647653d2fd1a7a4/setuptools_scm-8.2.0-py3-none-any.whl
-        sha256: 136e2b1d393d709d2bcf26f275b8dec06c48b811154167b0fd6bb002aad17d6d
+        url: https://files.pythonhosted.org/packages/ab/ac/8f96ba9b4cfe3e4ea201f23f4f97165862395e9331a424ed325ae37024a8/setuptools_scm-8.3.1-py3-none-any.whl
+        sha256: 332ca0d43791b818b841213e76b1971b7711a960761c5bea5fc5cdb5196fbce3
         x-checker-data:
           name: setuptools_scm
           packagetype: bdist_wheel

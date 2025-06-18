@@ -26,14 +26,14 @@ sources:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/cd/25/4ce80c78963834b8a9fd1cc1266be5ed8d1840785c0f2e1b73b8d128d505/cryptography-44.0.2.tar.gz
-    sha256: c63454aa261a0cf0c5b4718349629793e9e634993538db841165b3df74f37ec0
+    url: https://files.pythonhosted.org/packages/fe/c8/a2a376a8711c1e11708b9c9972e0c3223f5fc682552c82d8db844393d6ce/cryptography-45.0.4.tar.gz
+    sha256: 7405ade85c83c37682c8fe65554759800a4a8c54b2d96e0f8ad114d31b808d57
     x-checker-data:
       name: cryptography
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/79/9d/0fb148dc4d6fa4a7dd1d8378168d9b4cd8d4560a6fbf6f0121c5fc34eb68/importlib_metadata-8.6.1-py3-none-any.whl
-    sha256: 02a89390c1e15fdfdc0d7c6b25cb3e62650d0494005c97d6f148bf5b9787525e
+    url: https://files.pythonhosted.org/packages/20/b0/36bd937216ec521246249be3bf9855081de4c5e06a0c9b4219dbeda50373/importlib_metadata-8.7.0-py3-none-any.whl
+    sha256: e5dd1551894c77868a30651cef00984d50e1002d06942a7101d34870c5f02afd
     x-checker-data:
       name: importlib_metadata
       packagetype: bdist_wheel
@@ -74,8 +74,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/23/62/0fe302c6d1be1c777cab0616e6302478251dfbf9055ad426f5d0def75c89/more_itertools-10.6.0-py3-none-any.whl
-    sha256: 6eb054cb4b6db1473f6e15fcc676a08e4732548acd47c708f0e179c2c7c01e89
+    url: https://files.pythonhosted.org/packages/2b/9f/7ba6f94fc1e9ac3d2b853fdff3035fb2fa5afbed898c4a72b8a020610594/more_itertools-10.7.0-py3-none-any.whl
+    sha256: d43980384673cb07d2f7d2d918c616b30c659c089ee23953f601d6609c67510e
     x-checker-data:
       name: more_itertools
       packagetype: bdist_wheel
@@ -88,8 +88,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/b7/1a/7e4798e9339adc931158c9d69ecc34f5e6791489d469f5e50ec15e35f458/zipp-3.21.0-py3-none-any.whl
-    sha256: ac1bbe05fd2991f160ebce24ffbac5f6d11d83dc90891255885223d42b3cd931
+    url: https://files.pythonhosted.org/packages/2e/54/647ade08bf0db230bfea292f893923872fd20be6ac6f53b2b936ba839d75/zipp-3.23.0-py3-none-any.whl
+    sha256: 071652d6115ed432f5ce1d34c336c0adfd6a884660d1e9712a256d3d3bd4b14e
     x-checker-data:
       name: zipp
       packagetype: bdist_wheel
