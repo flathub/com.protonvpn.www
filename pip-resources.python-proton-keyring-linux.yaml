@@ -26,8 +26,8 @@ sources:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/fe/c8/a2a376a8711c1e11708b9c9972e0c3223f5fc682552c82d8db844393d6ce/cryptography-45.0.4.tar.gz
-    sha256: 7405ade85c83c37682c8fe65554759800a4a8c54b2d96e0f8ad114d31b808d57
+    url: https://files.pythonhosted.org/packages/95/1e/49527ac611af559665f71cbb8f92b332b5ec9c6fbc4e88b0f8e92f5e85df/cryptography-45.0.5.tar.gz
+    sha256: 72e76caa004ab63accdf26023fccd1d087f6d90ec6048ff33ad0445abf7f605a
     x-checker-data:
       name: cryptography
       type: pypi
@@ -53,8 +53,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/9f/4f/24b319316142c44283d7540e76c7b5a6dbd5db623abd86bb7b3491c21018/jaraco.functools-4.1.0-py3-none-any.whl
-    sha256: ad159f13428bc4acbf5541ad6dec511f91573b90fba04df61dafa2a1231cf649
+    url: https://files.pythonhosted.org/packages/f3/fd/179a20f832824514df39a90bb0e5372b314fea99f217f5ab942b10a8a4e8/jaraco_functools-4.2.1-py3-none-any.whl
+    sha256: 590486285803805f4b1f99c60ca9e94ed348d4added84b74c7a12885561e524e
     x-checker-data:
       name: jaraco.functools
       packagetype: bdist_wheel

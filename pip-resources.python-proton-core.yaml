@@ -9,8 +9,8 @@ modules:
         --prefix=${FLATPAK_DEST} "expandvars" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/29/ff/a2440069461c63b95fa8b5b89e26eb606e57d8a01391ccaae3738f1b845d/expandvars-1.0.0-py3-none-any.whl
-        sha256: ff1690eceb90bbdeefd1e4b15f4d217f22a3e66f776c2cb060635d2dde4a7689
+        url: https://files.pythonhosted.org/packages/2b/ca/0753ba3a81255ac49748ec8b665ab01f8efcf711f74bbccb5457a6193acc/expandvars-1.1.1-py3-none-any.whl
+        sha256: 09ca39e6bfcb0d899db8778a00dd3d89cfeb0080795c54f16f6279afd0ef8c5b
         x-checker-data:
           name: expandvars
           packagetype: bdist_wheel
@@ -22,8 +22,8 @@ modules:
         --prefix=${FLATPAK_DEST} "requests" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/84/ae/320161bd181fc06471eed047ecce67b693fd7515b16d495d8932db763426/certifi-2025.6.15-py3-none-any.whl
-        sha256: 2e0c7ce7cb5d8f8634ca55d2ba7e6ec2689a2fd6537d8dec1296a477a4910057
+        url: https://files.pythonhosted.org/packages/4f/52/34c6cf5bb9285074dc3531c437b3919e825d976fde097a7a73f79e726d03/certifi-2025.7.14-py3-none-any.whl
+        sha256: 6b31f564a415d79ee77df69d757bb49a5bb53bd9f756cbbe24394ffd6fc1f4b2
         x-checker-data:
           name: certifi
           packagetype: bdist_wheel
@@ -82,8 +82,8 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/fe/c8/a2a376a8711c1e11708b9c9972e0c3223f5fc682552c82d8db844393d6ce/cryptography-45.0.4.tar.gz
-        sha256: 7405ade85c83c37682c8fe65554759800a4a8c54b2d96e0f8ad114d31b808d57
+        url: https://files.pythonhosted.org/packages/95/1e/49527ac611af559665f71cbb8f92b332b5ec9c6fbc4e88b0f8e92f5e85df/cryptography-45.0.5.tar.gz
+        sha256: 72e76caa004ab63accdf26023fccd1d087f6d90ec6048ff33ad0445abf7f605a
         x-checker-data:
           name: cryptography
           type: pypi
@@ -115,14 +115,14 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/42/6e/ab88e7cb2a4058bed2f7870276454f85a7c56cd6da79349eb314fc7bbcaa/aiohttp-3.12.13.tar.gz
-        sha256: 47e2da578528264a12e4e3dd8dd72a7289e5f812758fe086473fab037a10fcce
+        url: https://files.pythonhosted.org/packages/e6/0b/e39ad954107ebf213a2325038a3e7a506be3d98e1435e1f82086eec4cde2/aiohttp-3.12.14.tar.gz
+        sha256: 6e06e120e34d93100de448fd941522e11dafa78ef1a893c179901b7d66aa29f2
         x-checker-data:
           name: aiohttp
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/ec/6a/bc7e17a3e87a2985d3e8f4da4cd0f481060eb78fb08596c42be62c90a4d9/aiosignal-1.3.2-py2.py3-none-any.whl
-        sha256: 45cde58e409a301715980c2b01d0c28bdde3770d8290b5eb2173759d9acb31a5
+        url: https://files.pythonhosted.org/packages/fb/76/641ae371508676492379f16e2fa48f4e2c11741bd63c48be4b12a6b09cba/aiosignal-1.4.0-py3-none-any.whl
+        sha256: 053243f8b92b990551949e63930a839ff0cf0b0ebbe0597b0f3fb19e1a0fe82e
         x-checker-data:
           name: aiosignal
           packagetype: bdist_wheel
@@ -142,8 +142,8 @@ modules:
           type: pypi
       - *id001
       - type: file
-        url: https://files.pythonhosted.org/packages/46/b5/59f27b4ce9951a4bce56b88ba5ff5159486797ab18863f2b4c1c5e8465bd/multidict-6.5.0.tar.gz
-        sha256: 942bd8002492ba819426a8d7aefde3189c1b87099cdf18aaaefefcf7f3f7b6d2
+        url: https://files.pythonhosted.org/packages/3d/2c/5dad12e82fbdf7470f29bff2171484bf07cb3b16ada60a6589af8f376440/multidict-6.6.3.tar.gz
+        sha256: 798a9eb12dab0a6c2e29c1de6f3468af5cb2da6053a20dfa3344907eed0937cc
         x-checker-data:
           name: multidict
           type: pypi
