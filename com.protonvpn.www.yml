@@ -126,8 +126,8 @@ modules:
       - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz
-        sha256: 38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36
+        url: https://files.pythonhosted.org/packages/72/94/1a15dd82efb362ac84269196e94cf00f187f7ed21c242792a923cdb1c61f/typing_extensions-4.15.0.tar.gz
+        sha256: 0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466
         x-checker-data:
           type: pypi
           name: typing_extensions
@@ -184,8 +184,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/44/ca/c2d21635a4525d427ae969d4cde155fb055c3b5d0bc4199b6de35bb6a826/poetry_core-2.1.3.tar.gz
-            sha256: 0522a015477ed622c89aad56a477a57813cace0c8e7ff2a2906b7ef4a2e296a4
+            url: https://files.pythonhosted.org/packages/54/ef/a16c11de95b638341961765e072dfdd4c9a0be51d6b22d594c5f3255e4bb/poetry_core-2.2.1.tar.gz
+            sha256: 97e50d8593c8729d3f49364b428583e044087ee3def1e010c6496db76bd65ac5
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -197,8 +197,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/05/e7/df2285f3d08fee213f2d041540fa4fc9ca6c2d44cf36d3a035bf2a8d2bcc/pyparsing-3.2.3-py3-none-any.whl
-            sha256: a749938e02d6fd0b59b356ca504a24982314bb090c383e3cf201c95ef7e2bfcf
+            url: https://files.pythonhosted.org/packages/10/5e/1aa9a93198c6b64513c9d7752de7422c06402de6600a8767da1524f9570b/pyparsing-3.2.5-py3-none-any.whl
+            sha256: e38a4f02064cf41fe6593d328d0512495ad1f3d8a91c4f73fc401b3079a59a5e
             x-checker-data:
               name: pyparsing
               packagetype: bdist_wheel
@@ -211,8 +211,8 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/ab/ac/8f96ba9b4cfe3e4ea201f23f4f97165862395e9331a424ed325ae37024a8/setuptools_scm-8.3.1-py3-none-any.whl
-            sha256: 332ca0d43791b818b841213e76b1971b7711a960761c5bea5fc5cdb5196fbce3
+            url: https://files.pythonhosted.org/packages/f7/14/dd3a6053325e882fe191fb4b42289bbdfabf5f44307c302903a8a3236a0a/setuptools_scm-9.2.0-py3-none-any.whl
+            sha256: c551ef54e2270727ee17067881c9687ca2aedf179fa5b8f3fab9e8d73bdc421f
             x-checker-data:
               name: setuptools_scm
               packagetype: bdist_wheel
@@ -231,15 +231,15 @@ modules:
               type: pypi
               name: semantic_version
           - type: file
-            url: https://files.pythonhosted.org/packages/e0/92/bf8589b1a2b6107cf9ec8daa9954c0b7620643fe1f37d31d75e572d995f5/setuptools_rust-1.11.1.tar.gz
-            sha256: 7dabc4392252ced314b8050d63276e05fdc5d32398fc7d3cce1f6a6ac35b76c0
+            url: https://files.pythonhosted.org/packages/bc/c4/8d3d282cee60d3ea0369fa15ce27387810040360adb4133e31990a7a2aba/setuptools_rust-1.12.0.tar.gz
+            sha256: d94a93f0c97751c17014565f07bdc324bee45d396cd1bba83d8e7af92b945f0c
             x-checker-data:
               type: pypi
               name: setuptools-rust
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/bb/5d/6d7433e0f3cd46ce0b43cd65e1db465ea024dbb8216fb2404e919c2ad77b/bcrypt-4.3.0.tar.gz
-        sha256: 3a3fd2204178b6d2adcf09cb4f6426ffef54762577a7c9b54c159008cb288c18
+        url: https://files.pythonhosted.org/packages/d4/36/3329e2518d70ad8e2e5817d5a4cac6bba05a47767ec416c7d020a965f408/bcrypt-5.0.0.tar.gz
+        sha256: f748f7c2d6fd375cc93d3fba7ef4a9e3a092421b8dbf34d8d4dc06be9492dfdd
         x-checker-data:
           type: pypi
           name: bcrypt
@@ -473,8 +473,8 @@ modules:
         --prefix=${FLATPAK_DEST} "pycparser" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/13/a3/a812df4e2dd5696d1f351d58b8fe16a405b234ad2886a0dab9183fb78109/pycparser-2.22-py3-none-any.whl
-        sha256: c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
+        url: https://files.pythonhosted.org/packages/a0/e3/59cd50310fc9b59512193629e1984c1f95e5c8ae6e5d8c69532ccc65a7fe/pycparser-2.23-py3-none-any.whl
+        sha256: e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934
         x-checker-data:
           type: pypi
           name: pycparser
@@ -487,8 +487,8 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/fc/97/c783634659c2920c3fc70419e3af40972dbaf758daa229a7d6ea6135c90d/cffi-1.17.1.tar.gz
-        sha256: 1c39c6016c32bc48dd54561950ebd6836e1670f2ae46128f67cf49e789c52824
+        url: https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz
+        sha256: 44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529
         x-checker-data:
           type: pypi
           name: cffi
@@ -591,8 +591,8 @@ modules:
             cleanup: ['*']
             sources:
               - type: archive
-                url: https://files.pythonhosted.org/packages/b9/19/7ae64b70b2429c48c3a7a4ed36f50f94687d3bfcd0ae2f152367b6410dff/setuptools_scm-8.3.1.tar.gz
-                sha256: 3d555e92b75dacd037d32bafdf94f97af51ea29ae8c7b234cf94b7a5bd242a63
+                url: https://files.pythonhosted.org/packages/8f/8d/ffdcace33d0480d591057a30285b7c33f8dc431fed3fff7dbadf5f9f128f/setuptools_scm-9.2.0.tar.gz
+                sha256: 6662c9b9497b6c9bf13bead9d7a9084756f68238302c5ed089fb4dbd29d102d7
                 x-checker-data:
                   type: pypi
                   name: setuptools_scm
@@ -667,8 +667,8 @@ modules:
       - CONFDIR=${FLATPAK_DEST}/etc/iproute2
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.15.0.tar.xz
-        sha256: 8041854a882583ad5263466736c9c8c68c74b1a35754ab770d23343f947528fb
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.16.0.tar.xz
+        sha256: 5900ccc15f9ac3bf7b7eae81deb5937123df35e99347a7f11a22818482f0a8d0
         x-checker-data:
           project-id: 1392
           stable-only: true
@@ -690,8 +690,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.4.0
-        commit: e87d1e3b5fc70883adc02ef2e2d9b0eb360b83ba
+        tag: v0.7.0
+        commit: f7a178a99c3adc0e88c7f91d4db5371a052c4985
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -729,8 +729,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v0.42.5
-        commit: bbb8c535fdd9c4993590ba00a178ccba7366477e
+        tag: v0.46.1
+        commit: da7082cb3fb37e137e728f3f7a2e951f60aaf94c
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -749,8 +749,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.12.14
-        commit: a320997d0cdee0e7c2cf502f8aa325553c46652d
+        tag: v0.13.0
+        commit: 4dd81874d0d99db48c678470e7183992fc7b53e5
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -770,8 +770,8 @@ modules:
       - type: file
         only-arches: [x86_64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.4.5_amd64.deb
-        sha256: 1f7a0df24baf78c6f0be8a9187720cfe5898baec386113f452251215ecbdbaee
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.4.8_amd64.deb
+        sha256: df3b4215b83bc3d3b5b03dda3ed2b9eea93fcc198a11c6de5a70c336199b750e
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -781,8 +781,8 @@ modules:
       - type: file
         only-arches: [aarch64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.4.5_arm64.deb
-        sha256: b4388e77299704512c0d7f78987fc03fd307c6c9e4c7aaa104c0619bf63bafcd
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.4.8_arm64.deb
+        sha256: 9038db69d2f8f1b0824380f0f36e90939f56741df6550963760918e908887408
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -819,8 +819,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.9.7
-        commit: 404deffa55de548fecae91330364ad17b2d1a13e
+        tag: v4.11.0
+        commit: 7d1e7815b280eff6ab412e26d3f30671fa22aba8
         disable-submodules: true
         x-checker-data:
           type: anitya
