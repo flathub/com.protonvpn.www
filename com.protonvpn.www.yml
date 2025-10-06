@@ -30,7 +30,6 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
 
 modules:
-  - shared-modules/libsecret/libsecret.json
   - shared-modules/intltool/intltool-0.51.json
   - name: libayatana-appindicator
     buildsystem: cmake-ninja
