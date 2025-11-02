@@ -22,15 +22,15 @@ modules:
         --prefix=${FLATPAK_DEST} "sentry-sdk" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/e5/48/1549795ba7742c948d2ad169c1c8cdbae65bc450d6cd753d124b17c8cd32/certifi-2025.8.3-py3-none-any.whl
-        sha256: f6c12493cfb1b06ba2ff328595af9350c65d6644968e5d3a2ffd78699af217a5
+        url: https://files.pythonhosted.org/packages/e4/37/af0d2ef3967ac0d6113837b44a4f0bfe1328c2b9763bd5b1744520e5cfed/certifi-2025.10.5-py3-none-any.whl
+        sha256: 0f212c2744a9bb6de0c56639a6f68afe01ecd92d91f14ae897c4fe7bbeeef0de
         x-checker-data:
           name: certifi
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/dd/44/4356cc64246ba7b2b920f7c97a85c3c52748e213e250b512ee8152eb559d/sentry_sdk-2.39.0-py2.py3-none-any.whl
-        sha256: ba655ca5e57b41569b18e2a5552cb3375209760a5d332cdd87c6c3f28f729602
+        url: https://files.pythonhosted.org/packages/69/31/8228fa962f7fd8814d634e4ebece8780e2cdcfbdf0cd2e14d4a6861a7cd5/sentry_sdk-2.43.0-py2.py3-none-any.whl
+        sha256: 4aacafcf1756ef066d359ae35030881917160ba7f6fc3ae11e0e58b09edc2d5d
         x-checker-data:
           name: sentry_sdk
           packagetype: bdist_wheel
