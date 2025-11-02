@@ -758,7 +758,7 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "pygobject" "pycairo" -o pip-resources.python-proton-vpn-network-manager
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//46' "proton-vpn-local-agent" "pygobject" "pycairo" -o pip-resources.python-proton-vpn-network-manager
       # https://github.com/ProtonVPN/python-proton-vpn-network-manager/blob/6ffd04fa0ae88a89d2b733443317066ef23b3ccd/setup.py#L14C63-L14C85
       - pip-resources.python-proton-vpn-network-manager.yaml
     sources:
