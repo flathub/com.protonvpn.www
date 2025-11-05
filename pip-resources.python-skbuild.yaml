@@ -1,94 +1,84 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 hatchling hatch-fancy-pypi-readme hatch-vcs -o pip-resources.python-skbuild
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//49 hatchling hatch-fancy-pypi-readme hatch-vcs -o pip-resources.python-skbuild
 build-commands: []
 buildsystem: simple
 modules:
-  - name: python3-hatchling
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "hatchling" --no-build-isolation
-    sources:
-      - &id001
-        type: file
-        url: https://files.pythonhosted.org/packages/08/e7/ae38d7a6dfba0533684e0b2136817d667588ae3ec984c1a4e5df5eb88482/hatchling-1.27.0-py3-none-any.whl
-        sha256: d3a2f3567c4f926ea39849cdf924c7e99e6686c9c8e288ae1037c8fa2a5d937b
-        x-checker-data:
-          name: hatchling
-          packagetype: bdist_wheel
-          type: pypi
-      - &id002
-        type: file
-        url: https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl
-        sha256: 29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484
-        x-checker-data:
-          name: packaging
-          packagetype: bdist_wheel
-          type: pypi
-      - &id003
-        type: file
-        url: https://files.pythonhosted.org/packages/cc/20/ff623b09d963f88bfde16306a54e12ee5ea43e9b597108672ff3a408aad6/pathspec-0.12.1-py3-none-any.whl
-        sha256: a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08
-        x-checker-data:
-          name: pathspec
-          packagetype: bdist_wheel
-          type: pypi
-      - &id004
-        type: file
-        url: https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl
-        sha256: e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
-        x-checker-data:
-          name: pluggy
-          packagetype: bdist_wheel
-          type: pypi
-      - &id005
-        type: file
-        url: https://files.pythonhosted.org/packages/92/ef/c6deb083748be3bcad6f471b6ae983950c161890bf5ae1b2af80cc56c530/trove_classifiers-2025.5.9.12-py3-none-any.whl
-        sha256: e381c05537adac78881c8fa345fd0e9970159f4e4a04fcc42cfd3129cca640ce
-        x-checker-data:
-          name: trove_classifiers
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-hatch-fancy-pypi-readme
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "hatch-fancy-pypi-readme" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/58/b4/ad71e051b34f1935783de37beffee16e343ff2514b204dc515f9e939d4af/hatch_fancy_pypi_readme-25.1.0-py3-none-any.whl
-        sha256: ce0134c40d63d874ac48f48ccc678b8f3b62b8e50e9318520d2bffc752eedaf3
-        x-checker-data:
-          name: hatch_fancy_pypi_readme
-          packagetype: bdist_wheel
-          type: pypi
-      - *id001
-      - *id002
-      - *id003
-      - *id004
-      - *id005
-  - name: python3-hatch-vcs
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "hatch-vcs" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/5f/48/1f85cee4b7b4f40b9b814b1febbc661bda6ced9649e410a0b74f6e415dd0/hatch_vcs-0.5.0-py3-none-any.whl
-        sha256: b49677dbdc597460cc22d01b27ab3696f5e16a21ecf2700fb01bc28e1f2a04a7
-        x-checker-data:
-          name: hatch_vcs
-          packagetype: bdist_wheel
-          type: pypi
-      - *id001
-      - *id002
-      - *id003
-      - *id004
-      - type: file
-        url: https://files.pythonhosted.org/packages/ab/ac/8f96ba9b4cfe3e4ea201f23f4f97165862395e9331a424ed325ae37024a8/setuptools_scm-8.3.1-py3-none-any.whl
-        sha256: 332ca0d43791b818b841213e76b1971b7711a960761c5bea5fc5cdb5196fbce3
-        x-checker-data:
-          name: setuptools_scm
-          packagetype: bdist_wheel
-          type: pypi
-      - *id005
+- name: python3-hatchling
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "hatchling" --no-build-isolation
+  sources:
+  - &id001
+    type: file
+    url: https://files.pythonhosted.org/packages/08/e7/ae38d7a6dfba0533684e0b2136817d667588ae3ec984c1a4e5df5eb88482/hatchling-1.27.0-py3-none-any.whl
+    sha256: d3a2f3567c4f926ea39849cdf924c7e99e6686c9c8e288ae1037c8fa2a5d937b
+    x-checker-data:
+      name: hatchling
+      packagetype: bdist_wheel
+      type: pypi
+  - &id002
+    type: file
+    url: https://files.pythonhosted.org/packages/cc/20/ff623b09d963f88bfde16306a54e12ee5ea43e9b597108672ff3a408aad6/pathspec-0.12.1-py3-none-any.whl
+    sha256: a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08
+    x-checker-data:
+      name: pathspec
+      packagetype: bdist_wheel
+      type: pypi
+  - &id003
+    type: file
+    url: https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl
+    sha256: e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
+    x-checker-data:
+      name: pluggy
+      packagetype: bdist_wheel
+      type: pypi
+  - &id004
+    type: file
+    url: https://files.pythonhosted.org/packages/e1/85/a4ff8758c66f1fc32aa5e9a145908394bf9cf1c79ffd1113cfdeb77e74e4/trove_classifiers-2025.9.11.17-py3-none-any.whl
+    sha256: 5d392f2d244deb1866556457d6f3516792124a23d1c3a463a2e8668a5d1c15dd
+    x-checker-data:
+      name: trove_classifiers
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-hatch-fancy-pypi-readme
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "hatch-fancy-pypi-readme" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/58/b4/ad71e051b34f1935783de37beffee16e343ff2514b204dc515f9e939d4af/hatch_fancy_pypi_readme-25.1.0-py3-none-any.whl
+    sha256: ce0134c40d63d874ac48f48ccc678b8f3b62b8e50e9318520d2bffc752eedaf3
+    x-checker-data:
+      name: hatch_fancy_pypi_readme
+      packagetype: bdist_wheel
+      type: pypi
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+- name: python3-hatch-vcs
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "hatch-vcs" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/5f/48/1f85cee4b7b4f40b9b814b1febbc661bda6ced9649e410a0b74f6e415dd0/hatch_vcs-0.5.0-py3-none-any.whl
+    sha256: b49677dbdc597460cc22d01b27ab3696f5e16a21ecf2700fb01bc28e1f2a04a7
+    x-checker-data:
+      name: hatch_vcs
+      packagetype: bdist_wheel
+      type: pypi
+  - *id001
+  - *id002
+  - *id003
+  - type: file
+    url: https://files.pythonhosted.org/packages/3d/ea/ac2bf868899d0d2e82ef72d350d97a846110c709bacf2d968431576ca915/setuptools_scm-9.2.2-py3-none-any.whl
+    sha256: 30e8f84d2ab1ba7cb0e653429b179395d0c33775d54807fc5f1dd6671801aef7
+    x-checker-data:
+      name: setuptools_scm
+      packagetype: bdist_wheel
+      type: pypi
+  - *id004
 name: pip-resources.python-skbuild

@@ -1,31 +1,44 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//46 pygobject pycairo -o pip-resources.python-proton-vpn-network-manager
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//49 proton-vpn-local-agent pygobject pycairo -o pip-resources.python-proton-vpn-network-manager
 build-commands: []
 buildsystem: simple
 modules:
-  - name: python3-pygobject
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pygobject" --no-build-isolation
-    sources:
-      - &id001
-        type: file
-        url: https://files.pythonhosted.org/packages/40/d9/412da520de9052b7e80bfc810ec10f5cb3dbfa4aa3e23c2820dc61cdb3d0/pycairo-1.28.0.tar.gz
-        sha256: 26ec5c6126781eb167089a123919f87baa2740da2cca9098be8b3a6b91cc5fbc
-        x-checker-data:
-          name: pycairo
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/4a/36/fec530a313d3d48f12e112ac0a65ee3ccc87f385123a0493715609e8e99c/pygobject-3.52.3.tar.gz
-        sha256: 00e427d291e957462a8fad659a9f9c8be776ff82a8b76bdf402f1eaeec086d82
-        x-checker-data:
-          name: pygobject
-          type: pypi
-  - name: python3-pycairo
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "pycairo" --no-build-isolation
-    sources:
-      - *id001
+- name: python3-proton-vpn-local-agent
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "proton-vpn-local-agent" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/86/56/e65acae43c2d54ad8b72d694a67e8f30b6f3f196a7ccf418f9e843875599/proton_vpn_local_agent-0.1.1-py3-none-any.whl
+    sha256: eb15cfbb115ea2a15d503e59f46e745709cca49bf115514443ffce5baffd2794
+    x-checker-data:
+      name: proton_vpn_local_agent
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-pygobject
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "pygobject" --no-build-isolation
+  sources:
+  - &id001
+    type: file
+    url: https://files.pythonhosted.org/packages/40/d9/412da520de9052b7e80bfc810ec10f5cb3dbfa4aa3e23c2820dc61cdb3d0/pycairo-1.28.0.tar.gz
+    sha256: 26ec5c6126781eb167089a123919f87baa2740da2cca9098be8b3a6b91cc5fbc
+    x-checker-data:
+      name: pycairo
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/d3/a5/68f883df1d8442e3b267cb92105a4b2f0de819bd64ac9981c2d680d3f49f/pygobject-3.54.5.tar.gz
+    sha256: b6656f6348f5245606cf15ea48c384c7f05156c75ead206c1b246c80a22fb585
+    x-checker-data:
+      name: pygobject
+      type: pypi
+- name: python3-pycairo
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "pycairo" --no-build-isolation
+  sources:
+  - *id001
 name: pip-resources.python-proton-vpn-network-manager
