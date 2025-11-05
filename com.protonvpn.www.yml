@@ -459,6 +459,9 @@ modules:
       - type: git
         url: https://github.com/systemd/systemd.git
         tag: v258
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
 
   ######### Cryptography #########
 
@@ -533,7 +536,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp311-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -547,7 +551,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp311-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -575,7 +580,7 @@ modules:
       - pip3 install --no-index --no-build-isolation --prefix="${FLATPAK_DEST}" .
     build-options:
       env:
-        CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+        CMAKE_POLICY_VERSION_MINIMUM: '3.5'
     cleanup: ['*']
     sources:
       - type: archive
