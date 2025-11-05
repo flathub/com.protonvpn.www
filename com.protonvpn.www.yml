@@ -243,7 +243,7 @@ modules:
           type: pypi
           name: bcrypt
       # The Cargo sources should be updated whenever bcrypt is updated.
-      # wget https://github.com/pyca/bcrypt/raw/refs/tags/4.3.0/src/_bcrypt/Cargo.lock -O /tmp/Cargo.lock
+      # wget https://raw.githubusercontent.com/pyca/bcrypt/refs/tags/5.0.0/src/_bcrypt/Cargo.lock -O /tmp/Cargo.lock
       # python flatpak-builder-tools/cargo/flatpak-cargo-generator.py -o bcrypt-cargo-sources.json /tmp/Cargo.lock
       - bcrypt-cargo-sources.json
 
