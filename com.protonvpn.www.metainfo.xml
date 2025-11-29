@@ -183,4 +183,10 @@
     <content_rating type="oars-1.1">
         <content_attribute id="money-purchasing">intense</content_attribute>
     </content_rating>
+    <keywords>
+        <keyword>vpn</keyword>
+        <keyword>linux vpn</keyword>
+        <keyword>secure internet</keyword>
+        <keyword>online privacy</keyword>
+    </keywords>
 </component>
