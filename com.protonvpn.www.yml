@@ -28,6 +28,8 @@ finish-args:
   - --own-name=proton.vpn.app.gtk
   # Tray icon
   - --talk-name=org.kde.StatusNotifierWatcher
+    # Fido2 USB security keys
+  - --device=all
 
 modules:
   - shared-modules/intltool/intltool-0.51.json
