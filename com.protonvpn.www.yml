@@ -758,6 +758,8 @@ modules:
           type: anitya
           project-id: 369944
           tag-template: v$version
+      - type: patch
+        path: patches/python-proton-vpn-api-core/fix-ip-path.patch
 
   - name: python-proton-vpn-network-manager
     buildsystem: simple
