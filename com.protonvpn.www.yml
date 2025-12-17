@@ -458,7 +458,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v258.2
+        tag: v258.3
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -466,7 +466,7 @@ modules:
   ######### Cryptography #########
 
   # https://github.com/flathub/org.gajim.Gajim/blob/cb9cb26dd58acea79c50b316fb66a171b54c18e1/org.gajim.Gajim.yaml#LL66-L131C81
-        commit: 15bd1496c9b59c1ec8ee05e78c65eeb3f148c898
+        commit: 56a85121cd3502e824ed368a6b06dda924932bcf
   - name: python3-pycparser
     buildsystem: simple
     build-commands:
@@ -650,8 +650,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/18/ca/0e3c232fb20f0707bbddf7bb639882a3dba8684bf2f9f4eced266775fcbc/meson-1.9.2.tar.gz
-        sha256: 3499b59bb23982496e01e57b4103ac2f826f9c3a3f59e507a0a832487fe55e3d
+        url: https://files.pythonhosted.org/packages/45/76/c2f4cff5dabcd64711bd327dd00fd22ec603bed6a928dd5d058044d568d8/meson-1.10.0.tar.gz
+        sha256: 8071860c1f46a75ea34801490fd1c445c9d75147a65508cd3a10366a7006cc1c
         x-checker-data:
           type: pypi
           name: meson
@@ -748,8 +748,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v4.13.2
-        commit: dc7dd727e222a09ab2cef6a5bf0def2e9ec7f95c
+        tag: v4.14.1
+        commit: 816b342ece6369e159278a9eea05539d0374cd2f
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -768,8 +768,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.13.4
-        commit: f85005cb036ed2a55d92c717d7520550326ef600
+        tag: v0.13.5
+        commit: 3a3646d5a158ef610b8cf956b155704f6d04ec0a
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -838,8 +838,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.13.0
-        commit: 361e13a13ba9b52b3e9c3c7abba2a28c8f452561
+        tag: v4.13.1
+        commit: 54b3ad74e1aefc989a6de4afed652df879c410e5
         disable-submodules: true
         x-checker-data:
           type: anitya
