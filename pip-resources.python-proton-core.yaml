@@ -50,8 +50,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/56/1a/9ffe814d317c5224166b23e7c47f606d6e473712a2fad0f704ea9b99f246/urllib3-2.6.0-py3-none-any.whl
-        sha256: c90f7a39f716c572c4e3e58509581ebd83f9b59cced005b7db7ad2d22b0db99f
+        url: https://files.pythonhosted.org/packages/6d/b9/4095b668ea3678bf6a0af005527f39de12fb026516fb3df17495a733b7f8/urllib3-2.6.2-py3-none-any.whl
+        sha256: ec21cddfe7724fc7cb4ba4bea7aa8e2ef36f607a4bab81aa6ce42a13dc3f03dd
         x-checker-data:
           name: urllib3
           packagetype: bdist_wheel
