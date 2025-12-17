@@ -459,14 +459,14 @@ modules:
       - type: git
         url: https://github.com/systemd/systemd.git
         tag: v258.3
+        commit: 56a85121cd3502e824ed368a6b06dda924932bcf
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
 
   ######### Cryptography #########
-
   # https://github.com/flathub/org.gajim.Gajim/blob/cb9cb26dd58acea79c50b316fb66a171b54c18e1/org.gajim.Gajim.yaml#LL66-L131C81
-        commit: 56a85121cd3502e824ed368a6b06dda924932bcf
+
   - name: python3-pycparser
     buildsystem: simple
     build-commands:
@@ -537,7 +537,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp311-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -551,7 +552,8 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query:
+            .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp311-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -742,7 +744,8 @@ modules:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//49' "fido2" "distro" "sentry-sdk" "PyNaCl" -o pip-resources.python-proton-vpn-api-core
+      # Add "proton-vpn-local-agent" here as well so that the python distribution metadata is included
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//49' "fido2" "distro" "sentry-sdk" "PyNaCl" "proton-vpn-local-agent" -o pip-resources.python-proton-vpn-api-core
       # https://github.com/ProtonVPN/python-proton-vpn-api-core/blob/e26e3fa70077d24a53465c87ebdd6026e3c7c080/setup.py#L17-L18C46
       - pip-resources.python-proton-vpn-api-core.yaml
     sources:
@@ -784,7 +787,7 @@ modules:
       - bsdtar -Oxf python-proton-vpn-local-agent.deb data.tar.xz | bsdtar -xf -
       - |
         PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))');
-        install -m755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/local_agent.abi3.so"
+        install -Dm755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/local_agent.abi3.so"
     sources:
       - type: file
         only-arches: [x86_64]
