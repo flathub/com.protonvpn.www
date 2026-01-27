@@ -100,8 +100,8 @@ modules:
         --prefix=${FLATPAK_DEST} "packaging" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl
-        sha256: 29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484
+        url: https://files.pythonhosted.org/packages/b7/b9/c538f279a4e237a006a2c98387d081e9eb060d203d8ed34467cc0f0b9b53/packaging-26.0-py3-none-any.whl
+        sha256: b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529
         x-checker-data:
           name: packaging
           packagetype: bdist_wheel
@@ -185,8 +185,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/54/ef/a16c11de95b638341961765e072dfdd4c9a0be51d6b22d594c5f3255e4bb/poetry_core-2.2.1.tar.gz
-            sha256: 97e50d8593c8729d3f49364b428583e044087ee3def1e010c6496db76bd65ac5
+            url: https://files.pythonhosted.org/packages/e9/2a/457e29bd71c4fdce5dbd032ad02cb80300db355d084cd3fa81a367d22f0c/poetry_core-2.3.0.tar.gz
+            sha256: f6da8f021fe380d8c9716085f4dcc5d26a5120a2452e077196333892af5de307
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -198,15 +198,15 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/10/5e/1aa9a93198c6b64513c9d7752de7422c06402de6600a8767da1524f9570b/pyparsing-3.2.5-py3-none-any.whl
-            sha256: e38a4f02064cf41fe6593d328d0512495ad1f3d8a91c4f73fc401b3079a59a5e
+            url: https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl
+            sha256: 850ba148bd908d7e2411587e247a1e4f0327839c40e2e5e6d05a007ecc69911d
             x-checker-data:
               name: pyparsing
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/77/b8/0135fadc89e73be292b473cb820b4f5a08197779206b33191e801feeae40/tomli-2.3.0-py3-none-any.whl
-            sha256: e95b1af3c5b07d9e643909b5abbec77cd9f1217e6d0bca72b0234736b9fb1f1b
+            url: https://files.pythonhosted.org/packages/23/d1/136eb2cb77520a31e1f64cbae9d33ec6df0d78bdf4160398e86eec8a8754/tomli-2.4.0-py3-none-any.whl
+            sha256: 1f776e7d669ebceb01dee46484485f43a4048746235e683bcdffacdf1fb4785a
             x-checker-data:
               name: tomli
               packagetype: bdist_wheel
@@ -460,8 +460,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v258.3
-        commit: 56a85121cd3502e824ed368a6b06dda924932bcf
+        tag: v259
+        commit: 9ca433482f2281d71718718705ca8cd3bf562ad6
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -476,8 +476,8 @@ modules:
         --prefix=${FLATPAK_DEST} "pycparser" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/a0/e3/59cd50310fc9b59512193629e1984c1f95e5c8ae6e5d8c69532ccc65a7fe/pycparser-2.23-py3-none-any.whl
-        sha256: e5c6e8d3fbad53479cab09ac03729e0a9faf2bee3db8208a550daf5af81a5934
+        url: https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl
+        sha256: b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
         x-checker-data:
           type: pypi
           name: pycparser
@@ -539,8 +539,7 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp311-abi3-manylinux_2_28_aarch64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -554,8 +553,7 @@ modules:
           type: json
           url: https://pypi.org/pypi/cryptography/json
           version-query: .info.version
-          url-query:
-            .releases | .[$version][] | select(.filename=="cryptography-"
+          url-query: .releases | .[$version][] | select(.filename=="cryptography-"
             + $version + "-cp311-abi3-manylinux_2_28_x86_64.whl") | .url
           name: cryptography
           packagetype: bdist_wheel
@@ -628,8 +626,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/52/ed/3f73f72945444548f33eba9a87fc7a6e969915e7b1acc8260b30e1f76a2f/tomli-2.3.0.tar.gz
-                    sha256: 64be704a875d2a59753d80ee8a533c3fe183e3f06807ff7dc2232938ccb01549
+                    url: https://files.pythonhosted.org/packages/82/30/31573e9457673ab10aa432461bee537ce6cef177667deca369efb79df071/tomli-2.4.0.tar.gz
+                    sha256: aa89c3f6c277dd275d8e243ad24f3b5e701491a860d5121f2cdd399fbb31fc9c
                     x-checker-data:
                       type: pypi
                       name: tomli
@@ -654,8 +652,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/45/76/c2f4cff5dabcd64711bd327dd00fd22ec603bed6a928dd5d058044d568d8/meson-1.10.0.tar.gz
-        sha256: 8071860c1f46a75ea34801490fd1c445c9d75147a65508cd3a10366a7006cc1c
+        url: https://files.pythonhosted.org/packages/1b/d3/8c43e758cf456273c32652bb8b7a4ec2d74327d8849856b0b714ad671da7/meson-1.10.1.tar.gz
+        sha256: c42296f12db316a4515b9375a5df330f2e751ccdd4f608430d41d7d6210e4317
         x-checker-data:
           type: pypi
           name: meson
@@ -753,8 +751,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v4.14.1
-        commit: 816b342ece6369e159278a9eea05539d0374cd2f
+        tag: v4.14.3
+        commit: 0c9c7d9ad590314c30de80b8d19eb8f3c511b064
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -845,8 +843,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.13.1
-        commit: 54b3ad74e1aefc989a6de4afed652df879c410e5
+        tag: v4.14.0
+        commit: 7df45f51632c32343674053d261d4906f5fd7af7
         disable-submodules: true
         x-checker-data:
           type: anitya
