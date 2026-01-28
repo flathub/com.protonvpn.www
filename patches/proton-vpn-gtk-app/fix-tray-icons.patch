@@ -1,5 +1,5 @@
 diff --git a/proton/vpn/app/gtk/widgets/main/tray_icon.py b/proton/vpn/app/gtk/widgets/main/tray_icon.py
-index db905e2..c798019 100644
+index db905e2..3f28410 100644
 --- a/proton/vpn/app/gtk/widgets/main/tray_icon.py
 +++ b/proton/vpn/app/gtk/widgets/main/tray_icon.py
 @@ -57,7 +57,7 @@ logger = logging.getLogger(__name__)
@@ -11,8 +11,17 @@ index db905e2..c798019 100644
  TRAY_ICON_DESCRIPTION = ""
  
  # StatusNotifierItem specification
+@@ -239,7 +239,7 @@ class _StatusNotifierItem(dbus.service.Object):
+         self.bus = bus
+ 
+         # Generate unique bus name
+-        self.bus_name_str = f"org.kde.StatusNotifierItem-{tray_icon.app_id}-{id(self)}"
++        self.bus_name_str = f"com.protonvpn.www.StatusNotifierItem-{id(self)}"
+         self.bus_name = dbus.service.BusName(self.bus_name_str, bus)
+ 
+         super().__init__(self.bus_name, object_path)
 diff --git a/proton/vpn/app/gtk/widgets/main/tray_indicator.py b/proton/vpn/app/gtk/widgets/main/tray_indicator.py
-index aef7227..f6fac4a 100644
+index aef7227..a82793c 100644
 --- a/proton/vpn/app/gtk/widgets/main/tray_indicator.py
 +++ b/proton/vpn/app/gtk/widgets/main/tray_indicator.py
 @@ -64,19 +64,19 @@ class TrayIndicator:
@@ -20,21 +29,21 @@ index aef7227..f6fac4a 100644
      """
      DISCONNECTED_ICON = str(
 -        ICONS_PATH / f"state-{states.Disconnected.__name__.lower()}.svg"
-+        ICONS_PATH / f"com.protonvpn.www.state-{states.Disconnected.__name__.lower()}.svg"
++        f"com.protonvpn.www.state-{states.Disconnected.__name__.lower()}"
      )
      DISCONNECTED_ICON_DESCRIPTION = str(
          f"VPN {states.Disconnected.__name__.lower()}"
      )
      CONNECTED_ICON = str(
 -        ICONS_PATH / f"state-{states.Connected.__name__.lower()}.svg"
-+        ICONS_PATH / f"com.protonvpn.www.state-{states.Connected.__name__.lower()}.svg"
++        f"com.protonvpn.www.state-{states.Connected.__name__.lower()}"
      )
      CONNECTED_ICON_DESCRIPTION = str(
          f"VPN {states.Connected.__name__.lower()}"
      )
      ERROR_ICON = str(
 -        ICONS_PATH / f"state-{states.Error.__name__.lower()}.svg"
-+        ICONS_PATH / f"com.protonvpn.www.state-{states.Error.__name__.lower()}.svg"
++        f"com.protonvpn.www.state-{states.Error.__name__.lower()}"
      )
      ERROR_ICON_DESCRIPTION = str(
          f"VPN {states.Error.__name__.lower()}"
