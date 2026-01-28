@@ -1,0 +1,31 @@
+diff --git a/proton/vpn/app/gtk/widgets/main/tray_indicator.py b/proton/vpn/app/gtk/widgets/main/tray_indicator.py
+index aef7227..244b7af 100644
+--- a/proton/vpn/app/gtk/widgets/main/tray_indicator.py
++++ b/proton/vpn/app/gtk/widgets/main/tray_indicator.py
+@@ -20,6 +20,7 @@ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ """
+ from typing import Optional
++from os import environ
+ from gi.repository import GLib, Gio
+ 
+ from proton.vpn import logging
+@@ -117,10 +118,17 @@ class TrayIndicator:
+     def _can_tray_be_used(self):
+         # If gnome shell is not running then it's another DE and
+         # we assume tray works by default.
+-        if not self._is_gnome_shell_running():
++        if "gnome" not in environ.get("XDG_CURRENT_DESKTOP", "").lower():
+             self._app_indicator_available = True
+             logger.warning("Tray icon enabled on an unsupported Desktop Environment")
+         else:
++            # Flatpaks can't list gnome shell extensions by default,
++            # and opening a sandbox hole also allows installing extensions,
++            # so assume the tray works as any errors are not fatal anyway.
++            if "FLATPAK_ID" in environ:
++                self._app_indicator_available = True
++                logger.warning("Detected Flatpak environment, assuming tray works")
++                return self._app_indicator_available
+             gnome_extensions = self._gnome_shell_list_extensions()
+             ubuntu_extension = gnome_extensions.get(UBUNTU_INDICATOR_EXTENSION)
+             default_extension = gnome_extensions.get(DEFAULT_INDICATOR_EXTENSION)

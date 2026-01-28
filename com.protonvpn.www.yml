@@ -855,5 +855,8 @@ modules:
       - type: patch
         path: patches/proton-vpn-gtk-app/fix-tray-icons.patch
 
+      - type: patch
+        path: patches/proton-vpn-gtk-app/fix-gnome-detection.patch
+
       - type: file
         path: com.protonvpn.www.metainfo.xml
