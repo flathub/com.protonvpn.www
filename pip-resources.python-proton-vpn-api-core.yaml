@@ -16,8 +16,8 @@ modules:
           name: cffi
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/9f/33/c00162f49c0e2fe8064a62cb92b93e50c74a72bc370ab92f86112b33ff62/cryptography-46.0.3.tar.gz
-        sha256: a8b17438104fed022ce745b362294d9ce35b4c2e45c1d958ad4a4b019285f4a1
+        url: https://files.pythonhosted.org/packages/78/19/f748958276519adf6a0c1e79e7b8860b4830dda55ccdf29f2719b5fc499c/cryptography-46.0.4.tar.gz
+        sha256: bfd019f60f8abc2ed1b9be4ddc21cfef059c841d86d710bb69909a688cbb8f59
         x-checker-data:
           name: cryptography
           type: pypi
@@ -63,8 +63,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/4e/5b/cbc2bb9569f03c8e15d928357e7e6179e5cfab45544a3bbac8aec4caf9be/sentry_sdk-2.50.0-py2.py3-none-any.whl
-        sha256: 0ef0ed7168657ceb5a0be081f4102d92042a125462d1d1a29277992e344e749e
+        url: https://files.pythonhosted.org/packages/ca/63/2c6daf59d86b1c30600bff679d039f57fd1932af82c43c0bde1cbc55e8d4/sentry_sdk-2.52.0-py2.py3-none-any.whl
+        sha256: 931c8f86169fc6f2752cb5c4e6480f0d516112e78750c312e081ababecbaf2ed
         x-checker-data:
           name: sentry_sdk
           packagetype: bdist_wheel

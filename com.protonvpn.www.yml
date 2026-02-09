@@ -185,8 +185,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/e9/2a/457e29bd71c4fdce5dbd032ad02cb80300db355d084cd3fa81a367d22f0c/poetry_core-2.3.0.tar.gz
-            sha256: f6da8f021fe380d8c9716085f4dcc5d26a5120a2452e077196333892af5de307
+            url: https://files.pythonhosted.org/packages/39/46/7cc89b6ef47803528673585bfa40fa729a7050d9eaedeb7e7f5816300c88/poetry_core-2.3.1.tar.gz
+            sha256: 96f791d5d7d4e040f3983d76779425cf9532690e2756a24fd5ca0f86af19ef82
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -460,8 +460,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v259
-        commit: 9ca433482f2281d71718718705ca8cd3bf562ad6
+        tag: v259.1
+        commit: 6a36f1c7420dcb8e5176796676047f058466fe7a
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -531,8 +531,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/4b/0a/863a3604112174c8624a2ac3c038662d9e59970c7f926acdcfaed8d61142/cryptography-46.0.3-cp311-abi3-manylinux_2_28_aarch64.whl
-        sha256: 6eae65d4c3d33da080cff9c4ab1f711b15c1d9760809dad6ea763f3812d254cb
+        url: https://files.pythonhosted.org/packages/1a/5b/a26407d4f79d61ca4bebaa9213feafdd8806dc69d3d290ce24996d3cfe43/cryptography-46.0.4-cp311-abi3-manylinux_2_28_aarch64.whl
+        sha256: 01df4f50f314fbe7009f54046e908d1754f19d0c6d3070df1e6268c5a4af09fa
         only-arches:
           - aarch64
         x-checker-data:
@@ -545,8 +545,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/c9/56/e7e69b427c3878352c2fb9b450bd0e19ed552753491d39d7d0a2f5226d41/cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl
-        sha256: a2c0cd47381a3229c403062f764160d57d4d175e022c1df84e168c6251a22eec
+        url: https://files.pythonhosted.org/packages/2b/08/f83e2e0814248b844265802d081f2fac2f1cbe6cd258e72ba14ff006823a/cryptography-46.0.4-cp311-abi3-manylinux_2_28_x86_64.whl
+        sha256: 0a9ad24359fee86f131836a9ac3bffc9329e956624a2d379b613f8f8abaf5255
         only-arches:
           - x86_64
         x-checker-data:
@@ -843,8 +843,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.14.0
-        commit: 7df45f51632c32343674053d261d4906f5fd7af7
+        tag: v4.14.1
+        commit: 26cce7fd138969d59cfd7b8fd6e8901aaf3d9378
         disable-submodules: true
         x-checker-data:
           type: anitya
