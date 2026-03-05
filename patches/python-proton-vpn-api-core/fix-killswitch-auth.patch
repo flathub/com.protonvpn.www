@@ -1,0 +1,122 @@
+diff --git a/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection.py b/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection.py
+index 57ad6fa..49a21aa 100644
+--- a/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection.py
++++ b/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection.py
+@@ -24,6 +24,7 @@ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ from dataclasses import dataclass, field
+ import uuid
++from getpass import getuser
+ 
+ import gi  # pylint: disable=C0411
+ gi.require_version("NM", "1.0")
+@@ -37,6 +38,7 @@ DEFAULT_METRIC = -1
+ class KillSwitchGeneralConfig:  # pylint: disable=missing-class-docstring
+     human_readable_id: str
+     interface_name: str
++    permanent: bool
+ 
+ 
+ @dataclass
+@@ -86,6 +88,11 @@ class KillSwitchConnection:  # pylint: disable=too-few-public-methods
+         s_con.set_property(NM.SETTING_CONNECTION_UUID, str(uuid.uuid4()))
+         s_con.set_property(NM.SETTING_CONNECTION_TYPE, NM.SETTING_DUMMY_SETTING_NAME)
+ 
++        # Only permanent kill switch needs to be a system connection;
++        # weaker kill switches can be user connections to avoid polkit auth.
++        if not self._general_settings.permanent:
++            s_con.add_permission(NM.SETTING_USER_SETTING_NAME, getuser(), None)
++
+         s_dummy = NM.SettingDummy.new()
+ 
+         s_ipv4 = self._generate_ipv4_settings()
+diff --git a/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection_handler.py b/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection_handler.py
+index 831d962..425adf5 100644
+--- a/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection_handler.py
++++ b/proton/vpn/backend/networkmanager/killswitch/default/killswitch_connection_handler.py
+@@ -144,7 +144,8 @@ class KillSwitchConnectionHandler:
+         interface_name = _get_interface_name(permanent)
+         general_config = KillSwitchGeneralConfig(
+             human_readable_id=connection_id,
+-            interface_name=interface_name
++            interface_name=interface_name,
++            permanent=permanent
+         )
+ 
+         kill_switch = KillSwitchConnection(
+@@ -174,7 +175,8 @@ class KillSwitchConnectionHandler:
+ 
+         general_config = KillSwitchGeneralConfig(
+             human_readable_id=_get_connection_id(self._connection_prefix, permanent, routed=True),
+-            interface_name=_get_interface_name(permanent, routed=True)
++            interface_name=_get_interface_name(permanent, routed=True),
++            permanent=permanent
+         )
+         kill_switch = KillSwitchConnection(
+             general_config,
+@@ -204,7 +206,8 @@ class KillSwitchConnectionHandler:
+         interface_name = _get_interface_name(permanent=False, ipv6=True)
+         general_config = KillSwitchGeneralConfig(
+             human_readable_id=connection_id,
+-            interface_name=interface_name
++            interface_name=interface_name,
++            permanent=False
+         )
+ 
+         kill_switch = KillSwitchConnection(
+diff --git a/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection.py b/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection.py
+index 4813fbc..59cf700 100644
+--- a/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection.py
++++ b/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection.py
+@@ -24,6 +24,7 @@ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ from dataclasses import dataclass, field
+ import uuid
++from getpass import getuser
+ 
+ import gi
+ gi.require_version("NM", "1.0")
+@@ -37,6 +38,7 @@ DEFAULT_METRIC = -1
+ class KillSwitchGeneralConfig:  # pylint: disable=missing-class-docstring
+     human_readable_id: str
+     interface_name: str
++    permanent: bool
+ 
+ 
+ @dataclass
+@@ -86,6 +88,11 @@ class KillSwitchConnection:  # pylint: disable=too-few-public-methods
+         s_con.set_property(NM.SETTING_CONNECTION_UUID, str(uuid.uuid4()))
+         s_con.set_property(NM.SETTING_CONNECTION_TYPE, NM.SETTING_DUMMY_SETTING_NAME)
+ 
++        # Only permanent kill switch needs to be a system connection;
++        # weaker kill switches can be user connections to avoid polkit auth.
++        if not self._general_settings.permanent:
++            s_con.add_permission(NM.SETTING_USER_SETTING_NAME, getuser(), None)
++
+         s_dummy = NM.SettingDummy.new()
+ 
+         s_ipv4 = self._generate_ipv4_settings()
+diff --git a/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py b/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py
+index 3dd755d..5f72b1b 100644
+--- a/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py
++++ b/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py
+@@ -115,7 +115,8 @@ class KillSwitchConnectionHandler:
+ 
+         general_config = self._config or KillSwitchGeneralConfig(
+             human_readable_id=_get_connection_id(permanent),
+-            interface_name=_get_interface_name(permanent)
++            interface_name=_get_interface_name(permanent),
++            permanent=permanent
+         )
+ 
+         connection = self.nm_client.get_active_connection(
+@@ -246,7 +247,8 @@ class KillSwitchConnectionHandler:
+         interface_name = _get_interface_name(permanent=False, ipv6=True)
+         general_config = KillSwitchGeneralConfig(
+             human_readable_id=connection_id,
+-            interface_name=interface_name
++            interface_name=interface_name,
++            permanent=False
+         )
+ 
+         kill_switch = KillSwitchConnection(

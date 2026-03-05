@@ -760,6 +760,8 @@ modules:
           tag-template: v$version
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
+      - type: patch
+        path: patches/python-proton-vpn-api-core/fix-killswitch-auth.patch
 
   - name: python-proton-vpn-network-manager
     buildsystem: simple
