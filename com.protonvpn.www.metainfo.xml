@@ -4,8 +4,7 @@
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0</project_license>
     <name>Proton VPN</name>
-    <developer_name>Proton AG</developer_name>
-    <developer id="ch.protonmail">
+    <developer id="com.protonvpn">
         <name>Proton AG</name>
     </developer>
     <summary>Secures your internet and protects your online privacy</summary>
@@ -96,6 +95,7 @@
     </description>
     <screenshots>
         <screenshot type="default">
+            <caption>Proton VPN application window open on an Ubuntu desktop, showing a list of countries to connect to.</caption>
             <image>
                 https://res.cloudinary.com/dbulfrlrz/images/f_auto,q_auto/v1721663577/wp-vpn/ubuntu-desktop/ubuntu-desktop.png</image>
         </screenshot>
@@ -106,84 +106,32 @@
     <url type="vcs-browser">https://github.com/ProtonVPN/proton-vpn-gtk-app</url>
 
     <releases>
-        <release version="4.14.2" date="2026-03-06">
-            <description></description>
-        </release>
-        <release version="4.14.1" date="2026-02-09">
-            <description/>
-        </release>
-        <release version="4.14.0" date="2026-01-27">
-            <description/>
-        </release>
-        <release version="4.13.1" date="2025-12-17">
-            <description/>
-        </release>
-        <release version="4.13.0" date="2025-12-05">
-            <description/>
-        </release>
-        <release version="4.12.0" date="2025-11-02">
-            <description/>
-        </release>
-        <release version="4.11.0" date="2025-09-28">
-            <description/>
-        </release>
-        <release version="4.9.7" date="2025-06-18">
-            <description/>
-        </release>
-        <release version="4.9.5" date="2025-03-25">
-            <description/>
-        </release>
-        <release version="4.9.4" date="2025-03-07">
-            <description/>
-        </release>
-        <release version="4.9.3" date="2025-02-24">
-            <description/>
-        </release>
-        <release version="4.9.1" date="2025-02-17">
-            <description/>
-        </release>
-        <release version="4.8.2" date="2025-01-06">
-            <description/>
-        </release>
-        <release version="4.8.1" date="2024-12-05">
-            <description/>
-        </release>
-        <release version="4.8.0" date="2024-12-02">
-            <description/>
-        </release>
-        <release version="4.7.4" date="2024-11-12">
-            <description/>
-        </release>
-        <release version="4.7.3" date="2024-11-08">
-            <description/>
-        </release>
-        <release version="4.7.1" date="2024-11-06">
-            <description/>
-        </release>
-        <release version="4.6.0" date="2024-10-11">
-            <description/>
-        </release>
-        <release version="4.5.0" date="2024-09-25">
-            <description/>
-        </release>
-        <release version="4.4.5" date="2024-09-23">
-            <description/>
-        </release>
-        <release version="4.4.4" date="2024-08-23">
-            <description/>
-        </release>
-        <release version="4.4.3" date="2024-08-15">
-            <description/>
-        </release>
-        <release version="4.4.2" date="2024-08-01">
-            <description/>
-        </release>
-        <release version="4.3.3" date="2024-07-31">
-            <description/>
-        </release>
-        <release version="4.3.2" date="2024-05-23">
-            <description/>
-        </release>
+        <release version="4.14.2" date="2026-03-06"/>
+        <release version="4.14.1" date="2026-02-09"/>
+        <release version="4.14.0" date="2026-01-27"/>
+        <release version="4.13.1" date="2025-12-17"/>
+        <release version="4.13.0" date="2025-12-05"/>
+        <release version="4.12.0" date="2025-11-02"/>
+        <release version="4.11.0" date="2025-09-28"/>
+        <release version="4.9.7" date="2025-06-18"/>
+        <release version="4.9.5" date="2025-03-25"/>
+        <release version="4.9.4" date="2025-03-07"/>
+        <release version="4.9.3" date="2025-02-24"/>
+        <release version="4.9.1" date="2025-02-17"/>
+        <release version="4.8.2" date="2025-01-06"/>
+        <release version="4.8.1" date="2024-12-05"/>
+        <release version="4.8.0" date="2024-12-02"/>
+        <release version="4.7.4" date="2024-11-12"/>
+        <release version="4.7.3" date="2024-11-08"/>
+        <release version="4.7.1" date="2024-11-06"/>
+        <release version="4.6.0" date="2024-10-11"/>
+        <release version="4.5.0" date="2024-09-25"/>
+        <release version="4.4.5" date="2024-09-23"/>
+        <release version="4.4.4" date="2024-08-23"/>
+        <release version="4.4.3" date="2024-08-15"/>
+        <release version="4.4.2" date="2024-08-01"/>
+        <release version="4.3.3" date="2024-07-31"/>
+        <release version="4.3.2" date="2024-05-23"/>
         <release version="4.3.1" date="2024-05-08"/>
         <release version="4.3.0" date="2024-04-16"/>
         <release version="4.2.0" date="2024-03-06"/>
