@@ -460,8 +460,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v259.1
-        commit: 6a36f1c7420dcb8e5176796676047f058466fe7a
+        tag: v259.3
+        commit: 32bc9ae9f58aed3fa06e111b55fc157a3fe1322b
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -531,8 +531,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/1a/5b/a26407d4f79d61ca4bebaa9213feafdd8806dc69d3d290ce24996d3cfe43/cryptography-46.0.4-cp311-abi3-manylinux_2_28_aarch64.whl
-        sha256: 01df4f50f314fbe7009f54046e908d1754f19d0c6d3070df1e6268c5a4af09fa
+        url: https://files.pythonhosted.org/packages/37/53/a18500f270342d66bf7e4d9f091114e31e5ee9e7375a5aba2e85a91e0044/cryptography-46.0.5-cp311-abi3-manylinux_2_28_aarch64.whl
+        sha256: 50bfb6925eff619c9c023b967d5b77a54e04256c4281b0e21336a130cd7fc263
         only-arches:
           - aarch64
         x-checker-data:
@@ -545,8 +545,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/2b/08/f83e2e0814248b844265802d081f2fac2f1cbe6cd258e72ba14ff006823a/cryptography-46.0.4-cp311-abi3-manylinux_2_28_x86_64.whl
-        sha256: 0a9ad24359fee86f131836a9ac3bffc9329e956624a2d379b613f8f8abaf5255
+        url: https://files.pythonhosted.org/packages/6b/e7/237155ae19a9023de7e30ec64e5d99a9431a567407ac21170a046d22a5a3/cryptography-46.0.5-cp311-abi3-manylinux_2_28_x86_64.whl
+        sha256: 3ee190460e2fbe447175cda91b88b84ae8322a104fc27766ad09428754a618ed
         only-arches:
           - x86_64
         x-checker-data:
@@ -688,8 +688,8 @@ modules:
       - CONFDIR=${FLATPAK_DEST}/etc/iproute2
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.18.0.tar.xz
-        sha256: 6ba520e1975e4c50dc931eeae91ea37c198b8a173744885f8895b84325f9d456
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.19.0.tar.xz
+        sha256: 9332213d35480b647086a70c302de8568de83455a98774d35de216c4ce191006
         x-checker-data:
           project-id: 1392
           stable-only: true
@@ -751,8 +751,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v4.14.3
-        commit: 0c9c7d9ad590314c30de80b8d19eb8f3c511b064
+        tag: v4.15.2
+        commit: 6cd9b83f38f886444049786c9d176a5b2e1c1400
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -843,8 +843,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.14.1
-        commit: 26cce7fd138969d59cfd7b8fd6e8901aaf3d9378
+        tag: v4.14.2
+        commit: e437174988bf9bb3e3cba2ae636d19dd34c77c7d
         disable-submodules: true
         x-checker-data:
           type: anitya
