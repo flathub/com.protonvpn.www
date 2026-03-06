@@ -96,6 +96,7 @@
     </description>
     <screenshots>
         <screenshot type="default">
+            <caption>Proton VPN application window open on an Ubuntu desktop, showing a list of countries to connect to.</caption>
             <image>
                 https://res.cloudinary.com/dbulfrlrz/images/f_auto,q_auto/v1721663577/wp-vpn/ubuntu-desktop/ubuntu-desktop.png</image>
         </screenshot>
