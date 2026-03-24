@@ -460,8 +460,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v259.3
-        commit: 32bc9ae9f58aed3fa06e111b55fc157a3fe1322b
+        tag: v260.1
+        commit: c0a5a2516d28601fb3afc1a77d7b42fcfe38fced
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -566,8 +566,8 @@ modules:
         --prefix=${FLATPAK_DEST} "pyopenssl" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/d1/81/ef2b1dfd1862567d573a4fdbc9f969067621764fbb74338496840a1d2977/pyopenssl-25.3.0-py3-none-any.whl
-        sha256: 1fda6fc034d5e3d179d39e59c1895c9faeaf40a79de5fc4cbbfbe0d36f4a77b6
+        url: https://files.pythonhosted.org/packages/fb/7d/d4f7d908fa8415571771b30669251d57c3cf313b36a856e6d7548ae01619/pyopenssl-26.0.0-py3-none-any.whl
+        sha256: df94d28498848b98cc1c0ffb8ef1e71e40210d3b0a8064c9d29571ed2904bf81
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
@@ -652,8 +652,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/1b/d3/8c43e758cf456273c32652bb8b7a4ec2d74327d8849856b0b714ad671da7/meson-1.10.1.tar.gz
-        sha256: c42296f12db316a4515b9375a5df330f2e751ccdd4f608430d41d7d6210e4317
+        url: https://files.pythonhosted.org/packages/ce/99/f2e4780865ebabda14ab03b98def0bf27c021efaf7ec7138c1dbbf1c72cb/meson-1.10.2.tar.gz
+        sha256: 7890287d911dd4ee1ebd0efb61ed0321bfcd87c725df923a837cf90c6508f96b
         x-checker-data:
           type: pypi
           name: meson
@@ -751,8 +751,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v4.16.0
-        commit: 8553b25443b40a251e073e4c7fd7280cafc99821
+        tag: v4.17.2
+        commit: 97bc632bf9f39a1938d5dcf108152a7a4560650e
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -794,8 +794,8 @@ modules:
       - type: file
         only-arches: [x86_64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.6.0_amd64.deb
-        sha256: 3a29e7de6c5230e70a230afa918bf60551c20d2a8c669d89640f793eaaf477ed
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.6.1_amd64.deb
+        sha256: 2ddb060b71bc9599387648f7c3215f83ba8e9cb890e5ef3edd70ac100994e569
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -805,8 +805,8 @@ modules:
       - type: file
         only-arches: [aarch64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.6.0_arm64.deb
-        sha256: 7c8b4b75e8165c35e6b79e6fd7a9906b6798f6dbf43ba5457b07f07f14c9899c
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.6.1_arm64.deb
+        sha256: 8584f7bb34fe1e5550ae442b9e619cf2916bde7c6ff454013a06e7f0847d9d81
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -843,8 +843,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.15.0
-        commit: 6625836914e9e7ff4e29fe0c7d73e291be788209
+        tag: v4.15.1
+        commit: a14ae3c2b0a16a6be0d0931f9e39e536bc6554f0
         disable-submodules: true
         x-checker-data:
           type: anitya
