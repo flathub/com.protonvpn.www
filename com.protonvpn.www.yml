@@ -185,8 +185,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/39/46/7cc89b6ef47803528673585bfa40fa729a7050d9eaedeb7e7f5816300c88/poetry_core-2.3.1.tar.gz
-            sha256: 96f791d5d7d4e040f3983d76779425cf9532690e2756a24fd5ca0f86af19ef82
+            url: https://files.pythonhosted.org/packages/10/48/5b4f344c252ee2f75051b6bf7dfb68ab53aa00a107f5f8e5cbf795701dad/poetry_core-2.3.2.tar.gz
+            sha256: 20cb71be27b774628da9f384effd9183dfceb53bcef84063248a8672aa47031f
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -205,15 +205,15 @@ modules:
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/23/d1/136eb2cb77520a31e1f64cbae9d33ec6df0d78bdf4160398e86eec8a8754/tomli-2.4.0-py3-none-any.whl
-            sha256: 1f776e7d669ebceb01dee46484485f43a4048746235e683bcdffacdf1fb4785a
+            url: https://files.pythonhosted.org/packages/7b/61/cceae43728b7de99d9b847560c262873a1f6c98202171fd5ed62640b494b/tomli-2.4.1-py3-none-any.whl
+            sha256: 0d85819802132122da43cb86656f8d1f8c6587d54ae7dcaf30e90533028b49fe
             x-checker-data:
               name: tomli
               packagetype: bdist_wheel
               type: pypi
           - type: file
-            url: https://files.pythonhosted.org/packages/3d/ea/ac2bf868899d0d2e82ef72d350d97a846110c709bacf2d968431576ca915/setuptools_scm-9.2.2-py3-none-any.whl
-            sha256: 30e8f84d2ab1ba7cb0e653429b179395d0c33775d54807fc5f1dd6671801aef7
+            url: https://files.pythonhosted.org/packages/5c/e1/342c4434df56aa537f6ce7647eefee521d96fbb828b08acd709865767652/setuptools_scm-10.0.5-py3-none-any.whl
+            sha256: f611037d8aae618221503b8fa89319f073438252ae3420e01c9ceec249131a0a
             x-checker-data:
               name: setuptools_scm
               packagetype: bdist_wheel
@@ -232,8 +232,8 @@ modules:
               type: pypi
               name: semantic_version
           - type: file
-            url: https://files.pythonhosted.org/packages/bc/c4/8d3d282cee60d3ea0369fa15ce27387810040360adb4133e31990a7a2aba/setuptools_rust-1.12.0.tar.gz
-            sha256: d94a93f0c97751c17014565f07bdc324bee45d396cd1bba83d8e7af92b945f0c
+            url: https://files.pythonhosted.org/packages/0c/11/736cfe4ec795dbce001ebdcef5cab03de1727041c805c3a45c1bda9f54a1/setuptools_rust-1.12.1.tar.gz
+            sha256: 85ae70989d96c9cfeb5ef79cf3bac2d5200bc5564f720a06edceedbdf6664640
             x-checker-data:
               type: pypi
               name: setuptools-rust
@@ -531,8 +531,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/37/53/a18500f270342d66bf7e4d9f091114e31e5ee9e7375a5aba2e85a91e0044/cryptography-46.0.5-cp311-abi3-manylinux_2_28_aarch64.whl
-        sha256: 50bfb6925eff619c9c023b967d5b77a54e04256c4281b0e21336a130cd7fc263
+        url: https://files.pythonhosted.org/packages/d4/12/123be7292674abf76b21ac1fc0e1af50661f0e5b8f0ec8285faac18eb99e/cryptography-46.0.6-cp311-abi3-manylinux_2_28_aarch64.whl
+        sha256: 67177e8a9f421aa2d3a170c3e56eca4e0128883cf52a071a7cbf53297f18b175
         only-arches:
           - aarch64
         x-checker-data:
@@ -545,8 +545,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/6b/e7/237155ae19a9023de7e30ec64e5d99a9431a567407ac21170a046d22a5a3/cryptography-46.0.5-cp311-abi3-manylinux_2_28_x86_64.whl
-        sha256: 3ee190460e2fbe447175cda91b88b84ae8322a104fc27766ad09428754a618ed
+        url: https://files.pythonhosted.org/packages/34/71/1ea5a7352ae516d5512d17babe7e1b87d9db5150b21f794b1377eac1edc0/cryptography-46.0.6-cp311-abi3-manylinux_2_28_x86_64.whl
+        sha256: 22259338084d6ae497a19bae5d4c66b7ca1387d3264d1c2c0e72d9e9b6a77b97
         only-arches:
           - x86_64
         x-checker-data:
@@ -612,8 +612,8 @@ modules:
             cleanup: ['*']
             sources:
               - type: archive
-                url: https://files.pythonhosted.org/packages/7b/b1/19587742aad604f1988a8a362e660e8c3ac03adccdb71c96d86526e5eb62/setuptools_scm-9.2.2.tar.gz
-                sha256: 1c674ab4665686a0887d7e24c03ab25f24201c213e82ea689d2f3e169ef7ef57
+                url: https://files.pythonhosted.org/packages/a5/b1/2a6a8ecd6f9e263754036a0b573360bdbd6873b595725e49e11139722041/setuptools_scm-10.0.5.tar.gz
+                sha256: bbba8fe754516cdefd017f4456721775e6ef9662bd7887fb52ae26813d4838c3
                 x-checker-data:
                   type: pypi
                   name: setuptools_scm
@@ -626,8 +626,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/82/30/31573e9457673ab10aa432461bee537ce6cef177667deca369efb79df071/tomli-2.4.0.tar.gz
-                    sha256: aa89c3f6c277dd275d8e243ad24f3b5e701491a860d5121f2cdd399fbb31fc9c
+                    url: https://files.pythonhosted.org/packages/22/de/48c59722572767841493b26183a0d1cc411d54fd759c5607c4590b6563a6/tomli-2.4.1.tar.gz
+                    sha256: 7c7e1a961a0b2f2472c1ac5b69affa0ae1132c39adcb67aba98568702b9cc23f
                     x-checker-data:
                       type: pypi
                       name: tomli
@@ -751,8 +751,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v4.17.2
-        commit: 97bc632bf9f39a1938d5dcf108152a7a4560650e
+        tag: v4.19.1
+        commit: cc4f196b095c37e20c149d668ca62c22d4ab2380
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -843,8 +843,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.15.1
-        commit: a14ae3c2b0a16a6be0d0931f9e39e536bc6554f0
+        tag: v4.15.2
+        commit: a997800f661248e47c1d1f9a0508fd22ea1979fe
         disable-submodules: true
         x-checker-data:
           type: anitya

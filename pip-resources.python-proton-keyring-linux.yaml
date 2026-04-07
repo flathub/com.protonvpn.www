@@ -12,8 +12,8 @@ sources:
       name: cffi
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/60/04/ee2a9e8542e4fa2773b81771ff8349ff19cdd56b7258a0cc442639052edb/cryptography-46.0.5.tar.gz
-    sha256: abace499247268e3757271b2f1e244b36b06f8515cf27c4d49468fc9eb16e93d
+    url: https://files.pythonhosted.org/packages/a4/ba/04b1bd4218cbc58dc90ce967106d51582371b898690f3ae0402876cc4f34/cryptography-46.0.6.tar.gz
+    sha256: 27550628a518c5c6c903d84f637fbecf287f6cb9ced3804838a1295dc1fd0759
     x-checker-data:
       name: cryptography
       type: pypi
@@ -53,8 +53,8 @@ sources:
       packagetype: bdist_wheel
       type: pypi
   - type: file
-    url: https://files.pythonhosted.org/packages/a4/8e/469e5a4a2f5855992e425f3cb33804cc07bf18d48f2db061aec61ce50270/more_itertools-10.8.0-py3-none-any.whl
-    sha256: 52d4362373dcf7c52546bc4af9a86ee7c4579df9a8dc268be0a2f949d376cc9b
+    url: https://files.pythonhosted.org/packages/d8/f4/5e52c7319b8087acef603ed6e50dc325c02eaa999355414830468611f13c/more_itertools-11.0.1-py3-none-any.whl
+    sha256: eaf287826069452a8f61026c597eae2428b2d1ba2859083abbf240b46842ce6d
     x-checker-data:
       name: more_itertools
       packagetype: bdist_wheel
