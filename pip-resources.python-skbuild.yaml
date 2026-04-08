@@ -74,8 +74,8 @@ modules:
       - *id002
       - *id003
       - type: file
-        url: https://files.pythonhosted.org/packages/3d/ea/ac2bf868899d0d2e82ef72d350d97a846110c709bacf2d968431576ca915/setuptools_scm-9.2.2-py3-none-any.whl
-        sha256: 30e8f84d2ab1ba7cb0e653429b179395d0c33775d54807fc5f1dd6671801aef7
+        url: https://files.pythonhosted.org/packages/5c/e1/342c4434df56aa537f6ce7647eefee521d96fbb828b08acd709865767652/setuptools_scm-10.0.5-py3-none-any.whl
+        sha256: f611037d8aae618221503b8fa89319f073438252ae3420e01c9ceec249131a0a
         x-checker-data:
           name: setuptools_scm
           packagetype: bdist_wheel
