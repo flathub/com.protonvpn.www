@@ -814,6 +814,22 @@ modules:
           dist: stable
           component: main
 
+  - name: proton-vpn-cli
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "." --no-build-isolation
+    modules:
+      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//49' "click" "dbus-fast" "tabulate" -o pip-resources.proton-vpn-cli
+      # https://github.com/ProtonVPN/proton-vpn-cli/blob/f00eb2a07e810f9563323bd38ee4a7bd3c3226c8/setup.py#L16-L23
+      - pip-resources.proton-vpn-cli.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/proton-vpn-cli.git
+        tag: v1.0.0
+        commit: f00eb2a07e810f9563323bd38ee4a7bd3c3226c8
+        disable-submodules: true
+
   - name: proton-vpn-gtk-app
     buildsystem: simple
     build-commands:
