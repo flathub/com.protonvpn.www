@@ -33,65 +33,6 @@ finish-args:
 
 modules:
   - shared-modules/intltool/intltool-0.51.json
-  - name: libayatana-appindicator
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DENABLE_BINDINGS_MONO=NO
-      - -DENABLE_BINDINGS_VALA=NO
-      - -DENABLE_GTKDOC=NO
-    sources:
-      - type: git
-        url: https://github.com/AyatanaIndicators/libayatana-appindicator.git
-        tag: 0.5.94
-        commit: 31e8bb083b307e1cc96af4874a94707727bd1e79
-        x-checker-data:
-          type: anitya
-          project-id: 18446
-          tag-template: $version
-    modules:
-      - name: ayatana-ido
-        buildsystem: cmake-ninja
-        sources:
-          - type: git
-            url: https://github.com/AyatanaIndicators/ayatana-ido.git
-            tag: 0.10.4
-            commit: f968079b09e2310fefc3fc307359025f1c74b3eb
-            x-checker-data:
-              type: anitya
-              project-id: 18445
-              tag-template: $version
-
-      - name: libayatana-indicator
-        buildsystem: cmake-ninja
-        sources:
-          - type: git
-            url: https://github.com/AyatanaIndicators/libayatana-indicator.git
-            tag: 0.9.4
-            commit: 611bb384b73fa6311777ba4c41381a06f5b99dad
-            x-checker-data:
-              type: anitya
-              project-id: 18447
-              tag-template: $version
-
-      - name: libdbusmenu-gtk3
-        buildsystem: autotools
-        build-options:
-          cflags: -Wno-error
-        config-opts:
-          - --with-gtk=3
-          - --disable-dumper
-          - --disable-static
-          - --enable-tests
-          - --disable-gtk-doc
-          - --enable-introspection=no
-          - --disable-vala
-        cleanup:
-          - /share/gtk-doc
-          - /share/libdbusmenu
-        sources:
-          - type: archive
-            url: https://launchpad.net/libdbusmenu/16.04/16.04.0/+download/libdbusmenu-16.04.0.tar.gz
-            sha256: b9cc4a2acd74509435892823607d966d424bd9ad5d0b00938f27240a1bfa878a
 
   - name: python3-packaging
     buildsystem: simple
@@ -780,28 +721,6 @@ modules:
           tag-template: v$version
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
-
-  - name: python-proton-vpn-network-manager
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "." --no-build-isolation
-    modules:
-      # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//49' "proton-vpn-local-agent" "pygobject" "pycairo" -o pip-resources.python-proton-vpn-network-manager
-      # https://github.com/ProtonVPN/python-proton-vpn-network-manager/blob/6ffd04fa0ae88a89d2b733443317066ef23b3ccd/setup.py#L14C63-L14C85
-      - pip-resources.python-proton-vpn-network-manager.yaml
-    sources:
-      - type: git
-        url: https://github.com/ProtonVPN/python-proton-vpn-network-manager
-        tag: v0.13.5
-        commit: 3a3646d5a158ef610b8cf956b155704f6d04ec0a
-        disable-submodules: true
-        x-checker-data:
-          type: anitya
-          project-id: 369947
-          tag-template: v$version
-      - type: patch
-        path: patches/python-proton-vpn-network-manager/fix-ip-path.patch
 
   - name: python-proton-vpn-local-agent
     buildsystem: simple
