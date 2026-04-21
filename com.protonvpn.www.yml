@@ -100,8 +100,8 @@ modules:
         --prefix=${FLATPAK_DEST} "packaging" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/b7/b9/c538f279a4e237a006a2c98387d081e9eb060d203d8ed34467cc0f0b9b53/packaging-26.0-py3-none-any.whl
-        sha256: b36f1fef9334a5588b4166f8bcd26a14e521f2b55e6b9de3aaa80d3ff7a37529
+        url: https://files.pythonhosted.org/packages/7a/c2/920ef838e2f0028c8262f16101ec09ebd5969864e5a64c4c05fad0617c56/packaging-26.1-py3-none-any.whl
+        sha256: 5d9c0669c6285e491e0ced2eee587eaf67b670d94a19e94e3984a481aba6802f
         x-checker-data:
           name: packaging
           packagetype: bdist_wheel
@@ -672,8 +672,8 @@ modules:
     cleanup: ['*']
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/ce/99/f2e4780865ebabda14ab03b98def0bf27c021efaf7ec7138c1dbbf1c72cb/meson-1.10.2.tar.gz
-        sha256: 7890287d911dd4ee1ebd0efb61ed0321bfcd87c725df923a837cf90c6508f96b
+        url: https://files.pythonhosted.org/packages/1b/88/23a6aefb29398b290469914e9ecbdd21803bd53c826aa75e4e2a9b778e98/meson-1.11.0.tar.gz
+        sha256: dffdd0915ceb028541fe3bed77d63ba35e78514591c043736b450d62634eeb31
         x-checker-data:
           type: pypi
           name: meson
@@ -771,8 +771,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v4.19.1
-        commit: cc4f196b095c37e20c149d668ca62c22d4ab2380
+        tag: v5.0.1
+        commit: a03ae16b9139a2d27fbc61efcea2be3a51512ee1
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -879,8 +879,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.15.2
-        commit: a997800f661248e47c1d1f9a0508fd22ea1979fe
+        tag: v4.15.3
+        commit: 7339d092f64f88d047d2dc3437687cd0551730ce
         disable-submodules: true
         x-checker-data:
           type: anitya
