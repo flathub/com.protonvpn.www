@@ -1,8 +1,8 @@
 diff --git a/proton/vpn/app/gtk/widgets/main/tray_icon.py b/proton/vpn/app/gtk/widgets/main/tray_icon.py
-index db905e2..3f28410 100644
+index e73ee1c..ebcab90 100644
 --- a/proton/vpn/app/gtk/widgets/main/tray_icon.py
 +++ b/proton/vpn/app/gtk/widgets/main/tray_icon.py
-@@ -57,7 +57,7 @@ logger = logging.getLogger(__name__)
+@@ -58,7 +58,7 @@ logger = logging.getLogger(__name__)
  
  # Tray icon configuration
  TRAY_TITLE = "Proton VPN"
@@ -11,20 +11,20 @@ index db905e2..3f28410 100644
  TRAY_ICON_DESCRIPTION = ""
  
  # StatusNotifierItem specification
-@@ -239,7 +239,7 @@ class _StatusNotifierItem(dbus.service.Object):
+@@ -240,7 +240,7 @@ class _StatusNotifierItem(dbus.service.Object):
          self.bus = bus
  
          # Generate unique bus name
--        self.bus_name_str = f"org.kde.StatusNotifierItem-{tray_icon.app_id}-{id(self)}"
-+        self.bus_name_str = f"com.protonvpn.www.StatusNotifierItem-{id(self)}"
+-        self.bus_name_str = f"org.kde.StatusNotifierItem-{tray_icon.app_id}-{os.getpid()}"
++        self.bus_name_str = f"com.protonvpn.www.StatusNotifierItem-{os.getpid()}"
          self.bus_name = dbus.service.BusName(self.bus_name_str, bus)
  
          super().__init__(self.bus_name, object_path)
 diff --git a/proton/vpn/app/gtk/widgets/main/tray_indicator.py b/proton/vpn/app/gtk/widgets/main/tray_indicator.py
-index aef7227..a82793c 100644
+index 3024a38..c19ca30 100644
 --- a/proton/vpn/app/gtk/widgets/main/tray_indicator.py
 +++ b/proton/vpn/app/gtk/widgets/main/tray_indicator.py
-@@ -64,19 +64,19 @@ class TrayIndicator:
+@@ -88,19 +88,19 @@ class TrayIndicator:
          see `_on_connection_disconnected` for implementation details.
      """
      DISCONNECTED_ICON = str(
