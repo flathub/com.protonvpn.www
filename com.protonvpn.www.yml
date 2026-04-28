@@ -41,8 +41,8 @@ modules:
         --prefix=${FLATPAK_DEST} "packaging" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/7a/c2/920ef838e2f0028c8262f16101ec09ebd5969864e5a64c4c05fad0617c56/packaging-26.1-py3-none-any.whl
-        sha256: 5d9c0669c6285e491e0ced2eee587eaf67b670d94a19e94e3984a481aba6802f
+        url: https://files.pythonhosted.org/packages/df/b2/87e62e8c3e2f4b32e5fe99e0b86d576da1312593b39f47d8ceef365e95ed/packaging-26.2-py3-none-any.whl
+        sha256: 5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e
         x-checker-data:
           name: packaging
           packagetype: bdist_wheel
@@ -465,8 +465,8 @@ modules:
         --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/53/b2/acc33950394b3becb2b664741a0c0889c7ef9f9ffbfa8d47eddb53a50abd/idna-3.12-py3-none-any.whl
-        sha256: 60ffaa1858fac94c9c124728c24fcde8160f3fb4a7f79aa8cdd33a9d1af60a67
+        url: https://files.pythonhosted.org/packages/5d/13/ad7d7ca3808a898b4612b6fe93cde56b53f3034dcde235acb1f0e1df24c6/idna-3.13-py3-none-any.whl
+        sha256: 892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3
         x-checker-data:
           type: pypi
           name: idna
@@ -479,8 +479,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/8f/3e/af9246aaf23cd4ee060699adab1e47ced3f5f7e7a8ffdd339f817b446462/cryptography-46.0.7-cp311-abi3-manylinux_2_28_aarch64.whl
-        sha256: 73510b83623e080a2c35c62c15298096e2a5dc8d51c3b4e1740211839d0dea77
+        url: https://files.pythonhosted.org/packages/81/b9/8443cfe5d17d482d348cee7048acf502bb89a51b6382f06240fd290d4ca3/cryptography-47.0.0-cp311-abi3-manylinux_2_28_aarch64.whl
+        sha256: 9c59ab0e0fa3a180a5a9c59f3a5abe3ef90d474bc56d7fadfbe80359491b615b
         only-arches:
           - aarch64
         x-checker-data:
@@ -493,8 +493,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/2d/cf/054b9d8220f81509939599c8bdbc0c408dbd2bdd41688616a20731371fe0/cryptography-46.0.7-cp311-abi3-manylinux_2_28_x86_64.whl
-        sha256: 420b1e4109cc95f0e5700eed79908cef9268265c773d3a66f7af1eef53d409ef
+        url: https://files.pythonhosted.org/packages/64/16/ed058e1df0f33d440217cd120d41d5dda9dd215a80b8187f68483185af82/cryptography-47.0.0-cp311-abi3-manylinux_2_28_x86_64.whl
+        sha256: 0024b87d47ae2399165a6bfb20d24888881eeab83ae2566d62467c5ff0030ce7
         only-arches:
           - x86_64
         x-checker-data:
@@ -514,8 +514,8 @@ modules:
         --prefix=${FLATPAK_DEST} "pyopenssl" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/fb/7d/d4f7d908fa8415571771b30669251d57c3cf313b36a856e6d7548ae01619/pyopenssl-26.0.0-py3-none-any.whl
-        sha256: df94d28498848b98cc1c0ffb8ef1e71e40210d3b0a8064c9d29571ed2904bf81
+        url: https://files.pythonhosted.org/packages/a8/41/52f3a3e812b816a91e89aa504199d8bf989a1f873192b10762be66cf2009/pyopenssl-26.1.0-py3-none-any.whl
+        sha256: 115563879b2c8ccb207975705d3e491434d8c9d7c79667c902ecbf5f3bbd2ece
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
@@ -649,8 +649,8 @@ modules:
       - CONFDIR=${FLATPAK_DEST}/etc/iproute2
     sources:
       - type: archive
-        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.19.0.tar.xz
-        sha256: 9332213d35480b647086a70c302de8568de83455a98774d35de216c4ce191006
+        url: https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-7.0.0.tar.xz
+        sha256: e62890f7b5de63c05a3bf331dc8deb4c015c336013f341a4edf46969797f2f4e
         x-checker-data:
           project-id: 1392
           stable-only: true
@@ -712,8 +712,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.0.1
-        commit: a03ae16b9139a2d27fbc61efcea2be3a51512ee1
+        tag: v5.1.2
+        commit: c167ab87cae2d0184d2a0378b810776d91182533
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -733,8 +733,8 @@ modules:
       - type: file
         only-arches: [x86_64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.6.1_amd64.deb
-        sha256: 2ddb060b71bc9599387648f7c3215f83ba8e9cb890e5ef3edd70ac100994e569
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.6.2_amd64.deb
+        sha256: fa561799484a43e45692d0f6dd512fd43b7b82419dd3ca3bed71df9d6dce2b8a
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -744,8 +744,8 @@ modules:
       - type: file
         only-arches: [aarch64]
         dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.6.1_arm64.deb
-        sha256: 8584f7bb34fe1e5550ae442b9e619cf2916bde7c6ff454013a06e7f0847d9d81
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.6.2_arm64.deb
+        sha256: c81d7b667a279a59d77fd4497fc64e7319183edecf57b277661f003e31a29597
         x-checker-data:
           type: debian-repo
           package-name: python3-proton-vpn-local-agent
@@ -798,8 +798,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.15.3
-        commit: 7339d092f64f88d047d2dc3437687cd0551730ce
+        tag: v4.16.1
+        commit: 2ca841d726eb8120fb58599b8c6d41fb4c5eff21
         disable-submodules: true
         x-checker-data:
           type: anitya
