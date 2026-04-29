@@ -2,42 +2,42 @@
 build-commands: []
 buildsystem: simple
 modules:
-- name: python3-click
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-    --prefix=${FLATPAK_DEST} "click" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/e4/20/71885d8b97d4f3dde17b1fdb92dbd4908b00541c5a3379787137285f602e/click-8.3.2-py3-none-any.whl
-    sha256: 1924d2c27c5653561cd2cae4548d1406039cb79b858b747cfea24924bbc1616d
-    x-checker-data:
-      name: click
-      packagetype: bdist_wheel
-      type: pypi
-- name: python3-dbus-fast
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-    --prefix=${FLATPAK_DEST} "dbus-fast" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/5f/cd/402b0e524bdf37d8b1d22b1d926c538bf1d2eedf115ea1d401c6c08a7d81/dbus_fast-4.0.4.tar.gz
-    sha256: 43137f0b73a7adbf7d5c0e9eb9d8d34df9e6e0aeafade2166e641c52dfe0a853
-    x-checker-data:
-      name: dbus_fast
-      type: pypi
-- name: python3-tabulate
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-    --prefix=${FLATPAK_DEST} "tabulate" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/99/55/db07de81b5c630da5cbf5c7df646580ca26dfaefa593667fc6f2fe016d2e/tabulate-0.10.0-py3-none-any.whl
-    sha256: f0b0622e567335c8fabaaa659f1b33bcb6ddfe2e496071b743aa113f8774f2d3
-    x-checker-data:
-      name: tabulate
-      packagetype: bdist_wheel
-      type: pypi
+  - name: python3-click
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "click" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/ae/44/c1221527f6a71a01ec6fbad7fa78f1d50dfa02217385cf0fa3eec7087d59/click-8.3.3-py3-none-any.whl
+        sha256: a2bf429bb3033c89fa4936ffb35d5cb471e3719e1f3c8a7c3fff0b8314305613
+        x-checker-data:
+          name: click
+          packagetype: bdist_wheel
+          type: pypi
+  - name: python3-dbus-fast
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "dbus-fast" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/5f/cd/402b0e524bdf37d8b1d22b1d926c538bf1d2eedf115ea1d401c6c08a7d81/dbus_fast-4.0.4.tar.gz
+        sha256: 43137f0b73a7adbf7d5c0e9eb9d8d34df9e6e0aeafade2166e641c52dfe0a853
+        x-checker-data:
+          name: dbus_fast
+          type: pypi
+  - name: python3-tabulate
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "tabulate" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/99/55/db07de81b5c630da5cbf5c7df646580ca26dfaefa593667fc6f2fe016d2e/tabulate-0.10.0-py3-none-any.whl
+        sha256: f0b0622e567335c8fabaaa659f1b33bcb6ddfe2e496071b743aa113f8774f2d3
+        x-checker-data:
+          name: tabulate
+          packagetype: bdist_wheel
+          type: pypi
 name: pip-resources.proton-vpn-cli
