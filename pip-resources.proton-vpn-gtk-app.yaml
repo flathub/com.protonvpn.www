@@ -16,8 +16,8 @@ modules:
           name: pycairo
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/a2/80/09247a2be28af2c2240132a0af6c1005a2b1d089242b13a2cd782d2de8d7/pygobject-3.56.2.tar.gz
-        sha256: b816098969544081de9eecedb94ad6ac59c77e4d571fe7051f18bebcec074313
+        url: https://files.pythonhosted.org/packages/da/61/978c5fbca34f10a90df362502fbb5a005637909e7b5a0e9212349ea9d010/pygobject-3.56.3.tar.gz
+        sha256: 12760e4a0e3d04b6eb95e06f7a27e362c826d567ea613373a92c003b6c70d2d6
         x-checker-data:
           name: pygobject
           type: pypi

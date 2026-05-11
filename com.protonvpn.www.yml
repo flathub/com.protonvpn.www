@@ -126,8 +126,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/10/48/5b4f344c252ee2f75051b6bf7dfb68ab53aa00a107f5f8e5cbf795701dad/poetry_core-2.3.2.tar.gz
-            sha256: 20cb71be27b774628da9f384effd9183dfceb53bcef84063248a8672aa47031f
+            url: https://files.pythonhosted.org/packages/b0/97/f7bb55470bb7890d9b3d3f9fa761083d5c9a6838b17c94a41bf2939f89ef/poetry_core-2.4.0.tar.gz
+            sha256: 4e8c7496cf797998ffc493f2e23eba4b038c894c08eadacdcdf688945de6b43a
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -465,8 +465,8 @@ modules:
         --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/5d/13/ad7d7ca3808a898b4612b6fe93cde56b53f3034dcde235acb1f0e1df24c6/idna-3.13-py3-none-any.whl
-        sha256: 892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3
+        url: https://files.pythonhosted.org/packages/6c/3c/3f62dee257eb3d6b2c1ef2a09d36d9793c7111156a73b5654d2c2305e5ce/idna-3.14-py3-none-any.whl
+        sha256: e677eaf072e290f7b725f9acf0b3a2bd55f9fd6f7c70abe5f0e34823d0accf69
         x-checker-data:
           type: pypi
           name: idna
@@ -479,8 +479,8 @@ modules:
         --prefix=${FLATPAK_DEST} "cryptography" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/81/b9/8443cfe5d17d482d348cee7048acf502bb89a51b6382f06240fd290d4ca3/cryptography-47.0.0-cp311-abi3-manylinux_2_28_aarch64.whl
-        sha256: 9c59ab0e0fa3a180a5a9c59f3a5abe3ef90d474bc56d7fadfbe80359491b615b
+        url: https://files.pythonhosted.org/packages/14/d5/e9c4ef932c8d800490c34d8bd589d64a31d5890e27ec9e9ad532be893294/cryptography-48.0.0-cp311-abi3-manylinux_2_28_aarch64.whl
+        sha256: 40ba1f85eaa6959837b1d51c9767e230e14612eea4ef110ee8854ada22da1bf5
         only-arches:
           - aarch64
         x-checker-data:
@@ -493,8 +493,8 @@ modules:
           packagetype: bdist_wheel
 
       - type: file
-        url: https://files.pythonhosted.org/packages/64/16/ed058e1df0f33d440217cd120d41d5dda9dd215a80b8187f68483185af82/cryptography-47.0.0-cp311-abi3-manylinux_2_28_x86_64.whl
-        sha256: 0024b87d47ae2399165a6bfb20d24888881eeab83ae2566d62467c5ff0030ce7
+        url: https://files.pythonhosted.org/packages/95/38/0d29a6fd7d0d1373f0c0c88a04ba20e359b257753ac497564cd660fc1d55/cryptography-48.0.0-cp311-abi3-manylinux_2_28_x86_64.whl
+        sha256: a0e692c683f4df67815a2d258b324e66f4738bd7a96a218c826dce4f4bd05d8f
         only-arches:
           - x86_64
         x-checker-data:
@@ -514,8 +514,8 @@ modules:
         --prefix=${FLATPAK_DEST} "pyopenssl" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/a8/41/52f3a3e812b816a91e89aa504199d8bf989a1f873192b10762be66cf2009/pyopenssl-26.1.0-py3-none-any.whl
-        sha256: 115563879b2c8ccb207975705d3e491434d8c9d7c79667c902ecbf5f3bbd2ece
+        url: https://files.pythonhosted.org/packages/73/b8/a0e2790ae249d6f38c9f66de7a211621a7ab2650217bcd04e1262f578a56/pyopenssl-26.2.0-py3-none-any.whl
+        sha256: 4f9d971bc5298b8bc1fab282803da04bf000c755d4ad9d99b52de2569ca19a70
         x-checker-data:
           name: pyOpenSSL
           packagetype: bdist_wheel
@@ -798,8 +798,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.16.1
-        commit: 2ca841d726eb8120fb58599b8c6d41fb4c5eff21
+        tag: v4.16.2
+        commit: 4f5694e0ff24522294a0f7657a6661ac74233e54
         disable-submodules: true
         x-checker-data:
           type: anitya
