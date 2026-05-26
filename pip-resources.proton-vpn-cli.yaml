@@ -9,8 +9,8 @@ modules:
         --prefix=${FLATPAK_DEST} "click" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/ae/44/c1221527f6a71a01ec6fbad7fa78f1d50dfa02217385cf0fa3eec7087d59/click-8.3.3-py3-none-any.whl
-        sha256: a2bf429bb3033c89fa4936ffb35d5cb471e3719e1f3c8a7c3fff0b8314305613
+        url: https://files.pythonhosted.org/packages/c7/0d/67e5b4109ea4a837e80daa87c2c696711955e40449a97e8926672534def2/click-8.4.1-py3-none-any.whl
+        sha256: 482be17c6991b8c19c5429a1e995d9b0efdbb63172824c41f99965dc0ade8ec2
         x-checker-data:
           name: click
           packagetype: bdist_wheel
@@ -22,8 +22,8 @@ modules:
         --prefix=${FLATPAK_DEST} "dbus-fast" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/5f/cd/402b0e524bdf37d8b1d22b1d926c538bf1d2eedf115ea1d401c6c08a7d81/dbus_fast-4.0.4.tar.gz
-        sha256: 43137f0b73a7adbf7d5c0e9eb9d8d34df9e6e0aeafade2166e641c52dfe0a853
+        url: https://files.pythonhosted.org/packages/7f/6b/d4c8871e772ddf73e76bfd725dbb6fa82eb11492b370b423892016f0e579/dbus_fast-5.0.14.tar.gz
+        sha256: 9c30a134be1a1e4021630e551de040ec38705213c0889ecfdb0218f83beaffa3
         x-checker-data:
           name: dbus_fast
           type: pypi
