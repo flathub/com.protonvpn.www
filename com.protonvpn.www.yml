@@ -126,8 +126,8 @@ modules:
             --prefix=${FLATPAK_DEST} "poetry-core" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/b0/97/f7bb55470bb7890d9b3d3f9fa761083d5c9a6838b17c94a41bf2939f89ef/poetry_core-2.4.0.tar.gz
-            sha256: 4e8c7496cf797998ffc493f2e23eba4b038c894c08eadacdcdf688945de6b43a
+            url: https://files.pythonhosted.org/packages/b2/f2/fa88c58efb9a737c7e0e40e470edd0973fe33f0f277d24dcf17454b50974/poetry_core-2.4.1.tar.gz
+            sha256: 89dceb6c10e9c6d8650a16183400e3c9ff9ddee13b0a81023b5575334a2b3744
             x-checker-data:
               type: pypi
               name: poetry-core
@@ -408,8 +408,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v260.1
-        commit: c0a5a2516d28601fb3afc1a77d7b42fcfe38fced
+        tag: v260.2
+        commit: f1d0952a125b96b7ab2f1ff29a87448ade8ac29b
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -465,8 +465,8 @@ modules:
         --prefix=${FLATPAK_DEST} "idna" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/6c/3c/3f62dee257eb3d6b2c1ef2a09d36d9793c7111156a73b5654d2c2305e5ce/idna-3.14-py3-none-any.whl
-        sha256: e677eaf072e290f7b725f9acf0b3a2bd55f9fd6f7c70abe5f0e34823d0accf69
+        url: https://files.pythonhosted.org/packages/94/16/70255075a9859a0e3adb789b68ceb0e210dec03934245fd98d248226572f/idna-3.16-py3-none-any.whl
+        sha256: cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5
         x-checker-data:
           type: pypi
           name: idna
@@ -712,8 +712,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.1.2
-        commit: c167ab87cae2d0184d2a0378b810776d91182533
+        tag: v5.2.3
+        commit: f1f6baeb695561934e1858c4bef83f3ffa4964b3
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -798,8 +798,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.16.2
-        commit: 4f5694e0ff24522294a0f7657a6661ac74233e54
+        tag: v4.16.4
+        commit: 3b015fd641ed6f9cd27d0093afc9ca2a4bb21e02
         disable-submodules: true
         x-checker-data:
           type: anitya
