@@ -408,11 +408,26 @@ modules:
     sources:
       - type: git
         url: https://github.com/systemd/systemd.git
-        tag: v260.1
-        commit: c0a5a2516d28601fb3afc1a77d7b42fcfe38fced
+        tag: v260.2
+        commit: f1d0952a125b96b7ab2f1ff29a87448ade8ac29b
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
+    modules:
+      - name: python3-pefile
+        buildsystem: simple
+        build-commands:
+            - pip3 install --verbose --exists-action=i --no-index 
+              --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "pefile" 
+              --no-build-isolation
+        sources:
+            - type: file
+              url: 
+                  https://files.pythonhosted.org/packages/03/4f/2750f7f6f025a1507cd3b7218691671eecfd0bbebebe8b39aa0fe1d360b8/pefile-2024.8.26.tar.gz
+              sha256: 3ff6c5d8b43e8c37bb6e6dd5085658d658a7a0bdcd20b6a07b1fcfc1c4e9d632
+              x-checker-data:
+                  type: pypi
+                  name: pefile
 
   ######### Cryptography #########
   # https://github.com/flathub/org.gajim.Gajim/blob/cb9cb26dd58acea79c50b316fb66a171b54c18e1/org.gajim.Gajim.yaml#LL66-L131C81
