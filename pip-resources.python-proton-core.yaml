@@ -36,8 +36,8 @@ modules:
           type: pypi
       - &id001
         type: file
-        url: https://files.pythonhosted.org/packages/94/16/70255075a9859a0e3adb789b68ceb0e210dec03934245fd98d248226572f/idna-3.16-py3-none-any.whl
-        sha256: cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5
+        url: https://files.pythonhosted.org/packages/de/a7/f76514cc40ad6234098ecdebda08732d75964776c51a42845b7da10649e2/idna-3.17-py3-none-any.whl
+        sha256: 466e48829084efe2548012b855df21540b96f2e20e51bd124c851536556a592c
         x-checker-data:
           name: idna
           packagetype: bdist_wheel
