@@ -22,8 +22,8 @@ modules:
         --prefix=${FLATPAK_DEST} "dbus-fast" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/4c/f0/7d26505ee2a53bc0c47aef4182609b6e1e18845be35ce9a0c6ea2c21f232/dbus_fast-5.0.15.tar.gz
-        sha256: a992fcbefb609ad2eebb881c18eeb429bfe814ebe51e535a8710386f54dbdb94
+        url: https://files.pythonhosted.org/packages/c2/26/a75b4f79c56bd1f24e4cf85399b28a1a607d1052b9e66aceb961d79a6d3f/dbus_fast-5.0.16.tar.gz
+        sha256: 24d0a86f32acb209a41806d20cf8a9207e4d46760e23c32479d1951d43739080
         x-checker-data:
           name: dbus_fast
           type: pypi
