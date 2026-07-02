@@ -1,0 +1,28 @@
+[project]
+name = "fedora-flatpak-updater"
+version = "0.1.0"
+description = "Pins third-party Flatpak manifest dependencies to Fedora-stable versions"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.32",
+    "ruamel.yaml>=0.18",
+    "tenacity>=9.0",
+    "click>=8.1",
+    "tabulate>=0.9",
+    "packaging>=24.0",
+]
+
+[project.scripts]
+fedora-flatpak-updater = "fedora_flatpak_updater.cli:main"
+fedora-flatpak-updater-migrate = "fedora_flatpak_updater.migrate:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "responses>=0.25",
+]

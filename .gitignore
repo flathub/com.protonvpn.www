@@ -8,3 +8,8 @@ build-dir
 repo
 
 # End of https://www.toptal.com/developers/gitignore/api/flatpak
+
+### Python (fedora_flatpak_updater) ###
+scripts/fedora_flatpak_updater/.venv
+**/__pycache__/
+.pytest_cache
