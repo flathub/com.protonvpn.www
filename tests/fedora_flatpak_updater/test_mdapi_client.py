@@ -37,6 +37,16 @@ def test_get_version_raises_package_not_found_on_404():
 
 
 @responses.activate
+def test_get_version_raises_package_not_found_on_400():
+    url = "https://mdapi.fedoraproject.org/f44/pkg/python3-meson"
+    responses.add(responses.GET, url, status=400)
+
+    client = MdapiClient("f44")
+    with pytest.raises(PackageNotFoundError):
+        client.get_version("python3-meson")
+
+
+@responses.activate
 def test_get_version_retries_once_on_5xx_then_succeeds():
     url = "https://mdapi.fedoraproject.org/f44/pkg/libndp"
     responses.add(responses.GET, url, status=502)

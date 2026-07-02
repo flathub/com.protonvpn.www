@@ -33,7 +33,7 @@ class MdapiClient:
         url = f"{MDAPI_BASE}/{self.branch}/pkg/{package_name}"
         response = self._get_with_retry(url)
 
-        if response.status_code == 404:
+        if response.status_code in (400, 404):
             raise PackageNotFoundError(package_name, self.branch)
         response.raise_for_status()
 
@@ -47,7 +47,10 @@ class MdapiClient:
         reraise=True,
     )
     def _get_with_retry(self, url: str) -> requests.Response:
-        response = self.session.get(url, timeout=30)
+        try:
+            response = self.session.get(url, timeout=30)
+        except requests.RequestException as exc:
+            raise MdapiTransientError(f"{url} request failed: {exc}") from exc
         if response.status_code >= 500:
             raise MdapiTransientError(f"{url} returned {response.status_code}")
         return response

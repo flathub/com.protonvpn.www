@@ -1,0 +1,266 @@
+modules:
+  NetworkManager:
+    recipe: git
+    fedora_package: NetworkManager
+    repo_url: https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git
+    tag_template: $version
+  NetworkManager-openvpn:
+    recipe: git
+    fedora_package: NetworkManager-openvpn
+    repo_url: https://github.com/NetworkManager/NetworkManager-openvpn.git
+    tag_template: $version
+  iproute2:
+    recipe: archive
+    fedora_package: iproute
+    url_template: 
+      https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
+  libndp:
+    recipe: archive
+    fedora_package: libndp
+    url_template: https://github.com/jpirko/libndp/archive/v$version.tar.gz
+  libnma:
+    recipe: archive
+    fedora_package: libnma
+    url_template: 
+      https://gitlab.gnome.org/GNOME/libnma/-/archive/$version/libnma-$version.tar.gz
+  meson:
+    recipe: pypi
+    pypi_name: meson
+    fedora_package: meson
+  polkit:
+    recipe: archive
+    fedora_package: polkit
+    url_template: 
+      https://github.com/polkit-org/polkit/archive/refs/tags/$version.tar.gz
+  python-dbus:
+    recipe: archive
+    fedora_package: python3-dbus
+    url_template: 
+      https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
+  python3-aiohappyeyeballs:
+    recipe: pypi
+    pypi_name: aiohappyeyeballs
+    fedora_package: python3-aiohappyeyeballs
+  python3-aiohttp:
+    recipe: pypi
+    pypi_name: aiohttp
+    fedora_package: python3-aiohttp
+  python3-aiosignal:
+    recipe: pypi
+    pypi_name: aiosignal
+    fedora_package: python3-aiosignal
+  python3-asn1crypto:
+    recipe: pypi
+    pypi_name: asn1crypto
+    fedora_package: python3-asn1crypto
+  python3-attrs:
+    recipe: pypi
+    pypi_name: attrs
+    fedora_package: python3-attrs
+  python3-bcrypt:
+    recipe: pypi
+    pypi_name: bcrypt
+    fedora_package: python3-bcrypt
+    manual_followup: bcrypt vendors Rust crate sources in 
+      bcrypt-cargo-sources.json. Re-run flatpak-cargo-generator against the new 
+      version's Cargo.lock before merging.
+  python3-cairo:
+    recipe: pypi
+    pypi_name: pycairo
+    fedora_package: python3-cairo
+  python3-certifi:
+    recipe: pypi
+    pypi_name: certifi
+    fedora_package: python3-certifi
+  python3-cffi:
+    recipe: pypi
+    pypi_name: cffi
+    fedora_package: python3-cffi
+  python3-charset-normalizer:
+    recipe: pypi
+    pypi_name: charset_normalizer
+    fedora_package: python3-charset-normalizer
+  python3-click:
+    recipe: pypi
+    pypi_name: click
+    fedora_package: python3-click
+  python3-cryptography:
+    recipe: pypi-multi-wheel
+    pypi_name: cryptography
+    fedora_package: python3-cryptography
+    wheel_arches:
+    - aarch64
+    - x86_64
+  python3-dbus-fast:
+    recipe: pypi
+    pypi_name: dbus_fast
+    fedora_package: python3-dbus-fast
+  python3-distro:
+    recipe: pypi
+    pypi_name: distro
+    fedora_package: python3-distro
+  python3-expandvars:
+    recipe: pypi
+    pypi_name: expandvars
+    fedora_package: python3-expandvars
+  python3-fido2:
+    recipe: pypi
+    pypi_name: fido2
+    fedora_package: python3-fido2
+  python3-flit-core:
+    recipe: pypi
+    pypi_name: flit_core
+    fedora_package: python3-flit-core
+  python3-frozenlist:
+    recipe: pypi
+    pypi_name: frozenlist
+    fedora_package: python3-frozenlist
+  python3-gobject:
+    recipe: pypi
+    pypi_name: pygobject
+    fedora_package: python3-gobject
+  python3-hatch-fancy-pypi-readme:
+    recipe: pypi
+    pypi_name: hatch_fancy_pypi_readme
+    fedora_package: python3-hatch-fancy-pypi-readme
+  python3-hatch-vcs:
+    recipe: pypi
+    pypi_name: hatch_vcs
+    fedora_package: python3-hatch-vcs
+  python3-hatchling:
+    recipe: pypi
+    pypi_name: hatchling
+    fedora_package: python3-hatchling
+  python3-idna:
+    recipe: pypi
+    pypi_name: idna
+    fedora_package: python3-idna
+  python3-jaraco-classes:
+    recipe: pypi
+    pypi_name: jaraco.classes
+    fedora_package: python3-jaraco-classes
+  python3-jaraco-context:
+    recipe: pypi
+    pypi_name: jaraco.context
+    fedora_package: python3-jaraco-context
+  python3-jaraco-functools:
+    recipe: pypi
+    pypi_name: jaraco_functools
+    fedora_package: python3-jaraco-functools
+  python3-jeepney:
+    recipe: pypi
+    pypi_name: jeepney
+    fedora_package: python3-jeepney
+  python3-keyring:
+    recipe: pypi
+    pypi_name: keyring
+    fedora_package: python3-keyring
+  python3-more-itertools:
+    recipe: pypi
+    pypi_name: more_itertools
+    fedora_package: python3-more-itertools
+  python3-multidict:
+    recipe: pypi
+    pypi_name: multidict
+    fedora_package: python3-multidict
+  python3-packaging:
+    recipe: pypi
+    pypi_name: packaging
+    fedora_package: python3-packaging
+  python3-pathspec:
+    recipe: pypi
+    pypi_name: pathspec
+    fedora_package: python3-pathspec
+  python3-pefile:
+    recipe: pypi
+    pypi_name: pefile
+    fedora_package: python3-pefile
+  python3-pluggy:
+    recipe: pypi
+    pypi_name: pluggy
+    fedora_package: python3-pluggy
+  python3-poetry-core:
+    recipe: pypi
+    pypi_name: poetry-core
+    fedora_package: python3-poetry-core
+  python3-propcache:
+    recipe: pypi
+    pypi_name: propcache
+    fedora_package: python3-propcache
+  python3-pycparser:
+    recipe: pypi
+    pypi_name: pycparser
+    fedora_package: python3-pycparser
+  python3-pynacl:
+    recipe: pypi
+    pypi_name: pynacl
+    fedora_package: python3-pynacl
+  python3-pyopenssl:
+    recipe: pypi
+    pypi_name: pyOpenSSL
+    fedora_package: python3-pyOpenSSL
+  python3-pyparsing:
+    recipe: pypi
+    pypi_name: pyparsing
+    fedora_package: python3-pyparsing
+  python3-python-gnupg:
+    recipe: pypi
+    pypi_name: python_gnupg
+    fedora_package: python3-gnupg
+  python3-pyxdg:
+    recipe: pypi
+    pypi_name: pyxdg
+    fedora_package: python3-pyxdg
+  python3-requests:
+    recipe: pypi
+    pypi_name: requests
+    fedora_package: python3-requests
+  python3-secretstorage:
+    recipe: pypi
+    pypi_name: secretstorage
+    fedora_package: python3-secretstorage
+  python3-semantic_version:
+    recipe: pypi
+    pypi_name: semantic_version
+    fedora_package: python3-semantic_version
+  python3-sentry-sdk:
+    recipe: pypi
+    pypi_name: sentry_sdk
+    fedora_package: python3-sentry-sdk
+  python3-setuptools-rust:
+    recipe: pypi
+    pypi_name: setuptools-rust
+    fedora_package: python3-setuptools-rust
+  python3-setuptools_scm:
+    recipe: pypi
+    pypi_name: setuptools_scm
+    fedora_package: python3-setuptools_scm
+  python3-tabulate:
+    recipe: pypi
+    pypi_name: tabulate
+    fedora_package: python3-tabulate
+  python3-tomli:
+    recipe: pypi
+    pypi_name: tomli
+    fedora_package: python3-tomli
+  python3-trove-classifiers:
+    recipe: pypi
+    pypi_name: trove_classifiers
+    fedora_package: python3-trove-classifiers
+  python3-typing-extensions:
+    recipe: pypi
+    pypi_name: typing_extensions
+    fedora_package: python3-typing-extensions
+  python3-urllib3:
+    recipe: pypi
+    pypi_name: urllib3
+    fedora_package: python3-urllib3
+  python3-yarl:
+    recipe: pypi
+    pypi_name: yarl
+    fedora_package: python3-yarl
+  systemd:
+    recipe: git
+    fedora_package: systemd
+    repo_url: https://github.com/systemd/systemd.git
+    tag_pattern: ^v([\d.]+)$
