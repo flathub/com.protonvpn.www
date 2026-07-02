@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from dataclasses import dataclass
 
 import requests
@@ -24,11 +25,17 @@ def fetch_release_files(pypi_name: str, version: str, session: requests.Session 
         session = requests.Session()
     try:
         url = f"{PYPI_BASE}/{pypi_name}/{version}/json"
-        response = session.get(url, timeout=30)
-        if response.status_code == 404:
-            raise PypiVersionNotFoundError(f"{pypi_name}=={version} not found on PyPI")
-        response.raise_for_status()
-        return response.json()["urls"]
+        for attempt in range(3):
+            try:
+                response = session.get(url, timeout=60)
+                if response.status_code == 404:
+                    raise PypiVersionNotFoundError(f"{pypi_name}=={version} not found on PyPI")
+                response.raise_for_status()
+                return response.json()["urls"]
+            except (requests.RequestException, PypiVersionNotFoundError) as exc:
+                if isinstance(exc, PypiVersionNotFoundError) or attempt == 2:
+                    raise
+                time.sleep(2 * (attempt + 1))
     finally:
         if own_session:
             session.close()

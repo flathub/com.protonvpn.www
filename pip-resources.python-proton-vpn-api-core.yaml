@@ -2,105 +2,67 @@
 build-commands: []
 buildsystem: simple
 modules:
-  - name: python3-fido2
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "fido2" --no-build-isolation
-    sources:
-      - &id001
-        type: file
-        url: https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz
-        sha256: 44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529
-        x-checker-data:
-          name: cffi
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/9f/a9/db8f313fdcd85d767d4973515e1db101f9c71f95fced83233de224673757/cryptography-48.0.0.tar.gz
-        sha256: 5c3932f4436d1cccb036cb0eaef46e6e2db91035166f1ad6505c3c9d5a635920
-        x-checker-data:
-          name: cryptography
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/01/82/f3c5dd87b0977f5547cc132b7969e6f5075a8c2f5881cf4b6df6378505f9/fido2-2.2.0-py3-none-any.whl
-        sha256: 3587ccf0af7b71b5dd73f17e1dbec9f0fd157292f9163f02e7778f46d0d25fe5
-        x-checker-data:
-          name: fido2
-          packagetype: bdist_wheel
-          type: pypi
-      - &id002
-        type: file
-        url: https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl
-        sha256: b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
-        x-checker-data:
-          name: pycparser
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-distro
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "distro" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
-        sha256: 7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
-        x-checker-data:
-          name: distro
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-sentry-sdk
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "sentry-sdk" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/59/8c/57e832b7af6d7c5abe66eb3fbe3a3a32f4d11ea23a1aa7131371035be991/certifi-2026.5.20-py3-none-any.whl
-        sha256: 3c52e209ba0a4ad7aebe60436a4ab349c39e1e602e8c134221e546902ad25897
-        x-checker-data:
-          name: certifi
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/df/54/c9218db183846e08efaf68534889ef42e499dde432778881104a42f7071b/sentry_sdk-2.61.1-py3-none-any.whl
-        sha256: fa36eaf4b8ad708f718500d4bdcc1532637526a22beb874d88cbc0a46458b5ae
-        x-checker-data:
-          name: sentry_sdk
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/7f/3e/5db95bcf282c52709639744ca2a8b149baccf648e39c8cc87553df9eae0c/urllib3-2.7.0-py3-none-any.whl
-        sha256: 9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897
-        x-checker-data:
-          name: urllib3
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-PyNaCl
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "PyNaCl" --no-build-isolation
-    sources:
-      - *id001
-      - *id002
-      - type: file
-        url: https://files.pythonhosted.org/packages/d9/9a/4019b524b03a13438637b11538c82781a5eda427394380381af8f04f467a/pynacl-1.6.2.tar.gz
-        sha256: 018494d6d696ae03c7e656e5e74cdfd8ea1326962cc401bcf018f1ed8436811c
-        x-checker-data:
-          name: pynacl
-          type: pypi
-  - name: python3-proton-vpn-local-agent
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "proton-vpn-local-agent" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/86/56/e65acae43c2d54ad8b72d694a67e8f30b6f3f196a7ccf418f9e843875599/proton_vpn_local_agent-0.1.1-py3-none-any.whl
-        sha256: eb15cfbb115ea2a15d503e59f46e745709cca49bf115514443ffce5baffd2794
-        x-checker-data:
-          name: proton_vpn_local_agent
-          packagetype: bdist_wheel
-          type: pypi
+- name: python3-fido2
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "fido2" --no-build-isolation
+  sources:
+  - &id001
+    type: file
+    url: https://files.pythonhosted.org/packages/eb/56/b1ba7935a17738ae8453301356628e8147c79dbb825bcbc73dc7401f9846/cffi-2.0.0.tar.gz
+    sha256: 44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529
+  - type: file
+    url: https://files.pythonhosted.org/packages/a4/ba/04b1bd4218cbc58dc90ce967106d51582371b898690f3ae0402876cc4f34/cryptography-46.0.6.tar.gz
+    sha256: 27550628a518c5c6c903d84f637fbecf287f6cb9ced3804838a1295dc1fd0759
+  - type: file
+    url: https://files.pythonhosted.org/packages/4c/7d/a1dba174d7ec4b6b8d6360eed0ac3a4a4e2aa45f234e903592d3184c6c3f/fido2-2.0.0-py3-none-any.whl
+    sha256: 685f54a50a57e019c6156e2dd699802a603e3abf70bab334f26affdd4fb8d4f7
+  - &id002
+    type: file
+    url: https://files.pythonhosted.org/packages/13/a3/a812df4e2dd5696d1f351d58b8fe16a405b234ad2886a0dab9183fb78109/pycparser-2.22-py3-none-any.whl
+    sha256: c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
+- name: python3-distro
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "distro" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/12/b3/231ffd4ab1fc9d679809f356cebee130ac7daa00d6d6f3206dd4fd137e9e/distro-1.9.0-py3-none-any.whl
+    sha256: 7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2
+- name: python3-sentry-sdk
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "sentry-sdk" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/e6/ad/3cc14f097111b4de0040c83a525973216457bbeeb63739ef1ed275c1c021/certifi-2026.1.4-py3-none-any.whl
+    sha256: 9943707519e4add1115f44c2bc244f782c0249876bf51b6599fee1ffbedd685c
+  - type: file
+    url: https://files.pythonhosted.org/packages/4d/19/8d77f9992e5cbfcaa9133c3bf63b4fbbb051248802e1e803fed5c552fbb2/sentry_sdk-2.48.0-py2.py3-none-any.whl
+    sha256: 6b12ac256769d41825d9b7518444e57fa35b5642df4c7c5e322af4d2c8721172
+  - type: file
+    url: https://files.pythonhosted.org/packages/7f/3e/5db95bcf282c52709639744ca2a8b149baccf648e39c8cc87553df9eae0c/urllib3-2.7.0-py3-none-any.whl
+    sha256: 9fb4c81ebbb1ce9531cce37674bbc6f1360472bc18ca9a553ede278ef7276897
+- name: python3-PyNaCl
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "PyNaCl" --no-build-isolation
+  sources:
+  - *id001
+  - *id002
+  - type: file
+    url: https://files.pythonhosted.org/packages/d9/9a/4019b524b03a13438637b11538c82781a5eda427394380381af8f04f467a/pynacl-1.6.2.tar.gz
+    sha256: 018494d6d696ae03c7e656e5e74cdfd8ea1326962cc401bcf018f1ed8436811c
+- name: python3-proton-vpn-local-agent
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "proton-vpn-local-agent" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/86/56/e65acae43c2d54ad8b72d694a67e8f30b6f3f196a7ccf418f9e843875599/proton_vpn_local_agent-0.1.1-py3-none-any.whl
+    sha256: eb15cfbb115ea2a15d503e59f46e745709cca49bf115514443ffce5baffd2794
+    x-checker-data:
+      name: proton_vpn_local_agent
+      packagetype: bdist_wheel
+      type: pypi
 name: pip-resources.python-proton-vpn-api-core

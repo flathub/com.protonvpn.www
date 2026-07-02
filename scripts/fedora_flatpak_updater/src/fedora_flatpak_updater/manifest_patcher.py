@@ -62,17 +62,31 @@ def _remove_checker_data(block: dict) -> None:
                     if len(last_items) > idx and last_items[idx] is not None:
                         trailing_tokens.append(last_items[idx])
 
-    if trailing_tokens and ca and hasattr(ca, "items"):
+    flat_tokens = []
+    def _flatten(obj):
+        if obj is None:
+            return
+        if isinstance(obj, (list, tuple)):
+            for item in obj:
+                _flatten(item)
+        elif hasattr(obj, "value"):
+            flat_tokens.append(obj)
+
+    for t in trailing_tokens:
+        _flatten(t)
+
+    if flat_tokens and ca and hasattr(ca, "items"):
         new_last_k = list(block.keys())[-1]
         if new_last_k not in ca.items:
             ca.items[new_last_k] = [None, None, None, None]
         items_list = ca.items[new_last_k]
         while len(items_list) < 4:
             items_list.append(None)
-        if items_list[2] is None:
-            items_list[2] = trailing_tokens[0]
-        elif hasattr(items_list[2], "value") and hasattr(trailing_tokens[0], "value"):
-            items_list[2].value += trailing_tokens[0].value
+        for token in flat_tokens:
+            if items_list[2] is None:
+                items_list[2] = token
+            elif hasattr(items_list[2], "value") and hasattr(token, "value"):
+                items_list[2].value += token.value
 
 
 @dataclass
@@ -128,6 +142,8 @@ class ManifestForest:
     def save(self) -> list[Path]:
         written = []
         for path, data in self.documents.items():
+            if "shared-modules" in path.parts:
+                continue
             with path.open("w", encoding="utf-8") as fh:
                 self._yaml.dump(data, fh)
             written.append(path)

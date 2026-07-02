@@ -12,8 +12,7 @@ modules:
   iproute2:
     recipe: archive
     fedora_package: iproute
-    url_template: 
-      https://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-$version.tar.xz
+    url_template: https://github.com/iproute2/iproute2/archive/refs/tags/v$version.tar.gz
   libndp:
     recipe: archive
     fedora_package: libndp
@@ -36,7 +35,7 @@ modules:
     recipe: archive
     fedora_package: python3-dbus
     url_template: 
-      https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.gz
+      https://dbus.freedesktop.org/releases/dbus-python/dbus-python-$version.tar.xz
   python3-aiohappyeyeballs:
     recipe: pypi
     pypi_name: aiohappyeyeballs

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import time
 from dataclasses import dataclass
 from string import Template
 
@@ -17,13 +18,20 @@ class GitSource:
 
 
 def _ls_remote_tags(repo_url: str, runner) -> list[tuple[str, str]]:
-    result = runner(
-        ["git", "ls-remote", "--tags", repo_url],
-        capture_output=True,
-        text=True,
-        check=True,
-        timeout=30,
-    )
+    for attempt in range(3):
+        try:
+            result = runner(
+                ["git", "ls-remote", "--tags", repo_url],
+                capture_output=True,
+                text=True,
+                check=True,
+                timeout=120,
+            )
+            break
+        except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
+            if attempt == 2:
+                raise
+            time.sleep(2 * (attempt + 1))
     entries = []
     for line in result.stdout.splitlines():
         if not line.strip():
