@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pytest
+import requests
 import responses
 
 from fedora_flatpak_updater.mdapi_client import MdapiClient, MdapiTransientError, PackageNotFoundError
@@ -61,6 +62,17 @@ def test_get_version_raises_transient_error_after_two_5xx():
     url = "https://mdapi.fedoraproject.org/f44/pkg/libndp"
     responses.add(responses.GET, url, status=502)
     responses.add(responses.GET, url, status=502)
+
+    client = MdapiClient("f44")
+    with pytest.raises(MdapiTransientError):
+        client.get_version("libndp")
+
+
+@responses.activate
+def test_get_version_retries_and_raises_transient_error_on_connection_error():
+    url = "https://mdapi.fedoraproject.org/f44/pkg/libndp"
+    responses.add(responses.GET, url, body=requests.ConnectionError("Connection aborted"))
+    responses.add(responses.GET, url, body=requests.ConnectionError("Connection aborted"))
 
     client = MdapiClient("f44")
     with pytest.raises(MdapiTransientError):

@@ -25,7 +25,7 @@ from packaging.utils import canonicalize_name
 from ruamel.yaml import YAML
 
 from .fedora_release import get_current_stable_branch
-from .mdapi_client import MdapiClient, PackageNotFoundError
+from .mdapi_client import MdapiClient, MdapiTransientError, PackageNotFoundError
 
 PROTON_PREFIX = "proton"
 
@@ -144,7 +144,7 @@ def build_draft(root_path: Path, branch: str, session: requests.Session) -> dict
         entry = {"recipe": "pypi", "pypi_name": pypi_name, "fedora_package": guess}
         try:
             mdapi.get_version(guess)
-        except Exception as exc:
+        except (PackageNotFoundError, MdapiTransientError, requests.RequestException) as exc:
             entry["_needs_manual_fix"] = f"{guess} lookup failed in Fedora {branch}: {exc}"
         modules[guess] = entry
 
@@ -154,7 +154,7 @@ def build_draft(root_path: Path, branch: str, session: requests.Session) -> dict
         entry.update({k: v for k, v in hint.items() if k not in ("recipe", "fedora_package")})
         try:
             version = mdapi.get_version(fedora_package)
-        except Exception as exc:
+        except (PackageNotFoundError, MdapiTransientError, requests.RequestException) as exc:
             entry["_needs_manual_fix"] = f"{fedora_package} lookup failed in Fedora {branch}: {exc}"
             modules[name] = entry
             continue
@@ -168,7 +168,7 @@ def build_draft(root_path: Path, branch: str, session: requests.Session) -> dict
                         f"url_template renders to {rendered} which returned "
                         f"{response.status_code} for version {version}"
                     )
-            except Exception as exc:
+            except requests.RequestException as exc:
                 entry["_needs_manual_fix"] = f"url_template check failed for {rendered}: {exc}"
         modules[name] = entry
 
