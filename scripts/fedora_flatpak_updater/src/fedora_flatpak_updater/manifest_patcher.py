@@ -43,7 +43,7 @@ def _remove_checker_data(block: dict) -> None:
     ca = getattr(block, "ca", None)
     x_ca_items = ca.items.pop("x-checker-data", None) if ca and hasattr(ca, "items") else None
     x_data = block.pop("x-checker-data")
-    if not isinstance(block, dict) or not block:
+    if not block:
         return
 
     trailing_tokens = []
@@ -51,7 +51,7 @@ def _remove_checker_data(block: dict) -> None:
         for idx in (2, 3):
             if len(x_ca_items) > idx and x_ca_items[idx] is not None:
                 trailing_tokens.append(x_ca_items[idx])
-    if isinstance(x_data, dict) and hasattr(x_data, "ca"):
+    if isinstance(x_data, dict) and getattr(x_data, "ca", None):
         if x_data.ca.comment is not None:
             trailing_tokens.append(x_data.ca.comment)
         if x_data:
@@ -71,8 +71,8 @@ def _remove_checker_data(block: dict) -> None:
             items_list.append(None)
         if items_list[2] is None:
             items_list[2] = trailing_tokens[0]
-        else:
-            items_list[2] = trailing_tokens[0]
+        elif hasattr(items_list[2], "value") and hasattr(trailing_tokens[0], "value"):
+            items_list[2].value += trailing_tokens[0].value
 
 
 @dataclass

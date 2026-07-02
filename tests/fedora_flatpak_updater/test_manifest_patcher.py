@@ -115,3 +115,30 @@ def test_save_preserves_comments_and_unrelated_structure(tmp_path):
     assert "keep me: comment that must survive patching" in root_text
     assert "buildsystem: autotools" in root_text
     assert "cleanup:" in root_text
+
+
+def test_remove_checker_data_concatenates_comments(tmp_path):
+    yaml_content = """modules:
+  - name: test-mod
+    sources:
+      - type: file
+        url: https://example.com/foo-1.0.whl
+        sha256: 1234  # existing comment on sha256
+        x-checker-data:
+          type: pypi
+          name: foo
+        # trailing comment from checker block
+"""
+    test_file = tmp_path / "test.yml"
+    test_file.write_text(yaml_content)
+    forest = ManifestForest(test_file)
+    spec = ModuleSpec(name="test-mod", fedora_package="test-mod", recipe=RecipeKind.PYPI, pypi_name="foo")
+    apply_pypi(forest, spec, lambda block: PypiSource(url="https://example.com/foo-2.0.whl", sha256="5678"))
+    forest.save()
+
+    saved = test_file.read_text()
+    assert "# existing comment on sha256" in saved
+    assert "# trailing comment from checker block" in saved
+    assert "x-checker-data:" not in saved
+    assert "type: pypi" not in saved
+
