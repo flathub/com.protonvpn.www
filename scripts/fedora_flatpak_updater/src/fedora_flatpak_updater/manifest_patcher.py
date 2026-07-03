@@ -104,6 +104,7 @@ class ManifestForest:
     def __init__(self, root_path: Path):
         self._yaml = YAML(typ="rt")
         self._yaml.preserve_quotes = True
+        self._yaml.indent(mapping=2, sequence=4, offset=2)
         self._yaml.width = 1_000_000  # never re-wrap lines we didn't touch
         self.root_path = Path(root_path).resolve()
         self.documents: dict[Path, Any] = {}

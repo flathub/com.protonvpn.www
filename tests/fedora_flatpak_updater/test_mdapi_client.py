@@ -77,3 +77,24 @@ def test_get_version_retries_and_raises_transient_error_on_connection_error():
     client = MdapiClient("f44")
     with pytest.raises(MdapiTransientError):
         client.get_version("libndp")
+
+
+@responses.activate
+def test_get_version_retries_once_on_429_then_succeeds():
+    url = "https://mdapi.fedoraproject.org/f44/pkg/libndp"
+    responses.add(responses.GET, url, status=429)
+    responses.add(responses.GET, url, json={"version": "1.10"}, status=200)
+
+    client = MdapiClient("f44")
+    assert client.get_version("libndp") == "1.10"
+
+
+@responses.activate
+def test_get_version_raises_transient_error_after_two_429():
+    url = "https://mdapi.fedoraproject.org/f44/pkg/libndp"
+    responses.add(responses.GET, url, status=429)
+    responses.add(responses.GET, url, status=429)
+
+    client = MdapiClient("f44")
+    with pytest.raises(MdapiTransientError):
+        client.get_version("libndp")

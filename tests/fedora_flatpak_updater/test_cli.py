@@ -178,3 +178,73 @@ def test_main_module_execution(monkeypatch, manifest_root, mapping_file):
     with pytest.raises(SystemExit) as exc_info:
         runpy.run_module("fedora_flatpak_updater.__main__", run_name="__main__")
     assert exc_info.value.code == 0
+
+
+def test_main_command_exits_nonzero_on_mapping_failure(monkeypatch, manifest_root, mapping_file):
+    def raise_mapping_error(mapping, manifest, *, dry_run=False, only=None):
+        raise cli.MappingError("Invalid mapping configuration")
+
+    monkeypatch.setattr(cli, "run", raise_mapping_error)
+
+    result = CliRunner().invoke(cli.main, ["--mapping", str(mapping_file), "--manifest", str(manifest_root)])
+
+    assert result.exit_code == 1
+    assert "Invalid mapping configuration" in result.output
+
+
+def test_run_handles_network_exceptions_in_mdapi_and_recipes(monkeypatch, manifest_root, mapping_file):
+    monkeypatch.setattr(cli, "get_current_stable_branch", lambda session=None: "f44")
+
+    import requests
+    import subprocess
+
+    class FailingMdapi:
+        def __init__(self, branch, session=None):
+            pass
+        def get_version(self, package_name):
+            if package_name == "python3-idna":
+                raise requests.RequestException("MDAPI timeout")
+            return "9.9"
+
+    monkeypatch.setattr(cli, "MdapiClient", FailingMdapi)
+
+    def raise_request_err(*args, **kwargs):
+        raise requests.RequestException("Archive download failed")
+
+    def raise_subprocess_err(*args, **kwargs):
+        raise subprocess.SubprocessError("git command failed")
+
+    monkeypatch.setattr(cli.archive_recipe, "resolve", raise_request_err)
+    monkeypatch.setattr(cli.git_recipe, "resolve", raise_subprocess_err)
+
+    mapping_file.write_text(
+        """
+modules:
+  python3-idna:
+    fedora_package: python3-idna
+    recipe: pypi
+    pypi_name: idna
+  libndp:
+    fedora_package: libndp
+    recipe: archive
+    url_template: "https://github.com/jpirko/libndp/archive/v$version.tar.gz"
+  libgit:
+    fedora_package: libgit
+    recipe: git
+    repo_url: "https://x/git"
+    tag_template: "$version"
+"""
+    )
+
+    rows = cli.run(mapping_file, manifest_root, dry_run=True)
+    statuses = {row.module_name: row.status for row in rows}
+    details = {row.module_name: row.detail for row in rows}
+
+    assert statuses["python3-idna"] == "skipped"
+    assert "MDAPI timeout" in details["python3-idna"]
+
+    assert statuses["libndp"] == "skipped"
+    assert "Archive download failed" in details["libndp"]
+
+    assert statuses["libgit"] == "skipped"
+    assert "git command failed" in details["libgit"]

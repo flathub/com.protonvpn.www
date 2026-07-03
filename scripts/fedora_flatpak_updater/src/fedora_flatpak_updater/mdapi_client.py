@@ -51,6 +51,6 @@ class MdapiClient:
             response = self.session.get(url, timeout=30)
         except requests.RequestException as exc:
             raise MdapiTransientError(f"{url} request failed: {exc}") from exc
-        if response.status_code >= 500:
+        if response.status_code >= 500 or response.status_code == 429:
             raise MdapiTransientError(f"{url} returned {response.status_code}")
         return response

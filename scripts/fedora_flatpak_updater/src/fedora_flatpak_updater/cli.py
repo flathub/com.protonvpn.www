@@ -5,11 +5,12 @@ from pathlib import Path
 
 import click
 import requests
+import subprocess
 from tabulate import tabulate
 
 from .fedora_release import BodhiLookupError, get_current_stable_branch
 from .manifest_patcher import ManifestForest, apply_archive, apply_git, apply_pypi
-from .mapping_loader import load_mapping
+from .mapping_loader import MappingError, load_mapping
 from .mdapi_client import MdapiClient, MdapiTransientError, PackageNotFoundError
 from .models import ModuleSpec, RecipeKind
 from .recipes import archive as archive_recipe
@@ -79,6 +80,9 @@ def run(
             except (PackageNotFoundError, MdapiTransientError) as exc:
                 rows.append(Row(spec.name, "skipped", str(exc)))
                 continue
+            except requests.RequestException as exc:
+                rows.append(Row(spec.name, "skipped", f"network error querying mdapi: {exc}"))
+                continue
 
             try:
                 if spec.recipe in (RecipeKind.PYPI, RecipeKind.PYPI_MULTI_WHEEL):
@@ -103,6 +107,12 @@ def run(
                     continue
             except (PypiVersionNotFoundError, ArchiveResolutionError, GitTagNotFoundError) as exc:
                 rows.append(Row(spec.name, "skipped", str(exc)))
+                continue
+            except requests.RequestException as exc:
+                rows.append(Row(spec.name, "skipped", f"network error resolving source: {exc}"))
+                continue
+            except subprocess.SubprocessError as exc:
+                rows.append(Row(spec.name, "skipped", f"subprocess error: {exc}"))
                 continue
 
             if report.blocks_touched == 0:
@@ -145,7 +155,7 @@ def main(mapping: Path, manifest: Path, dry_run: bool, only: tuple[str, ...]) ->
     """Pin Flatpak manifest dependencies to Fedora-stable versions."""
     try:
         rows = run(mapping, manifest, dry_run=dry_run, only=list(only) or None)
-    except BodhiLookupError as exc:
+    except (BodhiLookupError, MappingError) as exc:
         click.echo(f"ERROR: {exc}", err=True)
         raise SystemExit(1)
 
