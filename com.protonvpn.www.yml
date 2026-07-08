@@ -148,7 +148,7 @@ modules:
     url: https://files.pythonhosted.org/packages/bb/5d/6d7433e0f3cd46ce0b43cd65e1db465ea024dbb8216fb2404e919c2ad77b/bcrypt-4.3.0.tar.gz
     sha256: 3a3fd2204178b6d2adcf09cb4f6426ffef54762577a7c9b54c159008cb288c18
       # The Cargo sources should be updated whenever bcrypt is updated.
-      # wget https://raw.githubusercontent.com/pyca/bcrypt/refs/tags/5.0.0/src/_bcrypt/Cargo.lock -O /tmp/Cargo.lock
+      # wget https://raw.githubusercontent.com/pyca/bcrypt/refs/tags/4.3.0/src/_bcrypt/Cargo.lock -O /tmp/Cargo.lock
       # python flatpak-builder-tools/cargo/flatpak-cargo-generator.py -o bcrypt-cargo-sources.json /tmp/Cargo.lock
   - bcrypt-cargo-sources.json
 
