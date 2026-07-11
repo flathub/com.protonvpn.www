@@ -1,0 +1,40 @@
+modules:
+  - name: python3-idna
+    buildsystem: simple
+    build-commands:
+      - pip3 install idna
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/94/16/idna-3.16-py3-none-any.whl
+        sha256: cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5
+        x-checker-data:
+          name: idna
+          packagetype: bdist_wheel
+          type: pypi
+
+  # keep me: comment that must survive patching
+  - name: libndp
+    buildsystem: autotools
+    cleanup:
+      - /bin
+      - /include
+    sources:
+      - type: archive
+        url: https://github.com/jpirko/libndp/archive/v1.9.tar.gz
+        sha256: e564f5914a6b1b799c3afa64c258824a801c1b79a29e2fe6525b682249c65261
+        x-checker-data:
+          type: anitya
+          project-id: 14944
+          url-template: https://github.com/jpirko/libndp/archive/v$version.tar.gz
+
+  - name: python-proton-core
+    buildsystem: simple
+    build-commands:
+      - pip3 install .
+    modules:
+      - pip-resources.example.yaml
+    sources:
+      - type: git
+        url: https://github.com/ProtonVPN/python-proton-core
+        tag: v0.7.0
+        commit: f7a178a99c3adc0e88c7f91d4db5371a052c4985

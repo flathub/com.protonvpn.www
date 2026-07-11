@@ -1,0 +1,47 @@
+name: pip-resources.example
+build-commands: []
+buildsystem: simple
+modules:
+  - name: python3-requests
+    buildsystem: simple
+    build-commands:
+      - pip3 install requests
+    sources:
+      - &idna_anchor
+        type: file
+        url: https://files.pythonhosted.org/packages/94/16/idna-3.16-py3-none-any.whl
+        sha256: cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5
+        x-checker-data:
+          name: idna
+          packagetype: bdist_wheel
+          type: pypi
+      - type: file
+        url: https://files.pythonhosted.org/packages/a0/f4/requests-2.34.2-py3-none-any.whl
+        sha256: 2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0
+        x-checker-data:
+          name: requests
+          packagetype: bdist_wheel
+          type: pypi
+  - name: python3-flit_core
+    buildsystem: simple
+    build-commands:
+      - pip3 install flit_core
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/69/59/flit_core-3.12.0.tar.gz
+        sha256: 18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2
+        x-checker-data:
+          type: pypi
+          name: flit_core
+  - name: python3-flit_core_dup
+    buildsystem: simple
+    build-commands:
+      - pip3 install flit_core
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/69/59/flit_core-3.12.0.tar.gz
+        sha256: 18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2
+        x-checker-data:
+          type: pypi
+          name: flit_core
+      - *idna_anchor

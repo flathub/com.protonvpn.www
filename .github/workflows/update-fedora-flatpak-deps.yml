@@ -1,0 +1,51 @@
+# .github/workflows/update-fedora-flatpak-deps.yml
+name: Update Fedora-stable Flatpak dependencies
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # every Monday at 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.3.2
+        with:
+          python-version: "3.13"
+
+      - name: Sync fedora_flatpak_updater environment
+        run: uv sync --project scripts/fedora_flatpak_updater
+
+      - name: Run updater
+        run: |
+          uv run --project scripts/fedora_flatpak_updater python -m fedora_flatpak_updater.cli \
+            --mapping .fedora-tracked-modules.yaml \
+            --manifest com.protonvpn.www.yml | tee summary.md
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          commit-message: "chore: update Flatpak dependencies to Fedora-stable versions"
+          title: "chore: update Flatpak dependencies to Fedora-stable versions"
+          body-path: summary.md
+          branch: fedora-stable-flatpak-deps-update
+          delete-branch: true
