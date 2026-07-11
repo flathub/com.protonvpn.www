@@ -59,3 +59,19 @@ def test_resolve_raises_when_tag_not_found():
             tag_template="$version",
             runner=_runner_returning(NETWORKMANAGER_LS_REMOTE),
         )
+
+
+def test_resolve_ignores_lines_without_tabs():
+    output_with_noise = (
+        "warning: some git warning here\n"
+        "2db3748ec8162ce948ba52f71b42a258ff8d64ba\trefs/tags/1.40.18\n"
+    )
+    source = resolve(
+        repo_url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git",
+        version="1.40.18",
+        tag_template="$version",
+        runner=_runner_returning(output_with_noise),
+    )
+    assert source.tag == "1.40.18"
+    assert source.commit == "2db3748ec8162ce948ba52f71b42a258ff8d64ba"
+

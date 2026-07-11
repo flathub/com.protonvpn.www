@@ -25,7 +25,7 @@ def _ls_remote_tags(repo_url: str, runner) -> list[tuple[str, str]]:
                 capture_output=True,
                 text=True,
                 check=True,
-                timeout=120,
+                timeout=30,
             )
             break
         except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
@@ -36,9 +36,12 @@ def _ls_remote_tags(repo_url: str, runner) -> list[tuple[str, str]]:
     for line in result.stdout.splitlines():
         if not line.strip():
             continue
+        if "\t" not in line:
+            continue
         sha, ref = line.split("\t", 1)
         entries.append((sha, ref.strip()))
     return entries
+
 
 
 def resolve(
