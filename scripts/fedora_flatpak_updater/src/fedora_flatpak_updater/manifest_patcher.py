@@ -16,7 +16,12 @@ def _matches_pypi_name(url: str, pypi_name: str) -> bool:
         canonical + "-",
         canonical.replace("-", "_") + "-",  # wheel filenames use underscores
     }
-    return any(filename.startswith(prefix) for prefix in prefixes)
+    for prefix in prefixes:
+        if filename.startswith(prefix):
+            remainder = filename[len(prefix):]
+            if remainder and remainder[0].isdigit():
+                return True
+    return False
 
 
 def _iter_dicts(node: Any, seen: set[int] | None = None):

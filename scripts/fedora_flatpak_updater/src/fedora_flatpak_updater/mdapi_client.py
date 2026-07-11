@@ -37,7 +37,10 @@ class MdapiClient:
             raise PackageNotFoundError(package_name, self.branch)
         response.raise_for_status()
 
-        version = response.json()["version"]
+        try:
+            version = response.json()["version"]
+        except (ValueError, KeyError) as exc:
+            raise MdapiTransientError(f"Invalid JSON response from MDAPI: {exc}") from exc
         self._cache[package_name] = version
         return version
 

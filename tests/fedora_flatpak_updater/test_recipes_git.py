@@ -75,3 +75,14 @@ def test_resolve_ignores_lines_without_tabs():
     assert source.tag == "1.40.18"
     assert source.commit == "2db3748ec8162ce948ba52f71b42a258ff8d64ba"
 
+
+def test_resolve_by_tag_pattern_without_capture_group():
+    source = resolve(
+        repo_url="https://github.com/systemd/systemd.git",
+        version="v260.2",
+        tag_pattern=r"^v\d+\.\d+$",
+        runner=_runner_returning(SYSTEMD_LS_REMOTE),
+    )
+    assert source.tag == "v260.2"
+    assert source.commit == "e" * 40
+

@@ -74,9 +74,14 @@ def resolve(
         target_tag = None
         for tag_name in by_tag:
             match = pattern.match(tag_name)
-            if match and match.group(1) == version:
-                target_tag = tag_name
-                break
+            if match:
+                try:
+                    captured = match.group(1)
+                except IndexError:
+                    captured = match.group(0)
+                if captured == version:
+                    target_tag = tag_name
+                    break
         if target_tag is None:
             raise GitTagNotFoundError(
                 f"no tag matching {tag_pattern!r} for version {version} on {repo_url}"

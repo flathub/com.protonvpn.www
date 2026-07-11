@@ -142,3 +142,11 @@ def test_remove_checker_data_concatenates_comments(tmp_path):
     assert "x-checker-data:" not in saved
     assert "type: pypi" not in saved
 
+
+def test_matches_pypi_name_prefix_isolation():
+    from fedora_flatpak_updater.manifest_patcher import _matches_pypi_name
+    assert _matches_pypi_name("https://example.com/requests-2.31.0.tar.gz", "requests") is True
+    assert _matches_pypi_name("https://example.com/requests-2.31.0-py3-none-any.whl", "requests") is True
+    assert _matches_pypi_name("https://example.com/requests-mock-1.0.0.tar.gz", "requests") is False
+    assert _matches_pypi_name("https://example.com/requests_mock-1.0.0-py3-none-any.whl", "requests") is False
+
