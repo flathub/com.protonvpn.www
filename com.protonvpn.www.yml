@@ -220,6 +220,13 @@ modules:
   - -Dlibpsl=false
   - -Dqt=false
   - -Dnm_cloud_setup=false
+  - -Dnbft=false
+  - -Dsession_tracking_consolekit=false
+  - -Dpolkit=false
+  - -Dconcheck=false
+  - -Debpf=false
+  - -Dman=false
+  - -Dreadline=none
   cleanup:
   - /sbin
   - /etc
