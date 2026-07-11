@@ -5,12 +5,12 @@ description = "Pins third-party Flatpak manifest dependencies to Fedora-stable v
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "requests>=2.32",
-    "ruamel.yaml>=0.18",
-    "tenacity>=9.0",
-    "click>=8.1",
-    "tabulate>=0.9",
-    "packaging>=24.0",
+    "requests>=2.34.2",
+    "ruamel.yaml>=0.19.1",
+    "tenacity>=9.1.4",
+    "click>=8.4.2",
+    "tabulate>=0.10.0",
+    "packaging>=26.2",
 ]
 
 [project.scripts]
@@ -23,6 +23,6 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "pytest>=8.0",
-    "responses>=0.25",
+    "pytest>=9.1.1",
+    "responses>=0.26.2",
 ]
