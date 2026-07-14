@@ -239,8 +239,8 @@ modules:
   sources:
   - type: git
     url: https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git
-    tag: 1.56.1
-    commit: b829f838fc5d8c93437faa5db44a5396b67893de # Breaking change in 1.42.x: `dns` will be replaced by `dns-data`, which is incompatible with older NetworkManager on the host system
+    tag: 1.40.18
+    commit: 2db3748ec8162ce948ba52f71b42a258ff8d64ba
   - type: patch
     path: patches/NetworkManager/disable-ownership-check-for-plugins.patch
 
