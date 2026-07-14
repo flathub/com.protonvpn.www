@@ -267,8 +267,16 @@ modules:
   sources:
   - type: git
     url: https://github.com/NetworkManager/NetworkManager-openvpn.git
-    tag: 1.12.5
-    commit: d03d6a636866e9be9fbec7977ef377c191fb2988 # 1.10.4 causes connection failure
+    tag: 1.10.2
+    commit: ae9575dd07cc2d2d51ec8d0297823e07017cb6e6
+    x-checker-data:
+      type: anitya
+      project-id: 69977
+      stable-only: true
+      tag-template: $version
+      versions:
+        # 1.10.4 causes connection failure
+        <: 1.10.4
 - name: systemd
   buildsystem: meson
   config-opts:
