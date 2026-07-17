@@ -19,6 +19,7 @@
 ### Task 1: Model & Config Parser Extension
 
 **Files:**
+* Modify: `scripts/fedora_flatpak_updater/pyproject.toml`
 * Modify: `scripts/fedora_flatpak_updater/src/fedora_flatpak_updater/models.py`
 * Modify: `scripts/fedora_flatpak_updater/src/fedora_flatpak_updater/mapping_loader.py`
 * Modify: `tests/fedora_flatpak_updater/test_mapping_loader.py`
@@ -27,7 +28,27 @@
 * Consumes: Existing parser and `ModuleSpec` struct.
 * Produces: Updated `ModuleSpec` fields: `cargo_sources_file: str | None` and `cargo_lock_path: str | None`.
 
-- [ ] **Step 1: Write a failing unit test for the new config fields**
+- [ ] **Step 1: Add new dependencies to `pyproject.toml`**
+  Add `aiohttp`, `tomlkit`, and `PyYAML` to the dependencies array in [pyproject.toml](file:///home/slash/Development/com.protonvpn.www/scripts/fedora_flatpak_updater/pyproject.toml):
+  ```toml
+  dependencies = [
+      "requests>=2.34.2",
+      "ruamel.yaml>=0.19.1",
+      "tenacity>=9.1.4",
+      "click>=8.4.2",
+      "tabulate>=0.10.0",
+      "packaging>=26.2",
+      "aiohttp>=3.9.5",
+      "tomlkit>=0.13.3",
+      "PyYAML>=6.0.2",
+  ]
+  ```
+
+- [ ] **Step 2: Sync virtual environment**
+  Run: `uv sync`
+  Expected: Success, lockfile and packages updated.
+
+- [ ] **Step 3: Write a failing unit test for the new config fields**
   Add the following test to `tests/fedora_flatpak_updater/test_mapping_loader.py`:
   ```python
   def test_load_mapping_with_cargo_fields():
@@ -56,11 +77,11 @@
           tmp_path.unlink()
   ```
 
-- [ ] **Step 2: Run pytest to verify it fails**
+- [ ] **Step 4: Run pytest to verify it fails**
   Run: `uv run pytest ../../tests/fedora_flatpak_updater/test_mapping_loader.py -k test_load_mapping_with_cargo_fields`
   Expected: FAIL with `TypeError: ModuleSpec() got an unexpected keyword argument 'cargo_sources_file'`
 
-- [ ] **Step 3: Modify `models.py` and `mapping_loader.py`**
+- [ ] **Step 5: Modify `models.py` and `mapping_loader.py`**
   In `models.py`, update `ModuleSpec` struct definition:
   ```python
   @dataclass(frozen=True)
@@ -100,16 +121,17 @@
           )
   ```
 
-- [ ] **Step 4: Verify test passes**
+- [ ] **Step 6: Verify test passes**
   Run: `uv run pytest ../../tests/fedora_flatpak_updater/test_mapping_loader.py -v`
   Expected: PASS (all tests pass)
 
-- [ ] **Step 5: Commit changes**
+- [ ] **Step 7: Commit changes**
   Run:
   ```bash
-  git add src/fedora_flatpak_updater/models.py src/fedora_flatpak_updater/mapping_loader.py tests/fedora_flatpak_updater/test_mapping_loader.py
+  git add src/fedora_flatpak_updater/models.py src/fedora_flatpak_updater/mapping_loader.py tests/fedora_flatpak_updater/test_mapping_loader.py pyproject.toml uv.lock
   git commit --no-gpg-sign -m "feat: add cargo fields to ModuleSpec and mapping_loader"
   ```
+
 
 ---
 
