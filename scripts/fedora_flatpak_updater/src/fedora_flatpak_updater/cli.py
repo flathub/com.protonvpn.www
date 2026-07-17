@@ -1,13 +1,16 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass
 from pathlib import Path
+import tempfile
 
 import click
 import requests
 import subprocess
 from tabulate import tabulate
 
+from .cargo_extractor import CargoLockExtractionError, download_and_extract_cargo_lock, run_cargo_generator
 from .fedora_release import BodhiLookupError, get_current_stable_branch
 from .manifest_patcher import ManifestForest, apply_archive, apply_git, apply_pypi
 from .mapping_loader import MappingError, load_mapping
@@ -84,6 +87,8 @@ def run(
                 rows.append(Row(spec.name, "skipped", f"network error querying mdapi: {exc}"))
                 continue
 
+            snapshot = copy.deepcopy(forest.documents)
+
             try:
                 if spec.recipe in (RecipeKind.PYPI, RecipeKind.PYPI_MULTI_WHEEL):
                     report = apply_pypi(
@@ -106,18 +111,54 @@ def run(
                     rows.append(Row(spec.name, "skipped", f"unknown recipe {spec.recipe}"))
                     continue
             except (PypiVersionNotFoundError, ArchiveResolutionError, GitTagNotFoundError) as exc:
+                forest.documents = snapshot
                 rows.append(Row(spec.name, "skipped", str(exc)))
                 continue
             except requests.RequestException as exc:
+                forest.documents = snapshot
                 rows.append(Row(spec.name, "skipped", f"network error resolving source: {exc}"))
                 continue
             except subprocess.SubprocessError as exc:
+                forest.documents = snapshot
                 rows.append(Row(spec.name, "skipped", f"subprocess error: {exc}"))
                 continue
 
             if report.blocks_touched == 0:
                 rows.append(Row(spec.name, "unchanged", f"no matching source blocks found for {fedora_version}"))
             else:
+                if spec.cargo_sources_file:
+                    try:
+                        if not spec.cargo_lock_path:
+                            raise CargoLockExtractionError("cargo_sources_file configured but cargo_lock_path is missing")
+                        if not spec.pypi_name:
+                            raise CargoLockExtractionError("cargo_sources_file configured but pypi_name is missing")
+
+                        cargo_lock_content = download_and_extract_cargo_lock(
+                            session=session,
+                            pypi_name=spec.pypi_name,
+                            version=fedora_version,
+                            cargo_lock_path=spec.cargo_lock_path,
+                        )
+                        if dry_run:
+                            with tempfile.TemporaryDirectory() as td:
+                                temp_out = Path(td) / "dry_run_sources.json"
+                                run_cargo_generator(
+                                    session=session,
+                                    cargo_lock_content=cargo_lock_content,
+                                    output_sources_file=temp_out,
+                                )
+                        else:
+                            output_file = manifest_root.parent / spec.cargo_sources_file
+                            run_cargo_generator(
+                                session=session,
+                                cargo_lock_content=cargo_lock_content,
+                                output_sources_file=output_file,
+                            )
+                    except CargoLockExtractionError as exc:
+                        forest.documents = snapshot
+                        rows.append(Row(spec.name, "skipped", f"Cargo lock update failed: {exc}"))
+                        continue
+
                 detail = f"-> {fedora_version} ({report.blocks_touched} block(s))"
                 if spec.manual_followup:
                     detail += f" [manual follow-up: {spec.manual_followup}]"

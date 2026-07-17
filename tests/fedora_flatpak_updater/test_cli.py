@@ -248,3 +248,128 @@ modules:
 
     assert statuses["libgit"] == "skipped"
     assert "git command failed" in details["libgit"]
+
+
+def test_run_cargo_success(manifest_root, mapping_file, monkeypatch):
+    _patch_common(monkeypatch)
+
+    lock_extracted = []
+    generator_calls = []
+
+    def mock_download_lock(session, pypi_name, version, cargo_lock_path):
+        lock_extracted.append((pypi_name, version, cargo_lock_path))
+        return b"mock-lock-content"
+
+    def mock_run_generator(session, cargo_lock_content, output_sources_file):
+        generator_calls.append((cargo_lock_content, output_sources_file))
+        output_sources_file.write_text('{"sources": []}')
+
+    monkeypatch.setattr(cli, "download_and_extract_cargo_lock", mock_download_lock)
+    monkeypatch.setattr(cli, "run_cargo_generator", mock_run_generator)
+
+    mapping_file.write_text(
+        """
+modules:
+  python3-idna:
+    fedora_package: python3-idna
+    recipe: pypi
+    pypi_name: idna
+    cargo_sources_file: idna-cargo-sources.json
+    cargo_lock_path: src/idna/Cargo.lock
+"""
+    )
+
+    rows = cli.run(mapping_file, manifest_root, dry_run=False)
+
+    statuses = {row.module_name: row.status for row in rows}
+    assert statuses["python3-idna"] == "updated"
+
+    assert len(lock_extracted) == 1
+    assert lock_extracted[0] == ("idna", "3.99", "src/idna/Cargo.lock")
+    assert len(generator_calls) == 1
+    assert generator_calls[0][0] == b"mock-lock-content"
+    assert generator_calls[0][1] == manifest_root.parent / "idna-cargo-sources.json"
+
+    assert (manifest_root.parent / "idna-cargo-sources.json").exists()
+    assert (manifest_root.parent / "idna-cargo-sources.json").read_text() == '{"sources": []}'
+    assert "idna-3.99-py3-none-any.whl" in manifest_root.read_text()
+
+
+def test_run_cargo_failure_rollback(manifest_root, mapping_file, monkeypatch):
+    _patch_common(monkeypatch)
+
+    def mock_download_lock(session, pypi_name, version, cargo_lock_path):
+        return b"mock-lock-content"
+
+    def mock_run_generator_fail(session, cargo_lock_content, output_sources_file):
+        from fedora_flatpak_updater.cargo_extractor import CargoLockExtractionError
+        raise CargoLockExtractionError("Generator subprocess exited with non-zero code")
+
+    monkeypatch.setattr(cli, "download_and_extract_cargo_lock", mock_download_lock)
+    monkeypatch.setattr(cli, "run_cargo_generator", mock_run_generator_fail)
+
+    mapping_file.write_text(
+        """
+modules:
+  python3-idna:
+    fedora_package: python3-idna
+    recipe: pypi
+    pypi_name: idna
+    cargo_sources_file: idna-cargo-sources.json
+    cargo_lock_path: src/idna/Cargo.lock
+"""
+    )
+
+    rows = cli.run(mapping_file, manifest_root, dry_run=False)
+
+    statuses = {row.module_name: row.status for row in rows}
+    details = {row.module_name: row.detail for row in rows}
+    assert statuses["python3-idna"] == "skipped"
+    assert "Cargo lock update failed" in details["python3-idna"]
+
+    assert not (manifest_root.parent / "idna-cargo-sources.json").exists()
+    assert "idna-3.99-py3-none-any.whl" not in manifest_root.read_text()
+    assert "idna-3.16-py3-none-any.whl" in manifest_root.read_text()
+
+
+def test_run_cargo_dry_run(manifest_root, mapping_file, monkeypatch):
+    _patch_common(monkeypatch)
+
+    lock_extracted = []
+    generator_calls = []
+
+    def mock_download_lock(session, pypi_name, version, cargo_lock_path):
+        lock_extracted.append((pypi_name, version, cargo_lock_path))
+        return b"mock-lock-content"
+
+    def mock_run_generator(session, cargo_lock_content, output_sources_file):
+        generator_calls.append((cargo_lock_content, output_sources_file))
+        output_sources_file.write_text('{"sources": []}')
+
+    monkeypatch.setattr(cli, "download_and_extract_cargo_lock", mock_download_lock)
+    monkeypatch.setattr(cli, "run_cargo_generator", mock_run_generator)
+
+    original_manifest_content = manifest_root.read_text()
+
+    mapping_file.write_text(
+        """
+modules:
+  python3-idna:
+    fedora_package: python3-idna
+    recipe: pypi
+    pypi_name: idna
+    cargo_sources_file: idna-cargo-sources.json
+    cargo_lock_path: src/idna/Cargo.lock
+"""
+    )
+
+    rows = cli.run(mapping_file, manifest_root, dry_run=True)
+
+    statuses = {row.module_name: row.status for row in rows}
+    assert statuses["python3-idna"] == "updated"
+
+    assert len(generator_calls) == 1
+    assert generator_calls[0][1] != manifest_root.parent / "idna-cargo-sources.json"
+    assert not (manifest_root.parent / "idna-cargo-sources.json").exists()
+    assert manifest_root.read_text() == original_manifest_content
+
