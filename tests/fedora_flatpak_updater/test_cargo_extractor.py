@@ -258,7 +258,7 @@ def test_lockfile_missing_in_archive():
 
 
 @responses.activate
-def test_run_cargo_generator():
+def test_run_cargo_generator(tmp_path):
     from unittest.mock import patch, MagicMock
     from pathlib import Path
     from fedora_flatpak_updater.cargo_extractor import run_cargo_generator
@@ -271,17 +271,87 @@ def test_run_cargo_generator():
         status=200
     )
 
-    import requests
     with requests.Session() as session:
         with patch("subprocess.run") as mock_run:
-            mock_run.return_value = MagicMock(returncode=0)
+            def side_effect(cmd, *args, **kwargs):
+                Path(cmd[3]).write_bytes(b"[mock generator output]")
+                return MagicMock(returncode=0)
+            mock_run.side_effect = side_effect
             
-            run_cargo_generator(session, b"[mock cargo lock]", Path("mock-sources.json"))
+            output_file = tmp_path / "mock-sources.json"
+            run_cargo_generator(session, b"[mock cargo lock]", output_file)
             
             # Assert subprocess was called
             mock_run.assert_called_once()
             args = mock_run.call_args[0][0]
             assert "flatpak-cargo-generator.py" in args[1]
             assert "-o" in args
-            assert "mock-sources.json" in args
+            
+            assert output_file.exists()
+            assert output_file.read_bytes() == b"[mock generator output]"
+
+
+@responses.activate
+def test_run_cargo_generator_timeout(tmp_path):
+    from unittest.mock import patch
+    import subprocess
+    from fedora_flatpak_updater.cargo_extractor import run_cargo_generator
+
+    # Mock the flatpak-cargo-generator.py script download
+    responses.add(
+        responses.GET,
+        "https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py",
+        body=b"print('mock generator script')",
+        status=200
+    )
+
+    with requests.Session() as session:
+        with patch("subprocess.run") as mock_run:
+            mock_run.side_effect = subprocess.TimeoutExpired(cmd=["mock"], timeout=60)
+            
+            output_file = tmp_path / "mock-sources.json"
+            with pytest.raises(CargoLockExtractionError, match="flatpak-cargo-generator.py timed out after 60 seconds"):
+                run_cargo_generator(session, b"[mock cargo lock]", output_file)
+
+
+@responses.activate
+def test_download_and_extract_cargo_lock_query_params_and_dynamic_top_level():
+    # Mock the PyPI JSON response with query params in the URL and non-standard casing
+    responses.add(
+        responses.GET,
+        "https://pypi.org/pypi/bcrypt/4.3.0/json",
+        json={
+            "urls": [
+                {
+                    "packagetype": "sdist",
+                    "url": "https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-4.3.0.TAR.GZ?some_param=value&other=1"
+                }
+            ]
+        },
+        status=200
+    )
+
+    # Create an in-memory tarball containing some-custom-top-level/src/_bcrypt/Cargo.lock
+    tar_buffer = io.BytesIO()
+    with tarfile.open(fileobj=tar_buffer, mode="w:gz") as tar:
+        content = b"[package]\nname = \"bcrypt-custom\"\n"
+        tarinfo = tarfile.TarInfo(name="some-custom-top-level/src/_bcrypt/Cargo.lock")
+        tarinfo.size = len(content)
+        tar.addfile(tarinfo, io.BytesIO(content))
+    tar_buffer.seek(0)
+
+    responses.add(
+        responses.GET,
+        "https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-4.3.0.TAR.GZ",
+        body=tar_buffer.read(),
+        status=200
+    )
+
+    with requests.Session() as session:
+        lockfile_bytes = download_and_extract_cargo_lock(
+            session, "bcrypt", "4.3.0", "src/_bcrypt/Cargo.lock"
+        )
+        assert lockfile_bytes == b"[package]\nname = \"bcrypt-custom\"\n"
+
+
 

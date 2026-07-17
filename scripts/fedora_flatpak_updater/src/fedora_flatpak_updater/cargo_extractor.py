@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import io
-import os
+import shutil
 import subprocess
 import sys
 import tarfile
 import tempfile
 import zipfile
 from pathlib import Path
+from urllib.parse import urlparse
 
 import requests
 
@@ -44,39 +45,43 @@ def download_and_extract_cargo_lock(
     except Exception as exc:
         raise CargoLockExtractionError(f"Failed to download sdist from {sdist_url}: {exc}") from exc
 
-    filename = sdist_url.split("/")[-1]
+    parsed_url = urlparse(sdist_url)
+    url_path_lower = parsed_url.path.lower()
+    filename = Path(parsed_url.path).name
     
     # Handle tar.gz / tar.bz2 / tar.xz / zip
-    if filename.endswith((".tar.gz", ".tgz", ".tar.bz2", ".tar.xz")):
+    if url_path_lower.endswith((".tar.gz", ".tgz", ".tar.bz2", ".tar.xz")):
         try:
             with tarfile.open(fileobj=io.BytesIO(archive_bytes), mode="r:*") as tar:
-                # Prepend top-level directory dynamically
                 members = tar.getmembers()
                 if not members:
                     raise CargoLockExtractionError("Empty sdist archive")
-                top_level = members[0].name.split("/")[0]
-                target_name = f"{top_level}/{cargo_lock_path}"
 
                 for member in members:
-                    if member.name == target_name:
-                        f = tar.extractfile(member)
-                        if f is not None:
-                            return f.read()
+                    parts = member.name.split("/")
+                    if len(parts) > 1:
+                        rel_path = "/".join(parts[1:])
+                        if rel_path == cargo_lock_path:
+                            f = tar.extractfile(member)
+                            if f is not None:
+                                return f.read()
         except Exception as exc:
             if isinstance(exc, CargoLockExtractionError):
                 raise
             raise CargoLockExtractionError(f"Error extracting tarball: {exc}") from exc
-    elif filename.endswith(".zip"):
+    elif url_path_lower.endswith(".zip"):
         try:
             with zipfile.ZipFile(io.BytesIO(archive_bytes)) as zip_ref:
                 names = zip_ref.namelist()
                 if not names:
                     raise CargoLockExtractionError("Empty zip archive")
-                top_level = names[0].split("/")[0]
-                target_name = f"{top_level}/{cargo_lock_path}"
 
-                if target_name in names:
-                    return zip_ref.read(target_name)
+                for name in names:
+                    parts = name.split("/")
+                    if len(parts) > 1:
+                        rel_path = "/".join(parts[1:])
+                        if rel_path == cargo_lock_path:
+                            return zip_ref.read(name)
         except Exception as exc:
             if isinstance(exc, CargoLockExtractionError):
                 raise
@@ -108,18 +113,31 @@ def run_cargo_generator(
         lock_path = Path(tempdir) / "Cargo.lock"
         lock_path.write_bytes(cargo_lock_content)
 
+        temp_output_path = Path(tempdir) / "sources.json"
+
         cmd = [
             sys.executable,
             str(script_path),
             "-o",
-            str(output_sources_file),
+            str(temp_output_path),
             str(lock_path),
         ]
         try:
-            subprocess.run(cmd, capture_output=True, text=True, check=True)
-        except subprocess.CalledProcessError as exc:
+            subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=60)
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+            stdout = getattr(exc, "stdout", "")
+            stderr = getattr(exc, "stderr", "")
+            if isinstance(exc, subprocess.TimeoutExpired):
+                raise CargoLockExtractionError(
+                    f"flatpak-cargo-generator.py timed out after {exc.timeout} seconds\n"
+                    f"stdout: {stdout}\n"
+                    f"stderr: {stderr}"
+                ) from exc
             raise CargoLockExtractionError(
                 f"flatpak-cargo-generator.py failed with exit code {exc.returncode}\n"
-                f"stdout: {exc.stdout}\n"
-                f"stderr: {exc.stderr}"
+                f"stdout: {stdout}\n"
+                f"stderr: {stderr}"
             ) from exc
+
+        # Copy the temporary output file to the final destination atomically
+        shutil.copy2(temp_output_path, output_sources_file)
