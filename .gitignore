@@ -13,3 +13,7 @@ repo
 scripts/fedora_flatpak_updater/.venv
 **/__pycache__/
 .pytest_cache
+
+# Workspace tools and git worktrees
+.worktrees/
+.superpowers/
