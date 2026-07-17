@@ -1,8 +1,14 @@
 from __future__ import annotations
 
 import io
+import os
+import subprocess
+import sys
 import tarfile
+import tempfile
 import zipfile
+from pathlib import Path
+
 import requests
 
 class CargoLockExtractionError(RuntimeError):
@@ -77,3 +83,43 @@ def download_and_extract_cargo_lock(
             raise CargoLockExtractionError(f"Error extracting zip: {exc}") from exc
 
     raise CargoLockExtractionError(f"Could not find lockfile at {cargo_lock_path} inside sdist archive {filename}")
+
+
+GENERATOR_URL = "https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py"
+
+
+def run_cargo_generator(
+    session: requests.Session,
+    cargo_lock_content: bytes,
+    output_sources_file: Path,
+) -> None:
+    # Download flatpak-cargo-generator.py
+    try:
+        resp = session.get(GENERATOR_URL, timeout=30)
+        resp.raise_for_status()
+        generator_script = resp.content
+    except Exception as exc:
+        raise CargoLockExtractionError(f"Failed to download flatpak-cargo-generator.py: {exc}") from exc
+
+    with tempfile.TemporaryDirectory() as tempdir:
+        script_path = Path(tempdir) / "flatpak-cargo-generator.py"
+        script_path.write_bytes(generator_script)
+        
+        lock_path = Path(tempdir) / "Cargo.lock"
+        lock_path.write_bytes(cargo_lock_content)
+
+        cmd = [
+            sys.executable,
+            str(script_path),
+            "-o",
+            str(output_sources_file),
+            str(lock_path),
+        ]
+        try:
+            subprocess.run(cmd, capture_output=True, text=True, check=True)
+        except subprocess.CalledProcessError as exc:
+            raise CargoLockExtractionError(
+                f"flatpak-cargo-generator.py failed with exit code {exc.returncode}\n"
+                f"stdout: {exc.stdout}\n"
+                f"stderr: {exc.stderr}"
+            ) from exc

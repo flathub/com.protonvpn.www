@@ -255,3 +255,33 @@ def test_lockfile_missing_in_archive():
             download_and_extract_cargo_lock(
                 session, "bcrypt", "4.3.0", "src/_bcrypt/Cargo.lock"
             )
+
+
+@responses.activate
+def test_run_cargo_generator():
+    from unittest.mock import patch, MagicMock
+    from pathlib import Path
+    from fedora_flatpak_updater.cargo_extractor import run_cargo_generator
+
+    # Mock the flatpak-cargo-generator.py script download
+    responses.add(
+        responses.GET,
+        "https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py",
+        body=b"print('mock generator script')",
+        status=200
+    )
+
+    import requests
+    with requests.Session() as session:
+        with patch("subprocess.run") as mock_run:
+            mock_run.return_value = MagicMock(returncode=0)
+            
+            run_cargo_generator(session, b"[mock cargo lock]", Path("mock-sources.json"))
+            
+            # Assert subprocess was called
+            mock_run.assert_called_once()
+            args = mock_run.call_args[0][0]
+            assert "flatpak-cargo-generator.py" in args[1]
+            assert "-o" in args
+            assert "mock-sources.json" in args
+
