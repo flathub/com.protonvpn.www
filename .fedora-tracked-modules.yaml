@@ -60,9 +60,8 @@ modules:
     recipe: pypi
     pypi_name: bcrypt
     fedora_package: python3-bcrypt
-    manual_followup: bcrypt vendors Rust crate sources in 
-      bcrypt-cargo-sources.json. Re-run flatpak-cargo-generator against the new 
-      version's Cargo.lock before merging.
+    cargo_sources_file: bcrypt-cargo-sources.json
+    cargo_lock_path: src/_bcrypt/Cargo.lock
   python3-cairo:
     recipe: pypi
     pypi_name: pycairo
