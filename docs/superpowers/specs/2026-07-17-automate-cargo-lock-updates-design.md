@@ -32,6 +32,7 @@ Automate the extraction of `Cargo.lock` and regeneration of Flatpak Cargo source
    * Get the `sdist` URL for the target Python package version via the PyPI JSON API: `https://pypi.org/pypi/<package_name>/<version>/json`.
    * Download the sdist archive `.tar.gz` or `.zip` file.
    * Parse the archive using Python's built-in `tarfile` or `zipfile` modules and extract the content of the file matching `cargo_lock_path` in-memory.
+   * **Path Resolution**: The configured `cargo_lock_path` is relative to the sdist archive's root. The updater will automatically inspect the archive's top-level directory (e.g. `bcrypt-4.3.0/`) and prepend it to the lookup path.
 
 4. **Sources Reconstruction**:
    * Write the extracted `Cargo.lock` contents to a temporary file.
@@ -54,8 +55,11 @@ flowchart TD
     G --> H[Extract Cargo.lock in-memory]
     H --> I[Download flatpak-cargo-generator.py]
     I --> J[Run generator subprocess]
-    J --> K[Overwrites cargo sources JSON file]
-    K --> F
+    J --> K{Generator Succeeded?}
+    K -->|Yes| L[Overwrites cargo sources JSON file]
+    K -->|No| M[Rollback changes to manifest for this module]
+    L --> F
+    M --> N[Mark module as skipped with failure details]
 ```
 
 ## Error Handling
@@ -65,7 +69,7 @@ flowchart TD
 * **Missing Lockfile**:
   * If the specified `cargo_lock_path` is not present in the sdist archive, log a warning and mark the Cargo updates as skipped.
 * **Generator Subprocess Exit Code**:
-  * If `flatpak-cargo-generator.py` exits with a non-zero code, log stderr, and do not write the updated manifest version or write back files to the git repository to keep the workspace clean.
+  * If `flatpak-cargo-generator.py` exits with a non-zero code, log stderr, roll back manifest updates for this module, mark the module as `skipped` in the final summary report with the failure details, and keep the PR buildable.
 
 ## Testing Strategy
 
@@ -75,3 +79,5 @@ All network and subprocess calls will be mocked in pytest:
   * Construct a fake sdist `.tar.gz` containing a mock `Cargo.lock` in-memory.
   * Mock `subprocess.run` calls, checking that the command line matches `python3 flatpak-cargo-generator.py -o bcrypt-cargo-sources.json ...`.
   * Validate that the generator is executed only when the version actually upgrades.
+  * Validate failure rollback behavior.
+
