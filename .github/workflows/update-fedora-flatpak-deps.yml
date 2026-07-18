@@ -17,10 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v8.3.2
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.13"
+
+      - name: Install uv
+        run: pip install uv
 
       - name: Sync fedora_flatpak_updater environment
         run: uv sync --project scripts/fedora_flatpak_updater
