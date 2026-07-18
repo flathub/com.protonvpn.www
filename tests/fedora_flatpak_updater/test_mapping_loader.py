@@ -85,11 +85,8 @@ modules:
         load_mapping(mapping_file)
 
 
-def test_load_mapping_with_cargo_fields():
-    from pathlib import Path
-    from fedora_flatpak_updater.mapping_loader import load_mapping
+def test_load_mapping_with_cargo_fields(tmp_path: Path):
     # We will create a temporary config yaml containing cargo fields
-    import tempfile
     yaml_content = """
 modules:
   python3-bcrypt:
@@ -99,14 +96,11 @@ modules:
     cargo_sources_file: bcrypt-cargo-sources.json
     cargo_lock_path: src/_bcrypt/Cargo.lock
 """
-    with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False) as tmp:
-        tmp.write(yaml_content)
-        tmp_path = Path(tmp.name)
-    try:
-        specs = load_mapping(tmp_path)
-        assert len(specs) == 1
-        assert specs[0].cargo_sources_file == "bcrypt-cargo-sources.json"
-        assert specs[0].cargo_lock_path == "src/_bcrypt/Cargo.lock"
-    finally:
-        tmp_path.unlink()
+    mapping_file = tmp_path / "mapping.yaml"
+    mapping_file.write_text(yaml_content)
+    specs = load_mapping(mapping_file)
+    assert len(specs) == 1
+    assert specs[0].cargo_sources_file == "bcrypt-cargo-sources.json"
+    assert specs[0].cargo_lock_path == "src/_bcrypt/Cargo.lock"
+
 

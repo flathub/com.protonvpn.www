@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import os
 import shutil
 import subprocess
 import sys
@@ -26,7 +27,7 @@ def download_and_extract_cargo_lock(
         resp = session.get(pypi_url, timeout=30)
         resp.raise_for_status()
         metadata = resp.json()
-    except Exception as exc:
+    except requests.RequestException as exc:
         raise CargoLockExtractionError(f"Failed to fetch PyPI metadata for {pypi_name}=={version}: {exc}") from exc
 
     sdist_url = None
@@ -42,7 +43,7 @@ def download_and_extract_cargo_lock(
         sdist_resp = session.get(sdist_url, timeout=30)
         sdist_resp.raise_for_status()
         archive_bytes = sdist_resp.content
-    except Exception as exc:
+    except requests.RequestException as exc:
         raise CargoLockExtractionError(f"Failed to download sdist from {sdist_url}: {exc}") from exc
 
     parsed_url = urlparse(sdist_url)
@@ -103,7 +104,7 @@ def run_cargo_generator(
         resp = session.get(GENERATOR_URL, timeout=30)
         resp.raise_for_status()
         generator_script = resp.content
-    except Exception as exc:
+    except requests.RequestException as exc:
         raise CargoLockExtractionError(f"Failed to download flatpak-cargo-generator.py: {exc}") from exc
 
     with tempfile.TemporaryDirectory() as tempdir:
@@ -140,4 +141,11 @@ def run_cargo_generator(
             ) from exc
 
         # Copy the temporary output file to the final destination atomically
-        shutil.copy2(temp_output_path, output_sources_file)
+        local_temp_file = output_sources_file.parent / f".tmp_{output_sources_file.name}"
+        try:
+            shutil.copy2(temp_output_path, local_temp_file)
+            os.replace(local_temp_file, output_sources_file)
+        except Exception as exc:
+            if local_temp_file.exists():
+                local_temp_file.unlink()
+            raise exc
