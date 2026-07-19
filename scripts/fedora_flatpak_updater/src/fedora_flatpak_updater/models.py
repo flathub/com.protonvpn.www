@@ -26,3 +26,6 @@ class ModuleSpec:
     tag_template: str | None = None
     tag_pattern: str | None = None
     manual_followup: str | None = None
+    cargo_sources_file: str | None = None
+    cargo_lock_path: str | None = None
+

@@ -83,3 +83,24 @@ modules:
     )
     with pytest.raises(MappingError):
         load_mapping(mapping_file)
+
+
+def test_load_mapping_with_cargo_fields(tmp_path: Path):
+    # We will create a temporary config yaml containing cargo fields
+    yaml_content = """
+modules:
+  python3-bcrypt:
+    recipe: pypi
+    pypi_name: bcrypt
+    fedora_package: python3-bcrypt
+    cargo_sources_file: bcrypt-cargo-sources.json
+    cargo_lock_path: src/_bcrypt/Cargo.lock
+"""
+    mapping_file = tmp_path / "mapping.yaml"
+    mapping_file.write_text(yaml_content)
+    specs = load_mapping(mapping_file)
+    assert len(specs) == 1
+    assert specs[0].cargo_sources_file == "bcrypt-cargo-sources.json"
+    assert specs[0].cargo_lock_path == "src/_bcrypt/Cargo.lock"
+
+
