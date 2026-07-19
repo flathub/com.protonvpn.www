@@ -59,13 +59,10 @@ def download_and_extract_cargo_lock(
                     raise CargoLockExtractionError("Empty sdist archive")
 
                 for member in members:
-                    parts = member.name.split("/")
-                    if len(parts) > 1:
-                        rel_path = "/".join(parts[1:])
-                        if rel_path == cargo_lock_path:
-                            f = tar.extractfile(member)
-                            if f is not None:
-                                return f.read()
+                    if _matches_cargo_lock_path(member.name, cargo_lock_path):
+                        f = tar.extractfile(member)
+                        if f is not None:
+                            return f.read()
         except Exception as exc:
             if isinstance(exc, CargoLockExtractionError):
                 raise
@@ -78,17 +75,33 @@ def download_and_extract_cargo_lock(
                     raise CargoLockExtractionError("Empty zip archive")
 
                 for name in names:
-                    parts = name.split("/")
-                    if len(parts) > 1:
-                        rel_path = "/".join(parts[1:])
-                        if rel_path == cargo_lock_path:
-                            return zip_ref.read(name)
+                    if _matches_cargo_lock_path(name, cargo_lock_path):
+                        return zip_ref.read(name)
         except Exception as exc:
             if isinstance(exc, CargoLockExtractionError):
                 raise
             raise CargoLockExtractionError(f"Error extracting zip: {exc}") from exc
 
+
     raise CargoLockExtractionError(f"Could not find lockfile at {cargo_lock_path} inside sdist archive {filename}")
+
+
+def _matches_cargo_lock_path(member_name: str, target_rel_path: str) -> bool:
+    """Matches an archive member path against the target relative lockfile path.
+
+    Strips the top-level sdist directory prefix if present (e.g.
+    'bcrypt-4.3.0/src/_bcrypt/Cargo.lock' -> 'src/_bcrypt/Cargo.lock'),
+    supporting arbitrary subdirectory depths. Also matches direct paths if no
+    top-level wrapper directory is present.
+    """
+    parts = [p for p in member_name.split("/") if p]
+    if not parts:
+        return False
+    if "/".join(parts) == target_rel_path:
+        return True
+    if len(parts) > 1 and "/".join(parts[1:]) == target_rel_path:
+        return True
+    return False
 
 
 GENERATOR_URL = "https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py"

@@ -166,7 +166,7 @@ def test_empty_tarball():
 
     # Empty tarball
     tar_buffer = io.BytesIO()
-    with tarfile.open(fileobj=tar_buffer, mode="w:gz") as tar:
+    with tarfile.open(fileobj=tar_buffer, mode="w:gz") as _tar:
         pass
     tar_buffer.seek(0)
 
@@ -201,7 +201,7 @@ def test_empty_zip():
 
     # Empty zip
     zip_buffer = io.BytesIO()
-    with zipfile.ZipFile(zip_buffer, mode="w") as zip_file:
+    with zipfile.ZipFile(zip_buffer, mode="w") as _zip_file:
         pass
     zip_buffer.seek(0)
 
@@ -352,6 +352,24 @@ def test_download_and_extract_cargo_lock_query_params_and_dynamic_top_level():
             session, "bcrypt", "4.3.0", "src/_bcrypt/Cargo.lock"
         )
         assert lockfile_bytes == b"[package]\nname = \"bcrypt-custom\"\n"
+
+
+def test_matches_cargo_lock_path():
+    from fedora_flatpak_updater.cargo_extractor import _matches_cargo_lock_path
+
+    # Standard sdist: root folder + top-level Cargo.lock
+    assert _matches_cargo_lock_path("bcrypt-4.3.0/Cargo.lock", "Cargo.lock") is True
+
+    # Standard sdist: root folder + nested Cargo.lock
+    assert _matches_cargo_lock_path("bcrypt-4.3.0/src/_bcrypt/Cargo.lock", "src/_bcrypt/Cargo.lock") is True
+
+    # Direct match without top-level wrapper directory
+    assert _matches_cargo_lock_path("Cargo.lock", "Cargo.lock") is True
+
+    # Mismatch cases
+    assert _matches_cargo_lock_path("bcrypt-4.3.0/other/Cargo.lock", "src/Cargo.lock") is False
+    assert _matches_cargo_lock_path("", "Cargo.lock") is False
+
 
 
 
