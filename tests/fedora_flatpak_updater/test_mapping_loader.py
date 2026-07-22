@@ -104,3 +104,22 @@ modules:
     assert specs[0].cargo_lock_path == "src/_bcrypt/Cargo.lock"
 
 
+def test_load_mapping_parses_ignored_field(tmp_path: Path):
+    yaml_content = """
+modules:
+  NetworkManager:
+    recipe: git
+    fedora_package: NetworkManager
+    repo_url: "https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git"
+    tag_template: "$version"
+    ignored: true
+"""
+    mapping_file = tmp_path / "mapping.yaml"
+    mapping_file.write_text(yaml_content)
+    specs = load_mapping(mapping_file)
+    assert len(specs) == 1
+    assert specs[0].name == "NetworkManager"
+    assert specs[0].ignored is True
+
+
+

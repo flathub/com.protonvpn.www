@@ -44,7 +44,7 @@ def load_mapping(path: Path) -> list[ModuleSpec]:
                 manual_followup=entry.get("manual_followup"),
                 cargo_sources_file=entry.get("cargo_sources_file"),
                 cargo_lock_path=entry.get("cargo_lock_path"),
+                ignored=bool(entry.get("ignored", False)),
             )
         )
     return specs
-
