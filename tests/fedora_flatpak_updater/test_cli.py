@@ -88,6 +88,31 @@ def test_run_reports_updated_and_skipped_modules(monkeypatch, manifest_root, map
     assert statuses["python3-nonexistent"] == "skipped"
 
 
+def test_run_skips_ignored_modules(monkeypatch, manifest_root, tmp_path):
+    _patch_common(monkeypatch)
+    mapping_file = tmp_path / ".fedora-tracked-modules.yaml"
+    mapping_file.write_text(
+        """
+modules:
+  python3-idna:
+    fedora_package: python3-idna
+    recipe: pypi
+    pypi_name: idna
+  NetworkManager:
+    fedora_package: NetworkManager
+    recipe: git
+    repo_url: "https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git"
+    tag_template: "$version"
+    ignored: true
+"""
+    )
+    rows = cli.run(mapping_file, manifest_root, dry_run=True)
+    statuses = {row.module_name: (row.status, row.detail) for row in rows}
+    assert statuses["NetworkManager"] == ("skipped", "ignored in mapping config")
+    assert statuses["python3-idna"][0] == "updated"
+
+
+
 def test_dry_run_does_not_write_files(monkeypatch, manifest_root, mapping_file):
     _patch_common(monkeypatch)
     original_text = manifest_root.read_text()

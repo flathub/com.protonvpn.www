@@ -78,6 +78,10 @@ def run(
         rows: list[Row] = []
 
         for spec in specs:
+            if spec.ignored:
+                rows.append(Row(spec.name, "skipped", "ignored in mapping config"))
+                continue
+
             try:
                 fedora_version = mdapi.get_version(spec.fedora_package)
             except (PackageNotFoundError, MdapiTransientError) as exc:
