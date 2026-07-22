@@ -4,11 +4,13 @@ modules:
     fedora_package: NetworkManager
     repo_url: https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git
     tag_template: $version
+    ignored: true
   NetworkManager-openvpn:
     recipe: git
     fedora_package: NetworkManager-openvpn
     repo_url: https://github.com/NetworkManager/NetworkManager-openvpn.git
     tag_template: $version
+    ignored: true
   iproute2:
     recipe: archive
     fedora_package: iproute
@@ -22,6 +24,7 @@ modules:
     fedora_package: libnma
     url_template: 
       https://gitlab.gnome.org/GNOME/libnma/-/archive/$version/libnma-$version.tar.gz
+    ignored: true
   meson:
     recipe: pypi
     pypi_name: meson
