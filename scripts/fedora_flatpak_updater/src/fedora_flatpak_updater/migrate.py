@@ -41,6 +41,7 @@ NATIVE_MODULE_HINTS: dict[str, dict] = {
     "libnma": {
         "recipe": "archive",
         "url_template": "https://gitlab.gnome.org/GNOME/libnma/-/archive/$version/libnma-$version.tar.gz",
+        "ignored": True,
     },
     "iproute2": {
         "recipe": "archive",
@@ -55,11 +56,13 @@ NATIVE_MODULE_HINTS: dict[str, dict] = {
         "recipe": "git",
         "repo_url": "https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git",
         "tag_template": "$version",
+        "ignored": True,
     },
     "NetworkManager-openvpn": {
         "recipe": "git",
         "repo_url": "https://github.com/NetworkManager/NetworkManager-openvpn.git",
         "tag_template": "$version",
+        "ignored": True,
     },
     "systemd": {
         "recipe": "git",

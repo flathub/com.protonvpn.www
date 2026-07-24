@@ -4,11 +4,13 @@ modules:
     fedora_package: NetworkManager
     repo_url: https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git
     tag_template: $version
+    ignored: true
   NetworkManager-openvpn:
     recipe: git
     fedora_package: NetworkManager-openvpn
     repo_url: https://github.com/NetworkManager/NetworkManager-openvpn.git
     tag_template: $version
+    ignored: true
   iproute2:
     recipe: archive
     fedora_package: iproute
@@ -22,6 +24,7 @@ modules:
     fedora_package: libnma
     url_template: 
       https://gitlab.gnome.org/GNOME/libnma/-/archive/$version/libnma-$version.tar.gz
+    ignored: true
   meson:
     recipe: pypi
     pypi_name: meson
@@ -60,9 +63,8 @@ modules:
     recipe: pypi
     pypi_name: bcrypt
     fedora_package: python3-bcrypt
-    manual_followup: bcrypt vendors Rust crate sources in 
-      bcrypt-cargo-sources.json. Re-run flatpak-cargo-generator against the new 
-      version's Cargo.lock before merging.
+    cargo_sources_file: bcrypt-cargo-sources.json
+    cargo_lock_path: src/_bcrypt/Cargo.lock
   python3-cairo:
     recipe: pypi
     pypi_name: pycairo
