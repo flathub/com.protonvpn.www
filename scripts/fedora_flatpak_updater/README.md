@@ -2,8 +2,7 @@
 
 Pins every third-party dependency in `com.protonvpn.www.yml` and its
 `pip-resources.*.yaml` files to the version shipped in Fedora's latest
-stable release. See `docs/superpowers/specs/2026-07-01-fedora-stable-flatpak-deps-design.md`
-for the full design.
+stable release. See `docs/superpowers/specs/2026-07-01-fedora-stable-flatpak-deps-design.md` for the full design and `docs/caveats.md` for design limitations and caveats.
 
 ## Setup
 
