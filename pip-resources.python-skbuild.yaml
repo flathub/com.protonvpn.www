@@ -2,61 +2,64 @@
 build-commands: []
 buildsystem: simple
 modules:
-- name: python3-hatchling
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "hatchling" --no-build-isolation
-  sources:
-  - &id001
-    type: file
-    url: https://files.pythonhosted.org/packages/56/49/2797ec0ef88008a653a8867bb8d1e5c223cd2df8e40390dd5c6a0279cbc5/hatchling-1.30.1-py3-none-any.whl
-    sha256: 161eacafb3c6f91526e92116d21426369f2c36e98c36a864f11a96345ad4ee31
-  - &id002
-    type: file
-    url: https://files.pythonhosted.org/packages/32/2b/121e912bd60eebd623f873fd090de0e84f322972ab25a7f9044c056804ed/pathspec-1.0.3-py3-none-any.whl
-    sha256: e80767021c1cc524aa3fb14bedda9c34406591343cc42797b386ce7b9354fb6c
-  - &id003
-    type: file
-    url: https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl
-    sha256: e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
-  - &id004
-    type: file
-    url: https://files.pythonhosted.org/packages/bb/4a/2e5583e544bc437d5e8e54b47db87430df9031b29b48d17f26d129fa60c0/trove_classifiers-2026.1.14.14-py3-none-any.whl
-    sha256: 1f9553927f18d0513d8e5ff80ab8980b8202ce37ecae0e3274ed2ef11880e74d
-  - &id005
-    type: file
-    url: https://files.pythonhosted.org/packages/e6/60/73603fbcdbe5e803855bcce4414f94eaeed449083bd8183e67161af78188/vcs_versioning-1.1.1-py3-none-any.whl
-    sha256: b541e2ba79fc6aaa3850f8a7f88af43d97c1c80649c01142ee4146eddbc599e4
-    x-checker-data:
-      name: vcs-versioning
-      packagetype: bdist_wheel
-      type: pypi
-- name: python3-hatch-fancy-pypi-readme
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "hatch-fancy-pypi-readme" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/58/b4/ad71e051b34f1935783de37beffee16e343ff2514b204dc515f9e939d4af/hatch_fancy_pypi_readme-25.1.0-py3-none-any.whl
-    sha256: ce0134c40d63d874ac48f48ccc678b8f3b62b8e50e9318520d2bffc752eedaf3
-  - *id001
-  - *id002
-  - *id003
-  - *id004
-- name: python3-hatch-vcs
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "hatch-vcs" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/5f/48/1f85cee4b7b4f40b9b814b1febbc661bda6ced9649e410a0b74f6e415dd0/hatch_vcs-0.5.0-py3-none-any.whl
-    sha256: b49677dbdc597460cc22d01b27ab3696f5e16a21ecf2700fb01bc28e1f2a04a7
-  - *id001
-  - *id002
-  - *id003
-  - type: file
-    url: https://files.pythonhosted.org/packages/3d/ea/ac2bf868899d0d2e82ef72d350d97a846110c709bacf2d968431576ca915/setuptools_scm-9.2.2-py3-none-any.whl
-    sha256: 30e8f84d2ab1ba7cb0e653429b179395d0c33775d54807fc5f1dd6671801aef7
-  - *id005
-  - *id004
+  - name: python3-hatchling
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "hatchling" --no-build-isolation
+    sources:
+      - &id001
+        type: file
+        url: https://files.pythonhosted.org/packages/56/49/2797ec0ef88008a653a8867bb8d1e5c223cd2df8e40390dd5c6a0279cbc5/hatchling-1.30.1-py3-none-any.whl
+        sha256: 161eacafb3c6f91526e92116d21426369f2c36e98c36a864f11a96345ad4ee31
+      - &id002
+        type: file
+        url: https://files.pythonhosted.org/packages/32/2b/121e912bd60eebd623f873fd090de0e84f322972ab25a7f9044c056804ed/pathspec-1.0.3-py3-none-any.whl
+        sha256: e80767021c1cc524aa3fb14bedda9c34406591343cc42797b386ce7b9354fb6c
+      - &id003
+        type: file
+        url: https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl
+        sha256: e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
+      - &id004
+        type: file
+        url: https://files.pythonhosted.org/packages/bb/4a/2e5583e544bc437d5e8e54b47db87430df9031b29b48d17f26d129fa60c0/trove_classifiers-2026.1.14.14-py3-none-any.whl
+        sha256: 1f9553927f18d0513d8e5ff80ab8980b8202ce37ecae0e3274ed2ef11880e74d
+      - &id005
+        type: file
+        url: https://files.pythonhosted.org/packages/95/2e/83be70d0379bbe17034e5d5960fae2a23cc136d466786607d2615ac2612b/vcs_versioning-2.2.3-py3-none-any.whl
+        sha256: 4f7873af76f5cc24e701608354f376f5eb70b317d663787ace57a7edd7a27506
+        x-checker-data:
+          name: vcs-versioning
+          packagetype: bdist_wheel
+          type: pypi
+  - name: python3-hatch-fancy-pypi-readme
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "hatch-fancy-pypi-readme" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/58/b4/ad71e051b34f1935783de37beffee16e343ff2514b204dc515f9e939d4af/hatch_fancy_pypi_readme-25.1.0-py3-none-any.whl
+        sha256: ce0134c40d63d874ac48f48ccc678b8f3b62b8e50e9318520d2bffc752eedaf3
+      - *id001
+      - *id002
+      - *id003
+      - *id004
+  - name: python3-hatch-vcs
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} "hatch-vcs" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/5f/48/1f85cee4b7b4f40b9b814b1febbc661bda6ced9649e410a0b74f6e415dd0/hatch_vcs-0.5.0-py3-none-any.whl
+        sha256: b49677dbdc597460cc22d01b27ab3696f5e16a21ecf2700fb01bc28e1f2a04a7
+      - *id001
+      - *id002
+      - *id003
+      - type: file
+        url: https://files.pythonhosted.org/packages/3d/ea/ac2bf868899d0d2e82ef72d350d97a846110c709bacf2d968431576ca915/setuptools_scm-9.2.2-py3-none-any.whl
+        sha256: 30e8f84d2ab1ba7cb0e653429b179395d0c33775d54807fc5f1dd6671801aef7
+      - *id005
+      - *id004
 name: pip-resources.python-skbuild
