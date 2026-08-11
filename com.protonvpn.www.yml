@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/95/2e/83be70d0379bbe17034e5d5960fae2a23cc136d466786607d2615ac2612b/vcs_versioning-2.2.3-py3-none-any.whl
-            sha256: 4f7873af76f5cc24e701608354f376f5eb70b317d663787ace57a7edd7a27506
+            url: https://files.pythonhosted.org/packages/7a/26/7d2b738d2b7e177e729932dbdf1ebfa57c98846777a87a864130cc1e196b/vcs_versioning-2.2.4-py3-none-any.whl
+            sha256: 48ffea8a6a175c37a718c7ee2e5f508d0e500c2cf3371791f7948bccb2b44628
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/e9/bb/5270e8ffd3123051ac4fbbaabf61afb8f27819ac8ced0f0cc4b24137d30e/vcs_versioning-2.2.3.tar.gz
-                    sha256: c21e284aa98c8269996791a19d6173baf953cf9996ef42ec3ebcbdc151e18b9b
+                    url: https://files.pythonhosted.org/packages/3c/92/14277e46f415b6a01b6e94960cd6bc3acdc366e990d43ad71d63fef83d1b/vcs_versioning-2.2.4.tar.gz
+                    sha256: ed718fdee42170e128a8add6f23f53aa64dc7d9ab2de87d3083a691df881a809
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
@@ -568,8 +568,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.7.0
-        commit: f7a178a99c3adc0e88c7f91d4db5371a052c4985
+        tag: v0.7.4
+        commit: 9bd4662ddde2d439e4e8c900f0431e23958bd512
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -608,8 +608,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.2.5
-        commit: 3615c9f1832c6410d18a0c71c5863e4a47f54af6
+        tag: v5.5.11
+        commit: fb35f610fc592ddc181230369dc59855c4f97a04
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -694,8 +694,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.17.1
-        commit: 8f50e675d0c00492cab902b4db50f094c51fec7b
+        tag: v4.17.2
+        commit: bd9c406befad847d613ba3fc634b0f0ea9f1a72e
         disable-submodules: true
         x-checker-data:
           type: anitya
