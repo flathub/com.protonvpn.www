@@ -596,8 +596,22 @@ modules:
           tag-template: v$version
 
   - name: python-proton-vpn-api-core
+    build-options:
+      append-path: /usr/lib/sdk/rust-stable/bin
+      env:
+        CARGO_HOME: /run/build/python-proton-vpn-api-core/cargo
+        CARGO_NET_OFFLINE: 'true'
+        RUST_BACKTRACE: '1'
     buildsystem: simple
     build-commands:
+      - cargo build --release --locked
+        --bin nm-protun-service
+        --bin nm-protun-auth-dialog
+        --lib
+        --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
+      - install -Dm755 target/release/libproton_vpn_platform.so proton/vpn/platform.abi3.so
+      - install -Dm755 target/release/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
+      - install -Dm755 target/release/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
@@ -615,41 +629,15 @@ modules:
           type: anitya
           project-id: 369944
           tag-template: v$version
+      - type: git
+        url: https://github.com/ProtonVPN/protun.git
+        commit: 5f5f4c9f7bb6c96a10a5c42747dccdf7ee656039
+        dest: dependencies/protun
+      - proton-vpn-platform-cargo-sources.json
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
-
-  - name: python-proton-vpn-platform
-    buildsystem: simple
-    build-commands:
-      - bsdtar -Oxf python-proton-vpn-api-core.deb data.tar.xz | bsdtar -xf -
-      - |
-        PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))');
-        install -Dm755 usr/lib/python3/dist-packages/proton/vpn/platform.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/platform.abi3.so"
-        install -Dm755 usr/libexec/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
-        install -Dm755 usr/libexec/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
-    sources:
-      - type: file
-        only-arches: [x86_64]
-        dest-filename: python-proton-vpn-api-core.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-api-core_5.5.15_amd64.deb
-        sha256: ab04a3339c18f917246a5e35ee6bd0558d74a95cb9b1151f59add928f41e1f29
-        x-checker-data:
-          type: debian-repo
-          package-name: python3-proton-vpn-api-core
-          root: https://repo.protonvpn.com/debian
-          dist: stable
-          component: main
-      - type: file
-        only-arches: [aarch64]
-        dest-filename: python-proton-vpn-api-core.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-api-core_5.5.15_arm64.deb
-        sha256: a19389df09814aef7b01638b4e2bd52728b97a38072694733546f5cf0aff13b8
-        x-checker-data:
-          type: debian-repo
-          package-name: python3-proton-vpn-api-core
-          root: https://repo.protonvpn.com/debian
-          dist: stable
-          component: main
+      - type: patch
+        path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
