@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/7a/26/7d2b738d2b7e177e729932dbdf1ebfa57c98846777a87a864130cc1e196b/vcs_versioning-2.2.4-py3-none-any.whl
-            sha256: 48ffea8a6a175c37a718c7ee2e5f508d0e500c2cf3371791f7948bccb2b44628
+            url: https://files.pythonhosted.org/packages/8e/1e/94c0a4b8c8c639e91ff6bce375a2c92460a711b9e040b28674ed492d004d/vcs_versioning-2.3.1-py3-none-any.whl
+            sha256: a11299394e101569a62ab061375260d08bc56cd33d685b7067d85312368f4457
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/3c/92/14277e46f415b6a01b6e94960cd6bc3acdc366e990d43ad71d63fef83d1b/vcs_versioning-2.2.4.tar.gz
-                    sha256: ed718fdee42170e128a8add6f23f53aa64dc7d9ab2de87d3083a691df881a809
+                    url: https://files.pythonhosted.org/packages/a6/cb/6f5c4ed4da249ef5eea34ddfbb38174c5533ff3da8703b8252bf44b80396/vcs_versioning-2.3.1.tar.gz
+                    sha256: 806635bd0ea653c96af98a70624be758d408a989f2cd0b390e63474d99f96b63
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
@@ -608,8 +608,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.5.11
-        commit: fb35f610fc592ddc181230369dc59855c4f97a04
+        tag: v5.5.15
+        commit: 35d575a17fd0c4fc612c71a174f28c7925d566ed
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -618,33 +618,35 @@ modules:
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
 
-  - name: python-proton-vpn-local-agent
+  - name: python-proton-vpn-platform
     buildsystem: simple
     build-commands:
-      - bsdtar -Oxf python-proton-vpn-local-agent.deb data.tar.xz | bsdtar -xf -
+      - bsdtar -Oxf python-proton-vpn-api-core.deb data.tar.xz | bsdtar -xf -
       - |
         PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))');
-        install -Dm755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/local_agent.abi3.so"
+        install -Dm755 usr/lib/python3/dist-packages/proton/vpn/platform.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/platform.abi3.so"
+        install -Dm755 usr/libexec/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
+        install -Dm755 usr/libexec/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
     sources:
       - type: file
         only-arches: [x86_64]
-        dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.6.3_amd64.deb
-        sha256: dab3a51bf8fe97116a284ba2f143ac5a904a0305ace8e319c051800244129bb5
+        dest-filename: python-proton-vpn-api-core.deb
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-api-core_5.5.15_amd64.deb
+        sha256: ab04a3339c18f917246a5e35ee6bd0558d74a95cb9b1151f59add928f41e1f29
         x-checker-data:
           type: debian-repo
-          package-name: python3-proton-vpn-local-agent
+          package-name: python3-proton-vpn-api-core
           root: https://repo.protonvpn.com/debian
           dist: stable
           component: main
       - type: file
         only-arches: [aarch64]
-        dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.6.3_arm64.deb
-        sha256: 9d682c6bc302b848d92ea45d876a5a5445e89a673986b489430bc28471822b69
+        dest-filename: python-proton-vpn-api-core.deb
+        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-api-core_5.5.15_arm64.deb
+        sha256: a19389df09814aef7b01638b4e2bd52728b97a38072694733546f5cf0aff13b8
         x-checker-data:
           type: debian-repo
-          package-name: python3-proton-vpn-local-agent
+          package-name: python3-proton-vpn-api-core
           root: https://repo.protonvpn.com/debian
           dist: stable
           component: main
@@ -694,8 +696,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.17.2
-        commit: bd9c406befad847d613ba3fc634b0f0ea9f1a72e
+        tag: v4.18.0
+        commit: 8e3897b6fe81840eef4762f2377c5a985754edea
         disable-submodules: true
         x-checker-data:
           type: anitya
