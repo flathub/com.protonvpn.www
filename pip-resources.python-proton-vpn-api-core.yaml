@@ -1,4 +1,4 @@
-# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//49 fido2 distro sentry-sdk PyNaCl proton-vpn-local-agent -o pip-resources.python-proton-vpn-api-core
+# Generated with flatpak-pip-generator --checker-data --yaml --runtime=org.gnome.Sdk//49 fido2 distro sentry-sdk PyNaCl -o pip-resources.python-proton-vpn-api-core
 build-commands: []
 buildsystem: simple
 modules:
@@ -53,16 +53,4 @@ modules:
   - type: file
     url: https://files.pythonhosted.org/packages/d9/9a/4019b524b03a13438637b11538c82781a5eda427394380381af8f04f467a/pynacl-1.6.2.tar.gz
     sha256: 018494d6d696ae03c7e656e5e74cdfd8ea1326962cc401bcf018f1ed8436811c
-- name: python3-proton-vpn-local-agent
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "proton-vpn-local-agent" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/86/56/e65acae43c2d54ad8b72d694a67e8f30b6f3f196a7ccf418f9e843875599/proton_vpn_local_agent-0.1.1-py3-none-any.whl
-    sha256: eb15cfbb115ea2a15d503e59f46e745709cca49bf115514443ffce5baffd2794
-    x-checker-data:
-      name: proton_vpn_local_agent
-      packagetype: bdist_wheel
-      type: pypi
 name: pip-resources.python-proton-vpn-api-core
