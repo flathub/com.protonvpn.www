@@ -1,0 +1,11 @@
+diff --git a/setup.py b/setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -17,7 +17,6 @@ setup(
+         "proton-core",
+         "proton-vpn-api-core",
+         "proton-keyring-linux",
+-        "proton-vpn-local-agent",
+         "click",
+         "dbus-fast",
+         "tabulate"
