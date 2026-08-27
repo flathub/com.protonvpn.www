@@ -638,6 +638,8 @@ modules:
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
       - type: patch
         path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
+      - type: patch
+        path: patches/python-proton-vpn-api-core/update-cargo-lock.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
@@ -658,6 +660,8 @@ modules:
           type: anitya
           project-id: 387797
           tag-template: v$version
+      - type: patch
+        path: patches/proton-vpn-cli/remove-local-agent-dep.patch
 
   - name: proton-vpn-gtk-app
     buildsystem: simple
