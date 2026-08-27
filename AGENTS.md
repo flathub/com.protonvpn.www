@@ -6,152 +6,77 @@ Technical context and operational instructions for AI coding agents working on t
 
 ## Project Overview
 
-This repository maintains the **Flathub package build specifications** for Proton VPN (`com.protonvpn.www`). It builds a sandboxed Flatpak package of the Proton VPN GTK Desktop app and CLI tools using GNOME Platform 50.
+Flathub package build specifications for Proton VPN (`com.protonvpn.www`), packaging the Proton VPN GTK Desktop application and CLI tools using GNOME Platform 50 (`org.gnome.Platform//50` / `org.gnome.Sdk//50`).
 
-### Core Stack & Key Components
+### Core Architecture & Key Files
 
-- **Flatpak Manifest**: [`com.protonvpn.www.yml`](file:///home/slash/Development/com.protonvpn.www/com.protonvpn.www.yml) (YAML specification using GNOME Platform 50 / SDK 50).
-- **Sub-manifests / Resources**: `pip-resources.*.yaml` files defining Python dependencies for core components:
-  - [`pip-resources.proton-vpn-cli.yaml`](file:///home/slash/Development/com.protonvpn.www/pip-resources.proton-vpn-cli.yaml)
-  - [`pip-resources.proton-vpn-gtk-app.yaml`](file:///home/slash/Development/com.protonvpn.www/pip-resources.proton-vpn-gtk-app.yaml)
-  - [`pip-resources.python-proton-core.yaml`](file:///home/slash/Development/com.protonvpn.www/pip-resources.python-proton-core.yaml)
-  - [`pip-resources.python-proton-keyring-linux.yaml`](file:///home/slash/Development/com.protonvpn.www/pip-resources.python-proton-keyring-linux.yaml)
-  - [`pip-resources.python-proton-vpn-api-core.yaml`](file:///home/slash/Development/com.protonvpn.www/pip-resources.python-proton-vpn-api-core.yaml)
-  - [`pip-resources.python-skbuild.yaml`](file:///home/slash/Development/com.protonvpn.www/pip-resources.python-skbuild.yaml)
-- **Rust / Cargo Sources**: [`bcrypt-cargo-sources.json`](file:///home/slash/Development/com.protonvpn.www/bcrypt-cargo-sources.json) for native Python modules requiring Rust compilation (`python3-bcrypt`, `python3-cryptography`).
-- **AppStream Metainfo**: [`com.protonvpn.www.metainfo.xml`](file:///home/slash/Development/com.protonvpn.www/com.protonvpn.www.metainfo.xml)
-- **Dependency Automation Tool**: [`scripts/fedora_flatpak_updater`](file:///home/slash/Development/com.protonvpn.www/scripts/fedora_flatpak_updater) — a Python package managed via `uv` that synchronizes Flatpak dependency versions with Fedora stable releases.
+- **Flatpak Manifest**: [`com.protonvpn.www.yml`](file:///home/slash/Development/com.protonvpn.www/com.protonvpn.www.yml) (Root YAML manifest using GNOME 50 and `org.freedesktop.Sdk.Extension.rust-stable`).
+- **Python Dependency Sub-manifests**: `pip-resources.*.yaml` files defining Python dependencies.
+- **Rust / Cargo Sources**:
+  - [`proton-vpn-platform-cargo-sources.json`](file:///home/slash/Development/com.protonvpn.www/proton-vpn-platform-cargo-sources.json): Offline crate vendoring for `proton-vpn-platform` (`libproton_vpn_platform.so`, `nm-protun-service`, `nm-protun-auth-dialog`).
+  - [`bcrypt-cargo-sources.json`](file:///home/slash/Development/com.protonvpn.www/bcrypt-cargo-sources.json): Offline crate vendoring for `python3-bcrypt`.
+- **Local Patches**: Located in [`patches/`](file:///home/slash/Development/com.protonvpn.www/patches/) for path corrections, lockfile synchronization, and stripping deprecated requirements.
+- **Dependency Automation Tool**: [`scripts/fedora_flatpak_updater`](file:///home/slash/Development/com.protonvpn.www/scripts/fedora_flatpak_updater) — synchronizes Fedora-tracked dependencies with stable releases.
 
 ---
 
-## Setup & Prerequisites
-
-To develop, build, test, and manage this repository, the following system tools are needed:
-
-- **Flatpak Builder**: `flatpak`, `flatpak-builder`
-- **Python / Package Management**: `python3` (3.12+), `uv` (for script environment management), `flatpak-pip-generator` (from flatpak-builder-tools)
-- **Updater Tooling**: Initialize the updater subproject virtual environment:
+## Quick Reference Commands
 
 ```bash
-uv sync --project scripts/fedora_flatpak_updater
-```
-*(Alternatively, if `uv` is unavailable on PATH, use `python3 -m venv` or execute directly via `scripts/fedora_flatpak_updater/.venv/bin/python`)*
-
----
-
-## Development Workflow
-
-### 1. Building the Flatpak Package
-
-Build the app locally using `flatpak-builder`:
-
-```bash
-# Clean build
+# Build package locally (Clean)
 flatpak-builder --force-clean build-dir com.protonvpn.www.yml
 
-# Install build locally for test user
-flatpak-builder --force-clean --user --install build-dir com.protonvpn.www.yml
-```
+# Build via Flatpak Builder container (fallback if flatpak-builder binary is not on host)
+flatpak run --filesystem="$PWD" org.flatpak.Builder --force-clean build-dir com.protonvpn.www.yml
 
-### 2. Testing App & CLI Execution
+# Test download phase only (Network verification)
+flatpak-builder --download-only build-dir com.protonvpn.www.yml
 
-To launch the GUI or run CLI commands from the built Flatpak:
-
-```bash
-# Run GUI App
+# Run CLI / GUI from built Flatpak
+flatpak run com.protonvpn.www protonvpn --help
 flatpak run com.protonvpn.www
 
-# CLI: Check status & help
-flatpak run com.protonvpn.www protonvpn --help
-flatpak run com.protonvpn.www protonvpn status
-```
-
-### 3. Updating Dependency Resource Files
-
-When upstream Python packages release updates, use `flatpak-pip-generator` to update `pip-resources.*.yaml`:
-
-```bash
-flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//49' \
-  click dbus-fast tabulate -o pip-resources.proton-vpn-cli
-```
-
-### 4. Fedora Dependency Updater Tool (`fedora_flatpak_updater`)
-
-The updater syncs tracked dependencies in [`com.protonvpn.www.yml`](file:///home/slash/Development/com.protonvpn.www/com.protonvpn.www.yml) and `pip-resources.*.yaml` with Fedora's latest stable release.
-
-```bash
-# Preview changes (dry run)
-uv run --project scripts/fedora_flatpak_updater python -m fedora_flatpak_updater.cli --dry-run
-
-# Update specific package(s)
-uv run --project scripts/fedora_flatpak_updater python -m fedora_flatpak_updater.cli --only python3-idna --only libndp
-
-# Rebuild the package mapping draft
-uv run --project scripts/fedora_flatpak_updater python -m fedora_flatpak_updater.migrate > /tmp/draft.yaml
-```
-
----
-
-## Testing Instructions
-
-Unit tests cover the `fedora_flatpak_updater` tool and live in [`tests/fedora_flatpak_updater`](file:///home/slash/Development/com.protonvpn.www/tests/fedora_flatpak_updater).
-
-### Running Test Suite
-
-```bash
-# Standard test run via uv
-uv run --project scripts/fedora_flatpak_updater pytest tests/fedora_flatpak_updater -v
-
-# Direct virtual environment execution fallback
+# Run updater test suite
 scripts/fedora_flatpak_updater/.venv/bin/pytest tests/fedora_flatpak_updater -v
 ```
 
-### CI Workflows
+---
 
-GitHub Actions workflows are defined in [`.github/workflows/`](file:///home/slash/Development/com.protonvpn.www/.github/workflows):
-- `test-fedora-flatpak-updater.yml`: Runs `pytest` on PRs touching updater scripts or tests.
-- `update-fedora-flatpak-deps.yml`: Scheduled/manual workflow that runs the updater tool and submits automated dependency updates.
+## Critical Packaging & Build Rules
+
+1. **Deterministic Offline Builds**:
+   - Flathub build workers disable network access during compilation (`--unshare=network`).
+   - Every remote archive, git repository, PyPI wheel, and Cargo crate must be declared in the manifest or sub-manifests with valid SHA256 checksums.
+
+2. **Rust & Sparse Registry Vendoring (`proton-vpn-platform`)**:
+   - `python-proton-vpn-api-core` relies on Proton's sparse registry (`sparse+https://rust-registry.proton.me/index/`).
+   - Standard `flatpak-cargo-generator.py` points non-git crates to `static.crates.io`. Proton crates must explicitly use `https://rust-registry.proton.me/downloads/{crate}@{version}.crate` in [`proton-vpn-platform-cargo-sources.json`](file:///home/slash/Development/com.protonvpn.www/proton-vpn-platform-cargo-sources.json).
+   - The embedded `cargo/config.toml` must replace `sparse+https://rust-registry.proton.me/index/` with `vendored-sources` and define both `[registries.proton]` and `[registries.proton_public]`.
+   - If upstream tagged releases contain stale internal lockfiles, maintain [`patches/python-proton-vpn-api-core/update-cargo-lock.patch`](file:///home/slash/Development/com.protonvpn.www/patches/python-proton-vpn-api-core/update-cargo-lock.patch) to satisfy `cargo build --locked`.
+
+3. **Python Pip Offline Builds**:
+   - Always pass `--no-build-isolation` to `pip3 install` to prevent pip from querying PyPI for build environments.
+   - Build-time dependencies (`setuptools_rust`, `flit_core`, `skbuild`, `meson`) must be installed as preceding or nested modules.
+   - Strip removed/redundant requirements (e.g. `proton-vpn-local-agent`) via patches in [`patches/`](file:///home/slash/Development/com.protonvpn.www/patches/).
+
+4. **Security & System Permissions**:
+   - Manifest `finish-args` must remain minimal and compliant with Flathub standards.
+   - Required D-Bus interfaces: `org.freedesktop.secrets` (keyring), `org.freedesktop.NetworkManager` (system bus), `org.freedesktop.login1` (daemon reconnect), `org.kde.StatusNotifierWatcher` (tray icon).
 
 ---
 
-## Code Style & Formatting Guidelines
+## Deep-Dive Reference Guides
 
-- **YAML Files**:
-  - Keep 2-space indentation.
-  - Preserve standard Flatpak manifest structural conventions (`id`, `runtime`, `runtime-version`, `sdk`, `finish-args`, `modules`).
-  - Retain `x-checker-data` annotations on PyPI and source blocks to enable automated update checks.
-- **Python Code**:
-  - Target Python 3.12+.
-  - Formatting & Linting: Use `ruff`.
-  
-  ```bash
-  # Check python code linting
-  uv run --project scripts/fedora_flatpak_updater ruff check scripts/fedora_flatpak_updater tests/
-  ```
-  - Type Hints: Maintain explicit typing in `scripts/fedora_flatpak_updater/src/`.
-
----
-
-## Security & System Permissions
-
-The Flatpak manifest requests specific system bus permissions required for VPN operations:
-- D-Bus Talk Permissions:
-  - `org.freedesktop.secrets` (to store and retrieve credentials via Secret Service API)
-  - `org.freedesktop.NetworkManager` (system bus, to monitor and manage host network status)
-  - `org.freedesktop.login1` (system bus, DBus daemon reconnector)
-  - `org.kde.StatusNotifierWatcher` (tray icon support)
-- Filesystem Access:
-  - `~/.cert/nm-openvpn/` and `~/.cert:create` (OpenVPN profile certificates)
-  - `/var/log/journal:ro` (read-only system logs for debugging/support reporting)
-- Devices:
-  - `--device=all` (for FIDO2 USB hardware security keys during authentication)
-
-When modifying `finish-args` in [`com.protonvpn.www.yml`](file:///home/slash/Development/com.protonvpn.www/com.protonvpn.www.yml), ensure permissions remain minimal and justified according to Flathub policies.
+For comprehensive runbooks and technical guides, consult:
+- [Cargo / Rust Offline Dependency Generation](.agents/skills/creating-flatpaks/references/cargo-offline-generation.md)
+- [Python / Pip Offline Dependency Management](.agents/skills/creating-flatpaks/references/python-pip-offline.md)
+- [Manifest Architecture & Permissions Guide](.agents/skills/creating-flatpaks/references/manifest-structure-and-permissions.md)
+- [Creating & Maintaining Flatpaks Runbook](.agents/skills/creating-flatpaks/SKILL.md)
 
 ---
 
 ## Pull Request Guidelines
 
-1. Ensure all changes to `com.protonvpn.www.yml` maintain valid manifest schema syntax (`https://raw.githubusercontent.com/flatpak/flatpak-builder/main/data/flatpak-manifest.schema.json`).
-2. Run pytest suite (`uv run --project scripts/fedora_flatpak_updater pytest tests/fedora_flatpak_updater -v`) and ensure all 49+ tests pass before committing Python script changes.
-3. Verify that `ruff` checks pass cleanly on all modified Python files.
+1. Validate manifest schema before committing (`https://raw.githubusercontent.com/flatpak/flatpak-builder/main/data/flatpak-manifest.schema.json`).
+2. Run pytest suite (`scripts/fedora_flatpak_updater/.venv/bin/pytest tests/fedora_flatpak_updater -v`) and ensure all tests pass when modifying updater code.
+3. Validate Python formatting/linting via `ruff check scripts/fedora_flatpak_updater tests/`.
