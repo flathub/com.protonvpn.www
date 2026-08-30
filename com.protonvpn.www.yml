@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/95/2e/83be70d0379bbe17034e5d5960fae2a23cc136d466786607d2615ac2612b/vcs_versioning-2.2.3-py3-none-any.whl
-            sha256: 4f7873af76f5cc24e701608354f376f5eb70b317d663787ace57a7edd7a27506
+            url: https://files.pythonhosted.org/packages/8e/1e/94c0a4b8c8c639e91ff6bce375a2c92460a711b9e040b28674ed492d004d/vcs_versioning-2.3.1-py3-none-any.whl
+            sha256: a11299394e101569a62ab061375260d08bc56cd33d685b7067d85312368f4457
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/e9/bb/5270e8ffd3123051ac4fbbaabf61afb8f27819ac8ced0f0cc4b24137d30e/vcs_versioning-2.2.3.tar.gz
-                    sha256: c21e284aa98c8269996791a19d6173baf953cf9996ef42ec3ebcbdc151e18b9b
+                    url: https://files.pythonhosted.org/packages/a6/cb/6f5c4ed4da249ef5eea34ddfbb38174c5533ff3da8703b8252bf44b80396/vcs_versioning-2.3.1.tar.gz
+                    sha256: 806635bd0ea653c96af98a70624be758d408a989f2cd0b390e63474d99f96b63
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
@@ -568,8 +568,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-core
-        tag: v0.7.0
-        commit: f7a178a99c3adc0e88c7f91d4db5371a052c4985
+        tag: v0.7.4
+        commit: 9bd4662ddde2d439e4e8c900f0431e23958bd512
         x-checker-data:
           type: anitya
           project-id: 369954
@@ -596,8 +596,22 @@ modules:
           tag-template: v$version
 
   - name: python-proton-vpn-api-core
+    build-options:
+      append-path: /usr/lib/sdk/rust-stable/bin
+      env:
+        CARGO_HOME: /run/build/python-proton-vpn-api-core/cargo
+        CARGO_NET_OFFLINE: 'true'
+        RUST_BACKTRACE: '1'
     buildsystem: simple
     build-commands:
+      - cargo build --release --locked
+        --bin nm-protun-service
+        --bin nm-protun-auth-dialog
+        --lib
+        --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
+      - install -Dm755 target/release/libproton_vpn_platform.so proton/vpn/platform.abi3.so
+      - install -Dm755 target/release/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
+      - install -Dm755 target/release/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
@@ -608,46 +622,24 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.2.5
-        commit: 3615c9f1832c6410d18a0c71c5863e4a47f54af6
+        tag: v5.5.15
+        commit: 35d575a17fd0c4fc612c71a174f28c7925d566ed
         disable-submodules: true
         x-checker-data:
           type: anitya
           project-id: 369944
           tag-template: v$version
+      - type: git
+        url: https://github.com/ProtonVPN/protun.git
+        commit: 5f5f4c9f7bb6c96a10a5c42747dccdf7ee656039
+        dest: dependencies/protun
+      - proton-vpn-platform-cargo-sources.json
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
-
-  - name: python-proton-vpn-local-agent
-    buildsystem: simple
-    build-commands:
-      - bsdtar -Oxf python-proton-vpn-local-agent.deb data.tar.xz | bsdtar -xf -
-      - |
-        PYTHON_VERSION=$(python3 -c 'import sys; print("{}.{}".format(*sys.version_info))');
-        install -Dm755 usr/lib/python3/dist-packages/proton/vpn/local_agent.abi3.so "${FLATPAK_DEST}/lib/python${PYTHON_VERSION}/site-packages/proton/vpn/local_agent.abi3.so"
-    sources:
-      - type: file
-        only-arches: [x86_64]
-        dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-amd64/python3-proton-vpn-local-agent_1.6.3_amd64.deb
-        sha256: dab3a51bf8fe97116a284ba2f143ac5a904a0305ace8e319c051800244129bb5
-        x-checker-data:
-          type: debian-repo
-          package-name: python3-proton-vpn-local-agent
-          root: https://repo.protonvpn.com/debian
-          dist: stable
-          component: main
-      - type: file
-        only-arches: [aarch64]
-        dest-filename: python-proton-vpn-local-agent.deb
-        url: https://repo.protonvpn.com/debian/dists/stable/main/binary-arm64/python3-proton-vpn-local-agent_1.6.3_arm64.deb
-        sha256: 9d682c6bc302b848d92ea45d876a5a5445e89a673986b489430bc28471822b69
-        x-checker-data:
-          type: debian-repo
-          package-name: python3-proton-vpn-local-agent
-          root: https://repo.protonvpn.com/debian
-          dist: stable
-          component: main
+      - type: patch
+        path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
+      - type: patch
+        path: patches/python-proton-vpn-api-core/update-cargo-lock.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
@@ -656,14 +648,20 @@ modules:
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
       # flatpak-pip-generator --checker-data --yaml --runtime='org.gnome.Sdk//49' "click" "dbus-fast" "tabulate" -o pip-resources.proton-vpn-cli
-      # https://github.com/ProtonVPN/proton-vpn-cli/blob/f00eb2a07e810f9563323bd38ee4a7bd3c3226c8/setup.py#L16-L23
+      # https://github.com/ProtonVPN/proton-vpn-cli/blob/a7c7abc8d3777f33b8d4c82279bd621258bd810d/setup.py#L25-L33
       - pip-resources.proton-vpn-cli.yaml
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-cli.git
-        tag: v1.0.0
-        commit: f00eb2a07e810f9563323bd38ee4a7bd3c3226c8
+        tag: v1.0.3
+        commit: a7c7abc8d3777f33b8d4c82279bd621258bd810d
         disable-submodules: true
+        x-checker-data:
+          type: anitya
+          project-id: 387797
+          tag-template: v$version
+      - type: patch
+        path: patches/proton-vpn-cli/remove-local-agent-dep.patch
 
   - name: proton-vpn-gtk-app
     buildsystem: simple
@@ -694,8 +692,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.17.1
-        commit: 8f50e675d0c00492cab902b4db50f094c51fec7b
+        tag: v4.18.0
+        commit: 8e3897b6fe81840eef4762f2377c5a985754edea
         disable-submodules: true
         x-checker-data:
           type: anitya
