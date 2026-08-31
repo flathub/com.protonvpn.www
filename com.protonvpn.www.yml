@@ -604,11 +604,8 @@ modules:
         RUST_BACKTRACE: '1'
     buildsystem: simple
     build-commands:
-      - cargo build --release --locked
-        --bin nm-protun-service
-        --bin nm-protun-auth-dialog
-        --lib
-        --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
+      - cargo build --release --locked --bin nm-protun-service --bin nm-protun-auth-dialog
+        --lib --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
       - install -Dm755 target/release/libproton_vpn_platform.so proton/vpn/platform.abi3.so
       - install -Dm755 target/release/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
       - install -Dm755 target/release/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
@@ -622,8 +619,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.5.15
-        commit: 35d575a17fd0c4fc612c71a174f28c7925d566ed
+        tag: v5.6.10
+        commit: f1d13b71c506bbd5f47351a9e4392572e21d0169
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -692,8 +689,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.18.0
-        commit: 8e3897b6fe81840eef4762f2377c5a985754edea
+        tag: v4.18.1
+        commit: b771b2bb6b265552d4a19c56e5e1c73002ebc0c4
         disable-submodules: true
         x-checker-data:
           type: anitya
