@@ -10,14 +10,6 @@ modules:
   - type: file
     url: https://files.pythonhosted.org/packages/98/78/01c019cdb5d6498122777c1a43056ebb3ebfeef2076d9d026bfe15583b2b/click-8.3.1-py3-none-any.whl
     sha256: 981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6
-- name: python3-dbus-fast
-  buildsystem: simple
-  build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "dbus-fast" --no-build-isolation
-  sources:
-  - type: file
-    url: https://files.pythonhosted.org/packages/4d/45/43e2826069e8ed2cb3a3b83da72d39a0fe52ece2eca3cac8ff5e070bbfa4/dbus_fast-2.45.1.tar.gz
-    sha256: 486195c42c5f8fac77e9c55b575e2c85636cff7db45ebc7a19f680b3b4084314
 - name: python3-tabulate
   buildsystem: simple
   build-commands:
