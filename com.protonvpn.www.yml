@@ -628,15 +628,14 @@ modules:
           tag-template: v$version
       - type: git
         url: https://github.com/ProtonVPN/protun.git
-        commit: 5f5f4c9f7bb6c96a10a5c42747dccdf7ee656039
+        tag: v2.2.1
+        commit: 12e7755a112f59b7b843da79290b3de25febf653
         dest: dependencies/protun
       - proton-vpn-platform-cargo-sources.json
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
       - type: patch
         path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
-      - type: patch
-        path: patches/python-proton-vpn-api-core/update-cargo-lock.patch
 
   - name: proton-vpn-cli
     buildsystem: simple

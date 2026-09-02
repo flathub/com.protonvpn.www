@@ -53,4 +53,12 @@ modules:
   - type: file
     url: https://files.pythonhosted.org/packages/d9/9a/4019b524b03a13438637b11538c82781a5eda427394380381af8f04f467a/pynacl-1.6.2.tar.gz
     sha256: 018494d6d696ae03c7e656e5e74cdfd8ea1326962cc401bcf018f1ed8436811c
+- name: python3-dbus-fast
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "dbus-fast" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/4d/45/43e2826069e8ed2cb3a3b83da72d39a0fe52ece2eca3cac8ff5e070bbfa4/dbus_fast-2.45.1.tar.gz
+    sha256: 486195c42c5f8fac77e9c55b575e2c85636cff7db45ebc7a19f680b3b4084314
 name: pip-resources.python-proton-vpn-api-core
