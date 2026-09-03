@@ -667,7 +667,7 @@ modules:
 
       - install -Dm644 rpmbuild/SOURCES/proton.vpn.app.gtk.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       - desktop-file-edit --set-icon ${FLATPAK_ID} --set-key Exec --set-value 'protonvpn-app
-        %u' ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
+        %u' --set-key StartupWMClass --set-value 'proton.vpn.app.gtk' ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
 
       - install -Dm644 rpmbuild/SOURCES/proton-vpn-logo.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       # Export icons that can be used in the status bar: https://github.com/flathub/com.protonvpn.www/issues/100
