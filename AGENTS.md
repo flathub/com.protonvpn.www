@@ -36,9 +36,28 @@ flatpak-builder --download-only build-dir com.protonvpn.www.yml
 flatpak run com.protonvpn.www protonvpn --help
 flatpak run com.protonvpn.www
 
-# Run updater test suite
-scripts/fedora_flatpak_updater/.venv/bin/pytest tests/fedora_flatpak_updater -v
+# Regenerate proton-vpn-platform-cargo-sources.json after python-proton-vpn-api-core bump
+scripts/generate_proton_platform_sources.py
+
+# Run test suite
+scripts/fedora_flatpak_updater/.venv/bin/pytest tests/ -v
 ```
+
+---
+
+## Automated Bot PR Triage (`flatpak-external-data-checker`)
+
+When Flathub's automated checker creates a PR bumping `python-proton-vpn-api-core`, follow this checklist to bring CI to green:
+
+1. **Synchronize `dependencies/protun`**:
+   - Check the `protun` version pinned in `Cargo.lock` (reported by `scripts/generate_proton_platform_sources.py`).
+   - Update `tag` and `commit` for `dependencies/protun` in [`com.protonvpn.www.yml`](com.protonvpn.www.yml) to match.
+2. **Regenerate Cargo Sources**:
+   - Run `scripts/generate_proton_platform_sources.py` to regenerate [`proton-vpn-platform-cargo-sources.json`](proton-vpn-platform-cargo-sources.json).
+3. **Re-anchor Patches**:
+   - Verify that [`patches/python-proton-vpn-api-core/remove-local-agent-dep.patch`](patches/python-proton-vpn-api-core/remove-local-agent-dep.patch) applies cleanly against upstream `setup.py`.
+4. **Preserve Dependency Build Order**:
+   - If upstream added new requirements to `setup.py` (e.g. `dbus-fast`), ensure they are declared in [`pip-resources.python-proton-vpn-api-core.yaml`](pip-resources.python-proton-vpn-api-core.yaml) so they are installed before `python-proton-vpn-api-core` compiles.
 
 ---
 
@@ -50,14 +69,15 @@ scripts/fedora_flatpak_updater/.venv/bin/pytest tests/fedora_flatpak_updater -v
 
 2. **Rust & Sparse Registry Vendoring (`proton-vpn-platform`)**:
    - `python-proton-vpn-api-core` relies on Proton's sparse registry (`sparse+https://rust-registry.proton.me/index/`).
-   - Standard `flatpak-cargo-generator.py` points non-git crates to `static.crates.io`. Proton crates must explicitly use `https://rust-registry.proton.me/downloads/{crate}@{version}.crate` in [`proton-vpn-platform-cargo-sources.json`](file:///home/slash/Development/com.protonvpn.www/proton-vpn-platform-cargo-sources.json).
+   - Standard `flatpak-cargo-generator.py` points non-git crates to `static.crates.io`. Proton crates must explicitly use `https://rust-registry.proton.me/downloads/{crate}@{version}.crate` in [`proton-vpn-platform-cargo-sources.json`](proton-vpn-platform-cargo-sources.json).
    - The embedded `cargo/config.toml` must replace `sparse+https://rust-registry.proton.me/index/` with `vendored-sources` and define both `[registries.proton]` and `[registries.proton_public]`.
-   - If upstream tagged releases contain stale internal lockfiles, maintain [`patches/python-proton-vpn-api-core/update-cargo-lock.patch`](file:///home/slash/Development/com.protonvpn.www/patches/python-proton-vpn-api-core/update-cargo-lock.patch) to satisfy `cargo build --locked`.
+   - Use [`scripts/generate_proton_platform_sources.py`](scripts/generate_proton_platform_sources.py) to automatically regenerate [`proton-vpn-platform-cargo-sources.json`](proton-vpn-platform-cargo-sources.json) whenever `python-proton-vpn-api-core` is bumped.
+   - Upstream releases starting at `v5.6.10+` natively point to `rust-registry.proton.me`, making `update-cargo-lock.patch` obsolete.
 
 3. **Python Pip Offline Builds**:
    - Always pass `--no-build-isolation` to `pip3 install` to prevent pip from querying PyPI for build environments.
    - Build-time dependencies (`setuptools_rust`, `flit_core`, `skbuild`, `meson`) must be installed as preceding or nested modules.
-   - Strip removed/redundant requirements (e.g. `proton-vpn-local-agent`) via patches in [`patches/`](file:///home/slash/Development/com.protonvpn.www/patches/).
+   - Strip removed/redundant requirements (e.g. `proton-vpn-local-agent`) via patches in [`patches/`](patches/).
 
 4. **Security & System Permissions**:
    - Manifest `finish-args` must remain minimal and compliant with Flathub standards.
