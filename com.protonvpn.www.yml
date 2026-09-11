@@ -636,6 +636,12 @@ modules:
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
       - type: patch
         path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
+      - type: patch
+        path: patches/python-proton-vpn-api-core/prefer-udp-51820.patch
+      - type: patch
+        path: patches/python-proton-vpn-api-core/persistent-keepalive.patch
+      - type: patch
+        path: patches/python-proton-vpn-api-core/disable-ipv6.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
