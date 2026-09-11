@@ -1,0 +1,14 @@
+diff --git a/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py b/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
+--- a/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
++++ b/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
+@@ -96,6 +96,10 @@ class Wireguard(LinuxNetworkManager, LocalAgentMixin):
+     connection: Optional[NM.SimpleConnection] = None
+     FWMARK: int = FWMARK_VALUE
+ 
++    @property
++    def enable_ipv6_support(self) -> bool:
++        return False
++
+     def __init__(self, *args, **kwargs):
+         super().__init__(*args, **kwargs)
+         LocalAgentMixin.__init__(self, self._user_tier)
