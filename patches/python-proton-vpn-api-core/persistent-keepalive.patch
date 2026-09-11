@@ -1,0 +1,11 @@
+diff --git a/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py b/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
+--- a/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
++++ b/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
+@@ -243,6 +243,7 @@ class Wireguard(LinuxNetworkManager, LocalAgentMixin):
+         )
+ 
+         peer.set_public_key(self._vpnserver.x25519pk, False)
++        peer.set_persistent_keepalive(25)
+ 
+         if self.enable_ipv6_support:
+             peer.append_allowed_ip(wg_config.ipv6.allowed_ip, False)
