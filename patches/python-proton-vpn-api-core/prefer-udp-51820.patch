@@ -1,0 +1,15 @@
+diff --git a/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py b/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
+--- a/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
++++ b/proton/vpn/backend/networkmanager/protocol/wireguard/wireguard.py
+@@ -236,8 +236,9 @@ class Wireguard(LinuxNetworkManager, LocalAgentMixin):
+         wireguard_config = NM.SettingWireGuard.new()
+ 
+         peer.append_allowed_ip(wg_config.ipv4.allowed_ip, False)
++        udp_ports = list(self._vpnserver.wireguard_ports.udp or [])
++        port = 51820 if 51820 in udp_ports else udp_ports[0]
+         peer.set_endpoint(
+-            f"{self._vpnserver.server_ip}:{self._vpnserver.wireguard_ports.udp[0]}",
++            f"{self._vpnserver.server_ip}:{port}",
+             False
+         )
+ 
