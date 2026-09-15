@@ -634,8 +634,6 @@ modules:
       - proton-vpn-platform-cargo-sources.json
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
-      - type: patch
-        path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
 
   - name: proton-vpn-cli
     buildsystem: simple

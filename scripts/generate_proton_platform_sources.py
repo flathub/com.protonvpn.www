@@ -19,6 +19,17 @@ import tempfile
 import urllib.request
 from pathlib import Path
 
+STANDARD_CA_BUNDLES = (
+    "/etc/ssl/certs/ca-bundle.crt",
+    "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem",
+    "/etc/ssl/certs/ca-certificates.crt",
+)
+
+for _bundle in STANDARD_CA_BUNDLES:
+    if os.path.isfile(_bundle) and "SSL_CERT_FILE" not in os.environ:
+        os.environ["SSL_CERT_FILE"] = _bundle
+        break
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MANIFEST = REPO_ROOT / "com.protonvpn.www.yml"
 DEFAULT_OUTPUT = REPO_ROOT / "proton-vpn-platform-cargo-sources.json"

@@ -55,7 +55,7 @@ When Flathub's automated checker creates a PR bumping `python-proton-vpn-api-cor
 2. **Regenerate Cargo Sources**:
    - Run `scripts/generate_proton_platform_sources.py` to regenerate [`proton-vpn-platform-cargo-sources.json`](proton-vpn-platform-cargo-sources.json).
 3. **Re-anchor Patches**:
-   - Verify that [`patches/python-proton-vpn-api-core/remove-local-agent-dep.patch`](patches/python-proton-vpn-api-core/remove-local-agent-dep.patch) applies cleanly against upstream `setup.py`.
+   - Verify that patches in [`patches/python-proton-vpn-api-core/`](patches/python-proton-vpn-api-core/) (e.g. `fix-ip-path.patch`) apply cleanly against upstream. Upstream releases starting at `v5.6.20+` dropped `proton-vpn-local-agent` from `setup.py`, making `remove-local-agent-dep.patch` obsolete.
 4. **Preserve Dependency Build Order**:
    - If upstream added new requirements to `setup.py` (e.g. `dbus-fast`), ensure they are declared in [`pip-resources.python-proton-vpn-api-core.yaml`](pip-resources.python-proton-vpn-api-core.yaml) so they are installed before `python-proton-vpn-api-core` compiles.
 
