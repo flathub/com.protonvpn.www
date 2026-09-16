@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/c4/1a/69a37c3c29e164bfd5bb340dfb6c4de7e5343311150d9edcec02c0e6a2d6/vcs_versioning-2.3.2-py3-none-any.whl
-            sha256: df6cdf10eab8fc0cc41c8ab9d1f1ebdacab8489a4c46fbeb1e6e06823b74d31f
+            url: https://files.pythonhosted.org/packages/d7/20/29378edc8d7d2ce41892adc1356f4c6c6ae03b945d04ca6ade61afa3d5dc/vcs_versioning-2.4.1-py3-none-any.whl
+            sha256: b7089ec9bef67b2cad82148366e8eac4d63173f440ec62628282b59eb96bbcb0
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/be/aa/322e92b3f6db8dfca9db1974379e27e831ad659cec0b7d701b8540fa9c04/vcs_versioning-2.3.2.tar.gz
-                    sha256: 24abddff97aecf44cf3fec727eae8d76d9c6f70f5acb39afc41f824d69f2aac5
+                    url: https://files.pythonhosted.org/packages/3e/97/792a4ef20344f9af3e16098b58b45eb5d6202259b84fc80c43bc000a5e6c/vcs_versioning-2.4.1.tar.gz
+                    sha256: d4575de3115ec9434393c87c80ffb0eb98a16056bfe2b11ce0f3a97aff67fe0a
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
@@ -619,8 +619,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.6.10
-        commit: f1d13b71c506bbd5f47351a9e4392572e21d0169
+        tag: v5.6.20
+        commit: 3a7c1946623796540884574853492d06870d9477
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -688,8 +688,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.18.1
-        commit: b771b2bb6b265552d4a19c56e5e1c73002ebc0c4
+        tag: v4.18.2
+        commit: cabca6f10fb77fcfe01a88ced38a442c21b16ca8
         disable-submodules: true
         x-checker-data:
           type: anitya
