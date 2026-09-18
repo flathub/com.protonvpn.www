@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/c4/1a/69a37c3c29e164bfd5bb340dfb6c4de7e5343311150d9edcec02c0e6a2d6/vcs_versioning-2.3.2-py3-none-any.whl
-            sha256: df6cdf10eab8fc0cc41c8ab9d1f1ebdacab8489a4c46fbeb1e6e06823b74d31f
+            url: https://files.pythonhosted.org/packages/fc/e7/01c03c7bf28e353812dccc22d3b9629ea71c88edd64c8452601ecc64b189/vcs_versioning-2.4.0-py3-none-any.whl
+            sha256: 874a70bcd196b956a105852074554f498554d75399904fb1024002af79ad396c
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/be/aa/322e92b3f6db8dfca9db1974379e27e831ad659cec0b7d701b8540fa9c04/vcs_versioning-2.3.2.tar.gz
-                    sha256: 24abddff97aecf44cf3fec727eae8d76d9c6f70f5acb39afc41f824d69f2aac5
+                    url: https://files.pythonhosted.org/packages/f5/58/81416f7801a139099c4b950dbb2f7ee25c91dc6f7d46b4e09bb197da53b5/vcs_versioning-2.4.0.tar.gz
+                    sha256: cc4b66c02ae4cfb51e843910024f7142464c3391bb1f7e04608578b45046891b
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
@@ -604,8 +604,8 @@ modules:
         RUST_BACKTRACE: '1'
     buildsystem: simple
     build-commands:
-      - cargo build --release --locked --bin nm-protun-service --bin nm-protun-auth-dialog
-        --lib --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
+      - cargo build --release --locked --no-default-features --bin nm-protun-service
+        --bin nm-protun-auth-dialog --lib --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
       - install -Dm755 target/release/libproton_vpn_platform.so proton/vpn/platform.abi3.so
       - install -Dm755 target/release/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
       - install -Dm755 target/release/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
@@ -619,8 +619,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.6.10
-        commit: f1d13b71c506bbd5f47351a9e4392572e21d0169
+        tag: v5.6.20
+        commit: 3a7c1946623796540884574853492d06870d9477
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -634,8 +634,6 @@ modules:
       - proton-vpn-platform-cargo-sources.json
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
-      - type: patch
-        path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
@@ -688,8 +686,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.18.1
-        commit: b771b2bb6b265552d4a19c56e5e1c73002ebc0c4
+        tag: v4.18.2
+        commit: cabca6f10fb77fcfe01a88ced38a442c21b16ca8
         disable-submodules: true
         x-checker-data:
           type: anitya
