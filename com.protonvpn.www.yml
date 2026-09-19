@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/fc/e7/01c03c7bf28e353812dccc22d3b9629ea71c88edd64c8452601ecc64b189/vcs_versioning-2.4.0-py3-none-any.whl
-            sha256: 874a70bcd196b956a105852074554f498554d75399904fb1024002af79ad396c
+            url: https://files.pythonhosted.org/packages/d7/20/29378edc8d7d2ce41892adc1356f4c6c6ae03b945d04ca6ade61afa3d5dc/vcs_versioning-2.4.1-py3-none-any.whl
+            sha256: b7089ec9bef67b2cad82148366e8eac4d63173f440ec62628282b59eb96bbcb0
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/f5/58/81416f7801a139099c4b950dbb2f7ee25c91dc6f7d46b4e09bb197da53b5/vcs_versioning-2.4.0.tar.gz
-                    sha256: cc4b66c02ae4cfb51e843910024f7142464c3391bb1f7e04608578b45046891b
+                    url: https://files.pythonhosted.org/packages/3e/97/792a4ef20344f9af3e16098b58b45eb5d6202259b84fc80c43bc000a5e6c/vcs_versioning-2.4.1.tar.gz
+                    sha256: d4575de3115ec9434393c87c80ffb0eb98a16056bfe2b11ce0f3a97aff67fe0a
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
