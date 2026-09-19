@@ -639,14 +639,14 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/combine/combine-4.6.7.crate",
-        "sha256": "ba5a308b75df32fe02788e748662718f03fde005016435c444eea572398219fd",
-        "dest": "cargo/vendor/combine-4.6.7"
+        "url": "https://static.crates.io/crates/combine/combine-4.6.8.crate",
+        "sha256": "cfc320937d09e6de266b31b9afb480f197d7a861be86be7cb2ea7e5d1bfffc5e",
+        "dest": "cargo/vendor/combine-4.6.8"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"ba5a308b75df32fe02788e748662718f03fde005016435c444eea572398219fd\", \"files\": {}}",
-        "dest": "cargo/vendor/combine-4.6.7",
+        "contents": "{\"package\": \"cfc320937d09e6de266b31b9afb480f197d7a861be86be7cb2ea7e5d1bfffc5e\", \"files\": {}}",
+        "dest": "cargo/vendor/combine-4.6.8",
         "dest-filename": ".cargo-checksum.json"
     },
     {
@@ -2810,14 +2810,14 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://rust-registry.proton.me/downloads/proton-pfff-core@0.1.1.crate",
-        "sha256": "42778c555bd91e2b7f27a8515d70b1a55726c0bb24b5c99aeb6b6f4965ae0f84",
-        "dest": "cargo/vendor/proton-pfff-core-0.1.1"
+        "url": "https://rust-registry.proton.me/downloads/proton-pfff-core@0.1.2.crate",
+        "sha256": "41269acdd5f38556424042e306b1f09a1a55687b6734012b57ae6d4b5cc02abe",
+        "dest": "cargo/vendor/proton-pfff-core-0.1.2"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"42778c555bd91e2b7f27a8515d70b1a55726c0bb24b5c99aeb6b6f4965ae0f84\", \"files\": {}}",
-        "dest": "cargo/vendor/proton-pfff-core-0.1.1",
+        "contents": "{\"package\": \"41269acdd5f38556424042e306b1f09a1a55687b6734012b57ae6d4b5cc02abe\", \"files\": {}}",
+        "dest": "cargo/vendor/proton-pfff-core-0.1.2",
         "dest-filename": ".cargo-checksum.json"
     },
     {

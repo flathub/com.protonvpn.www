@@ -1,13 +1,13 @@
 diff --git a/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py b/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py
-index 5bf1f8a..8ed89cb 100644
+index 5dbe7ae..f91bc0f 100644
 --- a/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py
 +++ b/proton/vpn/backend/networkmanager/killswitch/wireguard/killswitch_connection_handler.py
-@@ -196,7 +196,7 @@ class KillSwitchConnectionHandler:
-     async def _run_ip_route_command():
-         def run():
-             return subprocess.run(  # nosec subprocess_without_shell_equals_true
--                ["/usr/sbin/ip", "route"], capture_output=True, encoding="utf-8", check=True
-+                ["/app/bin/ip", "route"], capture_output=True, encoding="utf-8", check=True
-             )
+@@ -39,7 +39,7 @@ from proton.vpn.backend.networkmanager.killswitch.wireguard.killswitch_connectio
  
-         loop = asyncio.get_running_loop()
+ logger = logging.getLogger(__name__)
+ 
+-IP_BINARY_SEARCH_PATH = os.pathsep.join(["/usr/bin", "/usr/sbin", "/sbin", "/bin"])
++IP_BINARY_SEARCH_PATH = os.pathsep.join(["/app/bin", "/usr/bin", "/usr/sbin", "/sbin", "/bin"])
+ 
+ 
+ @functools.lru_cache(maxsize=1)

@@ -604,8 +604,8 @@ modules:
         RUST_BACKTRACE: '1'
     buildsystem: simple
     build-commands:
-      - cargo build --release --locked --bin nm-protun-service --bin nm-protun-auth-dialog
-        --lib --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
+      - cargo build --release --locked --no-default-features --bin nm-protun-service
+        --bin nm-protun-auth-dialog --lib --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
       - install -Dm755 target/release/libproton_vpn_platform.so proton/vpn/platform.abi3.so
       - install -Dm755 target/release/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
       - install -Dm755 target/release/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
@@ -634,8 +634,6 @@ modules:
       - proton-vpn-platform-cargo-sources.json
       - type: patch
         path: patches/python-proton-vpn-api-core/fix-ip-path.patch
-      - type: patch
-        path: patches/python-proton-vpn-api-core/remove-local-agent-dep.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
