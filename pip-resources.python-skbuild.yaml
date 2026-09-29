@@ -26,8 +26,8 @@ modules:
         sha256: 1f9553927f18d0513d8e5ff80ab8980b8202ce37ecae0e3274ed2ef11880e74d
       - &id005
         type: file
-        url: https://files.pythonhosted.org/packages/fc/e7/01c03c7bf28e353812dccc22d3b9629ea71c88edd64c8452601ecc64b189/vcs_versioning-2.4.0-py3-none-any.whl
-        sha256: 874a70bcd196b956a105852074554f498554d75399904fb1024002af79ad396c
+        url: https://files.pythonhosted.org/packages/e4/e6/b4dedd1efea8a1e432123575896328dec83c26327164f7098db415d13f6f/vcs_versioning-2.5.0-py3-none-any.whl
+        sha256: dbf44f6303dc817e5792cb7d0e9cc90e3046ee1e32eaa357b20ad368811313d0
         x-checker-data:
           name: vcs-versioning
           packagetype: bdist_wheel
