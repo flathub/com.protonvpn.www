@@ -605,10 +605,9 @@ modules:
     buildsystem: simple
     build-commands:
       - cargo build --release --locked --no-default-features --bin nm-protun-service
-        --bin nm-protun-auth-dialog --lib --features 'protun,nm_protun_auth_dialog,python,core,local_agent'
+        --lib --features 'protun,python,core,local_agent,telemetry'
       - install -Dm755 target/release/libproton_vpn_platform.so proton/vpn/platform.abi3.so
       - install -Dm755 target/release/nm-protun-service "${FLATPAK_DEST}/libexec/nm-protun-service"
-      - install -Dm755 target/release/nm-protun-auth-dialog "${FLATPAK_DEST}/libexec/nm-protun-auth-dialog"
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
         --prefix=${FLATPAK_DEST} "." --no-build-isolation
     modules:
