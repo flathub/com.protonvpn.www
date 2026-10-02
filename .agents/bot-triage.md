@@ -16,7 +16,7 @@ When Flathub's automated checker creates a PR bumping `python-proton-vpn-api-cor
 
 4. **Verify Cargo Build Features**:
    - Ensure `cargo build` in module `python-proton-vpn-api-core` includes `--no-default-features`.
-   - Upstream includes `kill_switch` in default features (starting in `v5.6.20`), which requires `libmnl` and `libnftnl` (not present in Flatpak SDK). Only compile required features: `protun,nm_protun_auth_dialog,python,core,local_agent`.
+   - Upstream includes `kill_switch` in default features (starting in `v5.6.20`), which requires `libmnl` and `libnftnl` (not present in Flatpak SDK). Only compile required features: `protun,python,core,local_agent,telemetry` (upstream dropped `nm_protun_auth_dialog` and its binary in `v5.8.0+`, and added `telemetry`).
 
 5. **Preserve Dependency Build Order**:
    - If upstream added new requirements to `setup.py` (e.g. `dbus-fast`), ensure they are declared in [`pip-resources.python-proton-vpn-api-core.yaml`](../pip-resources.python-proton-vpn-api-core.yaml) so they are installed before `python-proton-vpn-api-core` compiles.
