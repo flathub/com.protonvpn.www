@@ -631,8 +631,6 @@ modules:
         commit: 12e7755a112f59b7b843da79290b3de25febf653
         dest: dependencies/protun
       - proton-vpn-platform-cargo-sources.json
-      - type: patch
-        path: patches/python-proton-vpn-api-core/fix-ip-path.patch
 
   - name: proton-vpn-cli
     buildsystem: simple

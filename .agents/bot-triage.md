@@ -12,7 +12,7 @@ When Flathub's automated checker creates a PR bumping `python-proton-vpn-api-cor
    - Run `uv run --project scripts/fedora_flatpak_updater python3 scripts/generate_proton_platform_sources.py` to regenerate [`proton-vpn-platform-cargo-sources.json`](../proton-vpn-platform-cargo-sources.json).
 
 3. **Re-anchor Patches**:
-   - Verify that patches in [`patches/python-proton-vpn-api-core/`](../patches/python-proton-vpn-api-core/) (e.g. `fix-ip-path.patch`) apply cleanly against upstream. Upstream releases starting at `v5.6.20+` dropped `proton-vpn-local-agent` from `setup.py`, making `remove-local-agent-dep.patch` obsolete.
+   - Verify that patches in [`patches/python-proton-vpn-api-core/`](../patches/python-proton-vpn-api-core/) apply cleanly against upstream. Upstream releases starting at `v5.6.20+` dropped `proton-vpn-local-agent` from `setup.py`, making `remove-local-agent-dep.patch` obsolete. Upstream releases starting at `v5.8.7+` track server routes directly via NetworkManager client rather than invoking `ip route`, making `fix-ip-path.patch` obsolete.
 
 4. **Verify Cargo Build Features**:
    - Ensure `cargo build` in module `python-proton-vpn-api-core` includes `--no-default-features`.
