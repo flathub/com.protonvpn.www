@@ -123,8 +123,8 @@ modules:
             --prefix=${FLATPAK_DEST} "setuptools_scm" --no-build-isolation
         sources:
           - type: file
-            url: https://files.pythonhosted.org/packages/e4/e6/b4dedd1efea8a1e432123575896328dec83c26327164f7098db415d13f6f/vcs_versioning-2.5.0-py3-none-any.whl
-            sha256: dbf44f6303dc817e5792cb7d0e9cc90e3046ee1e32eaa357b20ad368811313d0
+            url: https://files.pythonhosted.org/packages/73/1d/ad4064bf12f4503bf61e65d74c93c523672776d25ee0a06aaf42ae09ef3f/vcs_versioning-2.6.0-py3-none-any.whl
+            sha256: f8bebd1302ebc12e67ceb30fc7dd698ec969414b6fa43b30c3f14ac9b1e72c41
             x-checker-data:
               name: vcs-versioning
               packagetype: bdist_wheel
@@ -488,8 +488,8 @@ modules:
                 cleanup: ['*']
                 sources:
                   - type: archive
-                    url: https://files.pythonhosted.org/packages/6f/a0/6977bb418312ad30f27e522c5040604d4bbf7e40ccd5a11d333afe549354/vcs_versioning-2.5.0.tar.gz
-                    sha256: 956a796e31f80fe714d219d6d1df15a6bf247d10f6d851bf4b98279d0a42da55
+                    url: https://files.pythonhosted.org/packages/ad/e7/2a691db7d076b75d099fdba1a14cd966931f2aeb591e77f6d22f15097326/vcs_versioning-2.6.0.tar.gz
+                    sha256: 22e9159288e2d8bca2fa6f6c31c34c9c66aec157f60e9e526f5d160d2516d60f
                     x-checker-data:
                       type: pypi
                       name: vcs-versioning
@@ -618,8 +618,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/python-proton-vpn-api-core
-        tag: v5.8.3
-        commit: 0dd3a605bf23a810ca2801b26f71e39f7d309168
+        tag: v5.8.7
+        commit: 1b6dcda24566568437d423c095c14e0aa9d71ec6
         disable-submodules: true
         x-checker-data:
           type: anitya
@@ -631,8 +631,6 @@ modules:
         commit: 12e7755a112f59b7b843da79290b3de25febf653
         dest: dependencies/protun
       - proton-vpn-platform-cargo-sources.json
-      - type: patch
-        path: patches/python-proton-vpn-api-core/fix-ip-path.patch
 
   - name: proton-vpn-cli
     buildsystem: simple
@@ -685,8 +683,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.18.5
-        commit: 8c61c680aba3f3f9a94aa23249de9366f9a5e638
+        tag: v4.18.6
+        commit: 5daf56eca41656071ed36dcc08daf13c03d60b78
         disable-submodules: true
         x-checker-data:
           type: anitya
