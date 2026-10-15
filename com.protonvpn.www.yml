@@ -87,6 +87,7 @@ modules:
         CARGO_HOME: /run/build/python3-bcrypt/cargo
         CARGO_NET_OFFLINE: 'true'
         RUST_BACKTRACE: '1'
+        PYO3_USE_ABI3_FORWARD_COMPATIBILITY: '1'
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
