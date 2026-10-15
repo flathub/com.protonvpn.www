@@ -2,7 +2,7 @@
 
 id: com.protonvpn.www
 runtime: org.gnome.Platform
-runtime-version: '50'
+runtime-version: '51'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
@@ -87,6 +87,7 @@ modules:
         CARGO_HOME: /run/build/python3-bcrypt/cargo
         CARGO_NET_OFFLINE: 'true'
         RUST_BACKTRACE: '1'
+        PYO3_USE_ABI3_FORWARD_COMPATIBILITY: '1'
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
@@ -683,8 +684,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ProtonVPN/proton-vpn-gtk-app
-        tag: v4.18.6
-        commit: 5daf56eca41656071ed36dcc08daf13c03d60b78
+        tag: v4.18.7
+        commit: c56ab74bab226099d69152adcda47f26206a85c8
         disable-submodules: true
         x-checker-data:
           type: anitya
