@@ -106,8 +106,11 @@
     <url type="vcs-browser">https://github.com/ProtonVPN/proton-vpn-gtk-app</url>
 
     <releases>
-        <release version="4.18.7" date="2026-10-12">
+        <release version="4.18.8" date="2026-10-19">
             <description></description>
+        </release>
+        <release version="4.18.7" date="2026-10-12">
+            <description/>
         </release>
         <release version="4.18.6" date="2026-10-05">
             <description/>
