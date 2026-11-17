@@ -1,0 +1,130 @@
+name: Update cargo sources
+
+# Runs on flatpak-external-data-checker PRs that bump python-proton-vpn-api-core
+# (see .agents/bot-triage.md steps 1-2), or manually. It syncs the protun
+# tag/commit to the version pinned in upstream's Cargo.lock, regenerates
+# proton-vpn-platform-cargo-sources.json, and commits back to the PR branch.
+on:
+  pull_request:
+    paths:
+      - com.protonvpn.www.yml
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to regenerate sources on (defaults to current branch)
+        required: false
+
+# A newer push supersedes an older in-progress run on the same branch.
+concurrency:
+  group: update-cargo-sources-${{ inputs.branch || github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    # Fork PRs get a read-only token and their branch isn't in this repo.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || github.head_ref || github.ref }}
+
+      - name: Fetch base branch
+        if: github.event_name == 'pull_request'
+        run: git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+
+      - name: Check whether regeneration is needed
+        id: need-regen
+        run: |
+          api_core_tag() {
+            grep -A2 'url: https://github.com/ProtonVPN/python-proton-vpn-api-core' \
+              | grep -oP '(?<=tag: )\S+' | head -1
+          }
+          NEW_TAG=$(api_core_tag < com.protonvpn.www.yml || true)
+          PREV_TAG=$(git show "origin/${{ github.base_ref }}:com.protonvpn.www.yml" 2>/dev/null | api_core_tag || true)
+          echo "new_tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
+          if [ -z "$NEW_TAG" ]; then
+            echo "No python-proton-vpn-api-core tag found in manifest — skipping." >&2
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          elif [ "$NEW_TAG" = "$PREV_TAG" ] && [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "api-core tag unchanged ($NEW_TAG) — skipping." >&2
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "api-core tag: ${PREV_TAG:-<none>} -> $NEW_TAG — regenerating." >&2
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.need-regen.outputs.needed == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv and sync environment
+        if: steps.need-regen.outputs.needed == 'true'
+        run: |
+          pip install uv
+          uv sync --project scripts/fedora_flatpak_updater
+
+      - name: Sync protun tag and commit with upstream Cargo.lock
+        if: steps.need-regen.outputs.needed == 'true'
+        env:
+          API_CORE_TAG: ${{ steps.need-regen.outputs.new_tag }}
+        run: |
+          uv run --project scripts/fedora_flatpak_updater python - <<'EOF'
+          import os, re, subprocess, sys
+          sys.path.insert(0, "scripts")
+          from generate_proton_platform_sources import fetch_cargo_lock_from_tag, get_protun_version
+
+          version = get_protun_version(fetch_cargo_lock_from_tag(os.environ["API_CORE_TAG"]))
+          if not version:
+              sys.exit("ERROR: protun not found in upstream Cargo.lock")
+          tag = f"v{version}"
+
+          refs = subprocess.check_output(
+              ["git", "ls-remote", "https://github.com/ProtonVPN/protun.git",
+               f"refs/tags/{tag}", f"refs/tags/{tag}^{{}}"],
+              text=True,
+          ).split("\n")
+          shas = dict(reversed(line.split("\t")) for line in refs if line)
+          commit = shas.get(f"refs/tags/{tag}^{{}}") or shas.get(f"refs/tags/{tag}")
+          if not commit:
+              sys.exit(f"ERROR: protun tag {tag} not found upstream")
+
+          path = "com.protonvpn.www.yml"
+          text = open(path).read()
+          pattern = re.compile(
+              r"(url: https://github\.com/ProtonVPN/protun\.git\n(\s+)tag: )\S+(\n\2commit: )[0-9a-f]{40}"
+          )
+          updated, n = pattern.subn(rf"\g<1>{tag}\g<3>{commit}", text)
+          if n != 1:
+              sys.exit(f"ERROR: expected one protun source in {path}, found {n}")
+          if updated != text:
+              open(path, "w").write(updated)
+          print(f"protun: {tag} ({commit})")
+          EOF
+
+      - name: Regenerate proton-vpn-platform-cargo-sources.json
+        if: steps.need-regen.outputs.needed == 'true'
+        run: |
+          uv run --project scripts/fedora_flatpak_updater python3 scripts/generate_proton_platform_sources.py \
+            --tag "${{ steps.need-regen.outputs.new_tag }}"
+
+      - name: Commit and push
+        if: steps.need-regen.outputs.needed == 'true'
+        run: |
+          TAG="${{ steps.need-regen.outputs.new_tag }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add com.protonvpn.www.yml proton-vpn-platform-cargo-sources.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed — nothing to commit."
+          else
+            git commit -m "ci: regenerate cargo sources for python-proton-vpn-api-core $TAG"
+            git push origin "HEAD:${{ inputs.branch || github.head_ref || github.ref_name }}"
+          fi
