@@ -61,7 +61,7 @@ jobs:
 
       - name: Set up Python
         if: steps.need-regen.outputs.needed == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
 
@@ -71,49 +71,11 @@ jobs:
           pip install uv
           uv sync --project scripts/fedora_flatpak_updater
 
-      - name: Sync protun tag and commit with upstream Cargo.lock
-        if: steps.need-regen.outputs.needed == 'true'
-        env:
-          API_CORE_TAG: ${{ steps.need-regen.outputs.new_tag }}
-        run: |
-          uv run --project scripts/fedora_flatpak_updater python - <<'EOF'
-          import os, re, subprocess, sys
-          sys.path.insert(0, "scripts")
-          from generate_proton_platform_sources import fetch_cargo_lock_from_tag, get_protun_version
-
-          version = get_protun_version(fetch_cargo_lock_from_tag(os.environ["API_CORE_TAG"]))
-          if not version:
-              sys.exit("ERROR: protun not found in upstream Cargo.lock")
-          tag = f"v{version}"
-
-          refs = subprocess.check_output(
-              ["git", "ls-remote", "https://github.com/ProtonVPN/protun.git",
-               f"refs/tags/{tag}", f"refs/tags/{tag}^{{}}"],
-              text=True,
-          ).split("\n")
-          shas = dict(reversed(line.split("\t")) for line in refs if line)
-          commit = shas.get(f"refs/tags/{tag}^{{}}") or shas.get(f"refs/tags/{tag}")
-          if not commit:
-              sys.exit(f"ERROR: protun tag {tag} not found upstream")
-
-          path = "com.protonvpn.www.yml"
-          text = open(path).read()
-          pattern = re.compile(
-              r"(url: https://github\.com/ProtonVPN/protun\.git\n(\s+)tag: )\S+(\n\2commit: )[0-9a-f]{40}"
-          )
-          updated, n = pattern.subn(rf"\g<1>{tag}\g<3>{commit}", text)
-          if n != 1:
-              sys.exit(f"ERROR: expected one protun source in {path}, found {n}")
-          if updated != text:
-              open(path, "w").write(updated)
-          print(f"protun: {tag} ({commit})")
-          EOF
-
-      - name: Regenerate proton-vpn-platform-cargo-sources.json
+      - name: Sync protun source and regenerate cargo sources
         if: steps.need-regen.outputs.needed == 'true'
         run: |
           uv run --project scripts/fedora_flatpak_updater python3 scripts/generate_proton_platform_sources.py \
-            --tag "${{ steps.need-regen.outputs.new_tag }}"
+            --tag "${{ steps.need-regen.outputs.new_tag }}" --sync-protun
 
       - name: Commit and push
         if: steps.need-regen.outputs.needed == 'true'

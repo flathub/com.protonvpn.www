@@ -36,6 +36,7 @@ DEFAULT_OUTPUT = REPO_ROOT / "proton-vpn-platform-cargo-sources.json"
 GENERATOR_URL = "https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py"
 PROTON_SPARSE_REGISTRY = "sparse+https://rust-registry.proton.me/index/"
 PROTON_DOWNLOAD_BASE = "https://rust-registry.proton.me/downloads"
+PROTUN_REPO = "https://github.com/ProtonVPN/protun.git"
 
 OFFLINE_CARGO_CONFIG = """[source.vendored-sources]
 directory = "cargo/vendor"
@@ -94,6 +95,36 @@ def get_manifest_tag(manifest_path: Path) -> str:
             f"Could not locate python-proton-vpn-api-core tag in {manifest_path}"
         )
     return match.group(1)
+
+
+def resolve_tag_commit(repo_url: str, tag: str) -> str:
+    """Return the commit a remote tag points to (peeled, for annotated tags)."""
+    out = subprocess.check_output(
+        ["git", "ls-remote", repo_url, f"refs/tags/{tag}", f"refs/tags/{tag}^{{}}"],
+        text=True,
+    )
+    shas = {ref: sha for sha, ref in (line.split("\t") for line in out.splitlines() if line)}
+    commit = shas.get(f"refs/tags/{tag}^{{}}") or shas.get(f"refs/tags/{tag}")
+    if not commit:
+        raise ValueError(f"Tag {tag} not found in {repo_url}")
+    return commit
+
+
+def sync_protun_source(manifest_path: Path, protun_version: str) -> None:
+    """Point the protun git source in the manifest at the tag/commit for protun_version."""
+    tag = f"v{protun_version}"
+    commit = resolve_tag_commit(PROTUN_REPO, tag)
+
+    content = manifest_path.read_text(encoding="utf-8")
+    pattern = re.compile(
+        r"(url: https://github\.com/ProtonVPN/protun\.git\n(\s+)tag: )\S+(\n\2commit: )[0-9a-f]{40}"
+    )
+    updated, count = pattern.subn(rf"\g<1>{tag}\g<3>{commit}", content)
+    if count != 1:
+        raise ValueError(f"Expected one protun git source in {manifest_path}, found {count}")
+    if updated != content:
+        manifest_path.write_text(updated, encoding="utf-8")
+    print(f"protun source: {tag} ({commit})")
 
 
 def fetch_cargo_lock_from_tag(tag: str) -> str:
@@ -244,6 +275,12 @@ def main() -> None:
         default=DEFAULT_MANIFEST,
         help="Path to com.protonvpn.www.yml manifest",
     )
+    parser.add_argument(
+        "--sync-protun",
+        action="store_true",
+        help="Also update the protun git source tag/commit in the manifest "
+        "to the version pinned in Cargo.lock",
+    )
     args = parser.parse_args()
 
     if args.cargo_lock:
@@ -253,6 +290,12 @@ def main() -> None:
         tag = args.tag or get_manifest_tag(args.manifest)
         print(f"Fetching Cargo.lock for tag '{tag}'...")
         cargo_lock_text = fetch_cargo_lock_from_tag(tag)
+
+    if args.sync_protun:
+        protun_version = get_protun_version(cargo_lock_text)
+        if not protun_version:
+            sys.exit("ERROR: protun not found in Cargo.lock")
+        sync_protun_source(args.manifest, protun_version)
 
     generate_sources(cargo_lock_text, args.output)
 
