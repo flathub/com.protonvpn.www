@@ -631,7 +631,7 @@ modules:
         tag: v2.2.1
         commit: 12e7755a112f59b7b843da79290b3de25febf653
         dest: dependencies/protun
-      # uv run flatpak-cargo-generator.py Cargo.lock -o proton-vpn-platform-cargo-sources.json
+      # uv run --project scripts/fedora_flatpak_updater python3 scripts/generate_proton_platform_sources.py
       - proton-vpn-platform-cargo-sources.json
 
   - name: proton-vpn-cli
