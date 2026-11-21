@@ -2576,7 +2576,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-boringtun/proton-boringtun-3.0.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-boringtun@3.0.0.crate",
         "sha256": "d6cbef9a3ddc5f97501607f1a689c459a1894069745b4cede7c519b71bb64434",
         "dest": "cargo/vendor/proton-boringtun-3.0.0"
     },
@@ -2589,7 +2589,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-os-interface/proton-os-interface-0.2.6.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-os-interface@0.2.6.crate",
         "sha256": "4c2654d02228a2e4ccb4edf1883cb2838d9640e19012f75e0cad7afcb468f2d5",
         "dest": "cargo/vendor/proton-os-interface-0.2.6"
     },
@@ -2602,7 +2602,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-pfff/proton-pfff-0.13.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-pfff@0.13.0.crate",
         "sha256": "f359027c854eeb361b3df22c1b2d7d1f2a81a0ff146c502a9a0e38e3a2e35487",
         "dest": "cargo/vendor/proton-pfff-0.13.0"
     },
@@ -2615,7 +2615,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-pfff-config/proton-pfff-config-0.1.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-pfff-config@0.1.0.crate",
         "sha256": "165ee6f7497786a9a1febf7fb1eeb646cbaeabc0b54b9cecff75dd2d80b86136",
         "dest": "cargo/vendor/proton-pfff-config-0.1.0"
     },
@@ -2628,7 +2628,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-pfff-core/proton-pfff-core-0.1.2.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-pfff-core@0.1.2.crate",
         "sha256": "41269acdd5f38556424042e306b1f09a1a55687b6734012b57ae6d4b5cc02abe",
         "dest": "cargo/vendor/proton-pfff-core-0.1.2"
     },
@@ -2641,7 +2641,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-pfff-module/proton-pfff-module-0.8.6.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-pfff-module@0.8.6.crate",
         "sha256": "581cd09effe5a28e48209e962b219564f2395367042ec7234695c3906a04fbf6",
         "dest": "cargo/vendor/proton-pfff-module-0.8.6"
     },
@@ -2654,7 +2654,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-tls-parser/proton-tls-parser-0.4.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-tls-parser@0.4.0.crate",
         "sha256": "e1bc13b37a8daf97216879fc0dfef4f3d080dedd2a772e7730f1d053b985e9ed",
         "dest": "cargo/vendor/proton-tls-parser-0.4.0"
     },
@@ -2667,7 +2667,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-vpn-binary-status/proton-vpn-binary-status-3.0.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-vpn-binary-status@3.0.0.crate",
         "sha256": "19911a700fda644a80babfdd972e42ead99dd690b2251f069df64eb4d5b2686c",
         "dest": "cargo/vendor/proton-vpn-binary-status-3.0.0"
     },
@@ -2680,7 +2680,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-vpn-haproxyv2/proton-vpn-haproxyv2-0.1.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-vpn-haproxyv2@0.1.0.crate",
         "sha256": "5e9090c23aef1ecd7b2dda6849d29551b69b348840b352236528988af314bbfc",
         "dest": "cargo/vendor/proton-vpn-haproxyv2-0.1.0"
     },
@@ -2693,7 +2693,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-vpn-netstack/proton-vpn-netstack-0.6.5.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-vpn-netstack@0.6.5.crate",
         "sha256": "afdec098c17d3f3dc97404845394e8ecb9747be7b61d78a7f4f83b4ec44b18b9",
         "dest": "cargo/vendor/proton-vpn-netstack-0.6.5"
     },
@@ -2706,7 +2706,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-vpn-toolkit/proton-vpn-toolkit-0.1.0.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-vpn-toolkit@0.1.0.crate",
         "sha256": "16653ee08f3c25d6a59ae099ab60188a015eab441a69f4e3b069c1aeab8d3f4c",
         "dest": "cargo/vendor/proton-vpn-toolkit-0.1.0"
     },
@@ -2719,7 +2719,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/proton-vpn-yaourt/proton-vpn-yaourt-0.2.2.crate",
+        "url": "https://rust-registry.proton.me/downloads/proton-vpn-yaourt@0.2.2.crate",
         "sha256": "262f94d0fdf4cb49e0fab93809bcafeb316c7b6a1cce079e46e8fa0ab354502a",
         "dest": "cargo/vendor/proton-vpn-yaourt-0.2.2"
     },
@@ -2732,7 +2732,7 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/pvpnclient/pvpnclient-3.0.3.crate",
+        "url": "https://rust-registry.proton.me/downloads/pvpnclient@3.0.3.crate",
         "sha256": "3c14ef052727e0204ec5e80cf8df50786db38a83b6a6557a188b78a4c264f380",
         "dest": "cargo/vendor/pvpnclient-3.0.3"
     },
@@ -5045,8 +5045,8 @@
     },
     {
         "type": "inline",
-        "contents": "[source.vendored-sources]\ndirectory = \"cargo/vendor\"\n\n[source.crates-io]\nreplace-with = \"vendored-sources\"\n",
+        "contents": "[source.vendored-sources]\ndirectory = \"cargo/vendor\"\n\n[source.crates-io]\nreplace-with = \"vendored-sources\"\n\n[source.\"sparse+https://rust-registry.proton.me/index/\"]\nregistry = \"sparse+https://rust-registry.proton.me/index/\"\nreplace-with = \"vendored-sources\"\n\n[registries.proton]\nindex = \"sparse+https://rust-registry.proton.me/index/\"\n\n[registries.proton_public]\nindex = \"sparse+https://rust-registry.proton.me/index/\"\n",
         "dest": "cargo",
-        "dest-filename": "config"
+        "dest-filename": "config.toml"
     }
 ]
