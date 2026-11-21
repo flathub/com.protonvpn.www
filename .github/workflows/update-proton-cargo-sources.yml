@@ -1,0 +1,108 @@
+name: Update Proton Cargo sources
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - "com.protonvpn.www.yml"
+      - "proton-vpn-platform-cargo-sources.json"
+      - "scripts/generate_proton_platform_sources.py"
+      - ".github/workflows/update-proton-cargo-sources.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: proton-cargo-sources-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    if: >-
+      github.event.pull_request.user.login == 'flathubbot' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'update-master-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      # pull_request_target has write access: never execute tooling from the PR.
+      - name: Check out trusted tooling
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: tooling
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Sync fedora_flatpak_updater environment
+        working-directory: tooling
+        run: uv sync --frozen --project scripts/fedora_flatpak_updater
+
+      - name: Check out PR data
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr
+          persist-credentials: false
+
+      - name: Run Proton Cargo generator
+        working-directory: tooling
+        env:
+          OUTPUT: ${{ runner.temp }}/proton-vpn-platform-cargo-sources.json
+        run: |
+          uv run --frozen --project scripts/fedora_flatpak_updater python3 scripts/generate_proton_platform_sources.py \
+            --manifest ../pr/com.protonvpn.www.yml \
+            --output "$OUTPUT"
+
+      - name: Check for changes
+        id: diff
+        working-directory: pr
+        env:
+          OUTPUT: ${{ runner.temp }}/proton-vpn-platform-cargo-sources.json
+        run: |
+          # Replace the directory entry rather than following a PR-provided symlink.
+          rm -f -- proton-vpn-platform-cargo-sources.json
+          cp -- "$OUTPUT" proton-vpn-platform-cargo-sources.json
+          git --no-pager diff --check -- proton-vpn-platform-cargo-sources.json
+          if git diff --quiet -- proton-vpn-platform-cargo-sources.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit regenerated sources to bot branch
+        if: steps.diff.outputs.changed == 'true'
+        working-directory: pr
+        env:
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          GIT_EDITOR: "true"
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- proton-vpn-platform-cargo-sources.json
+          git -c core.hooksPath=/dev/null commit -m 'chore: regenerate Proton Cargo sources'
+          # Configure credentials only for the push; never force-push over a newer PR head.
+          gh auth setup-git
+          git -c core.hooksPath=/dev/null push origin "HEAD:refs/heads/$HEAD_BRANCH"
+
+      - name: Summarize result
+        env:
+          CHANGED: ${{ steps.diff.outputs.changed }}
+        run: |
+          if [ "$CHANGED" = 'true' ]; then
+            echo 'Regenerated and committed proton-vpn-platform-cargo-sources.json to the bot PR branch.' >> "$GITHUB_STEP_SUMMARY"
+            echo 'GITHUB_TOKEN pushes do not trigger ordinary push/pull_request workflows. Request a fresh Flathub build with `bot, build` if needed.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Proton Cargo sources already match the API-core version in this PR.' >> "$GITHUB_STEP_SUMMARY"
+          fi
